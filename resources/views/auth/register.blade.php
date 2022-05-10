@@ -22,17 +22,13 @@
 @endsection
 
 @section('content')
-    <div>
-        <img src="images/logo.png" alt="" srcset="">
-    </div>
-
     <div class="backgroundStyle" style="border-bottom: 110vh solid #dbac28;
-                                    border-left: 100vw solid transparent;
-                                    position: absolute; z-index: -1;">
+                                                border-left: 100vw solid transparent;
+                                                position: absolute; z-index: -1;">
     </div>
     {{-- ____________________________ --}}
     <div class="container text-center pl-5 pb-5 pr-5 bg-white"
-        style="width: 70%;border-radius: 7px;    background: #ebe9e9 !important;">
+        style="width: 100%;border-radius: 7px;    background: #ebe9e9 !important;">
         <div class="p-3" style="background: black;color: white; margin-left: -50px;margin-right: -50px">
             <h2>REGISTER NOW ON CITADEL CONNECT</h2>
         </div>
@@ -216,7 +212,7 @@
                         <option>Ontario</option>
                     </select>
                 </div>
-                <div class="row form-group">
+                <div class="row form-group col">
                     <div class="col-md-6 text-left form-group">
                         <label for="inputAddress2">Company Name</label>
                         <input type="text" class="form-control" value="Citadel Mortgage" id="inputAddress2" placeholder=""
@@ -283,12 +279,10 @@
 
 
 @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"
         integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-    </script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         function displayFieldsOfButton(idOfBtn) {
             if (idOfBtn == 'homeBuyerBtn_RegForm') {

@@ -17,9 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/myregister', function () {
-    return view('myRegister');
-});
 
 Auth::routes();
 
