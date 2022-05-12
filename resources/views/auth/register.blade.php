@@ -23,8 +23,8 @@
 
 @section('content')
     <div class="backgroundStyle" style="border-bottom: 110vh solid #dbac28;
-                                                border-left: 100vw solid transparent;
-                                                position: absolute; z-index: -1;">
+                                                    border-left: 100vw solid transparent;
+                                                    position: absolute; z-index: -1;">
     </div>
     {{-- ____________________________ --}}
     <div class="container text-center pl-5 pb-5 pr-5 bg-white"
