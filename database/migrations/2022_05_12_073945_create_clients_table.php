@@ -20,6 +20,7 @@ class CreateClientsTable extends Migration
             $table->string('last_name');
             $table->string('province');
             $table->string('relevance');
+             $table->timestamps();
         });
 
          DB::table('clients')->insert(

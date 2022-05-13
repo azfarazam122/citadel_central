@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Client;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,11 +50,34 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+
+        if ($data['formNumber'] == 1) {
+            return Validator::make($data, [
+                'firstName' => ['required', 'string', 'max:255'],
+                'lastName' => ['required', 'string', 'max:255'],
+                'province' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:4', 'confirmed'],
+            ]);
+        }else if ($data['formNumber'] == 2){
+            return Validator::make($data, [
+                'firstName' => ['required', 'string', 'max:255'],
+                'lastName' => ['required', 'string', 'max:255'],
+                'province' => ['required', 'string', 'max:255'],
+                'name_of_brokerage' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:4', 'confirmed'],
+            ]);
+        }else{
+             return Validator::make($data, [
+                'firstName' => ['required', 'string', 'max:255'],
+                'lastName' => ['required', 'string', 'max:255'],
+                'province' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:4', 'confirmed'],
+            ]);
+        }
+
     }
 
     /**
@@ -64,10 +88,31 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+
+        $User =  User::create([
+            // 'name' => $data['name'],
+            // 'email' => $data['email'],
+            // 'password' => Hash::make($data['password']),
+
+            // 'user_type' => $data['firstName'],
+            // 'firstName' => $data['firstName'],
+            // 'lastName' => $data['lastName'],
+            // 'province' => $data['province'],
+
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $currentUserId = User::where('email', $data['email'])->get(['id']);
+        echo $currentUserId[0]->id;
+        Client::create([
+                'user_id' => $currentUserId[0]->id,
+                'first_name' => $data['firstName'],
+                'last_name' => $data['lastName'],
+                'province' => $data['province'],
+                'relevance' => $data['formNumber'],
+        ]);
+
+        return $User;
     }
 }
