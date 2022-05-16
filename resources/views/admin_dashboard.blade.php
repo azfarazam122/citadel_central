@@ -18,8 +18,8 @@
                                 placeholder="Enter New Password">
                         </div>
                         <div class="form-group mt-2">
-                            <input type="button" onclick="window.location='{{ route('changePassword', ['test12345']) }}'"
-                                class="btn btn-dark" value="submit" name="changePasswordBtn" id="changePasswordBtn">
+                            <input type="button" onclick="" class="btn btn-dark" value="submit" name="changePasswordBtn"
+                                id="changePasswordBtn">
 
                             {{-- <a href="/admindashboard/changePassword/{{ $problem->id }}/edit"
                                 class="btn btn-xs btn-info pull-right">Submit</a> --}}
@@ -33,6 +33,9 @@
     </div>
 
     <script>
+        function name(params) {
+
+        }
         axios.post("{{ route('/admindashboard/changePassword') }}", {
                 newPassword: document.getElementById('newPassword').value,
             })
