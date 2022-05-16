@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\Client;
+use App\Models\Customer;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -105,7 +105,7 @@ class RegisterController extends Controller
 
         $currentUserId = User::where('email', $data['email'])->get(['id']);
         echo $currentUserId[0]->id;
-        Client::create([
+        Customer::create([
                 'user_id' => $currentUserId[0]->id,
                 'first_name' => $data['firstName'],
                 'last_name' => $data['lastName'],

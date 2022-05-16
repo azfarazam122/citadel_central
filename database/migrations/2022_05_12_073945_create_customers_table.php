@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientsTable extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
             $table->string('first_name');
@@ -23,7 +23,7 @@ class CreateClientsTable extends Migration
              $table->timestamps();
         });
 
-         DB::table('clients')->insert(
+         DB::table('customers')->insert(
             array(
                 'user_id' => 101,
                 'first_name' => 'usman',
@@ -32,7 +32,7 @@ class CreateClientsTable extends Migration
                 'relevance' => 'Karachi',
             )
         );
-         DB::table('clients')->insert(
+         DB::table('customers')->insert(
             array(
                 'user_id' => 102,
                 'first_name' => 'Muhammad',
@@ -41,7 +41,7 @@ class CreateClientsTable extends Migration
                 'relevance' => 'Karachi',
             )
         );
-         DB::table('clients')->insert(
+         DB::table('customers')->insert(
             array(
                 'user_id' => 103,
                 'first_name' => 'Ali',
@@ -60,6 +60,6 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('customers');
     }
 }

@@ -3,8 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Agent;
+use App\Models\Admin;
+use App\Models\MasterAdmin;
+use App\Models\SuperAdmin;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -33,6 +39,40 @@ class LoginController extends Controller
      *
      * @return void
      */
+
+    public function redirectTo() {
+
+        $user = Auth::user();
+        //  $user->email;
+        // $checkUser = Customer::where('email', "azfar@gmail.com");
+        // $checkUser = Customer::where('user_id',$user->id)->get(['id']);
+        $userId =
+            User::where('email',$user->email)->get(['id']);
+        $checkIfUserIdFoundInAgentTable =
+            Agent::where('user_id', $userId)->get(['id']);
+        $checkIfUserIdFoundInAdminTable =
+            Admin::where('user_id', $userId)->get(['id']);
+        $checkIfUserIdFoundInMasterAdmin =
+            MasterAdmin::where('user_id', $userId)->get(['id']);
+        $checkIfUserIdFoundInSuperAdmin =
+            SuperAdmin::where('user_id', $userId)->get(['id']);
+
+        if (count($checkIfUserIdFoundInAgentTable) > 0) {
+            return 'admin_dashboard/agent';
+        }else if(count($checkIfUserIdFoundInAdminTable) > 0){
+            return 'admin_dashboard/admin';
+        }else if(count($checkIfUserIdFoundInMasterAdmin) > 0){
+            return 'admin_dashboard/master';
+        }else if(count($checkIfUserIdFoundInSuperAdmin) > 0){
+            return 'admin_dashboard/super';
+        }else{
+            // dd('Hello World');
+            return '';
+        }
+        // dd(count($checkIfUserIdFoundInAgentTable));
+    }
+
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAgentTable extends Migration
+class CreateAgentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAgentTable extends Migration
      */
     public function up()
     {
-        Schema::create('agent', function (Blueprint $table) {
+        Schema::create('agents', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('admin_id');
@@ -27,7 +27,7 @@ class CreateAgentTable extends Migration
             $table->string('profile_pic');
         });
 
-        DB::table('agent')->insert(
+        DB::table('agents')->insert(
             array(
                 'user_id' => 201,
                 'admin_id' => 2101,
@@ -41,7 +41,7 @@ class CreateAgentTable extends Migration
                 'profile_pic' => '/images/profile_pic/ahmed.png',
             )
         );
-           DB::table('agent')->insert(
+           DB::table('agents')->insert(
             array(
                 'user_id' => 202,
                 'admin_id' => 2102,
@@ -55,7 +55,7 @@ class CreateAgentTable extends Migration
                 'profile_pic' => '/images/profile_pic/Arif.png',
             )
         );
-           DB::table('agent')->insert(
+           DB::table('agents')->insert(
             array(
                 'user_id' => 201,
                 'admin_id' => 2101,
@@ -79,6 +79,6 @@ class CreateAgentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agent');
+        Schema::dropIfExists('agents');
     }
 }
