@@ -11,9 +11,19 @@ class AdminDashboardController extends Controller
 {
     //
 
-    public function changePassword($newPassword){
-        $user = Auth::user();
-        User::where('email', $user->email)->update(['password' =>  Hash::make($newPassword)]);
-        dd('Password Updated Successfully');
+    public function changePassword(Request $request){
+        $newPassword = $request->newPassword;
+        if(!auth()->check()){
+            return  redirect(route('login'));
+        }else{
+           $user = Auth::user();
+           User::where('email', $user->email)->update(['password' =>  Hash::make($newPassword)]);
+           return 'Password Updated Successfully';
+        }
+
+    //  return $request->newPassword;
+
+   //  return dd($request->newPassword);
+
     }
 }

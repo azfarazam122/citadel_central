@@ -49,24 +49,28 @@ class LoginController extends Controller
         $userId =
             User::where('email',$user->email)->get(['id']);
         $checkIfUserIdFoundInAgentTable =
-            Agent::where('user_id', $userId)->get(['id']);
+            Agent::where('user_id', $userId[0]->id)->get(['id']);
         $checkIfUserIdFoundInAdminTable =
-            Admin::where('user_id', $userId)->get(['id']);
+            Admin::where('user_id', $userId[0]->id)->get(['id']);
         $checkIfUserIdFoundInMasterAdmin =
-            MasterAdmin::where('user_id', $userId)->get(['id']);
+            MasterAdmin::where('user_id', $userId[0]->id)->get(['id']);
         $checkIfUserIdFoundInSuperAdmin =
-            SuperAdmin::where('user_id', $userId)->get(['id']);
+            SuperAdmin::where('user_id', $userId[0]->id)->get(['id']);
 
         if (count($checkIfUserIdFoundInAgentTable) > 0) {
+            //  dd('Agent Found');
             return 'admin_dashboard/agent';
         }else if(count($checkIfUserIdFoundInAdminTable) > 0){
+            //  dd('Admin Found');
             return 'admin_dashboard/admin';
         }else if(count($checkIfUserIdFoundInMasterAdmin) > 0){
+            //  dd('Master Admin Found');
             return 'admin_dashboard/master';
         }else if(count($checkIfUserIdFoundInSuperAdmin) > 0){
+            //  dd('Super Admin Found');
             return 'admin_dashboard/super';
         }else{
-            // dd('Hello World');
+            dd('No Records Matched');
             return '';
         }
         // dd(count($checkIfUserIdFoundInAgentTable));

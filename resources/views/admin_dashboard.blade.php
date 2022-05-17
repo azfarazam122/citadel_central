@@ -17,12 +17,12 @@
                             <input type="password" class="form-control" name="newPassword" id="newPassword"
                                 placeholder="Enter New Password">
                         </div>
+                        <div>
+                            <small id='outputOfPasswordChanged' style="display: none;"></small>
+                        </div>
                         <div class="form-group mt-2">
-                            <input type="button" onclick="" class="btn btn-dark" value="submit" name="changePasswordBtn"
-                                id="changePasswordBtn">
-
-                            {{-- <a href="/admindashboard/changePassword/{{ $problem->id }}/edit"
-                                class="btn btn-xs btn-info pull-right">Submit</a> --}}
+                            <input type="button" onclick="changePasswordFunc()" class="btn btn-dark" value="submit"
+                                name="changePasswordBtn" id="changePasswordBtn">
                         </div>
 
 
@@ -33,18 +33,25 @@
     </div>
 
     <script>
-        function name(params) {
-
+        function changePasswordFunc() {
+            axios.post("{{ route('changePasswordOfUser') }}", {
+                    newPassword: document.getElementById('newPassword').value,
+                })
+                .then(function(response) {
+                    if (response.data == 'Password Updated Successfully') {
+                        // $('#outputOfPasswordChanged').val = response.data;
+                        document.getElementById('outputOfPasswordChanged').innerHTML = response.data;
+                        document.getElementById('outputOfPasswordChanged').style.display = "";
+                        setTimeout(function() {
+                            document.getElementById('outputOfPasswordChanged').style.display = "none";
+                        }, 1500);
+                    }
+                    console.log(response);
+                    // update_search_list(response);
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
         }
-        axios.post("{{ route('/admindashboard/changePassword') }}", {
-                newPassword: document.getElementById('newPassword').value,
-            })
-            .then(function(response) {
-                console.log(response);
-                // update_search_list(response);
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
     </script>
 @endsection

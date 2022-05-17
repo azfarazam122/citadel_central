@@ -4,11 +4,6 @@
         integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        :root {
-            --mainColor: #dbac28;
-            --lightTextColor: #707b89;
-        }
-
         .row>* {
             width: auto !important;
             padding-right: 0px !important;
@@ -25,7 +20,7 @@
             color: white;
             font-size: 18px;
             padding: 17px;
-            background: var(--mainColor);
+            background: var(--primary-color);
         }
 
         .homeButtons:hover {
@@ -98,7 +93,7 @@
     </section>
 
     {{-- ____________________________ --}}
-    <section class="container mt-5" style="background: var(--mainColor);">
+    <section class="container mt-5" style="background: var(--primary-color);">
         <div class="text-center col-md-9 ml-auto mr-auto">
             <h1 class="pt-5 pl-5 pr-5 pb-3" style="color: white;">Get Pre Qualified in 60 Seconds
                 Today
@@ -127,11 +122,11 @@
             </div>
             <div class="col-md-6">
                 <p class="mt-5 display-4">Become Mortgage Free
-                <p class="text-left display-4" style="color: var(--mainColor)">
+                <p class="text-left display-4" style="color: var(--primary-color)">
                     Sooner Today! </p>
                 </p>
                 <hr class="mt-5"
-                    style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; color: var(--mainColor);">
+                    style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; color: var(--primary-color);">
                 <div class="col-md-8 mt-5">
                     <p style="font-size: 20px;">
                         <span>-</span> Simplify your everyday banking
@@ -163,11 +158,11 @@
             <div class="col-md-6">
                 <img width="100%" src="images/homeImages/img10.jpeg" alt="">
                 <p class="display-4">Your Home Journey Find Your New Home Today
-                    <span class="text-left display-4" style="color: var(--mainColor)">
+                    <span class="text-left display-4" style="color: var(--primary-color)">
                         & Earn .5% Cash Reward </span>
                 </p>
                 <hr class="mt-5"
-                    style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; color: var(--mainColor);">
+                    style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; color: var(--primary-color);">
                 <div>
                     <p class="mt-2" style="color: var(--lightTextColor);">We care about your home buying journey,
                         let us help you make it a better experience with Your Home Journey!
@@ -195,12 +190,12 @@
             <div class="col-md-6">
                 <img width="100%" src="images/homeImages/img12.jpeg" alt="">
                 <p class="mt-5 display-4">Your
-                    <span class="display-4" style="color: var(--mainColor)">
+                    <span class="display-4" style="color: var(--primary-color)">
                         Mortgage App
                     </span>
                 </p>
                 <hr class=""
-                    style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; color: var(--mainColor);">
+                    style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; color: var(--primary-color);">
 
                 <div>
                     <p class="col-md-8 mt-5 ml-auto mr-auto" style="color: var(--lightTextColor);">
@@ -227,7 +222,7 @@
         <div class="text-center">
             <p class="display-6">Our Partners</p>
             <hr class="ml-auto mr-auto" width="230px"
-                style="opacity: 1;color: var(--mainColor);height: 3px;border-radius: 10px">
+                style="opacity: 1;color: var(--primary-color);height: 3px;border-radius: 10px">
         </div>
         <div class="row">
             <div class="col-md-3  "><img class="p-5" width="100%"
@@ -251,7 +246,7 @@
         <div class="text-center">
             <p class="display-6">Our Lender Partners</p>
             <hr class="ml-auto mr-auto" width="230px"
-                style="opacity: 1;color: var(--mainColor);height: 3px;border-radius: 10px">
+                style="opacity: 1;color: var(--primary-color);height: 3px;border-radius: 10px">
         </div>
         <div class="row">
             <div class="col-md-2 ml-auto mr-auto"><img class="p-4" width="100%"
@@ -279,7 +274,7 @@
         <hr>
         <div class="text-center">
             <p class="display-4">
-                <span style="color: var(--mainColor);">Mortgage</span> Journey Solutions
+                <span style="color: var(--primary-color);">Mortgage</span> Journey Solutions
             </p>
         </div>
         <div>
@@ -287,7 +282,7 @@
                 <div class="row">
 
                     <div class="col-md-3">
-                        <div class="card m-1" style="background: var(--mainColor); ">
+                        <div class="card m-1" style="background: var(--primary-color); ">
                             <div class="card-body text-center">
                                 <h4 class="mt-4" style="font-weight: bold">OVERVIEW</h4>
                                 <hr width="80px" class="ml-auto mr-auto"
@@ -305,7 +300,7 @@
                     </div>
 
                     <div class="col-md-3 ">
-                        <div class="card m-1" style="background: var(--mainColor); ">
+                        <div class="card m-1" style="background: var(--primary-color); ">
                             <div class="card-body text-center">
                                 <h4 class="mt-4" style="font-weight: bold">SELF EMPLOYED</h4>
                                 <hr width="80px" class="ml-auto mr-auto"
@@ -325,7 +320,7 @@
                     </div>
 
                     <div class="col-md-3 ">
-                        <div class="card m-1" style="background: var(--mainColor); ">
+                        <div class="card m-1" style="background: var(--primary-color); ">
                             <div class="card-body text-center">
                                 <h4 class="mt-4" style="font-weight: bold">REVERSE MORTGAGE</h4>
                                 <hr width="80px" class="ml-auto mr-auto"
@@ -342,7 +337,7 @@
                     </div>
 
                     <div class="col-md-3 ">
-                        <div class="card m-1" style="background: var(--mainColor); ">
+                        <div class="card m-1" style="background: var(--primary-color); ">
                             <div class="card-body text-center">
                                 <h4 class="mt-4" style="font-weight: bold">REFINANCING
                                     INSIDER TIPS
@@ -369,7 +364,7 @@
         <hr>
         <div class="text-center">
             <p class="display-4">
-                <span style="color: var(--mainColor);">Your Journey </span> Products
+                <span style="color: var(--primary-color);">Your Journey </span> Products
             </p>
         </div>
         <div>
@@ -489,7 +484,7 @@
         <hr>
         <div class="text-center">
             <p class="display-4">
-                <span style="color: var(--mainColor);">Citadel </span> Mortgages Programs
+                <span style="color: var(--primary-color);">Citadel </span> Mortgages Programs
             </p>
         </div>
         <div class="mt-5">

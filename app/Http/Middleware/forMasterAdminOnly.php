@@ -24,7 +24,7 @@ class forMasterAdminOnly
          $userId =
             User::where('email',$user->email)->get(['id']);
         $checkIfUserIdFoundInMasterAdmin =
-            MasterAdmin::where('user_id', $userId)->get(['id']);
+            MasterAdmin::where('user_id', $userId[0]->id)->get(['id']);
 
         // dd(count($checkIfUserIdFoundInMasterAdmin));
         if (count($checkIfUserIdFoundInMasterAdmin) > 0) {

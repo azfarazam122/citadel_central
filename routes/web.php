@@ -26,7 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // ________________________________________
 
-Route::view('admin_dashboard', 'admin_dashboard');
+Route::view('/admin_dashboard', 'admin_dashboard');
 Route::view('/admin_dashboard/super', 'super_settings');
 Route::view('/admin_dashboard/agents', 'manage_agents');
 Route::view('/admin_dashboard/agents/{agent_id}', 'agent_detail');
@@ -44,4 +44,4 @@ Route::group(['middleware'=> ['forMasterAdmin']], function(){
 });
 
 // Admin Dashboard Controller
- Route::get('/admindashboard/changePassword', [App\Http\Controllers\AdminDashboardController::class, 'changePassword'])->name('changePassword');
+ Route::post('/admindashboard_changePassword', [App\Http\Controllers\AdminDashboardController::class, 'changePassword'])->name('changePasswordOfUser');
