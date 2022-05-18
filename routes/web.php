@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\ManageAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,8 +41,12 @@ Route::group(['middleware'=> ['forMasterAdmin']], function(){
     Route::view('/admin_dashboard/admins/{admin_id}', 'admin_detail');
     Route::view('/admin_dashboard/admins/{admin_id}/agents/{agent_id}', 'admin_agent_detail');
     Route::view('/admin_dashboard/admins/{admin_id}/agents', 'manage_admin_agents');
-
+    Route::resource('manage_admin_resource', ManageAdminController::class);
+    Route::view('/admin_dashboard/admins/edit/{idOfUser}', 'edit_admin');
 });
 
 // Admin Dashboard Controller
  Route::post('/admindashboard_changePassword', [App\Http\Controllers\AdminDashboardController::class, 'changePassword'])->name('changePasswordOfUser');
+
+ // Manage Admin Controller
+//  Route::post('/manageAdmin_getAdminsList', [App\Http\Controllers\ManageAdminController::class, 'getAdminsListFunc'])->name('getAdminList');
