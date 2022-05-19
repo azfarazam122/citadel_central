@@ -17,6 +17,9 @@
                         </h1>
                         <div class="card-body">
                             <h3>Manage Admins</h3>
+                            <div>
+                                <a href="" class="btn btn-dark mt-3 mb-3"> Create New Admin</a>
+                            </div>
                             <table id="adminsListTable" class="display">
                                 <thead>
                                     <tr>
@@ -27,6 +30,23 @@
                                     </tr>
                                 </thead>
                                 <tbody id="adminsListTableBody">
+                                    {{-- {{ $adminData }} --}}
+                                    {{-- {{ $userData[0][0]->id }}
+                                        <br>
+                                        {{ $userData[1][0]->id }} --}}
+                                    @for ($i = 0; $i < count($adminData); $i++)
+                                        <tr>
+                                            <td>{{ $userData[$i][0]->id }} </td>
+                                            <td>{{ $adminData[$i]->name }} </td>
+                                            <td>{{ $userData[$i][0]->email }} </td>
+                                            <td>
+                                                <a class="btn btn-dark"
+                                                    href="/admin_dashboard/admins/edit/{{ $userData[$i][0]->id }}">Edit</a>
+                                                <a class="btn btn-danger"
+                                                    href="/admin_dashboard/admins/delete/{{ $userData[$i][0]->id }}">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endfor
 
                                 </tbody>
                             </table>
@@ -48,80 +68,13 @@
             // $(".nav_list")[0].children[index].addClass('active');
             $(".nav_link").removeClass("active");
             $(".nav_link:nth-child(2)").addClass("active");
-            getAdminListFunc();
+            $('#adminsListTable').DataTable();
         });
 
-        function getAdminListFunc() {
-            axios.post("{{ route('manage_admin_resource.index') }}", {
-                    // newPassword: document.getElementById('newPassword').value,
-                })
-                .then(function(response) {
-                    generateAdminListTable(response.data)
-                    // console.log(response);
-                })
-                .catch(function(error) {
-                    // console.log(error.response);
-                    alert(error.response.data);
-                });
-        }
-
-        function generateAdminListTable(adminData) {
-            var tableBody = document.getElementById('adminsListTableBody');
-            tableBody.style.width = '100%';
-
-            for (var i = 0; i < adminData.length; i++) {
-                tr = document.createElement('tr');
-                // for (let index = 0; index < 3; index++) {
-                var td1 = document.createElement('td');
-                td1.innerHTML = adminData[i][0].id
-                tr.appendChild(td1);
-
-                var td2 = document.createElement('td');
-                let name = adminData[i][0].email;
-                name = name.split('@');
-                td2.innerHTML = name[0]
-                tr.appendChild(td2);
-
-                var td3 = document.createElement('td');
-                td3.innerHTML = adminData[i][0].email
-                tr.appendChild(td3);
-
-                var td4 = document.createElement('td');
-                var editButton = document.createElement('button');
-                editButton.type = 'button';
-                editButton.innerHTML = 'Edit';
-                editButton.classList = 'btn btn-dark m-1';
-                editButton.setAttribute('onclick', 'editTableRow(' + adminData[i][0].id + ')');
-                // tr.appendChild();
-                var deleteButton = document.createElement('button');
-                deleteButton.type = 'button';
-                deleteButton.innerHTML = 'Delete';
-                deleteButton.classList = 'btn btn-dark m-1';
-                deleteButton.setAttribute('onclick', 'deleteTableRow(' + adminData[i][0].id + ')');
-                // _____________
-                td4.appendChild(editButton);
-                td4.appendChild(deleteButton);
-                tr.appendChild(td4);
-
-
-
-                tableBody.appendChild(tr);
-            }
-
-            $('#adminsListTable').DataTable();
-
-        }
-
-        function editTableRow(rowUserId) {
-            // console.log(a + " " + b);
-            let editAdminPageUrl = window.location.href + '/edit/' + rowUserId;
-            console.log(editAdminPageUrl);
-        }
-
-        function deleteTableRow(rowUserId) {
-            console.log(a + " " + b);
-
-        }
+        // function deleteTableRow(rowUserId) {
+        //     let deleteAdminPageUrl = '/admin_dashboard/admins/delete/' + rowUserId;
+        //     window.location.href = deleteAdminPageUrl;
+        // }
     </script>
     <!-- Scripts -->
 @endsection

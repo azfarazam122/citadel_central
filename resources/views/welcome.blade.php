@@ -649,11 +649,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"
         integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script>
-        var abc = "{{ route('master_admins.admins') }}";
-        // var id = 3;
-        // abc += "/edit/" + id;
-        console.log(abc);
-    </script>
 @endsection

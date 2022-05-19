@@ -17,18 +17,20 @@
                         </h1>
                         <div class="card-body">
                             <div class="container">
-                                <form method="put" action="{{ route('manage_admin_resource.update') }}"></form>
-                                <h3>Edit Admins</h3>
-                                <div class="form-group">
-                                    <label for="">Name</label>
-                                    <input type="text" class="form-control" name="editName" id="editName"
-                                        aria-describedby="helpId" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <input type="button" onclick="updateAdminFunc()" class="btn btn-dark mt-3"
-                                        value="Update" name="updateAdmin" id="updateAdmin" aria-describedby="helpId"
-                                        placeholder="">
-                                </div>
+                                <form method="post" action="{{ route('updateData') }}">
+                                    @csrf
+                                    <input type="hidden" name="hiddenId" value={{ $adminData[0]->id }} />
+                                    <h3>Edit Admins</h3>
+                                    <div class="form-group">
+                                        <label for="">Name</label>
+                                        <input type="text" class="form-control" name="editName" id="editName"
+                                            value={{ $adminData[0]->name }} aria-describedby="helpId" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-dark mt-3" value="Update" name="updateAdmin"
+                                            id="updateAdmin" aria-describedby="helpId" placeholder="">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -49,24 +51,6 @@
             $(".nav_link").removeClass("active");
             $(".nav_link:nth-child(2)").addClass("active");
         });
-
-        function updateAdminFunc() {
-            // debugger;
-            // var id = 12;
-            // var myStr = "{{ route('manage_admin_resource.update', '" + id + "') }}";
-            // axios.put(myStr, {
-            //         // newPassword: document.getElementById('newPassword').value,
-            //     })
-            //     .then(function(response) {
-            //         // generateAdminListTable(response.data)
-            //         console.log(response);
-            //     })
-            //     .catch(function(error) {
-            //         console.log(error.response);
-            //     });
-
-
-        }
     </script>
     <!-- Scripts -->
 @endsection
