@@ -42,9 +42,13 @@ Route::group(['middleware'=> ['forMasterAdmin']], function(){
     Route::view('/admin_dashboard/admins/{admin_id}/agents/{agent_id}', 'admin_agent_detail');
     Route::view('/admin_dashboard/admins/{admin_id}/agents', 'manage_admin_agents');
     // Route::resource('manage_admin_resource', ManageAdminController::class);
-    // MANAGE ADMIN
+
+    // MANAGE ADMIN ROUTES
     Route::post('/admin_dashboard/admins/showAllData', [App\Http\Controllers\ManageAdminController::class, 'showAllData'])->name('showListOfAdmins');
     Route::get('/admin_dashboard/admins', [ManageAdminController::class , 'showAllData']);
+    Route::view('/admin_dashboard/create/admin', 'create_admin');
+    Route::post('/admin_dashboard/create/admin', [ManageAdminController::class , 'createAdmin'])->name('createAdmin');
+    // Route::get('/admin_dashboard/admins/create', [ManageAdminController::class , 'showAllData']);
     Route::get('/admin_dashboard/admins/edit/{id}', [ManageAdminController::class,'showEditData']);
     Route::post('/admin_dashboard/admins', [ManageAdminController::class,'updateData'])->name('updateData');
     Route::get('/admin_dashboard/admins/delete/{id}', [ManageAdminController::class,'deleteData'])->name('deleteData');

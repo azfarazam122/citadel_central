@@ -18,7 +18,8 @@
                         <div class="card-body">
                             <h3>Manage Admins</h3>
                             <div>
-                                <a href="" class="btn btn-dark mt-3 mb-3"> Create New Admin</a>
+                                <a href="/admin_dashboard/create/admin" class="btn btn-dark mt-3 mb-3">Create New
+                                    Admin</a>
                             </div>
                             <table id="adminsListTable" class="display">
                                 <thead>

@@ -8,9 +8,23 @@
       </div>
       <div class="l-navbar" id="nav-bar">
           <div class="nav">
-              <div> <a href="" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i>
+              <div> <a href="/admin_dashboard" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i>
                       <span class="nav_logo-name">Citadel Central</span> </a>
                   <div class="nav_list">
+                      @if ()
+                          {{
+
+                        //   App\Models\User::someStaticFunction()
+                          }}
+                      @endif
+                      <a href="/admin_dashboard" class="nav_link">
+                          <i class='bx bx-grid-alt nav_icon'></i>
+                          <span class="nav_name">Admin Dashboard</span>
+                      </a>
+                      <a href="/admin_dashboard/super" class="nav_link">
+                          <i class='bx bx-grid-alt nav_icon'></i>
+                          <span class="nav_name">Super Settings</span>
+                      </a>
                       <a href="/admin_dashboard/master" class="nav_link">
                           <i class='bx bx-grid-alt nav_icon'></i>
                           <span class="nav_name">Master Settings</span>
@@ -23,7 +37,7 @@
                           <i class='bx bx-message-square-detail nav_icon'></i>
                           <span class="nav_name">Admin Details</span>
                       </a>
-                      <a href="#" class="nav_link">
+                      <a href="/admin_dashboard/agents" class="nav_link">
                           <i class='bx bx-bookmark nav_icon'></i>
                           <span class="nav_name">Manage Agents</span>
                       </a>
@@ -31,9 +45,13 @@
                           <i class='bx bx-folder nav_icon'></i>
                           <span class="nav_name">Agent Details</span>
                       </a>
-                      <a href="#" class="nav_link">
+                      <a href="/admin_dashboard/admin" class="nav_link">
                           <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                          <span class="nav_name">Stats</span>
+                          <span class="nav_name">Admin</span>
+                      </a>
+                      <a href="/admin_dashboard/agent" class="nav_link">
+                          <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                          <span class="nav_name">Agent</span>
                       </a>
                   </div>
               </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
