@@ -65,6 +65,8 @@
                         document.getElementById('outputOfPasswordChanged').style.display = "";
                         setTimeout(function() {
                             document.getElementById('outputOfPasswordChanged').style.display = "none";
+                            document.getElementById('newPassword').value = "";
+
                         }, 1500);
                     }
                     console.log(response);

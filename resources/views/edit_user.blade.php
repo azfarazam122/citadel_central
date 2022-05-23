@@ -13,23 +13,23 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <h1 class="card-header text-center">{{ __('Admins') }}
+                        <h1 class="card-header text-center">{{ __('User') }}
                         </h1>
                         <div class="card-body">
                             <div class="container">
-                                <form method="post" action="{{ route('updateAdminData') }}">
+                                <form method="post" action="{{ route('updateUserData') }}">
                                     @csrf
-                                    <input type="hidden" name="hiddenId" value={{ $adminData[0]->id }} />
-                                    <h3>Edit Admins</h3>
+                                    <input type="hidden" name="hiddenId" value={{ $userData[0]->id }} />
+                                    <h3>Edit User</h3>
                                     <div class="form-group">
-                                        <label for="">Name</label>
+                                        <label for="">Email</label>
                                         <input type="text" class="form-control" name="editName" id="editName"
-                                            value={{ $adminData[0]->name }} aria-describedby="helpId" placeholder="">
+                                            value={{ $userData[0]->email }} aria-describedby="helpId" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-dark mt-3" value="Update" name="updateAdmin"
-                                            id="updateAdmin" aria-describedby="helpId" placeholder="">
-                                        <a class="mt-3 btn btn-primary" href="/admin_dashboard/admins">Back</a>
+                                        <input type="submit" disabled class="btn btn-dark mt-3" value="Update"
+                                            name="updateAdmin" id="updateAdmin" aria-describedby="helpId" placeholder="">
+                                        <a class="mt-3 btn btn-primary" href="/admin_dashboard/users">Back</a>
                                     </div>
                                 </form>
                             </div>

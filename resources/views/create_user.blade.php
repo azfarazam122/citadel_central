@@ -13,20 +13,20 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <h1 class="card-header text-center">{{ __('Admins') }}
+                        <h1 class="card-header text-center">{{ __('User') }}
                         </h1>
                         <div class="card-body">
                             <div class="container">
-                                <form method="post" action="{{ route('createAdmin') }}">
+                                <form method="post" action="{{ route('createUser') }}">
                                     @csrf
                                     {{-- <input type="hidden" name="hiddenId" value=''  /> --}}
-                                    <h3>Create Admin</h3>
+                                    <h3>Create User</h3>
                                     <div class="form-group">
                                         <label for="">Name</label>
-                                        <input type="text" class="form-control @error('nameOfAdmin') is-invalid @enderror"
-                                            name="nameOfAdmin" id="nameOfAdmin" value="{{ old('nameOfAdmin') }}" required
+                                        <input type="text" class="form-control @error('nameOfUser') is-invalid @enderror"
+                                            name="nameOfUser" id="nameOfUser" value="{{ old('nameOfUser') }}" required
                                             aria-describedby="helpId" placeholder="">
-                                        @error('nameOfAdmin')
+                                        @error('nameOfUser')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -34,10 +34,10 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="">Email</label>
-                                        <input type="email" class="form-control @error('emailOfAdmin') is-invalid @enderror"
-                                            name="emailOfAdmin" id="emailOfAdmin" value="{{ old('emailOfAdmin') }}"
-                                            required aria-describedby="helpId" placeholder="">
-                                        @error('emailOfAdmin')
+                                        <input type="email" class="form-control @error('emailOfUser') is-invalid @enderror"
+                                            name="emailOfUser" id="emailOfUser" value="{{ old('emailOfUser') }}" required
+                                            aria-describedby="helpId" placeholder="">
+                                        @error('emailOfUser')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -46,20 +46,19 @@
                                     <div class="form-group">
                                         <label for="">Password</label>
                                         <input type="password"
-                                            class="form-control @error('passwordOfAdmin') is-invalid @enderror"
-                                            name="passwordOfAdmin" id="passwordOfAdmin"
-                                            value="{{ old('passwordOfAdmin') }}" required aria-describedby="helpId"
-                                            placeholder="">
-                                        @error('passwordOfAdmin')
+                                            class="form-control @error('passwordOfUser') is-invalid @enderror"
+                                            name="passwordOfUser" id="passwordOfUser" value="{{ old('passwordOfUser') }}"
+                                            required aria-describedby="helpId" placeholder="">
+                                        @error('passwordOfUser')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-dark mt-3" value="Create"
-                                            name="submitBtnOfAdmin" id="submitBtnOfAdmin" placeholder="">
-                                        <a class="mt-3 btn btn-primary" href="/admin_dashboard/admins">Back</a>
+                                        <input disabled type="submit" class="btn btn-dark mt-3" value="Create"
+                                            name="submitBtnOfUser" id="submitBtnOfUser" placeholder="">
+                                        <a class="mt-3 btn btn-primary" href="/admin_dashboard/users">Back</a>
                                     </div>
                                 </form>
                             </div>

@@ -57,21 +57,22 @@ class LoginController extends Controller
         $checkIfUserIdFoundInSuperAdmin =
             SuperAdmin::where('user_id', $userId[0]->id)->get(['id']);
 
+            // $data = MasterAdmin::all();
+            //  dd($data);
         if (count($checkIfUserIdFoundInAgentTable) > 0) {
             //  dd('Agent Found');
             return 'admin_dashboard/agent';
         }else if(count($checkIfUserIdFoundInAdminTable) > 0){
-            //  dd('Admin Found');
-            return 'admin_dashboard/admin';
+            return 'admin_dashboard/agents';
         }else if(count($checkIfUserIdFoundInMasterAdmin) > 0){
-            //  dd('Master Admin Found');
+            // dd('Master Admin Found');
             return 'admin_dashboard/master';
         }else if(count($checkIfUserIdFoundInSuperAdmin) > 0){
-            //  dd('Super Admin Found');
+             dd('Super Admin Found');
             return 'admin_dashboard/super';
         }else{
-            dd('No Records Matched');
-            return '';
+             dd('Customer Found');
+            return 'admin_dashboard';
         }
         // dd(count($checkIfUserIdFoundInAgentTable));
     }

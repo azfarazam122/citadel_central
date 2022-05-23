@@ -13,42 +13,48 @@
             <div class="row justify-content-center">
                 <div class="col-md-11">
                     <div class="card">
-                        <h1 class="card-header text-center">{{ __('Admins') }}
+                        <h1 class="card-header text-center">{{ __('Users') }}
                         </h1>
                         <div class="card-body">
-                            <h3>Manage Admins</h3>
+                            <h3>Manage Users</h3>
                             <div>
-                                <a href="/admin_dashboard/create/admin" class="btn btn-dark mt-3 mb-3">Create New
-                                    Admin</a>
+                                <a href="/admin_dashboard/users/create" class="btn btn-dark mt-3 mb-3">Create New
+                                    User</a>
                             </div>
-                            <table id="adminsListTable" class="display">
+                            <table id="usersListTable" class="display">
                                 <thead>
                                     <tr>
-                                        <th>User Id</th>
-                                        <th>Name</th>
+                                        <th>Id</th>
                                         <th>Email</th>
+                                        <th>Role</th>
                                         <th>Edit</th>
                                     </tr>
                                 </thead>
-                                <tbody id="adminsListTableBody">
-                                    {{-- {{ $adminData }} --}}
+                                <tbody id="usersListTableBody">
+                                    {{-- {{ $userData }} --}}
                                     {{-- {{ $userData[0][0]->id }}
                                         <br>
                                         {{ $userData[1][0]->id }} --}}
-                                    @for ($i = 0; $i < count($adminData); $i++)
+                                    @for ($i = 0; $i < count($userData); $i++)
                                         <tr>
-                                            <td>{{ $userData[$i][0]->id }} </td>
-                                            <td>{{ $adminData[$i]->name }} </td>
-                                            <td>{{ $userData[$i][0]->email }} </td>
-                                            <td>
-                                                <a class="btn btn-secondary"
-                                                    href="/admin_dashboard/admins/{{ $userData[$i][0]->id }}">Details</a>
-                                                <a class="btn btn-dark"
-                                                    href="/admin_dashboard/admins/edit/{{ $userData[$i][0]->id }}">Edit</a>
-                                                <a class="btn btn-danger"
-                                                    href="/admin_dashboard/admins/delete/{{ $userData[$i][0]->id }}">Delete</a>
+                                            <td>{{ $userData[$i]->id }} </td>
+                                            <td>{{ $userData[$i]->email }} </td>
+                                            <td>{{ $userData[$i]->role }} </td>
+                                            @if ($userData[$i]->role == 'Master Admin' || $userData[$i]->role == 'Super Admin')
+                                                <td>This Specific User Can't be Edit / Delete</td>
+                                            @else
+                                                <td>
+                                                    <a class="btn btn-secondary"
+                                                        href="/admin_dashboard/users/{{ $userData[$i]->id }}">Details</a>
+                                                    <a class="btn btn-dark"
+                                                        href="/admin_dashboard/users/edit/{{ $userData[$i]->id }}">Edit</a>
+                                                    <a class="btn btn-danger"
+                                                        href="/admin_dashboard/users/delete/{{ $userData[$i]->id }}">Delete</a>
 
-                                            </td>
+                                                </td>
+                                            @endif
+
+
                                         </tr>
                                     @endfor
 
@@ -72,7 +78,7 @@
             // $(".nav_list")[0].children[index].addClass('active');
             $(".nav_link").removeClass("active");
             $(".nav_link:nth-child(2)").addClass("active");
-            $('#adminsListTable').DataTable();
+            $('#usersListTable').DataTable();
         });
 
         // function deleteTableRow(rowUserId) {

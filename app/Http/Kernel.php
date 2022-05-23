@@ -46,6 +46,9 @@ class Kernel extends HttpKernel
         ],
         'forMasterAdmin' => [
             \App\Http\Middleware\forMasterAdminOnly::class,
+        ],
+         'forAdmin' => [
+            \App\Http\Middleware\forAdminOnly::class,
         ]
     ];
 

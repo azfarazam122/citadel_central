@@ -37,7 +37,7 @@ class ManageAdminController extends Controller
     }
     public function deleteData($id){
         // Admin::where('user_id',$id)->delete();
-         return $this->showAllData();
+         return redirect('/admin_dashboard/admins');
     }
 
     public function createAdmin(Request $request){

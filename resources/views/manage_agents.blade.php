@@ -9,16 +9,67 @@
 @section('content')
     @include('layouts.sidebar')
     <div class="height-100 bg-light">
-        <div class="">
+        <div class="card">
             <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <h1 class="card-header text-center">{{ __('Manage Agents') }}
+                <div class="col-md-11">
+                    <div class="">
+                        <h1 class="card-header text-center">{{ __('Agents') }}
                         </h1>
                         <div class="card-body">
-                            <div class="container">
-
+                            <h3>Manage Agents</h3>
+                            <div>
+                                <a href="/admin_dashboard/agents/create" class="btn btn-dark mt-3 mb-3">Create New
+                                    Agent</a>
                             </div>
+                            <table id="agentsListTable" class="display mr-5">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        {{-- <th>User Id</th> --}}
+                                        {{-- <th>Admin Id</th> --}}
+                                        <th>Full Name</th>
+                                        <th>License No</th>
+                                        <th>Phone</th>
+                                        <th>Facebook Link</th>
+                                        <th>Linkedin Link</th>
+                                        <th>Instagram Link</th>
+                                        <th>Twitter Link</th>
+                                        <th>Profile Pic </th>
+                                        <th>Edit </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="agentsListTableBody">
+                                    @for ($i = 0; $i < count($agentData); $i++)
+                                        <tr>
+                                            <td>{{ $agentData[$i]->id }} </td>
+                                            {{-- <td>{{ $agentData[$i]->user_id }} </td>
+                                            <td>{{ $agentData[$i]->admin_id }} </td> --}}
+                                            <td>{{ $agentData[$i]->full_name }} </td>
+                                            <td>{{ $agentData[$i]->license_no }} </td>
+                                            <td>{{ $agentData[$i]->phone }} </td>
+                                            <td>{{ $agentData[$i]->facebook_link }} </td>
+                                            <td>{{ $agentData[$i]->linkedin_link }} </td>
+                                            <td>{{ $agentData[$i]->instagram_link }} </td>
+                                            <td>{{ $agentData[$i]->twitter_link }} </td>
+                                            <td>
+                                                <img width="100px" src={{ $agentData[$i]->profile_pic }}
+                                                    alt="Profile Pic " srcset="">
+
+                                            </td>
+                                            <td class="me-5">
+                                                <a class="btn btn-secondary"
+                                                    href="/admin_dashboard/agents/{{ $agentData[$i]->id }}">Details</a>
+                                                <a class="mt-1 btn btn-dark"
+                                                    href="/admin_dashboard/agents/edit/{{ $agentData[$i]->id }}">Edit</a>
+                                                <a class="mt-1 btn btn-danger"
+                                                    href="/admin_dashboard/agents/delete/{{ $agentData[$i]->id }}">Delete</a>
+
+                                            </td>
+                                        </tr>
+                                    @endfor
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -37,7 +88,13 @@
             // $(".nav_list")[0].children[index].addClass('active');
             $(".nav_link").removeClass("active");
             $(".nav_link:nth-child(2)").addClass("active");
+            $('#agentsListTable').DataTable();
         });
+
+        // function deleteTableRow(rowUserId) {
+        //     let deleteAdminPageUrl = '/admin_dashboard/admins/delete/' + rowUserId;
+        //     window.location.href = deleteAdminPageUrl;
+        // }
     </script>
     <!-- Scripts -->
 @endsection
