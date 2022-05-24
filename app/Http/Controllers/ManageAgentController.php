@@ -9,12 +9,21 @@ use App\Models\Agent;
 use App\Models\Admin;
 use App\Models\MasterAdmin;
 use App\Models\SuperAdmin;
+use Illuminate\Support\Facades\Auth;
 
 class ManageAgentController extends Controller
 {
     public function showAllData(){
-        $agentsList = Agent::all();
-        // return $agentsList[0];
+        $user = Auth::user();
+        $userId =
+            User::where('email',$user->email)->get(['id']);
+
+        // return $userId[0]->id;
+        $adminId = Admin::where('user_id',$userId[0]->id)->get(['id']);
+        $agentsList = Agent::where('admin_id',$adminId[0]->id)->get();
+        // return $agentsList;
+
+
         return view('manage_agents')->with('agentData',$agentsList);
     }
 

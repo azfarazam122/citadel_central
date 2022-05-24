@@ -25,6 +25,7 @@ class CreateAgentsTable extends Migration
             $table->string('instagram_link');
             $table->string('twitter_link');
             $table->string('profile_pic');
+            $table->string('apply_now_link');
         });
 
         DB::table('agents')->insert(
@@ -39,6 +40,7 @@ class CreateAgentsTable extends Migration
                 'instagram_link' => 'https://www.instagram.com/Ahmed/',
                 'twitter_link' => 'https://www.twitter.com/Ahmed/',
                 'profile_pic' => '/images/profile_pic/ahmed.png',
+                'apply_now_link' => 'www.google.com',
             )
         );
            DB::table('agents')->insert(
@@ -53,6 +55,7 @@ class CreateAgentsTable extends Migration
                 'instagram_link' => 'https://www.instagram.com/Arif/',
                 'twitter_link' => 'https://www.twitter.com/Arif/',
                 'profile_pic' => '/images/profile_pic/Arif.png',
+                'apply_now_link' => 'www.google.com',
             )
         );
            DB::table('agents')->insert(
@@ -67,6 +70,7 @@ class CreateAgentsTable extends Migration
                 'instagram_link' => 'https://www.instagram.com/Basit/',
                 'twitter_link' => 'https://www.twitter.com/Basit/',
                 'profile_pic' => '/images/profile_pic/Basit.png',
+                'apply_now_link' => 'www.google.com',
             )
         );
 

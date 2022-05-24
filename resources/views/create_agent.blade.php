@@ -112,12 +112,26 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Profile Pic</label>
-                                        <input type="text"
+                                        {{-- <label for="">Profile Pic</label> --}}
+                                        {{-- <input type="text"
                                             class="form-control @error('profilePicOfAgent') is-invalid @enderror"
                                             name="profilePicOfAgent" id="profilePicOfAgent"
                                             value="{{ old('profilePicOfAgent') }}" required aria-describedby="helpId"
-                                            placeholder="">
+                                            placeholder=""> --}}
+                                        <label for="">Profile Pic</label>
+                                        {{-- ___________________________ --}}
+                                        <input type="file" accept="image/*"
+                                            class="form-control @error('profilePicOfAgent') is-invalid @enderror"
+                                            name="profilePicOfAgent" id="profilePicOfAgent" onchange="loadFile(event)"
+                                            style="display: none;">
+                                        <p><label class="btn btn-dark" for="profilePicOfAgent"
+                                                style="cursor: pointer;">Upload
+                                                Image
+                                                :</label> <span id="pathOfImage"> </span> </p>
+                                        <p><img id="output" width="200" />
+                                        </p>
+                                        {{-- ___________________________ --}}
+
                                         @error('profilePicOfAgent')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -151,6 +165,13 @@
             $(".nav_link").removeClass("active");
             $(".nav_link:nth-child(2)").addClass("active");
         });
+
+        var loadFile = function(event) {
+            debugger;
+            var image = document.getElementById('output');
+            document.getElementById('pathOfImage').innerHTML = event.target.files[0].name;
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
     </script>
     <!-- Scripts -->
 @endsection

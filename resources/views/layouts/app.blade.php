@@ -29,6 +29,12 @@
             --white-color: #fff;
         }
 
+        .customButtonWithLinks:hover {
+            transition: transform .3s;
+            transform: scale(1.1);
+
+        }
+
     </style>
 
     @yield('libraries')
@@ -36,6 +42,21 @@
 </head>
 
 <body>
+    {{-- PHP CODE --}}
+    @php
+        // if (app('request')->input('name') != '') {
+        //     $user = Auth::user();
+        //     $userId = App\Models\User::where('email', $user->email)->get(['id']);
+        //     $checkIfUserIdFoundInAgentTable = App\Models\Agent::where('user_id', $userId[0]->id)->get(['id']);
+        //     $userMatchWith = '';
+        //     if (count($checkIfUserIdFoundInAgentTable) > 0) {
+        //         $userMatchWith = 'Agent';
+        //         $agentData = App\Models\Agent::where('user_id', $user->id)->get();
+        //     }
+        // }
+    @endphp
+    {{-- PHP CODE --}}
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -53,8 +74,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto" style="font-size: 20px">
                         <li class="nav-item">
-                            <a style="color: #dbac28" class="nav-link"
-                                href="{{ url('/') }}">{{ __('Home') }}</a>
+                            <a style="color: #dbac28" class="nav-link" href="/">{{ __('Home') }}</a>
                         </li>
                     </ul>
 
@@ -86,7 +106,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -102,7 +122,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="my-4">
             @yield('content')
         </main>
     </div>

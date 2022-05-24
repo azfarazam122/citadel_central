@@ -64,9 +64,15 @@
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Profile Pic</label>
-                                        <input type="text" class="form-control" name="editProfilePicOfAgent"
-                                            id="editProfilePicOfAgent" value={{ $agentData[0]->twitter_link }}
-                                            aria-describedby="helpId" placeholder="">
+                                        {{-- ___________________________ --}}
+                                        <p><input type="file" accept="image/*" name="image" id="file"
+                                                onchange="loadFile(event)" style="display: none;"></p>
+                                        <p><label class="btn btn-primary" for="file" style="cursor: pointer;">Upload Image
+                                            </label> <span id="pathOfImage"> </span> </p>
+                                        <p><img id="output" width="200" />
+                                        </p>
+                                        {{-- ___________________________ --}}
+
                                     </div>
                                     <div class="form-group">
                                         <input type="submit" disabled class="btn btn-dark mt-3" value="Update"
@@ -88,12 +94,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
     <script>
+        var path;
+        var image;
         $(document).ready(function() {
-
+            image = document.getElementById('output');
+            path = "<?php echo $agentData[0]->profile_pic; ?>"
+            image.src = "../../" + path;
+            let fileName = path.split('/');
+            fileName = fileName[fileName.length - 1];
+            document.getElementById('pathOfImage').innerHTML = fileName;
             // $(".nav_list")[0].children[index].addClass('active');
             $(".nav_link").removeClass("active");
             $(".nav_link:nth-child(2)").addClass("active");
         });
+
+        var loadFile = function(event) {
+            debugger;
+            document.getElementById('pathOfImage').innerHTML = event.target.files[0].name;
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
     </script>
     <!-- Scripts -->
 @endsection

@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('/agent/{agent_email}', 'welcome');
 
 Auth::routes();
 
