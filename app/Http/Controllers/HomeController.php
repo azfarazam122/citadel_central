@@ -25,4 +25,11 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    // public function checkAgent(Request $request)
+    // {
+    //     return '123123';
+    //     // agent_email
+    //     // return $request->route()->parameter('agent_email');
+    //     // return view('home');
+    // }
 }

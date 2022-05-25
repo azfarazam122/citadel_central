@@ -71,7 +71,6 @@ class LoginController extends Controller
              dd('Super Admin Found');
             return 'admin_dashboard/super';
         }else{
-             dd('Customer Found');
             return 'admin_dashboard';
         }
         // dd(count($checkIfUserIdFoundInAgentTable));

@@ -39,7 +39,7 @@
     @php
     // $user = Auth::user();
     $url = $_SERVER['REQUEST_URI'];
-    if ($url == '/agent/home' || $url == '/agent/home/') {
+    if ($url == '/agent/rates' || $url == '/agent/rates/') {
         $user = App\Models\User::where('email', 'Tristan.kirk@citadelmortgages.ca')->get();
         $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
     } else {
@@ -99,7 +99,7 @@
         @endif
     @endisset
     <section class="m-5">
-        <img width="100%" src="../../images/homeImages/img1.png" alt="" srcset="">
+        <img width="100%" src="../images/homeImages/img1.png" alt="" srcset="">
     </section>
     {{-- ____________________________ --}}
 
@@ -115,16 +115,13 @@
                         Reward Miles. Get up to 1,000 MILES on
                         every mortgage!</p>
                     <div class="text-center mt-5 mb-4">
-                        <a href={{ $agentData[0]->how_to_collect_your_miles_today_link }} target="_blank"
-                            rel="noopener noreferrer">
-                            <button type="button" class="btn homeButtons">
-                                Learn How To Collect Your Miles Today
-                            </button>
-                        </a>
+                        <button type="button" class="btn homeButtons">
+                            Learn How To Collect Your Miles Today
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6"><img width="100%" src="../../images/homeImages/img2.png" alt="" srcset=""></div>
+            <div class="col-md-6"><img width="100%" src="../images/homeImages/img2.png" alt="" srcset=""></div>
         </div>
     </section>
 
@@ -133,35 +130,26 @@
         <hr>
         <div class="row">
             <div class="col-md-4 text-center">
-                <a href={{ $agentData[0]->your_financial_journey_link }} target="_blank" rel="noopener noreferrer">
-                    <img width="300px" src="../../images/homeImages/img3.png" alt="">
-                </a>
+                <img width="300px" src="../images/homeImages/img3.png" alt="">
                 <p class="text-center mt-4" style="color: var(--lightTextColor);">Making life easier and
                     keeping you engaged with
                     your finances</p>
             </div>
             <div class="col-md-4 text-center" style="width: 100% !important;">
-                <a href={{ $agentData[0]->mortgage_prequalification_link }} target="_blank" rel="noopener noreferrer">
-                    <img width="300px" src="../../images/homeImages/img4.jpeg" alt="">
-                </a>
+                <img width="300px" src="../images/homeImages/img4.jpeg" alt="">
                 <p class="text-center" style="color: var(--lightTextColor);">
                     Get Pre Qualified for a Mortgage in 60 Seconds
                 </p>
             </div>
             <div class="col-md-4">
                 <div class="col-md-6">
-                    <a href={{ $agentData[0]->your_home_journey_link }} target="_blank" rel="noopener noreferrer">
-                        <img width="300px" src="../../images/homeImages/img5.jpeg" alt="">
-                    </a>
+                    <img width="300px" src="../images/homeImages/img5.jpeg" alt="">
                     <p class="text-center" style="color: var(--lightTextColor);">
                         Search for your new home and get a Cash Reward!
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <a href={{ $agentData[0]->your_mortgage_calculators_link }} target="_blank"
-                        rel="noopener noreferrer">
-                        <img width="300px" src="../../images/homeImages/img6.png" alt="">
-                    </a>
+                    <img width="300px" src="../images/homeImages/img6.png" alt="">
                     <p class="text-center" style="color: var(--lightTextColor);">
                         Click to use our All In One Mortgage Calculator for your needs
                     </p>
@@ -182,18 +170,11 @@
                 and give you a realistic value of home to qualify for
             </p>
         </div>
-        <div class="mt-3 text-center ">
-            <a href={{ $agentData[0]->get_prequalified_now_link }} target="_blank" rel="noopener noreferrer">
-                <button type="button" class="btn homeButtons m-3 btn-light border-2">
-                    Get Pre Qualified Now
-                </button>
-            </a>
-        </div>
         <div class="row m-1">
-            <div class="col-md-6"><img width="100%" style="margin-top: 10%" src="../../images/homeImages/img7.jpeg"
+            <div class="col-md-6"><img width="100%" style="margin-top: 10%" src="../images/homeImages/img7.jpeg"
                     alt="">
             </div>
-            <div class="col-md-6 text-right"><img width="100%" src="../../images/homeImages/img8.png" alt=""></div>
+            <div class="col-md-6 text-right"><img width="100%" src="../images/homeImages/img8.png" alt=""></div>
         </div>
         <div>
 
@@ -205,7 +186,7 @@
         <hr>
         <div class="row">
             <div class="col-md-6">
-                <img width="100%" src="../../images/homeImages/img9.png" alt="" srcset="">
+                <img width="100%" src="../images/homeImages/img9.png" alt="" srcset="">
             </div>
             <div class="col-md-6">
                 <p class="mt-5 display-4">Become Mortgage Free
@@ -231,12 +212,9 @@
                         It brings your mortgage, savings, and income together to help you</p>
                 </div>
                 <div class="mt-5 text-center">
-                    <a href={{ $agentData[0]->calculate_how_you_can_be_mortgagefreesooner_link }} target="_blank"
-                        rel="noopener noreferrer">
-                        <button type="button" class="btn homeButtons m-3">
-                            Calculate How You Can Be Mortgage-Free Sooner!
-                        </button>
-                    </a>
+                    <button type="button" class="btn homeButtons m-3">
+                        Calculate How You Can Be Mortgage-Free Sooner!
+                    </button>
                 </div>
             </div>
     </section>
@@ -246,7 +224,7 @@
         <hr>
         <div class="row">
             <div class="col-md-6">
-                <img width="100%" src="../../images/homeImages/img10.jpeg" alt="">
+                <img width="100%" src="../images/homeImages/img10.jpeg" alt="">
                 <p class="display-4">Your Home Journey Find Your New Home Today
                     <span class="text-left display-4" style="color: var(--primary-color)">
                         & Earn .5% Cash Reward </span>
@@ -266,7 +244,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <img width="100%" style="position: relative; top: 20%" src="../../images/homeImages/img11.png" alt=""
+                <img width="100%" style="position: relative; top: 20%" src="../images/homeImages/img11.png" alt=""
                     srcset="">
             </div>
     </section>
@@ -276,10 +254,10 @@
         <hr>
         <div class="row">
             <div class="col-md-6">
-                <img width="100%" src="../../images/homeImages/img13.png" alt="" srcset="">
+                <img width="100%" src="../images/homeImages/img13.png" alt="" srcset="">
             </div>
             <div class="col-md-6">
-                <img width="100%" src="../../images/homeImages/img12.jpeg" alt="">
+                <img width="100%" src="../images/homeImages/img12.jpeg" alt="">
                 <p class="mt-5 display-4">Your
                     <span class="display-4" style="color: var(--primary-color)">
                         Mortgage App
@@ -299,12 +277,9 @@
                     </p>
                 </div>
                 <div class="mt-5 text-center">
-                    <a href={{ $agentData[0]->calculate_how_you_can_be_mortgagefreesooner_link }} target="_blank"
-                        rel="noopener noreferrer">
-                        <button type="button" class="btn homeButtons m-3">
-                            Download Now
-                        </button>
-                    </a>
+                    <button type="button" class="btn homeButtons m-3">
+                        Calculate How You Can Be Mortgage-Free Sooner!
+                    </button>
                 </div>
             </div>
         </div>
@@ -320,16 +295,16 @@
         </div>
         <div class="row">
             <div class="col-md-3  "><img class="p-5" width="100%"
-                    src="../../images/homeImages/partnersImages/img1.png" alt="" srcset="">
+                    src="../images/homeImages/partnersImages/img1.png" alt="" srcset="">
             </div>
             <div class="col-md-3  "><img class="p-5" width="100%"
-                    src="../../images/homeImages/partnersImages/img2.png" alt="" srcset="">
+                    src="../images/homeImages/partnersImages/img2.png" alt="" srcset="">
             </div>
             <div class="col-md-3  "><img class="mt-5 p-5" width="100%"
-                    src="../../images/homeImages/partnersImages/img3.jpeg" alt="" srcset="">
+                    src="../images/homeImages/partnersImages/img3.jpeg" alt="" srcset="">
             </div>
             <div class="col-md-3  "><img class="mt-3 p-5" width="100%"
-                    src="../../images/homeImages/partnersImages/img4.png" alt="" srcset="">
+                    src="../images/homeImages/partnersImages/img4.png" alt="" srcset="">
             </div>
         </div>
     </section>
@@ -344,22 +319,22 @@
         </div>
         <div class="row">
             <div class="col-md-2 ml-auto mr-auto"><img class="p-4" width="100%"
-                    src="../../images/homeImages/lendersPartnersImages/img1.png" alt="" srcset="">
+                    src="../images/homeImages/lendersPartnersImages/img1.png" alt="" srcset="">
             </div>
             <div class="col-md-2 ml-auto mr-auto"><img class="p-4" width="100%"
-                    src="../../images/homeImages/lendersPartnersImages/img2.png" alt="" srcset="">
+                    src="../images/homeImages/lendersPartnersImages/img2.png" alt="" srcset="">
             </div>
             <div class="col-md-2 ml-auto mr-auto"><img class="p-4" width="100%"
-                    src="../../images/homeImages/lendersPartnersImages/img3.jpeg" alt="" srcset="">
+                    src="../images/homeImages/lendersPartnersImages/img3.jpeg" alt="" srcset="">
             </div>
             <div class="col-md-2 ml-auto mr-auto"><img class="mt-3 p-4" width="100%"
-                    src="../../images/homeImages/lendersPartnersImages/img4.png" alt="" srcset="">
+                    src="../images/homeImages/lendersPartnersImages/img4.png" alt="" srcset="">
             </div>
             <div class="col-md-2 ml-auto mr-auto"><img class=" p-4" width="100%"
-                    src="../../images/homeImages/lendersPartnersImages/img5.png" alt="" srcset="">
+                    src="../images/homeImages/lendersPartnersImages/img5.png" alt="" srcset="">
             </div>
             <div class="col-md-2 ml-auto mr-auto"><img class="mt-2 p-4" width="100%"
-                    src="../../images/homeImages/lendersPartnersImages/img6.png" alt="" srcset="">
+                    src="../images/homeImages/lendersPartnersImages/img6.png" alt="" srcset="">
             </div>
         </div>
     </section>
@@ -469,7 +444,7 @@
                         <div class="" style=" width: 22rem;">
                             <div class="card-body text-center">
 
-                                <img width="100%" src="../../images/homeImages/journeyProductsImages/img1.jpeg" alt="">
+                                <img width="100%" src="../images/homeImages/journeyProductsImages/img1.jpeg" alt="">
                                 <hr width="80px" class="ml-auto mr-auto"
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
                                 <h5 style="color: black" class="card-subtitle mt-4  mb-5">High Interest Personal & Business
@@ -487,7 +462,7 @@
                     <div class="col-md-4 ">
                         <div class="" style=" width: 22rem;">
                             <div class="card-body text-center">
-                                <img width="100%" src="../../images/homeImages/journeyProductsImages/img2.jpeg" alt="">
+                                <img width="100%" src="../images/homeImages/journeyProductsImages/img2.jpeg" alt="">
                                 <hr width="80px" class="ml-auto mr-auto"
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
                                 <h5 style="color: black" class="card-subtitle mt-4  mb-4">Better Mortgage Insurance</h5>
@@ -507,7 +482,7 @@
                         <div class="" style=" width: 22rem;">
                             <div class="card-body text-center">
 
-                                <img width="100%" src="../../images/homeImages/journeyProductsImages/img3.jpeg" alt="">
+                                <img width="100%" src="../images/homeImages/journeyProductsImages/img3.jpeg" alt="">
                                 <hr width="80px" class="ml-auto mr-auto"
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
                                 <h5 style="color: black" class="card-subtitle mt-1  mb-1">Credit Cards</h5>
@@ -523,7 +498,7 @@
                     <div class="col-md-4 ">
                         <div class="" style=" width: 22rem;">
                             <div class="card-body text-center">
-                                <img width="100%" src="../../images/homeImages/journeyProductsImages/img4.jpeg" alt="">
+                                <img width="100%" src="../images/homeImages/journeyProductsImages/img4.jpeg" alt="">
                                 <hr width="80px" class="ml-auto mr-auto"
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
                                 <h5 style="color: black" class="card-subtitle mt-1  mb-1">Money Transfers Made Simple</h5>
@@ -539,7 +514,7 @@
                     <div class="col-md-4">
                         <div class="" style=" width: 22rem;">
                             <div class="card-body text-center">
-                                <img width="100%" src="../../images/homeImages/journeyProductsImages/img5.jpeg" alt="">
+                                <img width="100%" src="../images/homeImages/journeyProductsImages/img5.jpeg" alt="">
                                 <hr width="80px" class="ml-auto mr-auto"
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
                                 <h5 style="color: black" class="card-subtitle mt-5  mb-4">Personal Loans Made Simple</h5>
@@ -554,7 +529,7 @@
                     <div class="col-md-4">
                         <div class="" style="width: 22rem;">
                             <div class="card-body text-center">
-                                <img width="100%" src="../../images/homeImages/journeyProductsImages/img6.jpeg" alt="">
+                                <img width="100%" src="../images/homeImages/journeyProductsImages/img6.jpeg" alt="">
                                 <hr width="80px" class="ml-auto mr-auto"
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
                                 <h5 style="color: black" class="card-subtitle mt-5  mb-1">Travel Insurance</h5>
@@ -589,7 +564,7 @@
                         <div class="card" style=" width: 22rem; border-radius: 10px;">
                             <div class="card-body text-center">
 
-                                <img width="100%" src="../../images/homeImages/mortgagesProgramsImages/img1.jpeg" alt="">
+                                <img width="100%" src="../images/homeImages/mortgagesProgramsImages/img1.jpeg" alt="">
                                 <hr width="80px" class="ml-auto mr-auto"
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
                                 <h5 style="color: black" class="card-subtitle mt-4  mb-5">EXCLUSIVE CITADEL WORLD ELITE
@@ -607,7 +582,7 @@
                     <div class="col-md-4 ">
                         <div class="card" style=" width: 22rem; border-radius: 10px;">
                             <div class="card-body text-center">
-                                <img width="100%" src="../../images/homeImages/mortgagesProgramsImages/img2.jpeg" alt="">
+                                <img width="100%" src="../images/homeImages/mortgagesProgramsImages/img2.jpeg" alt="">
                                 <hr width="80px" class="ml-auto mr-auto"
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
                                 <h5 style="color: black" class="card-subtitle mt-4  mb-4">CAREER TRANSITION PROGRAM</h5>
@@ -628,7 +603,7 @@
                         <div class="card" style=" width: 22rem; border-radius: 10px;">
                             <div class="card-body text-center">
 
-                                <img width="100%" src="../../images/homeImages/mortgagesProgramsImages/img3.jpeg" alt="">
+                                <img width="100%" src="../images/homeImages/mortgagesProgramsImages/img3.jpeg" alt="">
                                 <hr width="80px" class="ml-auto mr-auto"
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
                                 <h5 style="color: black" class="card-subtitle mt-1  mb-1">The Citadel Mortgage Social
@@ -652,7 +627,7 @@
 
 
     <footer class="mt-5 p-5" style="background: black">
-        <img width="100%" src="../../images/homeImages/footerImages/img1.jpeg" alt="">
+        <img width="100%" src="../images/homeImages/footerImages/img1.jpeg" alt="">
         <div class="container mx-auto mt-4">
 
             <div class="row">

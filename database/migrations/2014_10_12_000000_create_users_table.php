@@ -20,20 +20,6 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->boolean('email_verified')->nullable();
             $table->boolean('is_archived')->nullable();
-
-            // $table->id();
-            // $table->string('firstName');
-            // $table->string('lastName');
-            // $table->string('province');
-            // $table->string('name_of_brokerage')->nullable();
-            // $table->string('user_type')->nullable();
-            // $table->string('company_name')->nullable();
-            // $table->string('broker_house')->nullable();
-            // $table->string('email')->unique();
-            // $table->string('password');
-            // $table->timestamps();
-            // $table->boolean('email_verified')->nullable();
-            // $table->boolean('is_archived')->nullable();
         });
     }
 

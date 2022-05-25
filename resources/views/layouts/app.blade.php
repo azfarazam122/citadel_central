@@ -74,7 +74,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto" style="font-size: 20px">
                         <li class="nav-item">
-                            <a style="color: #dbac28" class="nav-link" href="/">{{ __('Home') }}</a>
+                            <a style="color: #dbac28" class="nav-link" href="/agent/home/">{{ __('Home') }}</a>
                         </li>
                     </ul>
 
@@ -106,7 +106,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

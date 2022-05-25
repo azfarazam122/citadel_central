@@ -18,10 +18,15 @@ use App\Http\Controllers\ManageAgentController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+Route::view('/agent/home/{agent_email}', 'welcome');
+Route::view('/agent/home/', 'welcome');
 
-Route::view('/agent/{agent_email}', 'welcome');
+Route::view('/agent/rates/{agent_email}', 'rates');
+Route::view('/agent/rates/', 'rates');
+Route::view('/agent/about/{agent_email}', 'about_us');
+Route::view('/agent/about/', 'about_us');
 
 Auth::routes();
 
