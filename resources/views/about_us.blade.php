@@ -62,7 +62,6 @@
             <div class="ms-5">
                 <div class=" ms-5 row">
                     <div class="col-md-3 text-center">
-                        {{-- <h1>{{ app('request')->input('name') }}</h1> --}}
                         <p>{{ $agentData[0]->full_name }}</p>
                         <p>Mortgage Agent {{ $agentData[0]->license_no }}</p>
                     </div>
@@ -100,7 +99,6 @@
 
     {{-- ____________________________ --}}
     <section class="m-5 ">
-        <hr>
         <div class="row">
             <div class="col-md-4">
                 <img width="100%" src="../../images/aboutImages/img1_1.png">
@@ -218,7 +216,7 @@
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
 
                                 <p style="color: #707b89;line-height: 30px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                font-size: 17px;"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                font-size: 17px;"
                                     class="text-center mt-5">
                                     Citadel
                                     Mortgages is
@@ -239,7 +237,7 @@
                                 <hr width="80px" class="ml-auto mr-auto"
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
                                 <p style="color: #707b89;line-height: 30px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        font-size: 17px;"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        font-size: 17px;"
                                     class="text-center  mt-5 ">
                                     HELPING
                                     BORROWERS
@@ -261,7 +259,7 @@
                                     style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
 
                                 <p style="color: #707b89;line-height: 30px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                font-size: 17px;"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                font-size: 17px;"
                                     class="text-center mb-5  mt-5">
                                     Citadel
                                     Mortgages
