@@ -772,6 +772,220 @@
 
     </section>
 
+    {{-- ____________________________ --}}
+    <section class="text-center mt-5" style="background: #e4e4e5;">
+        <div class="container">
+            <div class="pt-3">
+                <h1 class="fw-bold  ">LET'S GET STARTED</h1>
+            </div>
+            <div class="row container mt-5">
+                <div class="col">
+                    <div>
+                        <a target="blank" href="https://tawk.to/chat/59a441f5b6e907673de0a1a0/default">
+                            <i aria-hidden="true" style="font-size: 50px;color: var(--primary-color);"
+                                class="fab fa-rocketchat"></i>
+                        </a>
+                        <h3 class="mt-3 ">Chat Live With Us Now</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <a target="blank" href="https://tawk.to/chat/59a441f5b6e907673de0a1a0/default">
+                            <i aria-hidden="true" style="font-size: 50px;color: var(--primary-color);"
+                                class="fas fa-mobile-alt"></i>
+                        </a>
+                        <h3 class="mt-3 fw-bold">Request a call</h3>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <a target="blank" href="https://tawk.to/chat/59a441f5b6e907673de0a1a0/default">
+                            <i aria-hidden="true" style="font-size: 50px;color: var(--primary-color);"
+                                class="far fa-building"></i>
+                        </a>
+                        <h3 class="mt-3 fw-bold">Find a Mortgage Agent</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="my-5  pb-5">
+                <p style="text-align: center;">Call us:
+                    <a href="tel:18665258622">1-866-600-8762 .</a>
+                    |
+                    <a href="https://citadel-mortgages.mtg-app.com/signup?refId=27a13cdd-df6c-40d6-b26e-2294630b5081"
+                        target="blank">
+                        <span> Start your mortgage journey apply now</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    {{-- ____________________________ --}}
+    <section class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <a target="blank" href="https://citadelmortgages.ca/air-miles/">
+                    <img src="../../images/ratesImages/img9.png" class="d-block mt-1 w-100 me-2" alt="...">
+                </a>
+            </div>
+
+            <div class="col">
+                <a target="blank" href="http://yourhomejourney.ca/">
+                    <img src="../../images/ratesImages/img10.png" class="d-block mt-1 w-100 ms-2" alt="...">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {{-- ____________________________ --}}
+    <section class="text-center mt-5" style="background: #e4e4e5;">
+        <div class="container">
+            <div class="pt-3">
+                <h1 class="fw-bold  ">FIND OUT HOW MUCH HOME YOU CAN AFFORD</h1>
+            </div>
+            <div class="row container mt-5">
+                <div class="col">
+                    <div>
+                        <a target="blank" href="https://yourmortgagecalculators.ca/calculators/mortgagefreesooner.php">
+                            <i aria-hidden="true" style="font-size: 70px;color: var(--primary-color);"
+                                class="fas fa-calculator"></i>
+                        </a>
+                        <div>
+                            <a target="blank" href="https://yourmortgagecalculators.ca/calculators/mortgagefreesooner.php">
+                                <button class="mt-3 p-2 btn homeButtons" style="background: #c6c6c7 ;color: black;">
+                                    BECOME MORTGAGE FREE SOONER <i class="fa-solid ms-2 fa-angle-right"></i>
+                                </button>
+                            </a>
+                        </div>
+                        <p class="mt-3">See how you can save and become mortgage free sooner</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <a target="blank" href="https://yourmortgagecalculators.ca/calculators/">
+                            <i aria-hidden="true" style="font-size: 70px;color: var(--primary-color);"
+                                class="fas fa-calculator"></i>
+                        </a>
+                        <div>
+                            <a target="blank" href="https://yourmortgagecalculators.ca/calculators/">
+                                <button class="mt-3 p-2 btn homeButtons" style="background: #c6c6c7 ;color: black;">
+                                    MORTGAGE PAYMENT CALCULATOR <i class="fa-solid ms-2 fa-angle-right"></i>
+                                </button>
+                            </a>
+                        </div>
+                        <p class="mt-3">Calculate how much you’d spend each month to buy a home or renew or
+                            refinance your mortgage.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <a target="blank" href="https://yfj.wealthdesk.com.au/my/home">
+                            <i aria-hidden="true" style="font-size: 70px;color: var(--primary-color);"
+                                class="far fa-money-bill-alt"></i>
+                        </a>
+                        <div>
+                            <a target="blank" href="https://yfj.wealthdesk.com.au/my/home">
+                                <button class="mt-3 p-2 btn homeButtons" style="background: #c6c6c7 ;color: black;">
+                                    3. YOUR FINANCIAL JOURNEY <i class="fa-solid ms-2 fa-angle-right"></i>
+                                </button>
+                            </a>
+                        </div>
+                        <p class="mt-3">
+                            Start thinking about how much you spend each month, create a budget, and start saving up for
+                            your home.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class=" pb-4">
+
+            </div>
+        </div>
+    </section>
+
+
+
+    {{-- ____________________________ --}}
+    <section class="text-center mt-5" style="background: #e4e4e5;">
+        <div class="container py-5">
+            <div>
+                <h1 class="fw-bold">
+                    OUR PARTNERS
+                </h1>
+            </div>
+            <div class="row ">
+                <div class="col m-1">
+                    <a target="blank" href="https://www.airmiles.ca/en/offers/partners/citadel_mortgages.html">
+                        <img src="../../images/ratesImages/img11.png" class="d-block mt-4 w-50 ms-auto me-auto" alt="...">
+                    </a>
+                </div>
+                <div class="col m-1">
+                    <a target="blank" href="https://www.airmiles.ca/en/offers/partners/citadel_mortgages.html">
+                        <img src="../../images/ratesImages/img12.png" class="d-block w-100 ms-auto me-auto" alt="...">
+                    </a>
+                </div>
+                <div class="col m-1">
+                    <a target="blank" href="https://www.airmiles.ca/en/offers/partners/citadel_mortgages.html">
+                        <img src="../../images/ratesImages/img13.png" class="d-block mt-4 w-100 ms-auto me-auto" alt="...">
+                    </a>
+                </div>
+                <div class="col m-1">
+                    <a target="blank" href="https://www.airmiles.ca/en/offers/partners/citadel_mortgages.html">
+                        <img src="../../images/ratesImages/img14.png" class="d-block mt-4 w-100 ms-auto me-auto" alt="...">
+                    </a>
+                </div>
+                <div class="col m-1">
+                    <a target="blank" href="https://www.airmiles.ca/en/offers/partners/citadel_mortgages.html">
+                        <img src="../../images/ratesImages/img15.png" class="d-block mt-4 w-100 ms-auto me-auto" alt="...">
+                    </a>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col m-1">
+                    <a target="blank" href="https://www.airmiles.ca/en/offers/partners/citadel_mortgages.html">
+                        <img src="../../images/ratesImages/img16.png" class="d-block mt-4 w-100 ms-auto me-auto" alt="...">
+                    </a>
+                </div>
+                <div class="col m-1">
+                    <a target="blank" href="https://www.airmiles.ca/en/offers/partners/citadel_mortgages.html">
+                        <img src="../../images/ratesImages/img17.png" class="d-block  w-100 ms-auto me-auto" alt="...">
+                    </a>
+                </div>
+                <div class="col m-1">
+                    <a target="blank" href="https://www.airmiles.ca/en/offers/partners/citadel_mortgages.html">
+                        <img src="../../images/ratesImages/img18.png" class="d-block mt-4 w-75 ms-auto me-auto" alt="...">
+                    </a>
+                </div>
+                <div class="col m-1">
+                    <a target="blank" href="https://www.airmiles.ca/en/offers/partners/citadel_mortgages.html">
+                        <img src="../../images/ratesImages/img19.png" class="d-block mt-4 w-75 ms-auto me-auto" alt="...">
+                    </a>
+                </div>
+                <div class="col m-1">
+                    <a target="blank" href="https://www.airmiles.ca/en/offers/partners/citadel_mortgages.html">
+                        <img src="../../images/ratesImages/img20.png" class="d-block mt-4 w-100 ms-auto me-auto" alt="...">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    {{-- ____________________________ --}}
+    <section class="text-center mt-5" style="background: #e4e4e5;">
+        <div class="container py-5">
+            <div>
+                <p class="display-5 fw-bold">
+                    OUR AWARDS
+                </p>
+            </div>
+            <div class=" m-1">
+                <a target="blank" href="https://www.airmiles.ca/en/offers/partners/citadel_mortgages.html">
+                    <img src="../../images/ratesImages/img2.png" class="d-block mt-4 w-100 ms-auto me-auto" alt="...">
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer class="mt-5 p-5" style="background: black">
         <img width="100%" src="../../images/homeImages/footerImages/img1.jpeg" alt="">
