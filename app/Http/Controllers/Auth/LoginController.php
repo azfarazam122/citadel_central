@@ -68,7 +68,7 @@ class LoginController extends Controller
             // dd('Master Admin Found');
             return 'admin_dashboard/master';
         }else if(count($checkIfUserIdFoundInSuperAdmin) > 0){
-             dd('Super Admin Found');
+            //  dd('Super Admin Found');
             return 'admin_dashboard/super';
         }else{
             return 'admin_dashboard';

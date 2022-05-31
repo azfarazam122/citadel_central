@@ -22,6 +22,7 @@ class forAdminOnly
          $user = Auth::user();
          $userId =
             User::where('email',$user->email)->get(['id']);
+            // dd($userId[0]->id);
         $checkIfUserIdFoundInAdmin =
             Admin::where('user_id', $userId[0]->id)->get(['id']);
 
@@ -29,7 +30,7 @@ class forAdminOnly
         if (count($checkIfUserIdFoundInAdmin) > 0) {
             return $next($request);
         }else{
-            dd('You Cannot Access That Page');
+            //dd('You Cannot Access That Page');
             return  redirect('admin_dashboard');
         }
         // return $next($request);

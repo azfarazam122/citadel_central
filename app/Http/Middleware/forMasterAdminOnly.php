@@ -30,7 +30,7 @@ class forMasterAdminOnly
         if (count($checkIfUserIdFoundInMasterAdmin) > 0) {
             return $next($request);
         }else{
-            dd('You Cannot Access That Page');
+            // dd('You Cannot Access That Page');
             return  redirect('admin_dashboard');
         }
         // return $next($request);
