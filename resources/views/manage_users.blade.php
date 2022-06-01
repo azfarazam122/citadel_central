@@ -44,8 +44,8 @@
                                                 <td>This Specific User Can't be Edit / Delete</td>
                                             @else
                                                 <td>
-                                                    <a class="btn btn-secondary"
-                                                        href="/admin_dashboard/users/{{ $userData[$i]->id }}">Details</a>
+                                                    {{-- <a class="btn btn-secondary"
+                                                        href="/admin_dashboard/users/{{ $userData[$i]->id }}">Details</a> --}}
                                                     <a class="btn btn-dark"
                                                         href="/admin_dashboard/users/edit/{{ $userData[$i]->id }}">Edit</a>
                                                     <a class="btn btn-danger"

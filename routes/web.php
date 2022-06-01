@@ -78,6 +78,7 @@ Route::group(['middleware'=> ['forAdmin']], function(){
     Route::view('/admin_dashboard/agents/create', 'create_agent');
     Route::post('/admin_dashboard/agents/create', [ManageAgentController::class , 'createAgent'])->name('createAgent');
     Route::get('/admin_dashboard/agents/edit/{id}', [ManageAgentController::class,'showEditData']);
+    Route::get('/admin_dashboard/agents/details/{id}', [ManageAgentController::class,'showDetailsOfAgent']);
     Route::post('/admin_dashboard/agents', [ManageAgentController::class,'updateData'])->name('updateAgentData');
     Route::get('/admin_dashboard/agents/delete/{id}', [ManageAgentController::class,'deleteData'])->name('deleteUserData');
 });

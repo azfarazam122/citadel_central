@@ -33,10 +33,45 @@ class ManageAgentController extends Controller
         return view('edit_agent')->with('agentData',$selectAgentsData);
     }
 
+    public function showDetailsOfAgent($id){
+        $selectAgentsData = Agent::where('id', $id)->get();
+        return view('agent_detail')->with('agentData',$selectAgentsData);
+    }
+
     public function updateData(Request $request){
-        // Admin::where('id',$request->hiddenId)->update(['name' => $request->editName]);
-        // // redirect(route('/admin_dashboard/admins'));
-        // return $this->showAllData();
+        echo $request->pathOfImage;
+        $target_dir = "images/profile_pic/" . $request->pathOfImage;
+        if (isset($_FILES["image"]["tmp_name"]) && $_FILES["image"]["tmp_name"] != '' ) {
+            $check = getimagesize($_FILES["image"]["tmp_name"]);
+            if($check !== false) {
+                move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir);
+            } else {
+
+            }
+        }
+        $post = Agent::find($request->id_OfAgent);
+        $post->full_name = $request->editNameOfAgent;
+        $post->license_no = $request->editLicenseNoOfAgent;
+        $post->phone = $request->editPhoneOfAgent;
+        $post->facebook_link = $request->editFacebookLinkOfAgent;
+        $post->linkedin_link = $request->editLinkedinLinkOfAgent;
+        $post->instagram_link = $request->editInstagramLinkOfAgent;
+        $post->twitter_link = $request->editTwitterLinkOfAgent;
+        $post->profile_pic = $request->pathOfImage;
+        $post->apply_now_link = $request->editApplyNowLinkOfAgent;
+        $post->how_to_collect_your_miles_today_link = $request->editHowToCollectYourMilesTodayLinkOfAgent;
+        $post->your_financial_journey_link = $request->editYourFinancialJourneyLinkOfAgent;
+        $post->mortgage_prequalification_link = $request->editMortgagePrequalificationLinkOfAgent;
+        $post->your_home_journey_link = $request->editYourHomeJourneyLinkOfAgent;
+        $post->your_mortgage_calculators_link = $request->editYourMortgageCalculatorsLinkOfAgent;
+        $post->calculate_how_you_can_be_mortgagefreesooner_link = $request->editCalculateHowYouCanBeMortgageFreeSoonerLinkOfAgent;
+        $post->get_prequalified_now_link = $request->editGetPrequalifiedNowLinkOfAgent;
+        $post->bio_apply_now_link = $request->editAboutPageBioLinkOfAgent;
+        $post->about_us_apply_now_link = $request->editAboutPageLastApplyNowLinkOfAgent;
+        $post->save();
+
+        // return redirect('admin_dashboard/agent');
+         return $this->showAllData();
     }
 
 
@@ -60,10 +95,12 @@ class ManageAgentController extends Controller
 
     $user_id = User::select('id')->where('email', $request->emailOfUser)->get();;
 
+    $admin = Auth::user();
+
     $admin = new Admin;
     $admin->user_id = $user_id[0]->id;
     $admin->name =  $request->nameOfUser;
-    $admin->master_admin_id =  "2031";
+    $admin->master_admin_id =  $admin->id;
     $admin->save();
 
      return $this->showAllData();
@@ -92,6 +129,15 @@ class ManageAgentController extends Controller
     }
 
     public function updateDataForAgentLogin(Request $request){
+        $target_dir = "images/profile_pic/" . $request->pathOfImage;
+        if (isset($_FILES["image"]["tmp_name"]) && $_FILES["image"]["tmp_name"] != '' ) {
+            $check = getimagesize($_FILES["image"]["tmp_name"]);
+            if($check !== false) {
+                move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir);
+            } else {
+
+            }
+        }
         $post = Agent::find($request->id_OfAgent);
         $post->full_name = $request->editNameOfAgent;
         $post->license_no = $request->editLicenseNoOfAgent;
@@ -100,7 +146,7 @@ class ManageAgentController extends Controller
         $post->linkedin_link = $request->editLinkedinLinkOfAgent;
         $post->instagram_link = $request->editInstagramLinkOfAgent;
         $post->twitter_link = $request->editTwitterLinkOfAgent;
-        // $post->profile_pic = $request->pathOfImage;
+        $post->profile_pic = $request->pathOfImage;
         $post->apply_now_link = $request->editApplyNowLinkOfAgent;
         $post->how_to_collect_your_miles_today_link = $request->editHowToCollectYourMilesTodayLinkOfAgent;
         $post->your_financial_journey_link = $request->editYourFinancialJourneyLinkOfAgent;
@@ -113,6 +159,7 @@ class ManageAgentController extends Controller
         $post->about_us_apply_now_link = $request->editAboutPageLastApplyNowLinkOfAgent;
         $post->save();
 
+        // return redirect('admin_dashboard/agent');
          return $this->showAllDataForAgentLogin();
     }
 

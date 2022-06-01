@@ -89,7 +89,7 @@
                       @if ($userMatchWith == 'Agent')
                           <a href="/admin_dashboard/agent" class="nav_link">
                               <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                              <span class="nav_name">Agent</span>
+                              <span class="nav_name">Your Profile</span>
                           </a>
                       @endif
 

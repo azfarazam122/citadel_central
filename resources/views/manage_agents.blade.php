@@ -25,15 +25,15 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        {{-- <th>User Id</th> --}}
-                                        {{-- <th>Admin Id</th> --}}
+                                        <th>User Id</th>
+                                        <th>Admin Id</th>
                                         <th>Full Name</th>
                                         <th>License No</th>
                                         <th>Phone</th>
-                                        <th>Facebook Link</th>
-                                        <th>Linkedin Link</th>
-                                        <th>Instagram Link</th>
-                                        <th>Twitter Link</th>
+                                        {{-- <th>Facebook Link</th>
+                                        <th>Linkedin Link</th> --}}
+                                        {{-- <th>Instagram Link</th>
+                                        <th>Twitter Link</th> --}}
                                         <th>Profile Pic </th>
                                         <th>Edit </th>
                                     </tr>
@@ -42,23 +42,25 @@
                                     @for ($i = 0; $i < count($agentData); $i++)
                                         <tr>
                                             <td>{{ $agentData[$i]->id }} </td>
-                                            {{-- <td>{{ $agentData[$i]->user_id }} </td>
-                                            <td>{{ $agentData[$i]->admin_id }} </td> --}}
+                                            <td>{{ $agentData[$i]->user_id }} </td>
+                                            <td>{{ $agentData[$i]->admin_id }} </td>
                                             <td>{{ $agentData[$i]->full_name }} </td>
                                             <td>{{ $agentData[$i]->license_no }} </td>
                                             <td>{{ $agentData[$i]->phone }} </td>
-                                            <td>{{ $agentData[$i]->facebook_link }} </td>
-                                            <td>{{ $agentData[$i]->linkedin_link }} </td>
-                                            <td>{{ $agentData[$i]->instagram_link }} </td>
-                                            <td>{{ $agentData[$i]->twitter_link }} </td>
+                                            {{-- <td>{{ $agentData[$i]->facebook_link }} </td>
+                                            <td>{{ $agentData[$i]->linkedin_link }} </td> --}}
+                                            {{-- <td>{{ $agentData[$i]->instagram_link }} </td>
+                                            <td>{{ $agentData[$i]->twitter_link }} </td> --}}
                                             <td>
-                                                <img width="100px" src={{ $agentData[$i]->profile_pic }}
+                                                <img width="100px"
+                                                    src="../images/profile_pic/{{ $agentData[$i]->profile_pic }}"
                                                     alt="Profile Pic " srcset="">
 
                                             </td>
                                             <td class="me-5">
-                                                <a class="btn btn-secondary"
-                                                    href="/admin_dashboard/agents/{{ $agentData[$i]->id }}">Details</a>
+                                                <a disable class="btn btn-secondary"
+                                                    href="/admin_dashboard/agents/details/{{ $agentData[$i]->id }}">All
+                                                    Details</a>
                                                 <a class="mt-1 btn btn-dark"
                                                     href="/admin_dashboard/agents/edit/{{ $agentData[$i]->id }}">Edit</a>
                                                 <a class="mt-1 btn btn-danger"
@@ -84,7 +86,6 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function() {
-
             // $(".nav_list")[0].children[index].addClass('active');
             $(".nav_link").removeClass("active");
             $(".nav_link:nth-child(2)").addClass("active");
