@@ -1,13 +1,15 @@
 @extends('layouts.app')
+{{-- ___________________________ --}}
+{{-- SIDEBAR --}}
+@section('sidebar')
+    @include('layouts.sidebar')
+@endsection
+{{-- ___________________________ --}}
 @section('libraries')
     <!-- Styles -->
-    <link href="{{ asset('css/masterSettings.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
 @endsection
 @section('content')
-    @include('layouts.sidebar')
     <div class="height-100 bg-light">
         <div class="">
             <div class="row justify-content-center">
@@ -40,7 +42,10 @@
                                             <td>{{ $userData[$i]->id }} </td>
                                             <td>{{ $userData[$i]->email }} </td>
                                             <td>{{ $userData[$i]->role }} </td>
-                                            @if ($userData[$i]->role == 'Master Admin' || $userData[$i]->role == 'Super Admin')
+                                            @if (
+                                            str_contains($userData[$i]->role , 'Master Admin') ||
+                                            str_contains($userData[$i]->role , 'Super Admin')
+                                            )
                                                 <td>This Specific User Can't be Edit / Delete</td>
                                             @else
                                                 <td>
@@ -75,9 +80,6 @@
     <script>
         $(document).ready(function() {
 
-            // $(".nav_list")[0].children[index].addClass('active');
-            $(".nav_link").removeClass("active");
-            $(".nav_link:nth-child(2)").addClass("active");
             $('#usersListTable').DataTable();
         });
 

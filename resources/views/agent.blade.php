@@ -1,11 +1,15 @@
 @extends('layouts.app')
+{{-- ___________________________ --}}
+{{-- SIDEBAR --}}
+@section('sidebar')
+    @include('layouts.sidebar')
+@endsection
+{{-- ___________________________ --}}
 @section('libraries')
     <!-- Styles -->
-    <link href="{{ asset('css/masterSettings.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
 @endsection
 @section('content')
-    @include('layouts.sidebar')
     <div class="height-100 bg-light">
         <div class="">
             <div class="row justify-content-center">
@@ -190,8 +194,6 @@
         var image;
         $(document).ready(function() {
 
-            $(".nav_link").removeClass("active");
-            $(".nav_link:nth-child(2)").addClass("active");
         });
 
         var loadFile = function(event) {

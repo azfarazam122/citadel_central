@@ -18,8 +18,9 @@ use App\Http\Controllers\ManageAgentController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('default_page');
 });
+
 Route::view('/agent/home/{agent_email}', 'welcome');
 Route::view('/agent/home/', 'welcome');
 

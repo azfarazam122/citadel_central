@@ -18,6 +18,9 @@ class CreateSuperSettingsTable extends Migration
             $table->string('logo');
             $table->string('primary_color');
             $table->string('secondary_color');
+            $table->string('tertiary_color');
+            $table->string('primary_text_color');
+            $table->string('secondary_text_color');
         });
     }
 

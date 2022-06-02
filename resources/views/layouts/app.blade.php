@@ -44,100 +44,93 @@
 </head>
 
 <body>
-    {{-- PHP CODE --}}
-    @php
-        // if (app('request')->input('name') != '') {
-        //     $user = Auth::user();
-        //     $userId = App\Models\User::where('email', $user->email)->get(['id']);
-        //     $checkIfUserIdFoundInAgentTable = App\Models\Agent::where('user_id', $userId[0]->id)->get(['id']);
-        //     $userMatchWith = '';
-        //     if (count($checkIfUserIdFoundInAgentTable) > 0) {
-        //         $userMatchWith = 'Agent';
-        //         $agentData = App\Models\Agent::where('user_id', $user->id)->get();
-        //     }
-        // }
-    @endphp
-    {{-- PHP CODE --}}
-
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <img src="images/logo.png" alt="" srcset="">
-                {{-- <a class="navbar-brand" href="{{ url('/') }}">
+    <div class="w-100 d-flex">
+        <div class="">
+            @yield('sidebar')
+        </div>
+        <div class=" w-100">
+            <div id="app">
+                <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                    <div class="container">
+                        <div>
+                            <img src="../../../../images/logo.png" alt="" srcset="">
+                        </div>
+                        {{-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a> --}}
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto" style="font-size: 20px">
-                        <li class="nav-item">
-                            <a style="color: #dbac28" target="blank" class="nav-link"
-                                href="/agent/home/">{{ __('Home') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="color: #dbac28" target="blank" class="nav-link"
-                                href="/agent/about/">{{ __('About') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="color: #dbac28" target="blank" class="nav-link"
-                                href="/agent/rates/">{{ __('Rates') }}</a>
-                        </li>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto " style="font-size: 20px">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <!-- Left Side Of Navbar -->
+                            <ul class="navbar-nav me-auto" style="font-size: 20px">
                                 <li class="nav-item">
-                                    <a style="color: #dbac28" class="nav-link"
-                                        href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a style="color: #dbac28" target="blank" class="nav-link"
+                                        href="/agent/home/">{{ __('Home') }}</a>
                                 </li>
-                            @endif
-
-                            @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a style="color: #dbac28" class="nav-link"
-                                        href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a style="color: #dbac28" target="blank" class="nav-link"
+                                        href="/agent/about/">{{ __('About') }}</a>
                                 </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a style="color: #dbac28" id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
-                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    v-pre>
-                                    {{ Auth::user()->email }}
-                                </a>
+                                <li class="nav-item">
+                                    <a style="color: #dbac28" target="blank" class="nav-link"
+                                        href="/agent/rates/">{{ __('Rates') }}</a>
+                                </li>
+                            </ul>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                            <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ms-auto " style="font-size: 20px">
+                                <!-- Authentication Links -->
+                                @guest
+                                    @if (Route::has('login'))
+                                        <li class="nav-item">
+                                            <a style="color: #dbac28" class="nav-link"
+                                                href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        </li>
+                                    @endif
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a style="color: #dbac28" class="nav-link"
+                                                href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    @endif
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a style="color: #dbac28" id="navbarDropdown" class="nav-link dropdown-toggle"
+                                            href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" v-pre>
+                                            {{ Auth::user()->email }}
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <main class="my-4">
+                    @yield('content')
+                </main>
             </div>
-        </nav>
-
-        <main class="my-4">
-            @yield('content')
-        </main>
+        </div>
     </div>
-
     @yield('scripts')
 
 </body>

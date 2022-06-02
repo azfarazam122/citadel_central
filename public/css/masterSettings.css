@@ -1,7 +1,7 @@
 
 :root {
     --header-height: 3rem;
-    --nav-width: 68px;
+    --nav-width: 58px;
     --first-color: #000;
     /* --white-color: #fff; */
     /* --lightTextColor: #707b89; */
@@ -19,10 +19,10 @@
     box-sizing: border-box
 }
 
-body {
+.body-pd {
     position: relative;
-    margin: var(--header-height) 0 0 0;
-    padding: 0 1rem;
+    /* margin: var(--header-height) 0 0 0;
+    padding: 0 1rem; */
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
     transition: .5s
@@ -33,22 +33,23 @@ a {
 }
 
 .header {
-    /* width: 100%; */
+    width: var(--nav-width);
     height: var(--header-height);
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    left: 0;
+    left: 0; */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1rem;
-    /* background-color: var(--primary-color); */
+    padding: 0 22px;
+    background-color: black;
     z-index: var(--z-fixed);
+    color: white;
     transition: .5s
 }
 
 .header_toggle {
-    color: var(--first-color);
+    color: white;
     font-size: 1.5rem;
     cursor: pointer
 }
@@ -67,11 +68,11 @@ a {
 }
 
 .l-navbar {
-    position: fixed;
-    top: 0;
-    left: -30%;
+    /* left: -30%; */
+    /* position: fixed;
+    top: 0; */
     width: var(--nav-width);
-    height: 100vh;
+    height: 93vh;
     background-color: var(--first-color);
     padding: .5rem 1rem 0 0;
     transition: .5s;
@@ -129,7 +130,8 @@ a {
 }
 
 .body-pd {
-    padding-left: calc(var(--nav-width) + 1rem)
+    /* padding-left: calc(var(--nav-width) + 1rem) */
+    width: calc(var(--nav-width) + 156px);
 }
 
 .active {
@@ -146,18 +148,18 @@ a {
 }
 
 .height-100 {
-    height: 100vh
+    /* height: 100vh */
 }
 
 @media screen and (min-width: 768px) {
-    body {
+    /* .body-pd {
         margin: calc(var(--header-height) + 1rem) 0 0 0;
         padding-left: calc(var(--nav-width) + 2rem)
-    }
+    } */
 
     .header {
         height: calc(var(--header-height) + 1rem);
-        padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
+
     }
 
     .header_img {
@@ -178,7 +180,15 @@ a {
         width: calc(var(--nav-width) + 156px)
     }
 
-    .body-pd {
+
+
+    /* .body-pd {
         padding-left: calc(var(--nav-width) + 188px)
-    }
+    } */
+}
+
+@media screen and (max-width: 768px) {
+.header{
+    display: none;
+}
 }

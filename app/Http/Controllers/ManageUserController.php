@@ -26,21 +26,37 @@ class ManageUserController extends Controller
             MasterAdmin::where('user_id', $userList[$i]->id)->get(['id']);
             $checkIfUserIdFoundInSuperAdmin =
             SuperAdmin::where('user_id', $userList[$i]->id)->get(['id']);
-
+            $userList[$i]['role'] = '';
             if (count($checkIfUserIdFoundInCustomerTable) > 0) {
                 $userList[$i]['role'] = 'Customer';
             }
             if (count($checkIfUserIdFoundInAgentTable) > 0) {
+                if ($userList[$i]['role'] == '') {
                 $userList[$i]['role'] = 'Agent';
+                }else{
+                    $userList[$i]['role'] .= ', Agent';
+                }
             }
             if (count($checkIfUserIdFoundInAdminTable) > 0) {
-                $userList[$i]['role'] = 'Admin';
+                 if ($userList[$i]['role'] == '') {
+                     $userList[$i]['role'] = 'Admin';
+                 }else{
+                     $userList[$i]['role'] .= ', Admin';
+                 }
             }
             if (count($checkIfUserIdFoundInMasterAdmin) > 0) {
-                $userList[$i]['role'] = 'Master Admin';
+                  if ($userList[$i]['role'] == '') {
+                      $userList[$i]['role'] = 'Master Admin';
+                  }else{
+                      $userList[$i]['role'] .= ', Master Admin';
+                  }
             }
             if (count($checkIfUserIdFoundInSuperAdmin) > 0) {
-                $userList[$i]['role'] = 'Super Admin';
+                if ($userList[$i]['role'] == '') {
+                    $userList[$i]['role'] = 'Super Admin';
+                }else{
+                    $userList[$i]['role'] .= ', Super Admin';
+                }
             }
         }
         // return $userList;

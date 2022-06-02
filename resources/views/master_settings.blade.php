@@ -1,13 +1,18 @@
 @extends('layouts.app')
+{{-- ___________________________ --}}
+{{-- SIDEBAR --}}
+@section('sidebar')
+    @include('layouts.sidebar')
+@endsection
+{{-- ___________________________ --}}
 @section('libraries')
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
 @endsection
 @section('content')
-    @include('layouts.sidebar')
     <div class="height-100 bg-light">
         <div class="">
-            <div class="row justify-content-center">
+            <div class="row ms-auto me-auto justify-content-center">
                 <div class="col-md-11">
                     <div class="card">
                         <h1 class="card-header text-center">{{ __('Master Settings') }}
@@ -28,8 +33,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-            $(".nav_link").removeClass("active");
-            $(".nav_link:nth-child(1)").addClass("active");
+
 
         });
     </script>
