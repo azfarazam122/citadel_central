@@ -9,6 +9,7 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
 @endsection
+
 @section('content')
     <div class="height-100 bg-light">
         <div class="card">
@@ -54,8 +55,8 @@
                                             {{-- <td>{{ $agentData[$i]->instagram_link }} </td>
                                             <td>{{ $agentData[$i]->twitter_link }} </td> --}}
                                             <td>
-                                                <img width="100px"
-                                                    src="../images/profile_pic/{{ $agentData[$i]->profile_pic }}"
+                                                <img style="border-radius: 50px;border: 4px solid black;" width="100px"
+                                                    src="../images/profile_pic/{{$agentData[$i]->email}}/{{ $agentData[$i]->profile_pic }}"
                                                     alt="Profile Pic " srcset="">
 
                                             </td>

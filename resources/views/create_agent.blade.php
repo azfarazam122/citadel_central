@@ -170,8 +170,7 @@
         });
 
         var loadFile = function(event) {
-            debugger;
-            var image = document.getElementById('output');
+            var image = document.getElementById('showSelectedImage');
             document.getElementById('pathOfImage').innerHTML = event.target.files[0].name;
             image.src = URL.createObjectURL(event.target.files[0]);
         };

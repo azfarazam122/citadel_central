@@ -21,34 +21,53 @@ class ManageAgentController extends Controller
         // return $userId[0]->id;
         $adminId = Admin::where('user_id',$userId[0]->id)->get(['id']);
         $agentsList = Agent::where('admin_id',$adminId[0]->id)->get();
-        // return $agentsList;
-
+        // return $agentsList[0]->user_id;
+        for ($i=0; $i < count($agentsList); $i++) {
+            $userEmail = User::where('id',$agentsList[$i]->user_id)->get(['email']);
+            $agentsList[$i]->email = $userEmail[0]->email;
+        }
 
         return view('manage_agents')->with('agentData',$agentsList);
     }
 
 
     public function showEditData($id){
-        $selectAgentsData = Agent::where('id', $id)->get();
-        return view('edit_agent')->with('agentData',$selectAgentsData);
+        $selectedAgentsData = Agent::where('id', $id)->get();
+        $userEmail = User::where('id',$selectedAgentsData[0]->user_id)->get(['email']);
+        $selectedAgentsData[0]->email = $userEmail[0]->email;
+        return view('edit_agent')->with('agentData',$selectedAgentsData);
     }
+
 
     public function showDetailsOfAgent($id){
-        $selectAgentsData = Agent::where('id', $id)->get();
-        return view('agent_detail')->with('agentData',$selectAgentsData);
+        $selectedAgentsData = Agent::where('id', $id)->get();
+        $userEmail = User::where('id',$selectedAgentsData[0]->user_id)->get(['email']);
+        $selectedAgentsData[0]->email = $userEmail[0]->email;
+        return view('agent_detail')->with('agentData',$selectedAgentsData);
     }
-
     public function updateData(Request $request){
-        echo $request->pathOfImage;
-        $target_dir = "images/profile_pic/" . $request->pathOfImage;
+
+        $file_path = "images/profile_pic/" . $request->emailOfAgent;
+        if (!file_exists($file_path)) {
+            mkdir($file_path, 0777, true);
+        }
+
+        $target_dir = "images/profile_pic/" . $request->emailOfAgent . "/" . $request->pathOfImage;
         if (isset($_FILES["image"]["tmp_name"]) && $_FILES["image"]["tmp_name"] != '' ) {
             $check = getimagesize($_FILES["image"]["tmp_name"]);
             if($check !== false) {
+                $files = glob("images/profile_pic/" . $request->emailOfAgent ."/*" ); // get all file names
+                foreach($files as $file){ // iterate files
+                    if(is_file($file)) {
+                        unlink($file); // delete file
+                    }
+                }
                 move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir);
             } else {
 
             }
         }
+
         $post = Agent::find($request->id_OfAgent);
         $post->full_name = $request->editNameOfAgent;
         $post->license_no = $request->editLicenseNoOfAgent;
@@ -70,7 +89,6 @@ class ManageAgentController extends Controller
         $post->about_us_apply_now_link = $request->editAboutPageLastApplyNowLinkOfAgent;
         $post->save();
 
-        // return redirect('admin_dashboard/agent');
          return $this->showAllData();
     }
 
@@ -88,6 +106,27 @@ class ManageAgentController extends Controller
         'passwordOfUser' => 'required|max:100',
     ]);
 
+
+
+    $file_path = "images/profile_pic/" . $request->emailOfAgent;
+    if (!file_exists($file_path)) {
+        mkdir($file_path, 0777, true);
+    }
+
+    $target_dir = "images/profile_pic/" . $request->emailOfAgent . "/" . $request->pathOfImage;
+    if (isset($_FILES["image"]["tmp_name"]) && $_FILES["image"]["tmp_name"] != '' ) {
+        $check = getimagesize($_FILES["image"]["tmp_name"]);
+        if($check !== false) {
+            $files = glob("images/profile_pic/" . $request->emailOfAgent ."/*" ); // get all file names
+            foreach($files as $file){ // iterate files
+                if(is_file($file)) {
+                    unlink($file); // delete file
+                }
+            }
+            move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir);
+        }
+    }
+
     $user = new User;
     $user->email = $request->emailOfUser;
     $user->password =  Hash::make($request->passwordOfUser);
@@ -104,10 +143,6 @@ class ManageAgentController extends Controller
     $admin->save();
 
      return $this->showAllData();
-    // return  $validated;
-        // Admin::where('id',$request->hiddenId)->update(['name' => $request->editName]);
-        // redirect(route('/admin_dashboard/admins'));
-        // return $this->showAllData();
     }
 
 
@@ -120,19 +155,30 @@ class ManageAgentController extends Controller
         $userId =
             User::where('email',$user->email)->get(['id']);
 
-        // return $userId[0]->id;
         $agentData = Agent::where('user_id',$userId[0]->id)->get();
-        // return $agentData;
+        $agentData[0]->email = $user->email;
+        // return $agentData[0];
 
 
         return view('agent')->with('agentData',$agentData);
     }
 
     public function updateDataForAgentLogin(Request $request){
-        $target_dir = "images/profile_pic/" . $request->pathOfImage;
+        $file_path = "images/profile_pic/" . $request->emailOfAgent;
+        if (!file_exists($file_path)) {
+            mkdir($file_path, 0777, true);
+        }
+
+        $target_dir = "images/profile_pic/" . $request->emailOfAgent . "/" . $request->pathOfImage;
         if (isset($_FILES["image"]["tmp_name"]) && $_FILES["image"]["tmp_name"] != '' ) {
             $check = getimagesize($_FILES["image"]["tmp_name"]);
             if($check !== false) {
+                $files = glob("images/profile_pic/" . $request->emailOfAgent ."/*" ); // get all file names
+                foreach($files as $file){ // iterate files
+                    if(is_file($file)) {
+                        unlink($file); // delete file
+                    }
+                }
                 move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir);
             } else {
 

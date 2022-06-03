@@ -99,7 +99,7 @@
                                                 value="{{ $agentData[0]->profile_pic }}" id="pathOfImage">
                                         </p> --}}
                                         <p><img id="showSelectedImage" name="showSelectedImage"
-                                                src="../../../images/profile_pic/{{ $agentData[0]->profile_pic }}"
+                                                src="../../../images/profile_pic/{{ $agentData[0]->email }}/{{ $agentData[0]->profile_pic }}"
                                                 width="200" />
                                         </p>
 

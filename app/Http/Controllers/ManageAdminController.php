@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use App\Models\Admin;
+use App\Models\Customer;
+use App\Models\Agent;
+use App\Models\MasterAdmin;
+use App\Models\SuperAdmin;
 
 class ManageAdminController extends Controller
 {
@@ -35,35 +39,37 @@ class ManageAdminController extends Controller
         // redirect(route('/admin_dashboard/admins'));
         return $this->showAllData();
     }
-    public function deleteData($id){
-        // Admin::where('user_id',$id)->delete();
-         return redirect('/admin_dashboard/admins');
+    public function deleteData(Request $req){
+         return $req['id'];
+        // return response()->json($req['id']);
+        // User::where('id',$req['id'])->delete();
+        // Admin::where('user_id',$req['id'])->delete();
+        // Customer::where('user_id',$req['id'])->delete();
+        // Agent::where('user_id',$req['id'])->delete();
+        // MasterAdmin::where('user_id',$req['id'])->delete();
+        // SuperAdmin::where('user_id',$req['id'])->delete();
+
     }
 
     public function createAdmin(Request $request){
          $validated = $request->validate([
-        'nameOfAdmin' => 'required|max:100',
-        'emailOfAdmin' => 'required|unique:App\Models\User,email|max:100',
-        'passwordOfAdmin' => 'required|max:100',
-    ]);
+            'nameOfAdmin' => 'required|max:100',
+            'emailOfAdmin' => 'required|unique:App\Models\User,email|max:100',
+            'passwordOfAdmin' => 'required|max:100',
+         ]);
+        $user = new User;
+        $user->email = $request->emailOfAdmin;
+        $user->password =  Hash::make($request->passwordOfAdmin);
+        $user->save();
 
-    $user = new User;
-    $user->email = $request->emailOfAdmin;
-    $user->password =  Hash::make($request->passwordOfAdmin);
-    $user->save();
+        $user_id = User::select('id')->where('email', $request->emailOfAdmin)->get();;
 
-      $user_id = User::select('id')->where('email', $request->emailOfAdmin)->get();;
+        $admin = new Admin;
+        $admin->user_id = $user_id[0]->id;
+        $admin->name =  $request->nameOfAdmin;
+        $admin->master_admin_id =  "2031";
+        $admin->save();
 
-     $admin = new Admin;
-    $admin->user_id = $user_id[0]->id;
-    $admin->name =  $request->nameOfAdmin;
-    $admin->master_admin_id =  "2031";
-    $admin->save();
-
-     return $this->showAllData();
-    // return  $validated;
-        // Admin::where('id',$request->hiddenId)->update(['name' => $request->editName]);
-        // redirect(route('/admin_dashboard/admins'));
-        // return $this->showAllData();
+        return $this->showAllData();
     }
 }

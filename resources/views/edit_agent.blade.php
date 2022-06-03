@@ -50,6 +50,11 @@
                                             id="editNameOfAgent" value="{{ $agentData[0]->full_name }}"
                                             aria-describedby="helpId">
                                     </div>
+                                    <div class="form-group">
+                                        <input hidden type="text" class="form-control" name="emailOfAgent"
+                                            id="emailOfAgent" value="{{ $agentData[0]->email }}"
+                                            aria-describedby="helpId">
+                                    </div>
                                     <div class="form-group mt-3">
                                         <label for="">License No</label>
                                         <input type="text" class="form-control" name="editLicenseNoOfAgent"
@@ -97,7 +102,7 @@
                                                 value="{{ $agentData[0]->profile_pic }}" id="pathOfImage">
                                         </p>
                                         <p><img id="showSelectedImage" name="showSelectedImage"
-                                                src="../../../images/profile_pic/{{ $agentData[0]->profile_pic }}"
+                                                src="../../../images/profile_pic/{{ $agentData[0]->email }}/{{ $agentData[0]->profile_pic }}"
                                                 width="200" />
                                         </p>
 

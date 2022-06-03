@@ -4,12 +4,11 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Models\User;
-use App\Models\MasterAdmin;
-use Illuminate\Http\Request;
+use App\Models\SuperAdmin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-
-class forMasterAdminOnly
+class forSuperAdminOnly
 {
     /**
      * Handle an incoming request.
@@ -21,13 +20,13 @@ class forMasterAdminOnly
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-         $userId =
+        $userId =
             User::where('email',$user->email)->get(['id']);
-        $checkIfUserIdFoundInMasterAdmin =
-            MasterAdmin::where('user_id', $userId[0]->id)->get(['id']);
+        $checkIfUserIdFoundInSuperAdmin =
+            SuperAdmin::where('user_id', $userId[0]->id)->get(['id']);
 
-        // dd(count($checkIfUserIdFoundInMasterAdmin));
-        if (count($checkIfUserIdFoundInMasterAdmin) > 0) {
+        // dd(count($checkIfUserIdFoundInSuperAdmin));
+        if (count($checkIfUserIdFoundInSuperAdmin) > 0) {
             return $next($request);
         }else{
             // dd('You Cannot Access That Page');

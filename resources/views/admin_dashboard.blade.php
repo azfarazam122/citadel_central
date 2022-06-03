@@ -15,7 +15,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <h1 class="card-header text-center">{{ __('Admin Dashboard') }}
+                    <h1 class="card-header text-center">{{ __('Change Password') }}
                     </h1>
                     <div class="card-body">
                         <h3>Change Password</h3>

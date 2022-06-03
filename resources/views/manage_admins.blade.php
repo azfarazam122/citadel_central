@@ -47,8 +47,7 @@
                                                     href="/admin_dashboard/admins/{{ $userData[$i][0]->id }}">Details</a>
                                                 <a class="btn btn-dark"
                                                     href="/admin_dashboard/admins/edit/{{ $userData[$i][0]->id }}">Edit</a>
-                                                <a class="btn btn-danger"
-                                                    href="/admin_dashboard/admins/delete/{{ $userData[$i][0]->id }}">Delete</a>
+                                                <a class="btn btn-danger" onclick="deleteAdmin({{ $userData[$i][0]->id }})">Delete</a>
 
                                             </td>
                                         </tr>
@@ -68,16 +67,60 @@
     <script src="{{ asset('js/masterSettings.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
 
             $('#adminsListTable').DataTable();
         });
 
-        // function deleteTableRow(rowUserId) {
-        //     let deleteAdminPageUrl = '/admin_dashboard/admins/delete/' + rowUserId;
-        //     window.location.href = deleteAdminPageUrl;
-        // }
+        function deleteAdmin(userId) {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+                })
+                swalWithBootstrapButtons.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true
+                }).then((result) => {
+                if (result.isConfirmed) {
+
+                axios.post("{{ route('deleteAdminData') }}", {
+                    id: userId,
+                })
+                .then(function(response) {
+                    console.log(response);
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        "Admin Including All It's role has been deleted.",
+                        'success'
+                    )
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
+
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Admin is safe :)',
+                    'error'
+                    )
+                }
+            })
+
+        }
     </script>
     <!-- Scripts -->
 @endsection
