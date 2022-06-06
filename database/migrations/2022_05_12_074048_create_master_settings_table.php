@@ -21,6 +21,9 @@ class CreateMasterSettingsTable extends Migration
             $table->string('tertiary_color');
             $table->string('primary_text_color');
             $table->string('secondary_text_color');
+            $table->string('tertiary_text_color');
+            $table->string('fourth_text_color');
+            $table->string('is_super_brandnig_on');
         });
     }
 

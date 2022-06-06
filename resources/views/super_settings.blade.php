@@ -31,6 +31,8 @@
                                         <th>Tertiary Color</th>
                                         <th>Primary Text Color</th>
                                         <th>Secondary Text Color</th>
+                                        <th>Tertiary Text Color</th>
+                                        <th>Fourth Text Color</th>
                                         <th>Edit</th>
                                     </tr>
                                 </thead>
@@ -48,8 +50,10 @@
                                         <td>{{$superSettingData[0]->tertiary_color}}</td>
                                         <td>{{$superSettingData[0]->primary_text_color}}</td>
                                         <td>{{$superSettingData[0]->secondary_text_color}}</td>
+                                        <td>{{$superSettingData[0]->tertiary_text_color}}</td>
+                                        <td>{{$superSettingData[0]->fourth_text_color}}</td>
                                         <td>
-                                            <a class="btn btn-dark btn-toolbar"
+                                            <a class="btn btn-dark "
                                                 href="/admin_dashboard/super/edit/{{ $superSettingData[0]->id }}">Edit</a>
                                         </td>
                                     </tr>

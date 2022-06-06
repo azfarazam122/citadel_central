@@ -8,6 +8,7 @@
 @section('libraries')
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
 @endsection
 @section('content')
     <div class="height-100 bg-light">
@@ -23,7 +24,7 @@
                                 <a href="/admin_dashboard/create/admin" class="btn btn-dark mt-3 mb-3">Create New
                                     Admin</a>
                             </div>
-                            <table id="adminsListTable" class="display">
+                            <table id="adminsListTable" class="display dt-responsive">
                                 <thead>
                                     <tr>
                                         <th>User Id</th>
@@ -47,7 +48,10 @@
                                                     href="/admin_dashboard/admins/{{ $userData[$i][0]->id }}">Details</a>
                                                 <a class="btn btn-dark"
                                                     href="/admin_dashboard/admins/edit/{{ $userData[$i][0]->id }}">Edit</a>
-                                                <a class="btn btn-danger" onclick="deleteAdmin({{ $userData[$i][0]->id }})">Delete</a>
+                                                <span class="">
+                                                    <a class="btn btn-danger" onclick="deleteAdmin({{ $userData[$i][0]->id }})">Delete</a>
+                                                    <a class="btn btn-danger" onclick="deleteOnlyAdminRole({{ $userData[$i][0]->id }})">Delete Admin</a>
+                                                </span>
 
                                             </td>
                                         </tr>
@@ -67,11 +71,15 @@
     <script src="{{ asset('js/masterSettings.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script>
         $(document).ready(function() {
 
             $('#adminsListTable').DataTable();
+            // $('#adminsListTable').DataTable({
+            //     scrollY: 800,
+            //     scrollX: true,
+            // });
         });
 
         function deleteAdmin(userId) {
@@ -93,10 +101,11 @@
                 }).then((result) => {
                 if (result.isConfirmed) {
 
-                axios.post("{{ route('deleteAdminData') }}", {
+                axios.post("{{ route('deleteAllRoles') }}", {
                     id: userId,
                 })
                 .then(function(response) {
+                    debugger;
                     console.log(response);
                     swalWithBootstrapButtons.fire(
                         'Deleted!',
@@ -119,6 +128,49 @@
                     )
                 }
             })
+
+        }
+
+        function deleteOnlyAdminRole(userId) {
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+
+                axios.post("{{ route('deleteAdminRoleOnly') }}", {
+                    id: userId,
+                })
+                .then(function(response) {
+                    if (response.data == 'Successfully Deleted') {
+                         Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }else{
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Admin Contains Agents!'                        })
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
+
+
+            }
+            })
+
+
+
 
         }
     </script>

@@ -80,7 +80,8 @@ Route::group(['middleware'=> ['forMasterAdmin']], function(){
     Route::post('/admin_dashboard/create/admin', [ManageAdminController::class , 'createAdmin'])->name('createAdmin');
     Route::get('/admin_dashboard/admins/edit/{id}', [ManageAdminController::class,'showEditData']);
     Route::post('/admin_dashboard/admins', [ManageAdminController::class,'updateData'])->name('updateAdminData');
-    Route::post('/admin_dashboard/admins/delete', [ManageAdminController::class,'deleteData'])->name('deleteAdminData');
+    Route::post('/admin_dashboard/admins/deleteAllRoles', [ManageAdminController::class,'deleteAllRoles'])->name('deleteAllRoles');
+    Route::post('/admin_dashboard/admins/deleteAdminOnly', [ManageAdminController::class,'deleteAdminRoleOnly'])->name('deleteAdminRoleOnly');
 });
 
 Route::group(['middleware'=> ['forAdmin']], function(){

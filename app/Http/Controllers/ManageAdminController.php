@@ -39,7 +39,7 @@ class ManageAdminController extends Controller
         // redirect(route('/admin_dashboard/admins'));
         return $this->showAllData();
     }
-    public function deleteData(Request $req){
+    public function deleteAllRoles(Request $req){
          return $req['id'];
         // return response()->json($req['id']);
         // User::where('id',$req['id'])->delete();
@@ -49,6 +49,18 @@ class ManageAdminController extends Controller
         // MasterAdmin::where('user_id',$req['id'])->delete();
         // SuperAdmin::where('user_id',$req['id'])->delete();
 
+    }
+    public function deleteAdminRoleOnly(Request $req){
+        // return $req['id'];
+
+        $adminData = Admin::where('user_id',$req['id'])->get();
+        $agentAssignToThatAdmin = Agent::where('admin_id',$adminData[0]->id)->get();
+        if (count($agentAssignToThatAdmin) > 0) {
+            return 'Contains Agents';
+        }else{
+            // Admin::where('user_id',$req['id'])->delete();
+            return  'Successfully Deleted';
+        }
     }
 
     public function createAdmin(Request $request){

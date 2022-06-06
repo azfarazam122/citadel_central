@@ -49,6 +49,8 @@ class ManageMasterSettingController extends Controller
         $post->tertiary_color = $request->tertiaryColorOfMasterSetting;
         $post->primary_text_color = $request->primaryTextColorOfMasterSetting;
         $post->secondary_text_color = $request->secondaryTextColorOfMasterSetting;
+        $post->tertiary_text_color = $request->tertiaryTextColorOfMasterSetting;
+        $post->fourth_text_color = $request->fourthTextColorOfMasterSetting;
         $post->is_super_brandnig_on = $request->isSuperBrandingOnOfMasterSetting;
         $post->save();
 

@@ -21,13 +21,42 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @php
+        $masterAdminData = App\Models\MasterSetting::all();
+        $superAdminData = App\Models\SuperSetting::all();
+        $colorFromMasterAdmin;
+        if ($masterAdminData[0]->is_super_brandnig_on == 'false') {
+            $colorFromMasterAdmin = $masterAdminData;
+        }else{
+            $colorFromMasterAdmin = $superAdminData;
+        }
+    @endphp
     <style>
         :root {
-            --primary-color: #dbac28;
-            --secondary-color: #fffcc3;
+            --primary-color: <?php echo $colorFromMasterAdmin[0]->primary_color; ?>;
+            --secondary-color:  <?php echo $colorFromMasterAdmin[0]->secondary_color; ?>;
+            --tertiary-color:  <?php echo $colorFromMasterAdmin[0]->tertiary_color; ?>;
+            --primary-text-color: <?php echo $colorFromMasterAdmin[0]->primary_text_color; ?>;
+            --secondary-text-color:  <?php echo $colorFromMasterAdmin[0]->secondary_text_color; ?>;
+            --tertiary-text-color:  <?php echo $colorFromMasterAdmin[0]->tertiary_text_color; ?>;
+            --fourth-text-color:  <?php echo $colorFromMasterAdmin[0]->fourth_text_color; ?>;
             --lightTextColor: #707b89;
             --white-color: #fff;
+
         }
+        .primaryTextColor{
+            color: var(--primary-text-color) !important;
+        }
+        .secondaryTextColor{
+            color: var(--secondary-text-color) !important;
+        }
+        .tertiaryTextColor{
+            color: var(--tertiary-text-color) !important;
+        }
+        .fourthTextColor{
+            color: var(--fourth-text-color) !important;
+        }
+
 
         .customButtonWithLinks:hover {
             transition: transform .3s;
@@ -43,7 +72,9 @@
 
 </head>
 
+
 <body>
+    {{-- <h1>{{$adminData[0]->primary_color}}</h1> --}}
     <div class="w-100 d-flex">
         <div class="">
             @yield('sidebar')
@@ -68,15 +99,15 @@
                             <!-- Left Side Of Navbar -->
                             <ul class="navbar-nav me-auto" style="font-size: 20px">
                                 <li class="nav-item">
-                                    <a style="color: #dbac28" target="blank" class="nav-link"
+                                    <a style="color: var(--primary-color);" target="blank" class="nav-link"
                                         href="/agent/home/">{{ __('Home') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a style="color: #dbac28" target="blank" class="nav-link"
+                                    <a style="color: var(--primary-color);" target="blank" class="nav-link"
                                         href="/agent/about/">{{ __('About') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a style="color: #dbac28" target="blank" class="nav-link"
+                                    <a style="color: var(--primary-color);" target="blank" class="nav-link"
                                         href="/agent/rates/">{{ __('Rates') }}</a>
                                 </li>
                             </ul>
@@ -87,20 +118,20 @@
                                 @guest
                                     @if (Route::has('login'))
                                         <li class="nav-item">
-                                            <a style="color: #dbac28" class="nav-link"
+                                            <a style="color: var(--primary-color);" class="nav-link"
                                                 href="{{ route('login') }}">{{ __('Login') }}</a>
                                         </li>
                                     @endif
 
                                     @if (Route::has('register'))
                                         <li class="nav-item">
-                                            <a style="color: #dbac28" class="nav-link"
+                                            <a style="color: var(--primary-color);" class="nav-link"
                                                 href="{{ route('register') }}">{{ __('Register') }}</a>
                                         </li>
                                     @endif
                                 @else
                                     <li class="nav-item dropdown">
-                                        <a style="color: #dbac28" id="navbarDropdown" class="nav-link dropdown-toggle"
+                                        <a style="color: var(--primary-color);" id="navbarDropdown" class="nav-link dropdown-toggle"
                                             href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false" v-pre>
                                             {{ Auth::user()->email }}
@@ -132,7 +163,6 @@
         </div>
     </div>
     @yield('scripts')
-
 </body>
 
 </html>

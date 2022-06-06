@@ -20,15 +20,15 @@
         }
 
         .homeButtons {
-            color: white;
+            color: var(--secondary-text-color) ;
             font-size: 18px;
             padding: 17px;
             background: var(--primary-color);
         }
 
         .homeButtons:hover {
-            background: black !important;
-            color: white !important;
+            background: var(--secondary-color) !important;
+            color: var(--fourth-text-color) !important;
         }
 
     </style>
@@ -61,7 +61,7 @@
     @isset($agentData)
         @if (count($agentData) > 0)
             <div class="ms-5">
-                <div class=" ms-5 row">
+                <div class=" ms-5 row secondaryTextColor">
                     <div class="col-md-3 text-center">
                         {{-- <h1>{{ app('request')->input('name') }}</h1> --}}
                         <p>{{ $agentData[0]->full_name }}</p>
@@ -87,7 +87,7 @@
                         <div>
                             <a href={{ $agentData[0]->apply_now_link }} target="blank" type="button" name="" id=""
                                 style="border: 1px solid var(--primary-color); border-radius:18px"
-                                class="customButtonWithLinks btn mt-3 btn-lg ">
+                                class="customButtonWithLinks btn mt-3 btn-lg secondaryTextColor">
                                 Apply Now
                             </a>
                             <a></a>
@@ -106,11 +106,11 @@
 
     <section class="container text-center">
         <div class="row text-center">
-            <div class="col-md-6 mt-5">
+            <div class="col-md-6 mt-5 secondaryTextColor">
                 <div class="col-md-8">
                     <h1 class="mt-5">GET APPROVED &amp; REWARDED TODAY!</h1>
                     <h3 class="mt-3">Now Offering AIR MILES<sup>@</sup> Reward Miles </h3>
-                    <p class="text-center mt-5" style="color: var(--lightTextColor);">Citadel Mortgages now Offers AIR
+                    <p class="text-center mt-5 tertiaryTextColor">Citadel Mortgages now Offers AIR
                         MILES®
                         Reward Miles. Get up to 1,000 MILES on
                         every mortgage!</p>
@@ -136,7 +136,7 @@
                 <a href={{ $agentData[0]->your_financial_journey_link }} target="_blank" rel="noopener noreferrer">
                     <img width="300px" src="../../images/homeImages/img3.png" alt="">
                 </a>
-                <p class="text-center mt-4" style="color: var(--lightTextColor);">Making life easier and
+                <p class="text-center mt-4 tertiaryTextColor" >Making life easier and
                     keeping you engaged with
                     your finances</p>
             </div>
@@ -144,7 +144,7 @@
                 <a href={{ $agentData[0]->mortgage_prequalification_link }} target="_blank" rel="noopener noreferrer">
                     <img width="300px" src="../../images/homeImages/img4.jpeg" alt="">
                 </a>
-                <p class="text-center" style="color: var(--lightTextColor);">
+                <p class="text-center tertiaryTextColor" >
                     Get Pre Qualified for a Mortgage in 60 Seconds
                 </p>
             </div>
@@ -153,7 +153,7 @@
                     <a href={{ $agentData[0]->your_home_journey_link }} target="_blank" rel="noopener noreferrer">
                         <img width="300px" src="../../images/homeImages/img5.jpeg" alt="">
                     </a>
-                    <p class="text-center" style="color: var(--lightTextColor);">
+                    <p class="text-center tertiaryTextColor">
                         Search for your new home and get a Cash Reward!
                     </p>
                 </div>
@@ -162,7 +162,7 @@
                         rel="noopener noreferrer">
                         <img width="300px" src="../../images/homeImages/img6.png" alt="">
                     </a>
-                    <p class="text-center" style="color: var(--lightTextColor);">
+                    <p class="text-center tertiaryTextColor" >
                         Click to use our All In One Mortgage Calculator for your needs
                     </p>
                 </div>
@@ -173,11 +173,11 @@
 
     {{-- ____________________________ --}}
     <section class="container mt-5" style="background: var(--primary-color);">
-        <div class="text-center col-md-9 ml-auto mr-auto">
-            <h1 class="pt-5 pl-5 pr-5 pb-3" style="color: white;">Get Pre Qualified in 60 Seconds
+        <div class="text-center col-md-9 ml-auto mr-auto fourthTextColor">
+            <h1 class="pt-5 pl-5 pr-5 pb-3 " >Get Pre Qualified in 60 Seconds
                 Today
             </h1>
-            <p style="color: white;font-size: 18px">
+            <p style="font-size: 18px">
                 In just 60 seconds, our Mortgage Pre-Qualification tool will let you know how much you can expect to borrow
                 and give you a realistic value of home to qualify for
             </p>
@@ -203,18 +203,18 @@
     {{-- ____________________________ --}}
     <section class="mt-5 container">
         <hr>
-        <div class="row">
+        <div class="row ms-1">
             <div class="col-md-6">
                 <img width="100%" src="../../images/homeImages/img9.png" alt="" srcset="">
             </div>
             <div class="col-md-6">
-                <p class="mt-5 display-4">Become Mortgage Free
-                <p class="text-left display-4" style="color: var(--primary-color)">
+                <p class="mt-5 display-4 secondaryTextColor">Become Mortgage Free
+                <p class="text-left display-4 primaryTextColor">
                     Sooner Today! </p>
                 </p>
-                <hr class="mt-5"
-                    style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; color: var(--primary-color);">
-                <div class="col-md-8 mt-5">
+                <hr class="mt-5 primaryTextColor"
+                    style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; ">
+                <div class="col-md-8 mt-5 secondaryTextColor">
                     <p style="font-size: 20px;">
                         <span>-</span> Simplify your everyday banking
                         <br> <span>-</span> Save thousands in interest
@@ -222,11 +222,11 @@
                         <br> <span>-</span> Enjoy financial Flexibility
                     </p>
                 </div>
-                <div>
-                    <p class="mt-5" style="color: var(--lightTextColor);">What if your deposits and your borrowing
+                <div class="tertiaryTextColor">
+                    <p class="mt-5">What if your deposits and your borrowing
                         were combined into a
                         single account so that every dollar you earned automatically went towards paying l your debt?</p>
-                    <p class="mt-3" style="color: var(--lightTextColor);">That’s exactly what the All in One
+                    <p class="mt-3">That’s exactly what the All in One
                         Mortgage Solution provides!
                         It brings your mortgage, savings, and income together to help you</p>
                 </div>
@@ -244,17 +244,17 @@
     {{-- ____________________________ --}}
     <section class="mt-5 container">
         <hr>
-        <div class="row">
+        <div class="row  ms-1">
             <div class="col-md-6">
                 <img width="100%" src="../../images/homeImages/img10.jpeg" alt="">
-                <p class="display-4">Your Home Journey Find Your New Home Today
-                    <span class="text-left display-4" style="color: var(--primary-color)">
+                <p class="display-4 secondaryTextColor" >Your Home Journey Find Your New Home Today
+                    <span class="text-left display-4 primaryTextColor">
                         & Earn .5% Cash Reward </span>
                 </p>
                 <hr class="mt-5"
                     style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; color: var(--primary-color);">
                 <div>
-                    <p class="mt-2" style="color: var(--lightTextColor);">We care about your home buying journey,
+                    <p class="mt-2 tertiaryTextColor">We care about your home buying journey,
                         let us help you make it a better experience with Your Home Journey!
                         Search for your new home in the palm of your hand and get a Cash Reward!
                     </p>
@@ -274,14 +274,14 @@
     {{-- ____________________________ --}}
     <section class="mt-5 container">
         <hr>
-        <div class="row">
+        <div class="row  ms-1">
             <div class="col-md-6">
                 <img width="100%" src="../../images/homeImages/img13.png" alt="" srcset="">
             </div>
             <div class="col-md-6">
                 <img width="100%" src="../../images/homeImages/img12.jpeg" alt="">
-                <p class="mt-5 display-4">Your
-                    <span class="display-4" style="color: var(--primary-color)">
+                <p class="mt-5 display-4 secondaryTextColor">Your
+                    <span class="display-4 primaryTextColor" >
                         Mortgage App
                     </span>
                 </p>
@@ -289,7 +289,7 @@
                     style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; color: var(--primary-color);">
 
                 <div>
-                    <p class="col-md-8 mt-5 ml-auto mr-auto" style="color: var(--lightTextColor);">
+                    <p class="col-md-8 mt-5 ml-auto mr-auto tertiaryTextColor">
                         Calculate your total cost of owning a home
                         Estimate the minimum down payment you need
                         Calculate the maximum Mortgage you can borrow
@@ -314,7 +314,7 @@
     <section class="mt-5 container">
         <hr>
         <div class="text-center">
-            <p class="display-6">Our Partners</p>
+            <p class="display-6 secondaryTextColor">Our Partners</p>
             <hr class="ml-auto mr-auto" width="230px"
                 style="opacity: 1;color: var(--primary-color);height: 3px;border-radius: 10px">
         </div>
@@ -338,7 +338,7 @@
     <section class="mt-5 container">
         <hr>
         <div class="text-center">
-            <p class="display-6">Our Lender Partners</p>
+            <p class="display-6 secondaryTextColor">Our Lender Partners</p>
             <hr class="ml-auto mr-auto" width="230px"
                 style="opacity: 1;color: var(--primary-color);height: 3px;border-radius: 10px">
         </div>
@@ -367,8 +367,8 @@
     <section class="mt-5 container">
         <hr>
         <div class="text-center">
-            <p class="display-4">
-                <span style="color: var(--primary-color);">Mortgage</span> Journey Solutions
+            <p class="display-4 secondaryTextColor">
+                <span class="primaryTextColor">Mortgage</span> Journey Solutions
             </p>
         </div>
         <div>
@@ -378,15 +378,15 @@
                     <div class="col-md-3">
                         <div class="card m-1" style="background: var(--primary-color); ">
                             <div class="card-body text-center">
-                                <h4 class="mt-4" style="font-weight: bold">OVERVIEW</h4>
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: white;opacity: 1;">
-                                <h5 style="color: white" class="card-subtitle mt-4  mb-5">Discover Citadel Mortgages</h5>
-                                <p style="color: white" class="text-center ">Forget The Traditional Mortgage Way and
+                                <h4 class="mt-4 secondaryTextColor" style="font-weight: bold">OVERVIEW</h4>
+                                <hr width="80px" class="ml-auto mr-auto fourthTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
+                                <h5  class="card-subtitle mt-4 fourthTextColor mb-5">Discover Citadel Mortgages</h5>
+                                <p  class="text-center fourthTextColor">Forget The Traditional Mortgage Way and
                                     Learn How We Are
                                     Changing
                                     The Way Mortgages Are Done!</p>
-                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons bg-dark">
+                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons fourthTextColor customButtonWithLinks" style="background: var(--secondary-text-color);">
                                     Download Now
                                 </button>
                             </div>
@@ -396,17 +396,17 @@
                     <div class="col-md-3 ">
                         <div class="card m-1" style="background: var(--primary-color); ">
                             <div class="card-body text-center">
-                                <h4 class="mt-4" style="font-weight: bold">SELF EMPLOYED</h4>
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: white;opacity: 1;">
-                                <h5 style="color: white" class="card-subtitle mt-4  mb-4">A Mortgage Designed with the
+                                <h4 class="mt-4 secondaryTextColor" style="font-weight: bold">SELF EMPLOYED</h4>
+                                <hr width="80px" class="ml-auto mr-auto fourthTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
+                                <h5  class="fourthTextColor card-subtitle mt-4  mb-4">A Mortgage Designed with the
                                     Entrepreneur in Mind!</h5>
-                                <p style="color: white" class="text-center ">Wouldn't it be nice to have a Mortgage that
+                                <p  class="fourthTextColor text-center ">Wouldn't it be nice to have a Mortgage that
                                     made sense for you?
                                 </p>
 
-                                <button type="button" style="margin-top: 40px"
-                                    class="btn-block btn  p-2 homeButtons bg-dark">
+                                <button type="button" style="margin-top: 40px; background: var(--secondary-text-color);"
+                                    class="btn-block btn  p-2 homeButtons fourthTextColor customButtonWithLinks">
                                     Download Now
                                 </button>
                             </div>
@@ -416,14 +416,14 @@
                     <div class="col-md-3 ">
                         <div class="card m-1" style="background: var(--primary-color); ">
                             <div class="card-body text-center">
-                                <h4 class="mt-4" style="font-weight: bold">REVERSE MORTGAGE</h4>
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: white;opacity: 1;">
-                                <h5 style="color: white" class="card-subtitle mt-1  mb-1">Get Your Home Equity Working For
+                                <h4 class="mt-4 secondaryTextColor" style="font-weight: bold">REVERSE MORTGAGE</h4>
+                                <hr width="80px" class="ml-auto mr-auto fourthTextColor"
+                                    style="height: 2px; border-radius: 10px; opacity: 1;">
+                                <h5  class="fourthTextColor card-subtitle mt-1  mb-1">Get Your Home Equity Working For
                                     You</h5>
-                                <p style="color: white" class="text-center ">Get information on accessing your homes
+                                <p  class="fourthTextColor text-center ">Get information on accessing your homes
                                     equity to help you enjoy your retirement to the fullest while staying in your home</p>
-                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons bg-dark">
+                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons  fourthTextColor customButtonWithLinks" style="background: var(--secondary-text-color);">
                                     Download Now
                                 </button>
                             </div>
@@ -433,16 +433,16 @@
                     <div class="col-md-3 ">
                         <div class="card m-1" style="background: var(--primary-color); ">
                             <div class="card-body text-center">
-                                <h4 class="mt-4" style="font-weight: bold">REFINANCING
+                                <h4 class="mt-4 secondaryTextColor" style="font-weight: bold">REFINANCING
                                     INSIDER TIPS
                                 </h4>
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: white;opacity: 1;">
-                                <h5 style="color: white" class="card-subtitle mt-1  mb-1">Ensure You Get The Best Rate &
+                                <hr width="80px" class="ml-auto mr-auto fourthTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
+                                <h5  class="card-subtitle mt-1 fourthTextColor mb-1">Ensure You Get The Best Rate &
                                     Terms For Your Mortgage Renewal</h5>
-                                <p style="color: white" class="text-center ">Don’t be in a rush to sign your renewal,
+                                <p  class="text-center fourthTextColor">Don’t be in a rush to sign your renewal,
                                     This can save you thousands of dollars upon your renewal</p>
-                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons bg-dark">
+                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons  fourthTextColor customButtonWithLinks" style="background: var(--secondary-text-color);">
                                     Download Now
                                 </button>
                             </div>
@@ -457,8 +457,8 @@
     <section class="mt-5 mb-5 container">
         <hr>
         <div class="text-center">
-            <p class="display-4">
-                <span style="color: var(--primary-color);">Your Journey </span> Products
+            <p class="display-4 secondaryTextColor">
+                <span class="primaryTextColor" >Your Journey </span> Products
             </p>
         </div>
         <div>
@@ -470,14 +470,14 @@
                             <div class="card-body text-center">
 
                                 <img width="100%" src="../../images/homeImages/journeyProductsImages/img1.jpeg" alt="">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
-                                <h5 style="color: black" class="card-subtitle mt-4  mb-5">High Interest Personal & Business
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
+                                <h5  class="secondaryTextColor card-subtitle mt-4  mb-5">High Interest Personal & Business
                                     Banking Accounts</h5>
-                                <p style="color: black" class="text-center ">Open a high-interest Account for your
+                                <p  class="secondaryTextColor text-center ">Open a high-interest Account for your
                                     everyday banking needs. You’ll enjoy great features, plenty of flexibility -- and an
                                     exceptional rate on all your money!</p>
-                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons bg-dark">
+                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons">
                                     Apply Now
                                 </button>
                             </div>
@@ -488,15 +488,15 @@
                         <div class="" style=" width: 22rem;">
                             <div class="card-body text-center">
                                 <img width="100%" src="../../images/homeImages/journeyProductsImages/img2.jpeg" alt="">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
-                                <h5 style="color: black" class="card-subtitle mt-4  mb-4">Better Mortgage Insurance</h5>
-                                <p style="color: black" class="text-center mb-5">Coverage stays, no matter where you bank
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px; opacity: 1;">
+                                <h5  class="secondaryTextColor card-subtitle mt-4  mb-4">Better Mortgage Insurance</h5>
+                                <p  class="secondaryTextColor text-center mb-5">Coverage stays, no matter where you bank
                                     Fully underwritten at time of application, no surprise at time of claim
                                 </p>
 
                                 <button type="button" style="margin-top: 40px"
-                                    class="btn-block btn mt-5  p-2 homeButtons bg-dark">
+                                    class="btn-block btn mt-5  p-2 homeButtons">
                                     Apply Now
                                 </button>
                             </div>
@@ -508,12 +508,12 @@
                             <div class="card-body text-center">
 
                                 <img width="100%" src="../../images/homeImages/journeyProductsImages/img3.jpeg" alt="">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
-                                <h5 style="color: black" class="card-subtitle mt-1  mb-1">Credit Cards</h5>
-                                <p style="color: black" class="text-center ">Choose from six rewarding options to match
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
+                                <h5  class="secondaryTextColor card-subtitle mt-1  mb-1">Credit Cards</h5>
+                                <p  class="secondaryTextColor text-center ">Choose from six rewarding options to match
                                     your lifestyle, wants and needs!</p>
-                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons bg-dark">
+                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons ">
                                     Apply Now
                                 </button>
                             </div>
@@ -524,12 +524,12 @@
                         <div class="" style=" width: 22rem;">
                             <div class="card-body text-center">
                                 <img width="100%" src="../../images/homeImages/journeyProductsImages/img4.jpeg" alt="">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
-                                <h5 style="color: black" class="card-subtitle mt-1  mb-1">Money Transfers Made Simple</h5>
-                                <p style="color: black" class="text-center ">Access fast and secure global money
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
+                                <h5  class="secondaryTextColor card-subtitle mt-1  mb-1">Money Transfers Made Simple</h5>
+                                <p  class="secondaryTextColor text-center ">Access fast and secure global money
                                     transfers at competitive rates</p>
-                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons bg-dark">
+                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons ">
                                     Apply Now
                                 </button>
                             </div>
@@ -540,11 +540,11 @@
                         <div class="" style=" width: 22rem;">
                             <div class="card-body text-center">
                                 <img width="100%" src="../../images/homeImages/journeyProductsImages/img5.jpeg" alt="">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
-                                <h5 style="color: black" class="card-subtitle mt-5  mb-4">Personal Loans Made Simple</h5>
-                                <p style="color: black" class="text-center ">Get Multiple Loan Offers in Seconds</p>
-                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons bg-dark">
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
+                                <h5  class="secondaryTextColor card-subtitle mt-5  mb-4">Personal Loans Made Simple</h5>
+                                <p  class="secondaryTextColor text-center ">Get Multiple Loan Offers in Seconds</p>
+                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons ">
                                     Apply Now
                                 </button>
                             </div>
@@ -555,12 +555,12 @@
                         <div class="" style="width: 22rem;">
                             <div class="card-body text-center">
                                 <img width="100%" src="../../images/homeImages/journeyProductsImages/img6.jpeg" alt="">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
-                                <h5 style="color: black" class="card-subtitle mt-5  mb-1">Travel Insurance</h5>
-                                <p style="color: black" class="text-center ">Make sure You and your Family are protected
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
+                                <h5  class="secondaryTextColor card-subtitle mt-5  mb-1">Travel Insurance</h5>
+                                <p  class="secondaryTextColor text-center ">Make sure You and your Family are protected
                                     on your next Get Away</p>
-                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons bg-dark">
+                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons ">
                                     Apply Now
                                 </button>
                             </div>
@@ -577,8 +577,8 @@
     <section class="mt-5 mb-5 container">
         <hr>
         <div class="text-center">
-            <p class="display-4">
-                <span style="color: var(--primary-color);">Citadel </span> Mortgages Programs
+            <p class="display-4 secondaryTextColor">
+                <span class="primaryTextColor" >Citadel </span> Mortgages Programs
             </p>
         </div>
         <div class="mt-5">
@@ -590,14 +590,14 @@
                             <div class="card-body text-center">
 
                                 <img width="100%" src="../../images/homeImages/mortgagesProgramsImages/img1.jpeg" alt="">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
-                                <h5 style="color: black" class="card-subtitle mt-4  mb-5">EXCLUSIVE CITADEL WORLD ELITE
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
+                                <h5  class="secondaryTextColor card-subtitle mt-4  mb-5">EXCLUSIVE CITADEL WORLD ELITE
                                     REWARDS CARD</h5>
-                                <p style="color: black" class="text-center ">Welcome to the family, a gift from our
+                                <p  class="secondaryTextColor text-center ">Welcome to the family, a gift from our
                                     family to yours. The Citadel Word Elite Rewards Card is an exclusive member-only rewards
                                     program, unlike anything ever seen in the mortgage industry.</p>
-                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons bg-dark">
+                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons ">
                                     Apply Now
                                 </button>
                             </div>
@@ -608,16 +608,16 @@
                         <div class="card" style=" width: 22rem; border-radius: 10px;">
                             <div class="card-body text-center">
                                 <img width="100%" src="../../images/homeImages/mortgagesProgramsImages/img2.jpeg" alt="">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
-                                <h5 style="color: black" class="card-subtitle mt-4  mb-4">CAREER TRANSITION PROGRAM</h5>
-                                <p style="color: black" class="text-center mt-5 ">HELPING BORROWERS GET BACK ON TRACK
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
+                                <h5  class="secondaryTextColor card-subtitle mt-4  mb-4">CAREER TRANSITION PROGRAM</h5>
+                                <p  class="secondaryTextColor text-center mt-5 ">HELPING BORROWERS GET BACK ON TRACK
                                     Sometimes job loss can happen without warning. The Citadel Mortgages Career Transition
                                     Program is here to support you through this difficult time
                                 </p>
 
                                 <button type="button" style="margin-top: 40px"
-                                    class="btn-block btn   p-2 homeButtons bg-dark">
+                                    class="btn-block btn p-2 homeButtons">
                                     Apply Now
                                 </button>
                             </div>
@@ -629,16 +629,16 @@
                             <div class="card-body text-center">
 
                                 <img width="100%" src="../../images/homeImages/mortgagesProgramsImages/img3.jpeg" alt="">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
-                                <h5 style="color: black" class="card-subtitle mt-1  mb-1">The Citadel Mortgage Social
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px; opacity: 1;">
+                                <h5 class="secondaryTextColor card-subtitle mt-1  mb-1">The Citadel Mortgage Social
                                     Awareness Program</h5>
-                                <p style="color: black" class="text-center mt-4">Citadel Mortgages believes in supporting
+                                <p class="secondaryTextColor text-center mt-4">Citadel Mortgages believes in supporting
                                     our
                                     community and the people that need our support. That is why once your mortgage closes we
                                     will make a donation to a charity or foundation on your behalf of your choice and plant
                                     a tree that you name!</p>
-                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons bg-dark">
+                                <button type="button" class="btn-block btn mt-3 p-2 homeButtons">
                                     Apply Now
                                 </button>
                             </div>
@@ -651,7 +651,7 @@
     </section>
 
 
-    <footer class="mt-5 p-5" style="background: black">
+    <footer class="mt-5 p-5" style="background: var(--secondary-color);">
         <img width="100%" src="../../images/homeImages/footerImages/img1.jpeg" alt="">
         <div class="container mx-auto mt-4">
 
@@ -684,11 +684,11 @@
 
 
                 <div class="col-md-5 ">
-                    <p class="display-4" style="color: white;text-align: center">Offices</p>
-                    <p style="color: var(--lightTextColor);text-align: left">Copyright © 2020 Citadel Mortgages Lic #
+                    <p class="display-4 fourthTextColor" style="text-align: center">Offices</p>
+                    <p class="tertiaryTextColor" style="text-align: left">Copyright © 2020 Citadel Mortgages Lic #
                         12993
                     </p>
-                    <p style="color: var(--lightTextColor)">
+                    <p class="tertiaryTextColor" >
                         - Head Office – 150 King Street West 2nd Floor Suite 335, Toronto, ON M5H 1J9
                         <br>
                         - Alberta Office – 421 7th Avenue S.W., 30th Floor, Calgary, Alberta, T2P 4K9
@@ -708,9 +708,9 @@
                 <div class="col-md-2"></div>
 
                 <div class="col-md-5 ">
-                    <p class="display-4" style="color: white;text-align: center">Information</p>
+                    <p class="display-4 fourthTextColor" style="text-align: center">Information</p>
 
-                    <small style="color: var(--lightTextColor);text-align: center">
+                    <small class="tertiaryTextColor" style="text-align: center">
                         Citadel Mortgages is licensed in the following: Ontario FSRA 12993 – Saskatchewan FCAA 509446, Nova
                         Scotia 2021-3000010– Alberta, PEI, Nunavut, Newfoundland 21-07-CI083-1. New Brunswick 210031130,
                         British Columbia X301267

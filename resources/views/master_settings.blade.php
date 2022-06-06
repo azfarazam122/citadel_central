@@ -29,6 +29,8 @@
                                         <th>Tertiary Color</th>
                                         <th>Primary Text Color</th>
                                         <th>Secondary Text Color</th>
+                                        <th>Tertiary Text Color</th>
+                                        <th>Fourth Text Color</th>
                                         <th>Is Super Branding On</th>
                                         <th>Edit</th>
                                     </tr>
@@ -46,6 +48,8 @@
                                         <td>{{$masterSettingData[0]->tertiary_color}}</td>
                                         <td>{{$masterSettingData[0]->primary_text_color}}</td>
                                         <td>{{$masterSettingData[0]->secondary_text_color}}</td>
+                                        <td>{{$masterSettingData[0]->tertiary_text_color}}</td>
+                                        <td>{{$masterSettingData[0]->fourth_text_color}}</td>
                                         <td>{{$masterSettingData[0]->is_super_brandnig_on}}</td>
                                         <td>
                                             <a class="btn btn-dark btn-toolbar"

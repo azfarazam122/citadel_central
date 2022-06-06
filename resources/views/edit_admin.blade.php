@@ -26,7 +26,7 @@
                                     <div class="form-group">
                                         <label for="">Name</label>
                                         <input type="text" class="form-control" name="editName" id="editName"
-                                            value={{ $adminData[0]->name }} aria-describedby="helpId" placeholder="">
+                                            value="{{ $adminData[0]->name }}" aria-describedby="helpId" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <input type="submit" class="btn btn-dark mt-3" value="Update" name="updateAdmin"

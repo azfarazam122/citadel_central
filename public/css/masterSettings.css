@@ -132,6 +132,7 @@ a {
 .body-pd {
     /* padding-left: calc(var(--nav-width) + 1rem) */
     width: calc(var(--nav-width) + 156px);
+    transition: 0.5s;
 }
 
 .active {
@@ -152,10 +153,10 @@ a {
 }
 
 @media screen and (min-width: 768px) {
-    /* .body-pd {
-        margin: calc(var(--header-height) + 1rem) 0 0 0;
-        padding-left: calc(var(--nav-width) + 2rem)
-    } */
+    .body-pd {
+        /* margin: calc(var(--header-height) + 1rem) 0 0 0; */
+        /* padding-left: calc(var(--nav-width) + 2rem) */
+    }
 
     .header {
         height: calc(var(--header-height) + 1rem);
@@ -188,7 +189,10 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-.header{
-    display: none;
-}
+    .header{
+        display: none;
+    }
+    .body-pd {
+        width: auto;
+    }
 }

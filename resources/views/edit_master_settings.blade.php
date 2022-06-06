@@ -63,6 +63,18 @@
                                             id="secondaryTextColorOfMasterSetting" value="{{ $masterSettingData[0]->secondary_text_color }}"
                                             aria-describedby="helpId" placeholder="">
                                     </div>
+                                    <div class="form-group mt-3">
+                                        <label for="">Tertiary Text Color</label>
+                                        <input type="text" class="form-control" name="tertiaryTextColorOfMasterSetting"
+                                            id="tertiaryTextColorOfMasterSetting" value="{{ $masterSettingData[0]->tertiary_text_color }}"
+                                            aria-describedby="helpId" placeholder="">
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="">Fourth Text Color</label>
+                                        <input type="text" class="form-control" name="fourthTextColorOfMasterSetting"
+                                            id="fourthTextColorOfMasterSetting" value="{{ $masterSettingData[0]->fourth_text_color }}"
+                                            aria-describedby="helpId" placeholder="">
+                                    </div>
                                      <div class="form-group">
                                         <div class="form-group  mt-3">
                                           <label for="isSuperBrandingOnOfMasterSetting">Is Super Branding On</label>

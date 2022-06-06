@@ -64,6 +64,18 @@
                                             aria-describedby="helpId" placeholder="">
                                     </div>
                                     <div class="form-group mt-3">
+                                        <label for="">Tertiary Text Color</label>
+                                        <input type="text" class="form-control" name="tertiaryTextColorOfSuperSetting"
+                                            id="tertiaryTextColorOfSuperSetting" value="{{ $superSettingsData[0]->tertiary_text_color }}"
+                                            aria-describedby="helpId" placeholder="">
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="">Fourth Text Color</label>
+                                        <input type="text" class="form-control" name="fourthTextColorOfSuperSetting"
+                                            id="fourthTextColorOfSuperSetting" value="{{ $superSettingsData[0]->fourth_text_color }}"
+                                            aria-describedby="helpId" placeholder="">
+                                    </div>
+                                    <div class="form-group mt-3">
                                         <label for="">Logo</label>
                                         {{-- ___________________________ --}}
                                         <p><input type="file" accept="image/*" name="image" id="file"

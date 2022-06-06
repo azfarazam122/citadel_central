@@ -50,6 +50,8 @@ class ManageSuperSettingController extends Controller
         $post->tertiary_color = $request->tertiaryColorOfSuperSetting;
         $post->primary_text_color = $request->primaryTextColorOfSuperSetting;
         $post->secondary_text_color = $request->secondaryTextColorOfSuperSetting;
+        $post->tertiary_text_color = $request->tertiaryTextColorOfSuperSetting;
+        $post->fourth_text_color = $request->fourthTextColorOfSuperSetting;
         $post->save();
 
          return $this->showAllDataOfSuperSettings();
