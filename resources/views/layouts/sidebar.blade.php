@@ -2,54 +2,53 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <div id="body-pd" class="body-pd">
+        {{-- ________________________________________________________ --}}
+        {{-- BLADE TEMPLATE PHP --}}
+        @php
+            $user = Auth::user();
+            $userId = App\Models\User::where('email', $user->email)->get(['id']);
+            $checkIfUserIdFoundInAgentTable = App\Models\Agent::where('user_id', $userId[0]->id)->get(['id']);
+            $checkIfUserIdFoundInAdminTable = App\Models\Admin::where('user_id', $userId[0]->id)->get(['id']);
+            $checkIfUserIdFoundInMasterAdmin = App\Models\MasterAdmin::where('user_id', $userId[0]->id)->get(['id']);
+            $checkIfUserIdFoundInSuperAdmin = App\Models\SuperAdmin::where('user_id', $userId[0]->id)->get(['id']);
+            $userMatchWith = '';
+            $userIsAgent = false;
+            $userIsAdmin = false;
+            $userIsMasterAdmin = false;
+            $userIsSuperAdmin = false;
+
+            if (count($checkIfUserIdFoundInAgentTable) > 0) {
+                $userMatchWith = 'Agent';
+                $userIsAgent = true;
+            }
+            if (count($checkIfUserIdFoundInAdminTable) > 0) {
+                $userMatchWith = 'Admin';
+                $userIsAdmin = true;
+            }
+            if (count($checkIfUserIdFoundInMasterAdmin) > 0) {
+                $userMatchWith = 'Master';
+                $userIsMasterAdmin = true;
+            }
+            if (count($checkIfUserIdFoundInSuperAdmin) > 0) {
+                $userMatchWith = 'Super';
+                $userIsSuperAdmin = true;
+            }
+        @endphp
+        {{-- ________________________________________________________ --}}
       <div class="header body-pd" id="header">
           <div class="header_toggle">
               <i class='bx bx-menu bx-x' id="header-toggle"></i>
           </div>
-          {{-- <div class="header_img"> <img width="100%" src="/images/logo.png" alt=""> </div> --}}
-          {{-- ________________________________________________________ --}}
-          {{-- BLADE TEMPLATE PHP --}}
-          @php
-              $user = Auth::user();
-              $userId = App\Models\User::where('email', $user->email)->get(['id']);
-              $checkIfUserIdFoundInAgentTable = App\Models\Agent::where('user_id', $userId[0]->id)->get(['id']);
-              $checkIfUserIdFoundInAdminTable = App\Models\Admin::where('user_id', $userId[0]->id)->get(['id']);
-              $checkIfUserIdFoundInMasterAdmin = App\Models\MasterAdmin::where('user_id', $userId[0]->id)->get(['id']);
-              $checkIfUserIdFoundInSuperAdmin = App\Models\SuperAdmin::where('user_id', $userId[0]->id)->get(['id']);
-              $userMatchWith = '';
-              $userIsAgent = false;
-              $userIsAdmin = false;
-              $userIsMasterAdmin = false;
-              $userIsSuperAdmin = false;
-
-              if (count($checkIfUserIdFoundInAgentTable) > 0) {
-                  $userMatchWith = 'Agent';
-                  $userIsAgent = true;
-              }
-              if (count($checkIfUserIdFoundInAdminTable) > 0) {
-                  $userMatchWith = 'Admin';
-                  $userIsAdmin = true;
-              }
-              if (count($checkIfUserIdFoundInMasterAdmin) > 0) {
-                  $userMatchWith = 'Master';
-                  $userIsMasterAdmin = true;
-              }
-              if (count($checkIfUserIdFoundInSuperAdmin) > 0) {
-                  $userMatchWith = 'Super';
-                  $userIsSuperAdmin = true;
-              }
-          @endphp
-          {{-- ________________________________________________________ --}}
       </div>
       <div class="l-navbar show" id="nav-bar">
           <div class="nav">
               <div>
-                  <a href="/admin_dashboard" class="nav_logo">
+                  <a href="/agent/home" class="nav_logo">
                       <i id="citadelCentralIcon" class='bx bx-layer nav_logo-icon'></i>
                       <span class="nav_logo-name">Citadel Central</span>
                   </a>
                   <div class="nav_list">
-                      <a href="/admin_dashboard" class="nav_link">
+                      <a href="/admin_dashboard" id="adminDashboardTab" onclick="selectSideBarSelectedValue('adminDashboardTab')" class="nav_link">
                           <i id="adminDashboardIcon" class='bx bx-grid-alt nav_icon'></i>
                           <span class="nav_name">Admin Dashboard</span>
                       </a>
@@ -119,8 +118,9 @@
                       @endif
 
                   </div>
-              </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
-                      class="nav_name">SignOut</span> </a>
+              </div>
+              {{-- <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                      class="nav_name">SignOut</span> </a> --}}
           </div>
       </div>
 
@@ -171,4 +171,8 @@
       tippy('#superAdminLoginIcon', {
           content: 'Super Admin Login',
       });
+
+      function selectSideBarSelectedValue() {
+          document.getElementById('')
+      }
   </script>

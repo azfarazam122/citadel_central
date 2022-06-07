@@ -12,7 +12,7 @@
 
 @section('content')
     <div class="height-100 bg-light">
-        <div class="card">
+        <div class="card secondaryTextColor">
             <div class="row justify-content-center">
                 <div class="col-md-11">
                     <div class="">

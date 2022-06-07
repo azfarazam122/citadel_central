@@ -20,16 +20,18 @@
         }
 
         .homeButtons {
-            color: white;
+            color: var(--secondary-text-color) ;
             font-size: 18px;
             padding: 17px;
             background: var(--primary-color);
         }
 
         .homeButtons:hover {
-            background: black !important;
-            color: white !important;
+            background: var(--secondary-color) !important;
+            color: var(--fourth-text-color) !important;
         }
+
+
 
     </style>
 @endsection
@@ -60,7 +62,7 @@
     @isset($agentData)
         @if (count($agentData) > 0)
             <div class="ms-5">
-                <div class=" ms-5 row">
+                <div class=" ms-5 row secondaryTextColor">
                     <div class="col-md-3 text-center">
                         <p>{{ $agentData[0]->full_name }}</p>
                         <p>Mortgage Agent {{ $agentData[0]->license_no }}</p>
@@ -104,15 +106,15 @@
                 <img width="100%" src="../../images/aboutImages/img1_1.png">
             </div>
             <div class="col-md-4 mt-1">
-                <h3 class="display-4 mt-5 text-center">
+                <h3 class="display-4 mt-5 text-center secondaryTextColor">
                     About {{ $agentData[0]->full_name }}
                 </h3>
-                <hr class="mt-3 ms-auto me-auto"
-                    style="width: 80%; height: 4px; opacity: 1; border-radius: 10px; color: var(--primary-color);">
+                <hr class="mt-3 ms-auto me-auto primaryTextColor"
+                    style="width: 80%; height: 4px; opacity: 1; border-radius: 10px;">
                 <div>
                     <div>
                         <div>
-                            <p class="mt-5 text-center" style="font-size: 20px">
+                            <p class="mt-5 text-center secondaryTextColor" style="font-size: 20px">
                                 <a href='/agent/home'>Home</a>
                                 <strong>&gt;</strong> About
                                 Me
@@ -135,14 +137,14 @@
         <hr>
         <div class="row">
             <div class="col-md-6">
-                <p class="mt-5 display-4">I'm Here To Help You
-                <p class="text-left display-4" style="color: var(--primary-color)">
+                <p class="mt-5 display-4 secondaryTextColor">I'm Here To Help You
+                <p class="text-left display-4 primaryTextColor">
                     Achieve Mortgage Freedom </p>
                 </p>
                 <hr class="mt-1"
                     style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; color: var(--primary-color);">
                 <div>
-                    <p class="mt-3" style="color: var(--lightTextColor);">Kristin will take the time to understand
+                    <p class="mt-3 tertiaryTextColor">Kristin will take the time to understand
                         your specific needs and work with you to determine the best solution for YOU</p>
                 </div>
                 <div class="mt-5 text-center">
@@ -162,12 +164,12 @@
         <hr>
         <div class="row">
             <div class="col-md-6">
-                <p class="text-left display-4" style="color: var(--primary-color);">
+                <p class="text-left display-4 primaryTextColor">
                     Bio </p>
                 <p></p>
-                <hr class="mt-5"
-                    style="width: 15%; height: 4px; opacity: 1; border-radius: 10px; color: var(--primary-color);">
-                <div>
+                <hr class="mt-5 primaryTextColor"
+                    style="width: 15%; height: 4px; opacity: 1; border-radius: 10px; ">
+                <div class="secondaryTextColor">
                     <p class="mt-5" style="">Whether purchasing your first home,
                         renewing your mortgage or using the equity in your home to consolidate higher-interest debt.If you
                         are looking for a mortgage agent that is passionate about helping their clients, is committed
@@ -178,7 +180,7 @@
                         professionalism and respect and will make sure your needs come first. She is also full of life and
                         has a great sense of humor, which makes working with her fun, as well as productive</p>
                 </div>
-                <div class="col-md-8 mt-5">
+                <div class="col-md-8 mt-5 secondaryTextColor">
                     <p style="font-size: 20px;">
                         <span>-</span> Residential Mortgages
                         <br> <span>-</span> Home Equity Line of Credit's
@@ -212,12 +214,11 @@
                     <div class="col-md-4 ">
                         <div class="card h-100 " style=" width: 22rem; border-radius: 10px;">
                             <div class="card-body text-center">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
 
-                                <p style="color: #707b89;line-height: 30px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                font-size: 17px;"
-                                    class="text-center mt-5">
+                                <p style="line-height: 30px;font-size: 17px;"
+                                class="text-center mt-5 tertiaryTextColor">
                                     Citadel
                                     Mortgages is
                                     one
@@ -234,11 +235,11 @@
                     <div class="col-md-4 ">
                         <div class="card h-100 " style=" width: 22rem; border-radius: 10px;">
                             <div class="card-body text-center">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
-                                <p style="color: #707b89;line-height: 30px;
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
+                                <p style="line-height: 30px;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         font-size: 17px;"
-                                    class="text-center  mt-5 ">
+                                    class="text-center  mt-5 tertiaryTextColor">
                                     HELPING
                                     BORROWERS
                                     GET
@@ -255,12 +256,12 @@
                     <div class="col-md-4 ">
                         <div class="card h-100 " style="width: 22rem; border-radius: 10px;">
                             <div class="card-body text-center">
-                                <hr width="80px" class="ml-auto mr-auto"
-                                    style="height: 2px; border-radius: 10px; color: black;opacity: 1;">
+                                <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                    style="height: 2px; border-radius: 10px;opacity: 1;">
 
-                                <p style="color: #707b89;line-height: 30px;
+                                <p style="line-height: 30px;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 font-size: 17px;"
-                                    class="text-center mb-5  mt-5">
+                                    class="text-center mb-5  mt-5 tertiaryTextColor">
                                     Citadel
                                     Mortgages
                                     believes
@@ -297,34 +298,34 @@
     {{-- ____________________________ --}}
     <section style="background-image: url('../../images/aboutImages/img7.png');width: 100%" class="mt-5">
         <div class="container mx-auto my-5 ">
-            <div class="text-center display-4" style="font-weight: 700;padding-top: 17%;">
+            <div class="text-center display-4 secondaryTextColor" style="font-weight: 700;padding-top: 17%;">
                 Why People Choose Us
             </div>
             <div class="row " style="margin-bottom: 15%;margin-top: 5%">
                 <div class="col-md-3 my-5 text-center">
                     <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_1.png" alt=""
                         srcset="">
-                    <p class="display-6 text-center" style="font-weight: 500;color: white; ">1000+</p>
-                    <span style="font-size: 20px;font-weight: 600;color: white;">Satisfied Customers</span>
+                    <p class="display-6 text-center fourthTextColor" style="font-weight: 500; ">1000+</p>
+                    <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">Satisfied Customers</span>
                 </div>
                 <div class="col-md-3 my-5 text-center">
                     <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_2.png" alt=""
                         srcset="">
-                    <p class="display-6 text-center" style="font-weight: 500;color: white; "><i
+                    <p class="display-6 text-center fourthTextColor" style="font-weight: 500; "><i
                             class="fa-solid fa-star"></i></p>
-                    <span style="font-size: 20px;font-weight: 600;color: white;">5 Star Google Reviews</span>
+                    <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">5 Star Google Reviews</span>
                 </div>
                 <div class="col-md-3 my-5 text-center">
                     <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_3.png" alt=""
                         srcset="">
-                    <p class="display-6 text-center" style="font-weight: 500;color: white; ">97%</p>
-                    <span style="font-size: 20px;font-weight: 600;color: white;">Customer Rating</span>
+                    <p class="display-6 text-center fourthTextColor" style="font-weight: 500; ">97%</p>
+                    <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">Customer Rating</span>
                 </div>
                 <div class="col-md-3 my-5 text-center">
                     <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_4.png" alt=""
                         srcset="">
-                    <p class="display-6 text-center" style="font-weight: 500;color: white; ">100%</p>
-                    <span style="font-size: 20px;font-weight: 600;color: white;">We Get Results</span>
+                    <p class="display-6 text-center fourthTextColor" style="font-weight: 500; ">100%</p>
+                    <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">We Get Results</span>
                 </div>
             </div>
             <div class="row">
@@ -344,91 +345,9 @@
         </div>
     </section>
 
+     @include('layouts.footer')
     {{-- ____________________________ --}}
-    <footer class="mt-5 p-5" style="background: black">
-        <img width="100%" src="../../images/homeImages/footerImages/img1.jpeg" alt="">
-        <div class="container mx-auto mt-4">
 
-            <div class="row">
-                {{-- <div class="col-md-4 ">
-                    <p class="display-4" style="color: white;text-align: left">Services</p>
-                    <ul style="text-align: left;font-size: 17px;color: white;list-style: none">
-                        <li class="mt-2">
-                            <a style="color: white" href="/">Contact Us</a>
-                        </li>
-                        <li class="mt-4">
-                            <a style="color: white" href="/">About Us</a>
-                        </li>
-                        <li class="mt-4">
-                            <a style="color: white" href="/register">Register</a>
-                        </li>
-                        <li class="mt-4">
-                            <a style="color: white" href="/">Home</a>
-                        </li>
-                        <li class="mt-4">
-                            <a style="color: white" href="/login">Login</a>
-                        </li>
-
-                        <li class="mt-4">
-                            <a style="color: white" href="/">Rates</a>
-                        </li>
-
-                    </ul>
-                </div> --}}
-
-
-                <div class="col-md-5 ">
-                    <p class="display-4" style="color: white;text-align: center">Offices</p>
-                    <p style="color: var(--lightTextColor);text-align: left">Copyright © 2020 Citadel Mortgages Lic #
-                        12993
-                    </p>
-                    <p style="color: var(--lightTextColor)">
-                        - Head Office – 150 King Street West 2nd Floor Suite 335, Toronto, ON M5H 1J9
-                        <br>
-                        - Alberta Office – 421 7th Avenue S.W., 30th Floor, Calgary, Alberta, T2P 4K9
-                        <br>
-                        - Nova Scotia Office – 1701 Hollis Street, Suite 800 Halifax, NS B3J 3M8
-                        <br>
-                        - Saskatchewan Office – 2010 – 11th Avenue 7th Floor Regina Saskatchewan S4P0J3
-                        <br>
-                        - Newfoundland Office – 1 Church Hill – Suite 201-522 St. John’s Newfoundland A1C 3Z7
-                        <br>
-                        - New Brunswick Office – 500 St George Street, Moncton NB, E1C 1Y3
-
-
-                    </p>
-                </div>
-
-                <div class="col-md-2"></div>
-
-                <div class="col-md-5 ">
-                    <p class="display-4" style="color: white;text-align: center">Information</p>
-
-                    <small style="color: var(--lightTextColor);text-align: center">
-                        Citadel Mortgages is licensed in the following: Ontario FSRA 12993 – Saskatchewan FCAA 509446, Nova
-                        Scotia 2021-3000010– Alberta, PEI, Nunavut, Newfoundland 21-07-CI083-1. New Brunswick 210031130,
-                        British Columbia X301267
-                        <br>
-                        All rights reserved
-                        <br>
-                        “Instant Approval, Conditional Approval, Pre-Approval” – Borrower subject to credit and underwriting
-                        approval. Not all borrowers will be approved for conventional financing or equity financing. Receipt
-                        of borrower’s application does not represent an approval for financing or interest rate guarantee.
-                        Restrictions may apply, Annual APR is subject to approval and underwriting, APR includes all fees
-                        and rate which is calculated on a yearly term. APR varies contact us for current rates or more
-                        information on a specific product. OAC*
-                        <br>
-                        ®™ Trademarks of AM Royalties Limited Partnership used under license by LoyaltyOne, Co. and Citadel
-                        Mortgages
-
-
-                    </small>
-                </div>
-
-            </div>
-
-        </div>
-    </footer>
 @endsection
 
 

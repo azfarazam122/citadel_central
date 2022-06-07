@@ -16,7 +16,7 @@
         <div class="">
             <div class="row justify-content-center ms-auto me-auto">
                 <div class="col-md-11">
-                    <div class="card">
+                    <div class="card secondaryTextColor">
                         <h1 class="card-header text-center">{{ __('Super Settings') }}
                         </h1>
                          <div class="card-body">

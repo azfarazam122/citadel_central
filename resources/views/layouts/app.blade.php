@@ -58,6 +58,19 @@
         }
 
 
+
+        .homeButtons {
+            color: var(--secondary-text-color) ;
+            font-size: 18px;
+            padding: 17px;
+            background: var(--primary-color);
+        }
+
+        .homeButtons:hover {
+            background: var(--secondary-color) !important;
+            color: var(--fourth-text-color) !important;
+        }
+
         .customButtonWithLinks:hover {
             transition: transform .3s;
             transform: scale(1.1);
@@ -99,15 +112,15 @@
                             <!-- Left Side Of Navbar -->
                             <ul class="navbar-nav me-auto" style="font-size: 20px">
                                 <li class="nav-item">
-                                    <a style="color: var(--primary-color);" target="blank" class="nav-link"
+                                    <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
                                         href="/agent/home/">{{ __('Home') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a style="color: var(--primary-color);" target="blank" class="nav-link"
+                                    <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
                                         href="/agent/about/">{{ __('About') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a style="color: var(--primary-color);" target="blank" class="nav-link"
+                                    <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
                                         href="/agent/rates/">{{ __('Rates') }}</a>
                                 </li>
                             </ul>
@@ -118,20 +131,20 @@
                                 @guest
                                     @if (Route::has('login'))
                                         <li class="nav-item">
-                                            <a style="color: var(--primary-color);" class="nav-link"
+                                            <a style="color: var(--primary-text-color);" class="nav-link"
                                                 href="{{ route('login') }}">{{ __('Login') }}</a>
                                         </li>
                                     @endif
 
                                     @if (Route::has('register'))
                                         <li class="nav-item">
-                                            <a style="color: var(--primary-color);" class="nav-link"
+                                            <a style="color: var(--primary-text-color);" class="nav-link"
                                                 href="{{ route('register') }}">{{ __('Register') }}</a>
                                         </li>
                                     @endif
                                 @else
                                     <li class="nav-item dropdown">
-                                        <a style="color: var(--primary-color);" id="navbarDropdown" class="nav-link dropdown-toggle"
+                                        <a style="color: var(--primary-text-color);" id="navbarDropdown" class="nav-link dropdown-toggle"
                                             href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false" v-pre>
                                             {{ Auth::user()->email }}
@@ -156,12 +169,15 @@
                     </div>
                 </nav>
 
-                <main class="my-4">
+                <main class="mt-4">
                     @yield('content')
                 </main>
             </div>
         </div>
     </div>
+
+
+
     @yield('scripts')
 </body>
 

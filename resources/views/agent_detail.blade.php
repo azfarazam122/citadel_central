@@ -14,7 +14,7 @@
         <div class="">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="card">
+                    <div class="card secondaryTextColor">
                         <h1 class="fw-bold card-header text-center">Agent {{ $agentData[0]->full_name }}
                         </h1>
                         <div class="card-body">
@@ -205,6 +205,8 @@
         $(document).ready(function() {
 
         });
+
+
     </script>
     <!-- Scripts -->
 @endsection

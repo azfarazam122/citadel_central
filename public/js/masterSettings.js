@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
             toggle.addEventListener("click", () => {
                 // show navbar
                 nav.classList.toggle("show");
+
+                // document
+                //     .getElementsByClassName("navbar")[0]
+                //     .classList.toggle("navbarWidthToggling");
                 // change icon
                 toggle.classList.toggle("bx-x");
                 // add padding to body

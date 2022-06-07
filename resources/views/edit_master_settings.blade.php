@@ -14,7 +14,7 @@
         <div class="">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="card">
+                    <div class="card secondaryTextColor">
                         {{-- <h1 class="fw-bold card-header text-center">Agent {{ $masterSettingData[0]->full_name }}
                         </h1> --}}
                         <div class="card-body">
@@ -35,45 +35,125 @@
 
                                     <div class="form-group">
                                         <label for="">Primary Color</label>
-                                        <input type="text"  class="form-control" name="primaryColorOfMasterSetting"
-                                            id="primaryColorOfMasterSetting" value="{{ $masterSettingData[0]->primary_color }}"
-                                            aria-describedby="helpId">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <input type="text"  class="form-control" name="primaryColorOfMasterSetting"
+                                                id="primaryColorOfMasterSetting" value="{{ $masterSettingData[0]->primary_color }}"
+                                                aria-describedby="helpId">
+                                            </div>
+                                            <div class="col-2">
+                                                <input type="color" class="border-0"
+                                                onchange="document.getElementById('primaryColorOfMasterSetting').value = this.value"
+                                                value="{{ $masterSettingData[0]->primary_color }}"
+                                                style="width: 100%; height: 100%;"
+                                                title="Choose your color">
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="">Secondary Color</label>
-                                        <input type="text" class="form-control" name="secondaryColorOfMasterSetting"
-                                            id="secondaryColorOfMasterSetting" value="{{ $masterSettingData[0]->secondary_color }}"
-                                            aria-describedby="helpId">
+                                        <div class="row">
+                                            <div class="col-10">
+                                            <input type="text" class="form-control" name="secondaryColorOfMasterSetting"
+                                                id="secondaryColorOfMasterSetting" value="{{ $masterSettingData[0]->secondary_color }}"
+                                                aria-describedby="helpId">
+                                            </div>
+                                            <div class="col-2">
+                                                <input type="color" class="border-0"
+                                                onchange="document.getElementById('secondaryColorOfMasterSetting').value = this.value"
+                                                value="{{ $masterSettingData[0]->secondary_color }}"
+                                                style="width: 100%; height: 100%;"
+                                                title="Choose your color">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Tertiary Color</label>
-                                        <input type="text" class="form-control" name="tertiaryColorOfMasterSetting"
+                                          <div class="row">
+                                            <div class="col-10">
+                                            <input type="text" class="form-control" name="tertiaryColorOfMasterSetting"
                                             id="tertiaryColorOfMasterSetting" value="{{ $masterSettingData[0]->tertiary_color }}"
                                             aria-describedby="helpId">
+                                            </div>
+                                            <div class="col-2">
+                                            <input type="color" class="border-0"
+                                                onchange="document.getElementById('tertiaryColorOfMasterSetting').value = this.value"
+                                                value="{{ $masterSettingData[0]->tertiary_color }}"
+                                                style="width: 100%; height: 100%;"
+                                                title="Choose your color">
+                                            </div>
+
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Primary Text Color</label>
-                                        <input type="text" class="form-control" name="primaryTextColorOfMasterSetting"
-                                            id="primaryTextColorOfMasterSetting" value="{{ $masterSettingData[0]->primary_text_color }}"
-                                            aria-describedby="helpId" placeholder="">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <input type="text" class="form-control" name="primaryTextColorOfMasterSetting"
+                                                    id="primaryTextColorOfMasterSetting" value="{{ $masterSettingData[0]->primary_text_color }}"
+                                                    aria-describedby="helpId" placeholder="">
+                                            </div>
+                                            <div class="col-2">
+                                                <input type="color" class="border-0"
+                                                    onchange="document.getElementById('primaryTextColorOfMasterSetting').value = this.value"
+                                                    value="{{ $masterSettingData[0]->primary_text_color }}"
+                                                    style="width: 100%; height: 100%;"
+                                                    title="Choose your color">
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Secondary Text Color</label>
-                                        <input type="text" class="form-control" name="secondaryTextColorOfMasterSetting"
-                                            id="secondaryTextColorOfMasterSetting" value="{{ $masterSettingData[0]->secondary_text_color }}"
-                                            aria-describedby="helpId" placeholder="">
-                                    </div>
+
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <input type="text" class="form-control" name="secondaryTextColorOfMasterSetting"
+                                                    id="secondaryTextColorOfMasterSetting" value="{{ $masterSettingData[0]->secondary_text_color }}"
+                                                    aria-describedby="helpId" placeholder="">
+                                                </div>
+                                                <div class="col-2">
+                                                    <input type="color" class="border-0"
+                                                    onchange="document.getElementById('secondaryTextColorOfMasterSetting').value = this.value"
+                                                    value="{{ $masterSettingData[0]->secondary_text_color }}"
+                                                    style="width: 100%; height: 100%;"
+                                                    title="Choose your color">
+                                                </div>
+                                            </div>
+                                        </div>
                                     <div class="form-group mt-3">
                                         <label for="">Tertiary Text Color</label>
-                                        <input type="text" class="form-control" name="tertiaryTextColorOfMasterSetting"
-                                            id="tertiaryTextColorOfMasterSetting" value="{{ $masterSettingData[0]->tertiary_text_color }}"
-                                            aria-describedby="helpId" placeholder="">
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <input type="text" class="form-control" name="tertiaryTextColorOfMasterSetting"
+                                                    id="tertiaryTextColorOfMasterSetting" value="{{ $masterSettingData[0]->tertiary_text_color }}"
+                                                    aria-describedby="helpId" placeholder="">
+                                                </div>
+                                                <div class="col-2">
+                                                    <input type="color" class="border-0"
+                                                    onchange="document.getElementById('tertiaryTextColorOfMasterSetting').value = this.value"
+                                                    value="{{ $masterSettingData[0]->tertiary_text_color }}"
+                                                    style="width: 100%; height: 100%;"
+                                                    title="Choose your color">
+                                                </div>
+                                            </div>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Fourth Text Color</label>
-                                        <input type="text" class="form-control" name="fourthTextColorOfMasterSetting"
-                                            id="fourthTextColorOfMasterSetting" value="{{ $masterSettingData[0]->fourth_text_color }}"
-                                            aria-describedby="helpId" placeholder="">
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <input type="text" class="form-control" name="fourthTextColorOfMasterSetting"
+                                                    id="fourthTextColorOfMasterSetting" value="{{ $masterSettingData[0]->fourth_text_color }}"
+                                                    aria-describedby="helpId" placeholder="">
+                                                </div>
+                                                  <div class="col-2">
+                                                    <input type="color" class="border-0"
+                                                    onchange="document.getElementById('fourthTextColorOfMasterSetting').value = this.value"
+                                                    value="{{ $masterSettingData[0]->fourth_text_color }}"
+                                                    style="width: 100%; height: 100%;"
+                                                    title="Choose your color">
+                                                </div>
+                                            </div>
                                     </div>
                                      <div class="form-group">
                                         <div class="form-group  mt-3">

@@ -18,16 +18,17 @@
         }
 
         .homeButtons {
-            color: white;
+            color: var(--secondary-text-color) ;
             font-size: 18px;
             padding: 17px;
             background: var(--primary-color);
         }
 
         .homeButtons:hover {
-            background: black !important;
-            color: white !important;
+            background: var(--secondary-color) !important;
+            color: var(--fourth-text-color) !important;
         }
+
 
         .ratesTable thead tr :nth-child(1),
         .ratesTable tbody tr :nth-child(1) {
@@ -70,7 +71,7 @@
     @isset($agentData)
         @if (count($agentData) > 0)
             <div class="container ms-auto me-auto">
-                <div class="row">
+                <div class="row secondaryTextColor">
                     <div class="col text-center">
                         {{-- <h1>{{ app('request')->input('name') }}</h1> --}}
                         <p>{{ $agentData[0]->full_name }}</p>
@@ -107,6 +108,7 @@
             </div>
         @endif
     @endisset
+    {{-- ____________________________ --}}
     <section class="container ml-auto mr-auto mt-5 mb-5 ">
         <img width="100%" src="../../images/ratesImages/img1.png" alt="" srcset="">
     </section>
@@ -115,7 +117,7 @@
         <div>
             <img width="90%" src="../../images/ratesImages/img2.png" alt="" srcset="">
         </div>
-        <div class=" my-3 text-center">
+        <div class=" my-3 text-center secondaryTextColor">
             <h1>Featured On </h1>
         </div>
         <div class="row container ms-auto me-auto">
@@ -138,12 +140,12 @@
 
         <div class="col my-5 container ms-auto me-auto">
             <div class="text-center">
-                <h1 class="ms-auto me-auto fw-bold w-75">
+                <h1 class="ms-auto me-auto fw-bold w-75 secondaryTextColor">
                     CITADEL MORTGAGES IS HELPING CANADIANS BECOME MORTGAGE AND DEBT-FREE FASTER– EXPERIENCE THE DIFFERENCE
                     TODAY!
                 </h1>
             </div>
-            <div class="lead px-5 ">
+            <div class="lead px-5 secondaryTextColor">
                 <p>It is easier for you to buy a new home if you have the information to guide you through the process!
                     Download this eBook now and get the information you need to make this process as easy as possible!</p>
             </div>
@@ -153,11 +155,10 @@
         </div>
     </section>
 
-
     {{-- ____________________________ --}}
     <section>
         <div class="container ms-auto me-auto">
-            <div class="col w-75 ms-auto me-auto">
+            <div class="col w-75 ms-auto me-auto secondaryTextColor">
                 <h1 class="fw-bold">BEST MORTGAGE RATES WITH CITADEL MORTGAGES GET APPROVED TODAY</h1>
                 <p class="lead">
                     Citadel Mortgages has some of the lowest rates due to our transparent process and honest approach.
@@ -186,7 +187,7 @@
     {{-- ____________________________ --}}
     <section class="container my-5  text-center">
         <div>
-            <h1 class="my-5 fw-bold">OUR TRUSTED LENDER PARTNERS</h1>
+            <h1 class="my-5 fw-bold secondaryTextColor">OUR TRUSTED LENDER PARTNERS</h1>
         </div>
         <div class="single-item">
             <div> <img src="../../images/ratesImages/carousel/img1.png" class="d-block w-75 ms-auto me-auto" alt="...">
@@ -230,7 +231,7 @@
     {{-- ____________________________ --}}
     <section class="container my-5  text-center">
         <div>
-            <h1 class="w-75 mt-5 fw-bold ms-auto me-auto">CITADEL MORTGAGES CHANGING THE WAY MORTGAGES ARE DONE!</h1>
+            <h1 class="w-75 mt-5 fw-bold ms-auto me-auto secondaryTextColor">CITADEL MORTGAGES CHANGING THE WAY MORTGAGES ARE DONE!</h1>
         </div>
         <div>
             <a
@@ -239,10 +240,10 @@
             </a>
         </div>
         <div>
-            <h1 class="w-75 mt-5 fw-bold ms-auto me-auto">BEST MORTGAGE RATES</h1>
+            <h1 class="w-75 mt-5 fw-bold ms-auto me-auto secondaryTextColor">BEST MORTGAGE RATES</h1>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col secondaryTextColor">
                 <table class="ratesTable w-100">
                     <thead>
                         <tr>
@@ -331,7 +332,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col">
+            <div class="col secondaryTextColor">
                 <div class="ms-1 mt-3">
                     <iframe width="450" height="300" src="https://www.youtube.com/embed/NvWCQ-kLNvE"
                         title="YouTube video player" frameborder="0"
@@ -418,10 +419,10 @@
     {{-- ____________________________ --}}
     <section class="container my-5  text-center">
         <div>
-            <h1 class="mt-5 text-center fw-bold">WHICH MORTGAGE IS RIGHT FOR YOU?</h1>
+            <h1 class="mt-5 text-center fw-bold secondaryTextColor">WHICH MORTGAGE IS RIGHT FOR YOU?</h1>
         </div>
         <div class="my-5 row">
-            <div class="col">
+            <div class="col secondaryTextColor">
                 <div>
                     <p>
                         <button class="btn mt-3 btn-dark w-100" type="button" data-bs-toggle="collapse"
@@ -504,9 +505,9 @@
         </div>
 
         <div class="mt-5">
-            <h1 class="text-center fw-bold">COMPARISON: VARIABLE VS. FIXED MORTGAGE RATES</h1>
+            <h1 class="text-center fw-bold secondaryTextColor">COMPARISON: <span class="primaryTextColor"> VARIABLE </span> VS <span class="primaryTextColor"> FIXED </span> MORTGAGE RATES  </h1>
         </div>
-        <div class="row mt-4">
+        <div class="row mt-4 secondaryTextColor">
             <div class="col">
                 <div class="m-1">
                     <h2 class="text-center ">FIXED MORTGAGE RATES</h2>
@@ -535,7 +536,7 @@
             </div>
         </div>
 
-        <div class="mt-5">
+        <div class="mt-5 secondaryTextColor">
             <h1 class="text-center fw-bold">WHAT WE OFFER</h1>
             <p class="lead text-center">
                 At Citadel Mortgages, our knowledgeable mortgage agents can provide you with our best mortgage rates that
@@ -566,11 +567,11 @@
 
     {{-- ____________________________ --}}
     <section class="container text-center" style="margin-top: 10%">
-        <div class="mt-5">
+        <div class="mt-5 secondaryTextColor">
             <h1 class="fw-bold mt-5">BEST MORTGAGE RATES</h1>
             <h1 class="fw-bold mt-1">WHAT MORTGAGE RATE IS BEST FOR ME</h1>
         </div>
-        <div>
+        <div class="secondaryTextColor">
             <div class="card-group">
                 <div style="border: 1px solid black" class="card m-2">
                     <div class="card-body">
@@ -643,7 +644,7 @@
                 </a>
             </div>
         </div>
-        <p class="lead fw-bold mt-5">
+        <p class="lead fw-bold mt-5 secondaryTextColor">
             Receive up to 1,000 Air Miles Reward Miles
             <br>
             Receive up to $2,500 cash back
@@ -659,7 +660,7 @@
 
     {{-- ____________________________ --}}
     <section class="container text-center" style="margin-top: 10%">
-        <div>
+        <div class="secondaryTextColor">
             <h1 class="fw-bold text-center">NEW MORTGAGE RULES FAQ</h1>
             <p class="lead">Even if you have 15 to 20% of the property value for down payment, it may not be
                 enough to qualify for a loan, under the new rules, from a traditional lender such as a bank. As of January
@@ -667,7 +668,7 @@
                 experienced home-buyers to secure the mortgage loan they need.</p>
         </div>
         {{-- FAQ COLLAPSABLE CONTENT --}}
-        <div class="w-75 ms-auto me-auto">
+        <div class="w-75 ms-auto me-auto secondaryTextColor">
             <div>
                 <p>
                     <button class="btn mt-3 btn-dark w-100" type="button" data-bs-toggle="collapse" style="font-size: 17px"
@@ -763,7 +764,7 @@
 
         <div class="w-75 ms-auto me-auto">
             <a target="blank" href="https://api.leadconnectorhq.com/widget/survey/RMsaXDyVPDugQIKojmqf">
-                <button style="background: #e4e4e5;color:black;" class="mt-3 btn homeButtons">
+                <button style="background: var(--tertiary-color);" class="mt-3 btn homeButtons secondaryTextColor">
                     CITADEL MORTGAGES NOW OFFERS AIR MILES® REWARD MILES. GET UP TO 1,000 MILES ON EVERY MORTGAGE THAT
                     CLOSES WITH CITADEL MORTGAGES. <i class="fa-solid fa-circle-arrow-down"></i>
                 </button>
@@ -773,8 +774,8 @@
     </section>
 
     {{-- ____________________________ --}}
-    <section class="text-center mt-5" style="background: #e4e4e5;">
-        <div class="container">
+    <section class="text-center mt-5" style="background: var(--tertiary-color)">
+        <div class="container secondaryTextColor">
             <div class="pt-3">
                 <h1 class="fw-bold  ">LET'S GET STARTED</h1>
             </div>
@@ -838,8 +839,8 @@
     </section>
 
     {{-- ____________________________ --}}
-    <section class="text-center mt-5" style="background: #e4e4e5;">
-        <div class="container">
+    <section class="text-center mt-5" style="background: var(--tertiary-color)">
+        <div class="container secondaryTextColor">
             <div class="pt-3">
                 <h1 class="fw-bold  ">FIND OUT HOW MUCH HOME YOU CAN AFFORD</h1>
             </div>
@@ -906,10 +907,10 @@
 
 
     {{-- ____________________________ --}}
-    <section class="text-center mt-5" style="background: #e4e4e5;">
+    <section class="text-center mt-5" style="background: var(--tertiary-color)">
         <div class="container py-5">
             <div>
-                <h1 class="fw-bold">
+                <h1 class="fw-bold secondaryTextColor">
                     OUR PARTNERS
                 </h1>
             </div>
@@ -972,10 +973,10 @@
     </section>
 
     {{-- ____________________________ --}}
-    <section class="text-center mt-5" style="background: #e4e4e5;">
+    <section class="text-center mt-5" style="background: var(--tertiary-color)">
         <div class="container py-5">
             <div>
-                <p class="display-5 fw-bold">
+                <p class="display-5 fw-bold secondaryTextColor">
                     OUR AWARDS
                 </p>
             </div>
@@ -987,7 +988,7 @@
         </div>
     </section>
 
-    <footer class="mt-5 p-5" style="background: black">
+    <footer class="mt-5 p-5" style="background: var(--secondary-color)">
         <img width="100%" src="../../images/homeImages/footerImages/img1.jpeg" alt="">
         <div class="container mx-auto mt-4">
 

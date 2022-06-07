@@ -1,47 +1,41 @@
-@extends('layouts.app')
-@section('libraries')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <style>
-        .row>* {
-            width: auto !important;
-            padding-right: 0px !important;
-            padding-left: 0px !important;
-        }
-
-        @media screen and (max-width: 1120px) {
-            .backgroundStyle {
-                display: none;
-            }
-        }
-
-    </style>
-@endsection
-
-@section('content')
-    {{-- ____________________________ --}}
-
-    <section class="container ml-auto mr-auto mt-5 mb-5 ">
-        <img width="100%" src="../../images/ratesImages/img1.png" alt="" srcset="">
-    </section>
-
-
-
-
-
-    <footer class="mt-5 p-5" style="background: black">
+  <footer class="mt-5 p-5" style="background: var(--secondary-color);">
         <img width="100%" src="../../images/homeImages/footerImages/img1.jpeg" alt="">
         <div class="container mx-auto mt-4">
 
             <div class="row">
-                <div class="col">
-                    <p class="display-4" style="color: white;text-align: center">Offices</p>
-                    <p style="color: var(--lightTextColor);text-align: left">Copyright © 2020 Citadel Mortgages Lic #
+                {{-- <div class="col-md-4 ">
+                    <p class="display-4" style="color: white;text-align: left">Services</p>
+                    <ul style="text-align: left;font-size: 17px;color: white;list-style: none">
+                        <li class="mt-2">
+                            <a style="color: white" href="/">Contact Us</a>
+                        </li>
+                        <li class="mt-4">
+                            <a style="color: white" href="/">About Us</a>
+                        </li>
+                        <li class="mt-4">
+                            <a style="color: white" href="/register">Register</a>
+                        </li>
+                        <li class="mt-4">
+                            <a style="color: white" href="/">Home</a>
+                        </li>
+                        <li class="mt-4">
+                            <a style="color: white" href="/login">Login</a>
+                        </li>
+
+                        <li class="mt-4">
+                            <a style="color: white" href="/">Rates</a>
+                        </li>
+
+                    </ul>
+                </div> --}}
+
+
+                <div class="col-md-5 ">
+                    <p class="display-4 fourthTextColor" style="text-align: center">Offices</p>
+                    <p class="tertiaryTextColor" style="text-align: left">Copyright © 2020 Citadel Mortgages Lic #
                         12993
                     </p>
-                    <p style="color: var(--lightTextColor)">
+                    <p class="tertiaryTextColor" >
                         - Head Office – 150 King Street West 2nd Floor Suite 335, Toronto, ON M5H 1J9
                         <br>
                         - Alberta Office – 421 7th Avenue S.W., 30th Floor, Calgary, Alberta, T2P 4K9
@@ -58,12 +52,12 @@
                     </p>
                 </div>
 
-                {{-- <div class="col-md-2"></div> --}}
+                <div class="col-md-2"></div>
 
-                <div class="col">
-                    <p class="display-4" style="color: white;text-align: center">Information</p>
+                <div class="col-md-5 ">
+                    <p class="display-4 fourthTextColor" style="text-align: center">Information</p>
 
-                    <small style="color: var(--lightTextColor);text-align: center">
+                    <small class="tertiaryTextColor" style="text-align: center">
                         Citadel Mortgages is licensed in the following: Ontario FSRA 12993 – Saskatchewan FCAA 509446, Nova
                         Scotia 2021-3000010– Alberta, PEI, Nunavut, Newfoundland 21-07-CI083-1. New Brunswick 210031130,
                         British Columbia X301267
@@ -88,10 +82,3 @@
 
         </div>
     </footer>
-@endsection
-
-
-@section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-@endsection
