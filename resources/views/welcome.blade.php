@@ -6,7 +6,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    {{-- BLADE TEMPLATE PHP --}}
+    @php
+    // $user = Auth::user();
+    $url = $_SERVER['REQUEST_URI'];
+    if ($url == '/agent/home' || $url == '/agent/home/') {
+        $user = App\Models\User::where('email', 'Tristan.kirk@citadelmortgages.ca')->get();
+        $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
+        $adminData = App\Models\Admin::where('id', $agentData[0]->admin_id)->get();
+    } else {
+        $email = explode('/', $url);
+        $email = $email[count($email) - 1];
+
+        $user = App\Models\User::where('email', $email)->get();
+        if (count($user) > 0) {
+            $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
+            $adminData = App\Models\Admin::where('id', $agentData[0]->admin_id)->get();
+        }
+    }
+
+    @endphp
+
     <style>
+        :root {
+            --primary-color: <?php echo $adminData[0]->primary_color; ?>;
+            --secondary-color:  <?php echo $adminData[0]->secondary_color; ?>;
+            --tertiary-color:  <?php echo $adminData[0]->tertiary_color; ?>;
+            --primary-text-color: <?php echo $adminData[0]->primary_text_color; ?>;
+            --secondary-text-color:  <?php echo $adminData[0]->secondary_text_color; ?>;
+            --tertiary-text-color:  <?php echo $adminData[0]->tertiary_text_color; ?>;
+            --fourth-text-color:  <?php echo $adminData[0]->fourth_text_color; ?>;
+            --lightTextColor: #707b89;
+            --white-color: #fff;
+        }
         .row>* {
             width: auto !important;
             padding-right: 0px !important;
@@ -37,24 +70,7 @@
 @endsection
 
 @section('content')
-    {{-- BLADE TEMPLATE PHP --}}
-    @php
-    // $user = Auth::user();
-    $url = $_SERVER['REQUEST_URI'];
-    if ($url == '/agent/home' || $url == '/agent/home/') {
-        $user = App\Models\User::where('email', 'Tristan.kirk@citadelmortgages.ca')->get();
-        $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
-    } else {
-        $email = explode('/', $url);
-        $email = $email[count($email) - 1];
 
-        $user = App\Models\User::where('email', $email)->get();
-        if (count($user) > 0) {
-            $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
-        }
-    }
-
-    @endphp
 
     {{-- ________________________________________________________ --}}
     {{-- <h1> {{ $user }} </h1> --}}
@@ -100,6 +116,8 @@
             </div>
         @endif
     @endisset
+
+
     <section class="m-5">
         <img width="100%" src="../../images/homeImages/img1.png" alt="" srcset="">
     </section>

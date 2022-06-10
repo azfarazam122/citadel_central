@@ -61,6 +61,15 @@
 
                                             </td>
                                             <td class="me-5">
+                                                @php
+                                                    $masterAdminData = App\Models\MasterSetting::all();
+                                                @endphp
+                                                @if ($masterAdminData[0]->default_agent_id == $agentData[$i]->id)
+                                                    <button type="button" disabled class="btn btn-success">Defaulted</button>
+                                                @else
+                                                    <a class="btn btn-primary"
+                                                        onclick="setAgentAsDefaultFunc({{$agentData[$i]->id}})">Set As Default</a>
+                                                @endif
                                                 <a disable class="btn btn-secondary"
                                                     href="/admin_dashboard/agents/details/{{ $agentData[$i]->id }}">All
                                                     Details</a>
@@ -93,10 +102,19 @@
             $('#agentsListTable').DataTable();
         });
 
-        // function deleteTableRow(rowUserId) {
-        //     let deleteAdminPageUrl = '/admin_dashboard/admins/delete/' + rowUserId;
-        //     window.location.href = deleteAdminPageUrl;
-        // }
+
+        function setAgentAsDefaultFunc(admin_Id) {
+            axios.post("{{ route('setAgentAsDefault') }}", {
+                    id: admin_Id,
+                })
+                .then(function(response) {
+                    console.log(response);
+                    window.location.href = window.location.href
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
+        }
     </script>
     <!-- Scripts -->
 @endsection

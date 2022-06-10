@@ -32,26 +32,28 @@
             <h2>REGISTER NOW ON CITADEL CONNECT</h2>
         </div>
         <div class="row mt-5" style="justify-content: center;">
-            <div class="mr-2">
+            <div class="col-md-3 text-right">
                 <h4>I am a</h4>
             </div>
-            <div>
-                <button type="button" onclick="displayFieldsOfButton('homeBuyerBtn_RegForm')" name=""
-                    id="homeBuyerBtn_RegForm" style="border-bottom:2px solid #dbac28;" class="btn btn-light ">
-                    Homebuyer
-                </button>
-            </div>
-            <div>
-                <button type="button" onclick="displayFieldsOfButton('realStateAgentBtn_RegForm')" name=""
-                    id="realStateAgentBtn_RegForm" class="btn btn-light ">
-                    Real State Agent
-                </button>
-            </div>
-            <div>
-                <button type="button" onclick="displayFieldsOfButton('mortgageProfessionalBtn_RegForm')" name=""
-                    id="mortgageProfessionalBtn_RegForm" class="btn btn-light ">
-                    Mortgage Professional
-                </button>
+            <div class="col-md-9 row">
+                <div class="col-md-3">
+                    <button type="button" onclick="displayFieldsOfButton('homeBuyerBtn_RegForm')" name=""
+                        id="homeBuyerBtn_RegForm" style="border-right:1px solid; border-bottom:2px solid #dbac28;" class="btn btn-light w-100">
+                        Homebuyer
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" onclick="displayFieldsOfButton('realStateAgentBtn_RegForm')" name=""
+                        id="realStateAgentBtn_RegForm" style="border-right:1px solid;" class="btn btn-light w-100">
+                        Real State Agent
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" onclick="displayFieldsOfButton('mortgageProfessionalBtn_RegForm')" name=""
+                        id="mortgageProfessionalBtn_RegForm" style="border-right:1px solid;" class="btn btn-light w-100">
+                        Mortgage Professional
+                    </button>
+                </div>
             </div>
         </div>
         <div class="col-md-11 mt-5 ml-auto mr-auto">
@@ -475,6 +477,7 @@
                     </small>
                 </div>
             </form>
+
         </div>
     </div>
 @endsection

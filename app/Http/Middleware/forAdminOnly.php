@@ -19,20 +19,24 @@ class forAdminOnly
      */
     public function handle(Request $request, Closure $next)
     {
-         $user = Auth::user();
-         $userId =
-            User::where('email',$user->email)->get(['id']);
-            // dd($userId[0]->id);
-        $checkIfUserIdFoundInAdmin =
-            Admin::where('user_id', $userId[0]->id)->get(['id']);
+        if(!auth()->check()){
+            return  redirect(route('login'));
+        }else {
+            $user = Auth::user();
+            $userId =
+                User::where('email',$user->email)->get(['id']);
+                // dd($userId[0]->id);
+            $checkIfUserIdFoundInAdmin =
+                Admin::where('user_id', $userId[0]->id)->get(['id']);
 
-        // dd(count($checkIfUserIdFoundInAdmin));
-        if (count($checkIfUserIdFoundInAdmin) > 0) {
-            return $next($request);
-        }else{
-            //dd('You Cannot Access That Page');
-            return  redirect('admin_dashboard');
+            // dd(count($checkIfUserIdFoundInAdmin));
+            if (count($checkIfUserIdFoundInAdmin) > 0) {
+                return $next($request);
+            }else{
+                //dd('You Cannot Access That Page');
+                return  redirect('admin_dashboard');
+            }
         }
-        // return $next($request);
+
     }
 }

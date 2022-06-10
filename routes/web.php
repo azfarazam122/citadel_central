@@ -79,15 +79,22 @@ Route::group(['middleware'=> ['forMasterAdmin']], function(){
     Route::view('/admin_dashboard/create/admin', 'create_admin');
     Route::post('/admin_dashboard/create/admin', [ManageAdminController::class , 'createAdmin'])->name('createAdmin');
     Route::get('/admin_dashboard/admins/edit/{id}', [ManageAdminController::class,'showEditData']);
+    Route::get('/admin_dashboard/admins/detail/{id}', [ManageAdminController::class,'showDetailedData']);
     Route::post('/admin_dashboard/admins', [ManageAdminController::class,'updateData'])->name('updateAdminData');
     Route::post('/admin_dashboard/admins/deleteAllRoles', [ManageAdminController::class,'deleteAllRoles'])->name('deleteAllRoles');
     Route::post('/admin_dashboard/admins/deleteAdminOnly', [ManageAdminController::class,'deleteAdminRoleOnly'])->name('deleteAdminRoleOnly');
+
+    Route::post('/admin_set_as_default', [ManageAdminController::class, 'setAdminAsDefaultFunc'])->name('setAdminAsDefault');
 });
 
 Route::group(['middleware'=> ['forAdmin']], function(){
     // Route::view('/admin_dashboard/agents', 'manage_agents');
     // Route::view('/admin_dashboard/agents/{agent_id}', 'agent_detail');
-    Route::view('/admin_dashboard/admin', 'admin');
+    // Route::view('/admin_dashboard/admin', 'admin');
+    Route::get('/admin_dashboard/admin', [ManageAdminController::class , 'showAllDataOfAdminSetting']);
+    Route::get('/admin_dashboard/admin/edit/{id}', [ManageAdminController::class,'showEditDataOfAdminSetting']);
+    Route::get('/admin_dashboard/admin/detail/{id}', [ManageAdminController::class,'showDetailedDataOfAdminSetting']);
+    Route::post('/admin_dashboard/admin', [ManageAdminController::class,'updateDataOfAdminSetting'])->name('updateDataOfAdminSetting');
 
     // MANAGE AGENT ROUTES == > ManageUserController
     Route::get('/admin_dashboard/agents', [ManageAgentController::class , 'showAllData']);
@@ -97,6 +104,8 @@ Route::group(['middleware'=> ['forAdmin']], function(){
     Route::get('/admin_dashboard/agents/details/{id}', [ManageAgentController::class,'showDetailsOfAgent']);
     Route::post('/admin_dashboard/agents', [ManageAgentController::class,'updateData'])->name('updateAgentData');
     Route::get('/admin_dashboard/agents/delete/{id}', [ManageAgentController::class,'deleteData'])->name('deleteUserData');
+
+    Route::post('/agent_set_as_default', [ManageAdminController::class, 'setAgentAsDefaultFunc'])->name('setAgentAsDefault');
 });
 
 

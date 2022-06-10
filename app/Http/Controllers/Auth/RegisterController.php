@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Customer;
+use App\Models\MasterSetting;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,7 +51,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-
         if ($data['formNumber'] == 1) {
             return Validator::make($data, [
                 'firstName' => ['required', 'string', 'max:255'],
@@ -88,31 +88,42 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        echo $data['formNumber'];
+        // $User =  User::create([
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        // ]);
 
-        $User =  User::create([
-            // 'name' => $data['name'],
-            // 'email' => $data['email'],
-            // 'password' => Hash::make($data['password']),
+        // $currentUserId = User::where('email', $data['email'])->get(['id']);
+        // if ($data['formNumber'] == 1) {
+        //     # code...
+        //     Customer::create([
+        //         'user_id' => $currentUserId[0]->id,
+        //         'first_name' => $data['firstName'],
+        //         'last_name' => $data['lastName'],
+        //         'province' => $data['province'],
+        //         'relevance' => $data['formNumber'],
+        //     ]);
+        // }else if ($data['formNumber'] == 2) {
+        //     # code...
+        //     $masterSettingData = MasterSetting::all();
+        //     // return $masterSettingData;
+        //     Agent::create([
+        //         'user_id' => $currentUserId[0]->id,
+        //         'admin_id' => $data['firstName'],
+        //         'full name' => $data['firstName'] . " " .  $data['lastName'],
+        //         'agent_type' => "real_state_agent",
+        //     ]);
+        // }else if ($data['formNumber'] == 3) {
+        //     Agent::create([
+        //         'user_id' => $currentUserId[0]->id,
+        //         'admin_id' => $data['firstName'],
+        //         'full name' => $data['firstName'] . " " .  $data['lastName'],
+        //         'agent_type' => "mortgage_professional",
+        //     ]);
+        // }
 
-            // 'user_type' => $data['firstName'],
-            // 'firstName' => $data['firstName'],
-            // 'lastName' => $data['lastName'],
-            // 'province' => $data['province'],
 
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-
-        $currentUserId = User::where('email', $data['email'])->get(['id']);
-        echo $currentUserId[0]->id;
-        Customer::create([
-                'user_id' => $currentUserId[0]->id,
-                'first_name' => $data['firstName'],
-                'last_name' => $data['lastName'],
-                'province' => $data['province'],
-                'relevance' => $data['formNumber'],
-        ]);
-
-        return $User;
+        // return $User;
     }
 }

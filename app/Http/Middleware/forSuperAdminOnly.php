@@ -19,19 +19,22 @@ class forSuperAdminOnly
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = Auth::user();
-        $userId =
-            User::where('email',$user->email)->get(['id']);
-        $checkIfUserIdFoundInSuperAdmin =
-            SuperAdmin::where('user_id', $userId[0]->id)->get(['id']);
-
-        // dd(count($checkIfUserIdFoundInSuperAdmin));
-        if (count($checkIfUserIdFoundInSuperAdmin) > 0) {
-            return $next($request);
+        if(!auth()->check()){
+            return  redirect(route('login'));
         }else{
-            // dd('You Cannot Access That Page');
-            return  redirect('admin_dashboard');
+            $user = Auth::user();
+            $userId =
+                User::where('email',$user->email)->get(['id']);
+            $checkIfUserIdFoundInSuperAdmin =
+                SuperAdmin::where('user_id', $userId[0]->id)->get(['id']);
+
+            // dd(count($checkIfUserIdFoundInSuperAdmin));
+            if (count($checkIfUserIdFoundInSuperAdmin) > 0) {
+                return $next($request);
+            }else{
+                // dd('You Cannot Access That Page');
+                return  redirect('admin_dashboard');
+            }
         }
-        // return $next($request);
     }
 }

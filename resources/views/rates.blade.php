@@ -4,7 +4,39 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+       {{-- BLADE TEMPLATE PHP --}}
+    @php
+    $url = $_SERVER['REQUEST_URI'];
+    if ($url == '/agent/rates' || $url == '/agent/rates/') {
+        $user = App\Models\User::where('email', 'Tristan.kirk@citadelmortgages.ca')->get();
+        $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
+        $adminData = App\Models\Admin::where('id', $agentData[0]->admin_id)->get();
+    } else {
+        $email = explode('/', $url);
+        $email = $email[count($email) - 1];
+
+        $user = App\Models\User::where('email', $email)->get();
+        if (count($user) > 0) {
+            $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
+            $adminData = App\Models\Admin::where('id', $agentData[0]->admin_id)->get();
+        }
+    }
+
+    $rates = App\Models\Rate::all();
+
+    @endphp
     <style>
+        :root {
+            --primary-color: <?php echo $adminData[0]->primary_color; ?>;
+            --secondary-color:  <?php echo $adminData[0]->secondary_color; ?>;
+            --tertiary-color:  <?php echo $adminData[0]->tertiary_color; ?>;
+            --primary-text-color: <?php echo $adminData[0]->primary_text_color; ?>;
+            --secondary-text-color:  <?php echo $adminData[0]->secondary_text_color; ?>;
+            --tertiary-text-color:  <?php echo $adminData[0]->tertiary_text_color; ?>;
+            --fourth-text-color:  <?php echo $adminData[0]->fourth_text_color; ?>;
+            --lightTextColor: #707b89;
+            --white-color: #fff;
+        }
         .row>* {
             width: auto !important;
             padding-right: 0px !important;
@@ -44,25 +76,7 @@
 @endsection
 
 @section('content')
-    {{-- BLADE TEMPLATE PHP --}}
-    @php
-    $url = $_SERVER['REQUEST_URI'];
-    if ($url == '/agent/rates' || $url == '/agent/rates/') {
-        $user = App\Models\User::where('email', 'Tristan.kirk@citadelmortgages.ca')->get();
-        $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
-    } else {
-        $email = explode('/', $url);
-        $email = $email[count($email) - 1];
 
-        $user = App\Models\User::where('email', $email)->get();
-        if (count($user) > 0) {
-            $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
-        }
-    }
-
-    $rates = App\Models\Rate::all();
-
-    @endphp
 
     {{-- ________________________________________________________ --}}
     {{-- <h1> {{ count($rates) }} </h1> --}}

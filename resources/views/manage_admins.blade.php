@@ -27,30 +27,44 @@
                             <table id="adminsListTable" class="display dt-responsive">
                                 <thead>
                                     <tr>
+                                        <th>Id</th>
                                         <th>User Id</th>
+                                        <th>Master Admin Id</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Edit</th>
                                     </tr>
                                 </thead>
                                 <tbody id="adminsListTableBody">
-                                    {{-- {{ $adminData }} --}}
-                                    {{-- {{ $userData[0][0]->id }}
-                                        <br>
-                                        {{ $userData[1][0]->id }} --}}
+                                     {{-- {{ $adminData[0]->email }} --}}
+
                                     @for ($i = 0; $i < count($adminData); $i++)
                                         <tr>
-                                            <td>{{ $userData[$i][0]->id }} </td>
+                                            <td>{{ $adminData[$i]->id }} </td>
+                                            <td>{{ $adminData[$i]->user_id }} </td>
+                                            <td>{{ $adminData[$i]->master_admin_id }} </td>
                                             <td>{{ $adminData[$i]->name }} </td>
-                                            <td>{{ $userData[$i][0]->email }} </td>
+                                            <td>{{ $adminData[$i]->email }} </td>
                                             <td>
-                                                <a class="btn btn-secondary"
-                                                    href="/admin_dashboard/admins/{{ $userData[$i][0]->id }}">Details</a>
+                                                @php
+                                                    $masterAdminData = App\Models\MasterSetting::all();
+                                                @endphp
+                                                @if ($masterAdminData[0]['default_admin_id'] == $adminData[$i]->id)
+                                                    {{-- <a class="btn btn-success"
+                                                        href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}">Defaulted</a> --}}
+                                                    <button type="button" disabled class="btn btn-success">Defaulted</button>
+                                                @else
+                                                    <a class="btn btn-primary" onclick="setAdminAsDefaultFunc({{$adminData[$i]->id}})"
+                                                        {{-- href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}" --}}
+                                                        >Set As Default</a>
+                                                @endif
+
+
                                                 <a class="btn btn-dark"
-                                                    href="/admin_dashboard/admins/edit/{{ $userData[$i][0]->id }}">Edit</a>
+                                                    href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}">Edit</a>
                                                 <span class="">
-                                                    <a class="btn btn-danger" onclick="deleteAdmin({{ $userData[$i][0]->id }})">Delete</a>
-                                                    <a class="btn btn-danger" onclick="deleteOnlyAdminRole({{ $userData[$i][0]->id }})">Delete Admin</a>
+                                                    <a class="btn btn-danger" onclick="deleteAdmin({{ $adminData[$i]->id }})">Delete</a>
+                                                    <a class="btn btn-danger" onclick="deleteOnlyAdminRole({{ $adminData[$i]->id }})">Delete Admin Role</a>
                                                 </span>
 
                                             </td>
@@ -76,10 +90,7 @@
         $(document).ready(function() {
 
             $('#adminsListTable').DataTable();
-            // $('#adminsListTable').DataTable({
-            //     scrollY: 800,
-            //     scrollX: true,
-            // });
+
         });
 
         function deleteAdmin(userId) {
@@ -172,6 +183,19 @@
 
 
 
+        }
+
+        function setAdminAsDefaultFunc(admin_Id) {
+            axios.post("{{ route('setAdminAsDefault') }}", {
+                    id: admin_Id,
+                })
+                .then(function(response) {
+                    console.log(response);
+                    window.location.href = window.location.href
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
         }
     </script>
     <!-- Scripts -->
