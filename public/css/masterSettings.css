@@ -120,6 +120,9 @@ a {
 .nav_link:hover {
     color: var(--primary-color)
 }
+.nav_link:active {
+    color: var(--primary-color)
+}
 
 .nav_icon {
     font-size: 1.25rem

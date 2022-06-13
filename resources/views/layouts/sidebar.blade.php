@@ -48,7 +48,7 @@
                       <span class="nav_logo-name">Citadel Central</span>
                   </a>
                   <div class="nav_list">
-                      <a href="/admin_dashboard" id="adminDashboardTab" onclick="selectSideBarSelectedValue('adminDashboardTab')" class="nav_link">
+                      <a href="/admin_dashboard" id="adminDashboardTab"  class="nav_link">
                           <i id="adminDashboardIcon" class='bx bx-grid-alt nav_icon'></i>
                           <span class="nav_name">Admin Dashboard</span>
                       </a>
@@ -152,7 +152,6 @@
       tippy('#manageAdminsIcon', {
           content: 'Manage Admins',
       });
-
       tippy('#manageAgentsIcon', {
           content: 'Manage Agents',
       });
@@ -171,8 +170,31 @@
       tippy('#superAdminLoginIcon', {
           content: 'Super Admin Login',
       });
+      function checkWhichTabIsOpen() {
+        if (window.location.href.includes("/admin_dashboard")) {
+            alert('Admin Dashboard')
+        }
+        if (window.location.href.includes("/admin_dashboard/super")) {
+            alert('Super Settings')
+        }
+        if (window.location.href.includes("/admin_dashboard/master")) {
+            alert('Master Settings')
+        }
+        if (window.location.href.includes("/admin_dashboard/users")) {
+            alert('Manage Users')
+        }
+        if (window.location.href.includes("/admin_dashboard/admins")) {
+            alert('Manage Admins')
+        }
+        if (window.location.href.includes("/admin_dashboard/agents")) {
+            alert('Manage Agents')
+        }
+        if (window.location.href.includes("/admin_dashboard/admin")) {
+            alert('Admin')
+        }
+        if (window.location.href.includes("/admin_dashboard/agent")) {
+            alert('Your Profile')
+        }
 
-      function selectSideBarSelectedValue() {
-          document.getElementById('')
       }
   </script>

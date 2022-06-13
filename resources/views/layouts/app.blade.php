@@ -111,7 +111,45 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->
                             <ul class="navbar-nav me-auto" style="font-size: 20px">
-                                <li class="nav-item">
+                                @php
+                                    $url = $_SERVER['REQUEST_URI'];
+                                    $emailFound = 'false';
+                                    if (strpos($url, '@')) {
+                                        $emailFound = 'true';
+                                        $userEmail = explode("/",$url);
+                                        $userEmail = $userEmail[count($userEmail)-1];
+                                    }
+                                @endphp
+
+                                @if ($emailFound == "true")
+
+                                    <li class="nav-item">
+                                        <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
+                                            href="/agent/home/{{$userEmail}}">{{ __('Home') }}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
+                                            href="/agent/about/{{$userEmail}}">{{ __('About') }}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
+                                            href="/agent/rates/{{$userEmail}}">{{ __('Rates') }}</a>
+                                    </li>
+                                @else
+                                    <li class="nav-item">
+                                        <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
+                                            href="/agent/home/">{{ __('Home') }}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
+                                            href="/agent/about/">{{ __('About') }}</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
+                                            href="/agent/rates/">{{ __('Rates') }}</a>
+                                    </li>
+                                @endif
+                                {{-- <li class="nav-item">
                                     <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
                                         href="/agent/home/">{{ __('Home') }}</a>
                                 </li>
@@ -122,7 +160,7 @@
                                 <li class="nav-item">
                                     <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
                                         href="/agent/rates/">{{ __('Rates') }}</a>
-                                </li>
+                                </li> --}}
                             </ul>
 
                             <!-- Right Side Of Navbar -->
