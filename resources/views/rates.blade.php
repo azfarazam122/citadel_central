@@ -8,9 +8,10 @@
     @php
     $url = $_SERVER['REQUEST_URI'];
     if ($url == '/agent/rates' || $url == '/agent/rates/') {
-        $user = App\Models\User::where('email', 'Tristan.kirk@citadelmortgages.ca')->get();
-        $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
-        $adminData = App\Models\Admin::where('id', $agentData[0]->admin_id)->get();
+        $masterSettingData = App\Models\MasterSetting::all();
+        $agentData = App\Models\Agent::where('id', $masterSettingData[0]->default_agent_id)->get();
+        $adminData = App\Models\Admin::where('id', $masterSettingData[0]->default_admin_id)->get();
+        $user = App\Models\User::where('id', $agentData[0]->user_id)->get();
     } else {
         $email = explode('/', $url);
         $email = $email[count($email) - 1];
@@ -18,7 +19,19 @@
         $user = App\Models\User::where('email', $email)->get();
         if (count($user) > 0) {
             $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
-            $adminData = App\Models\Admin::where('id', $agentData[0]->admin_id)->get();
+            if (count($agentData) > 0) {
+                $adminData = App\Models\Admin::where('id', $agentData[0]->admin_id)->get();
+            }else{
+                $masterSettingData = App\Models\MasterSetting::all();
+                $agentData = App\Models\Agent::where('id', $masterSettingData[0]->default_agent_id)->get();
+                $adminData = App\Models\Admin::where('id', $masterSettingData[0]->default_admin_id)->get();
+                $user = App\Models\User::where('id', $agentData[0]->user_id)->get();
+            }
+        }else{
+            $masterSettingData = App\Models\MasterSetting::all();
+            $agentData = App\Models\Agent::where('id', $masterSettingData[0]->default_agent_id)->get();
+            $adminData = App\Models\Admin::where('id', $masterSettingData[0]->default_admin_id)->get();
+            $user = App\Models\User::where('id', $agentData[0]->user_id)->get();
         }
     }
 

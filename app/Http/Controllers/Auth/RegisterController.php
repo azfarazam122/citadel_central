@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Customer;
+use App\Models\Agent;
+use App\Models\Admin;
 use App\Models\MasterSetting;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -88,42 +90,85 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        echo $data['formNumber'];
-        // $User =  User::create([
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
+        $User =  User::create([
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
 
-        // $currentUserId = User::where('email', $data['email'])->get(['id']);
-        // if ($data['formNumber'] == 1) {
-        //     # code...
-        //     Customer::create([
-        //         'user_id' => $currentUserId[0]->id,
-        //         'first_name' => $data['firstName'],
-        //         'last_name' => $data['lastName'],
-        //         'province' => $data['province'],
-        //         'relevance' => $data['formNumber'],
-        //     ]);
-        // }else if ($data['formNumber'] == 2) {
-        //     # code...
-        //     $masterSettingData = MasterSetting::all();
-        //     // return $masterSettingData;
-        //     Agent::create([
-        //         'user_id' => $currentUserId[0]->id,
-        //         'admin_id' => $data['firstName'],
-        //         'full name' => $data['firstName'] . " " .  $data['lastName'],
-        //         'agent_type' => "real_state_agent",
-        //     ]);
-        // }else if ($data['formNumber'] == 3) {
-        //     Agent::create([
-        //         'user_id' => $currentUserId[0]->id,
-        //         'admin_id' => $data['firstName'],
-        //         'full name' => $data['firstName'] . " " .  $data['lastName'],
-        //         'agent_type' => "mortgage_professional",
-        //     ]);
-        // }
+        $currentUserId = User::where('email', $data['email'])->get(['id']);
+        $adminIdToBeAssigned;
+        if ($data['formNumber'] == '1') {
+            $customer = new Customer;
+            $customer->user_id = $currentUserId[0]->id;
+            $customer->first_name =   $data['firstName'];
+            $customer->last_name =   $data['lastName'];
+            $customer->province =  $data['province'];
+            $customer->save();
+        }else if ($data['formNumber'] == '2') {
+
+            $registerPageUrl = $data['registerPage_url'];
+            $registerPageUrl = explode("/",$registerPageUrl);
+            $userEmail = $registerPageUrl[count($registerPageUrl)-1];
+
+            if (strpos($userEmail, '@')) {
+                $userId = User::where('email', $userEmail)->get('id');
+                $adminData = Admin::where('user_id', $userId[0]->id)->get('id');
+                if (count($adminData) > 0) {
+                    $adminIdToBeAssigned =  $adminData[0]['id'];
+                }else{
+                    $masterSettingData = MasterSetting::all();
+                    $adminIdToBeAssigned = $masterSettingData[0]->default_admin_id;
+                    echo 'Default Admin';
+                }
+            }else{
+                $masterSettingData = MasterSetting::all();
+                $adminIdToBeAssigned = $masterSettingData[0]->default_admin_id;
+                echo 'Default Admin';
+            }
+
+            $agent_RS = new Agent;
+            $agent_RS->user_id = $currentUserId[0]->id;
+            $agent_RS->admin_id = $adminIdToBeAssigned;
+            $agent_RS->full_name = $data['firstName'] . " " .  $data['lastName'];
+            $agent_RS->agent_type = 'real_state_agent';
+            $agent_RS->save();
+
+        }else if ($data['formNumber'] == '3') {
+
+            $registerPageUrl = $data['registerPage_url'];
+            $registerPageUrl = explode("/",$registerPageUrl);
+            $userEmail = $registerPageUrl[count($registerPageUrl)-1];
+
+            if (strpos($userEmail, '@')) {
+                $userId = User::where('email', $userEmail)->get('id');
+                $adminData = Admin::where('user_id', $userId[0]->id)->get('id');
+                if (count($adminData) > 0) {
+                    $adminIdToBeAssigned =  $adminData[0]['id'];
+                }else{
+                    $masterSettingData = MasterSetting::all();
+                    $adminIdToBeAssigned = $masterSettingData[0]->default_admin_id;
+                    echo 'Default Admin';
+                }
+            }else{
+                $masterSettingData = MasterSetting::all();
+                $adminIdToBeAssigned = $masterSettingData[0]->default_admin_id;
+                echo 'Default Admin';
+            }
+
+            $agent_MP = new Agent;
+            $agent_MP->user_id = $currentUserId[0]->id;
+            $agent_MP->admin_id = $adminIdToBeAssigned;
+            $agent_MP->full_name = $data['firstName'] . " " .  $data['lastName'];
+            $agent_MP->agent_type = 'mortgage_professional';
+            $agent_MP->save();
+        }
 
 
-        // return $User;
+        return $User;
+    }
+
+
+    public function gettingAdminId(array $data , $adminIdToBeAssigned){
+
     }
 }

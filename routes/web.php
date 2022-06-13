@@ -23,6 +23,8 @@ Route::get('/', function () {
     return view('default_page');
 });
 
+Route::view('/register/{agent_email}', 'auth.register');
+
 Route::view('/agent/home/{agent_email}', 'welcome');
 Route::view('/agent/home/', 'welcome');
 
@@ -106,6 +108,8 @@ Route::group(['middleware'=> ['forAdmin']], function(){
     Route::get('/admin_dashboard/agents/delete/{id}', [ManageAgentController::class,'deleteData'])->name('deleteUserData');
 
     Route::post('/agent_set_as_default', [ManageAdminController::class, 'setAgentAsDefaultFunc'])->name('setAgentAsDefault');
+    Route::post('/agent_set_as_approved', [ManageAdminController::class, 'setAgentAsApprovedFunc'])->name('setAgentAsApproved');
+    Route::post('/agent_set_as_unapproved', [ManageAdminController::class, 'setAgentAsUnApprovedFunc'])->name('setAgentAsUnApproved');
 });
 
 

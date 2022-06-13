@@ -52,7 +52,7 @@
                                                 @if ($masterAdminData[0]['default_admin_id'] == $adminData[$i]->id)
                                                     {{-- <a class="btn btn-success"
                                                         href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}">Defaulted</a> --}}
-                                                    <button type="button" disabled class="btn btn-success">Defaulted</button>
+                                                    <button type="button" disabled class="btn btn-success">Default Admin</button>
                                                 @else
                                                     <a class="btn btn-primary" onclick="setAdminAsDefaultFunc({{$adminData[$i]->id}})"
                                                         {{-- href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}" --}}
@@ -61,10 +61,10 @@
 
 
                                                 <a class="btn btn-dark"
-                                                    href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}">Edit</a>
+                                                    href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}">Edit Admin & Agents</a>
                                                 <span class="">
                                                     <a class="btn btn-danger" onclick="deleteAdmin({{ $adminData[$i]->id }})">Delete</a>
-                                                    <a class="btn btn-danger" onclick="deleteOnlyAdminRole({{ $adminData[$i]->id }})">Delete Admin Role</a>
+                                                    <a class="btn btn-danger" onclick="deleteOnlyAdminRole({{ $adminData[$i]->id }})">Remove From Admin</a>
                                                 </span>
 
                                             </td>

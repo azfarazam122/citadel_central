@@ -156,6 +156,23 @@ class ManageAdminController extends Controller
 
     }
 
+    public function setAgentAsApprovedFunc(Request $req){
+        // return $req['id'];
+        $post = Agent::find($req['id']);
+        $post->is_approved = 'true';
+        $post->save();
+
+    }
+
+    public function setAgentAsUnApprovedFunc(Request $req){
+        // return $req['id'];
+        $post = Agent::find($req['id']);
+        $post->is_approved = 'false';
+        $post->save();
+
+    }
+
+
 
     // ___________________________________________________________
     // ___________________________________________________________

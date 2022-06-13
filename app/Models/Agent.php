@@ -9,4 +9,8 @@ class Agent extends Model
 {
     public $timestamps = false;
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+    ];
 }

@@ -13,7 +13,7 @@
 @section('content')
     <div class="height-100 bg-light">
         <div class="card secondaryTextColor">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center me-auto ms-auto col-12">
                 <div class="col-md-11">
                     <div class="">
                         <h1 class="card-header text-center">{{ __('Agents') }}
@@ -64,18 +64,28 @@
                                                 @php
                                                     $masterAdminData = App\Models\MasterSetting::all();
                                                 @endphp
+
                                                 @if ($masterAdminData[0]->default_agent_id == $agentData[$i]->id)
-                                                    <button type="button" disabled class="btn btn-success">Defaulted</button>
+                                                    <button type="button" disabled class="btn btn-success">Default Agent</button>
                                                 @else
                                                     <a class="btn btn-primary"
                                                         onclick="setAgentAsDefaultFunc({{$agentData[$i]->id}})">Set As Default</a>
                                                 @endif
+
+                                                @if ($agentData[$i]->is_approved == 'true')
+                                                    {{-- <button type="button"  class="btn btn-success">Approved</button> --}}
+                                                    <a class="btn btn-success"
+                                                        onclick="setAgentAsUnApprovedFunc({{$agentData[$i]->id}})">Approved</a>
+                                                @else
+                                                    <a class="btn btn-primary"
+                                                        onclick="setAgentAsApprovedFunc({{$agentData[$i]->id}})">Unapproved</a>
+                                                @endif
                                                 <a disable class="btn btn-secondary"
                                                     href="/admin_dashboard/agents/details/{{ $agentData[$i]->id }}">All
                                                     Details</a>
-                                                <a class="mt-1 btn btn-dark"
+                                                <a class=" btn btn-dark"
                                                     href="/admin_dashboard/agents/edit/{{ $agentData[$i]->id }}">Edit</a>
-                                                <a class="mt-1 btn btn-danger"
+                                                <a class=" btn btn-danger"
                                                     href="/admin_dashboard/agents/delete/{{ $agentData[$i]->id }}">Delete</a>
 
                                             </td>
@@ -103,9 +113,35 @@
         });
 
 
-        function setAgentAsDefaultFunc(admin_Id) {
+        function setAgentAsDefaultFunc(agent_Id) {
             axios.post("{{ route('setAgentAsDefault') }}", {
-                    id: admin_Id,
+                    id: agent_Id,
+                })
+                .then(function(response) {
+                    console.log(response);
+                    window.location.href = window.location.href
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
+        }
+
+        function setAgentAsApprovedFunc(agent_Id) {
+            axios.post("{{ route('setAgentAsApproved') }}", {
+                    id: agent_Id,
+                })
+                .then(function(response) {
+                    console.log(response);
+                    window.location.href = window.location.href
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
+        }
+
+        function setAgentAsUnApprovedFunc(agent_Id) {
+            axios.post("{{ route('setAgentAsUnApproved') }}", {
+                    id: agent_Id,
                 })
                 .then(function(response) {
                     console.log(response);

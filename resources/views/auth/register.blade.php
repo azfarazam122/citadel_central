@@ -123,7 +123,7 @@
             {{-- ____________________________________________ --}}
             <form id="homeBuyerForm" method="POST" action="{{ route('register') }}">
                 @csrf
-                <input type="text" style="display: none;" name="formNumber" value="1">
+                <input type="hidden" name="formNumber" value="1">
                 <div class="text-left form-group">
                     <label for="firstName">{{ __('First Name') }}</label>
                     <input type="text" class="form-control @error('firstName') is-invalid @enderror"
@@ -229,7 +229,8 @@
 
             <form style="display: none" id="realStateAgentForm" method="POST" action="{{ route('register') }}">
                 @csrf
-                <input type="text" style="display: none;" name="formNumber" value="2">
+                <input type="hidden" name="formNumber" value="2">
+                <input type="hidden" name="registerPage_url" value="{{$_SERVER['REQUEST_URI']}}" />
                 <div class="text-left form-group">
                     <label for="firstName">{{ __('First Name') }}</label>
                     <input type="text" class="form-control @error('firstName') is-invalid @enderror"
@@ -347,7 +348,8 @@
 
             <form style="display: none" id="mortgageProfessionalForm" method="POST" action="{{ route('register') }}">
                 @csrf
-                <input type="text" style="display: none;" name="formNumber" value="3">
+                <input type="hidden"  name="formNumber" value="3">
+                <input type="hidden" name="registerPage_url" value="{{$_SERVER['REQUEST_URI']}}" />
                 <div class="text-left form-group">
                     <label for="firstName">{{ __('First Name') }}</label>
                     <input type="text" class="form-control @error('firstName') is-invalid @enderror"

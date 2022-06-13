@@ -24,6 +24,8 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Logo</th>
+                                        <th>Default Admin Id</th>
+                                        <th>Default Agent Id</th>
                                         <th>Primary Color</th>
                                         <th>Secondary Color</th>
                                         <th>Tertiary Color</th>
@@ -40,9 +42,11 @@
                                         <td>{{$masterSettingData[0]->id}}</td>
                                         <td style="background: white !important;">
                                             <img  width="100px"
-                                                    src="../images/masterSettingPic/{{$masterSettingData[0]->logo}}"
-                                                    alt="Profile Pic " srcset="">
+                                            src="../images/masterSettingPic/{{$masterSettingData[0]->logo}}"
+                                            alt="Profile Pic " srcset="">
                                         </td>
+                                        <td>{{$masterSettingData[0]->default_admin_id}}</td>
+                                        <td>{{$masterSettingData[0]->default_agent_id}}</td>
                                         <td>{{$masterSettingData[0]->primary_color}}</td>
                                         <td>{{$masterSettingData[0]->secondary_color}}</td>
                                         <td>{{$masterSettingData[0]->tertiary_color}}</td>

@@ -15,18 +15,20 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card secondaryTextColor">
-                        <h1 class="fw-bold card-header text-center">{{ $agentData[0]->full_name }}
-                        </h1>
+                        <h1 class="fw-bold card-header text-center">Agent Profile</h1>
                         <div class="card-body">
                             <div class="container">
+                                @if ( $agentData[0]->is_approved == 'false')
+                                    <div id="agentPendingForApprovalMessage" class="text-center card primaryTextColor p-3">
+                                        <h4>Your Profile Is Pending For Approval</h4>
+                                    </div>
+                                @endif
                                 <form method="post" action="{{ route('updateDataForAgentLogin') }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="hiddenId" value="123" />
                                     {{-- <h3>{{ $agentData[0]->license_no }}</h3> --}}
-                                    <h3 class="mb-3">Edit <span class="text-capitalize text-decoration-underline">
-
-                                        </span>
+                                    <h3 class="mb-3">Edit <span class="text-capitalize text-decoration-underline"></span>
                                     </h3>
                                     <div class="form-group">
                                         <label for="">Id</label>

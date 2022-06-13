@@ -104,45 +104,45 @@ class ManageAgentController extends Controller
         'nameOfUser' => 'required|max:100',
         'emailOfUser' => 'required|unique:App\Models\User,email|max:100',
         'passwordOfUser' => 'required|max:100',
-    ]);
+        ]);
 
 
 
-    $file_path = "images/profile_pic/" . $request->emailOfAgent;
-    if (!file_exists($file_path)) {
-        mkdir($file_path, 0777, true);
-    }
-
-    $target_dir = "images/profile_pic/" . $request->emailOfAgent . "/" . $request->pathOfImage;
-    if (isset($_FILES["image"]["tmp_name"]) && $_FILES["image"]["tmp_name"] != '' ) {
-        $check = getimagesize($_FILES["image"]["tmp_name"]);
-        if($check !== false) {
-            $files = glob("images/profile_pic/" . $request->emailOfAgent ."/*" ); // get all file names
-            foreach($files as $file){ // iterate files
-                if(is_file($file)) {
-                    unlink($file); // delete file
-                }
-            }
-            move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir);
+        $file_path = "images/profile_pic/" . $request->emailOfAgent;
+        if (!file_exists($file_path)) {
+            mkdir($file_path, 0777, true);
         }
-    }
 
-    $user = new User;
-    $user->email = $request->emailOfUser;
-    $user->password =  Hash::make($request->passwordOfUser);
-    $user->save();
+        $target_dir = "images/profile_pic/" . $request->emailOfAgent . "/" . $request->pathOfImage;
+        if (isset($_FILES["image"]["tmp_name"]) && $_FILES["image"]["tmp_name"] != '' ) {
+            $check = getimagesize($_FILES["image"]["tmp_name"]);
+            if($check !== false) {
+                $files = glob("images/profile_pic/" . $request->emailOfAgent ."/*" ); // get all file names
+                foreach($files as $file){ // iterate files
+                    if(is_file($file)) {
+                        unlink($file); // delete file
+                    }
+                }
+                move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir);
+            }
+        }
 
-    $user_id = User::select('id')->where('email', $request->emailOfUser)->get();;
+        $user = new User;
+        $user->email = $request->emailOfUser;
+        $user->password =  Hash::make($request->passwordOfUser);
+        $user->save();
 
-    $admin = Auth::user();
+        $user_id = User::select('id')->where('email', $request->emailOfUser)->get();;
 
-    $admin = new Admin;
-    $admin->user_id = $user_id[0]->id;
-    $admin->name =  $request->nameOfUser;
-    $admin->master_admin_id =  $admin->id;
-    $admin->save();
+        $admin = Auth::user();
 
-     return $this->showAllData();
+        $admin = new Admin;
+        $admin->user_id = $user_id[0]->id;
+        $admin->name =  $request->nameOfUser;
+        $admin->master_admin_id =  $admin->id;
+        $admin->save();
+
+        return $this->showAllData();
     }
 
 
