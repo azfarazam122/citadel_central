@@ -40,7 +40,7 @@
               <i class='bx bx-menu bx-x' id="header-toggle"></i>
           </div>
       </div>
-      <div class="l-navbar show" id="nav-bar">
+      <div class="l-navbar show" style="height: 100%;" id="nav-bar">
           <div class="nav">
               <div>
                   <a href="/agent/home" class="nav_logo">
