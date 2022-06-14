@@ -54,7 +54,7 @@
                       </a>
 
                       @if ($userIsSuperAdmin == true)
-                          <a href="/admin_dashboard/super" class="nav_link">
+                          <a href="/admin_dashboard/super" id="superSettingsTab" class="nav_link">
                               <i id="superSettingsIcon" class='bx bx-grid-alt nav_icon'></i>
                               <span class="nav_name">Super Settings</span>
                           </a>
@@ -62,15 +62,15 @@
 
                       {{-- ___________________________________ --}}
                       @if ($userIsMasterAdmin == true)
-                          <a href="/admin_dashboard/master" class="nav_link">
+                          <a href="/admin_dashboard/master" id="masterSettingsTab" class="nav_link">
                               <i id="masterSettingsIcon" class='bx bx-grid-alt nav_icon'></i>
                               <span class="nav_name">Master Settings</span>
                           </a>
-                          <a href="/admin_dashboard/users" class="nav_link">
+                          <a href="/admin_dashboard/users" id="manageUsersTab" class="nav_link">
                               <i id="manageUsersIcon" class='bx bx-user nav_icon'></i>
                               <span class="nav_name">Manage Users</span>
                           </a>
-                          <a href="/admin_dashboard/admins" class="nav_link">
+                          <a href="/admin_dashboard/admins" id="manageAdminsTab" class="nav_link">
                               <i id="manageAdminsIcon" class='bx bx-user nav_icon'></i>
                               <span class="nav_name">Manage Admins</span>
                           </a>
@@ -78,17 +78,17 @@
                       {{-- ___________________________________ --}}
 
                       @if ($userIsAdmin == true)
-                          <a href="/admin_dashboard/agents" class="nav_link">
+                          <a href="/admin_dashboard/agents" id="manageAgentsTab" class="nav_link">
                               <i id="manageAgentsIcon" class='bx bx-bar-chart-alt-2 nav_icon'></i>
                               <span class="nav_name">Manage Agents</span>
                           </a>
-                          <a href="/admin_dashboard/admin" class="nav_link">
+                          <a href="/admin_dashboard/admin"  id="adminTab" class="nav_link">
                               <i id="adminIcon" class='bx bx-bar-chart-alt-2 nav_icon'></i>
                               <span class="nav_name">Admin</span>
                           </a>
                       @endif
                       @if ($userIsAgent == true)
-                          <a href="/admin_dashboard/agent" class="nav_link">
+                          <a href="/admin_dashboard/agent" id="yourProfileTab" class="nav_link">
                               <i id="yourProfileIcon" class='bx bx-bar-chart-alt-2 nav_icon'></i>
                               <span class="nav_name">Your Profile</span>
                           </a>
@@ -128,6 +128,7 @@
   </div>
 
   <!-- Production -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <script src="https://unpkg.com/tippy.js@6"></script>
   <script>
@@ -170,30 +171,39 @@
       tippy('#superAdminLoginIcon', {
           content: 'Super Admin Login',
       });
+      checkWhichTabIsOpen();
       function checkWhichTabIsOpen() {
-        if (window.location.href.includes("/admin_dashboard")) {
-            alert('Admin Dashboard')
-        }
         if (window.location.href.includes("/admin_dashboard/super")) {
-            alert('Super Settings')
+            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+            $("#superSettingsTab").addClass("changeColorOfSidebarSelectedTab");
         }
-        if (window.location.href.includes("/admin_dashboard/master")) {
-            alert('Master Settings')
+        else if (window.location.href.includes("/admin_dashboard/master")) {
+            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+            $("#masterSettingsTab").addClass("changeColorOfSidebarSelectedTab");
         }
-        if (window.location.href.includes("/admin_dashboard/users")) {
-            alert('Manage Users')
+        else if (window.location.href.includes("/admin_dashboard/users")) {
+            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+            $("#manageUsersTab").addClass("changeColorOfSidebarSelectedTab");
         }
-        if (window.location.href.includes("/admin_dashboard/admins")) {
-            alert('Manage Admins')
+        else if (window.location.href.includes("/admin_dashboard/admins")) {
+            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+            $("#manageAdminsTab").addClass("changeColorOfSidebarSelectedTab");
         }
-        if (window.location.href.includes("/admin_dashboard/agents")) {
-            alert('Manage Agents')
+        else if (window.location.href.includes("/admin_dashboard/agents")) {
+            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+            $("#manageAgentsTab").addClass("changeColorOfSidebarSelectedTab");
         }
-        if (window.location.href.includes("/admin_dashboard/admin")) {
-            alert('Admin')
+        else if (window.location.href.includes("/admin_dashboard/admin")) {
+            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+            $("#adminTab").addClass("changeColorOfSidebarSelectedTab");
         }
-        if (window.location.href.includes("/admin_dashboard/agent")) {
-            alert('Your Profile')
+        else if (window.location.href.includes("/admin_dashboard/agent")) {
+            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+            $("#yourProfileTab").addClass("changeColorOfSidebarSelectedTab");
+        }
+        else if (window.location.href.includes("/admin_dashboard")) {
+            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+            $("#adminDashboardTab").addClass("changeColorOfSidebarSelectedTab");
         }
 
       }
