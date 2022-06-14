@@ -10,12 +10,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
 @endsection
 @section('content')
-    <div class="height-100 bg-light">
+    <div class="height-100 ">
         <div class="">
-            <div class="row justify-content-center">
+            <div class="row overflow-auto justify-content-center">
                 <div class="col-md-8">
-                    <div class="card secondaryTextColor">
-                        <h1 class="fw-bold card-header text-center">Agent Profile</h1>
+                    <div class=" secondaryTextColor">
+                        <h1 class="fw-bold text-center">Agent Profile</h1>
+                        <hr>
                         <div class="card-body">
                             <div class="container">
                                 @if ( $agentData[0]->is_approved == 'false')

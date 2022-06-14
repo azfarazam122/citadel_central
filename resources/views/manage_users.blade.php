@@ -10,13 +10,14 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
 @endsection
 @section('content')
-    <div class="height-100 bg-light">
+    <div class="height-100">
         <div class="">
-            <div class="row justify-content-center">
+            <div class="row overflow-auto justify-content-center">
                 <div class="col-md-11">
-                    <div class="card secondaryTextColor">
-                        <h1 class="card-header text-center">{{ __('Users') }}
+                    <div class="secondaryTextColor">
+                        <h1 class="text-center">{{ __('Users') }}
                         </h1>
+                        <hr>
                         <div class="card-body">
                             <h3>Manage Users</h3>
                             <div>

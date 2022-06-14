@@ -12,14 +12,14 @@
 @endsection
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class=" overflow-auto row justify-content-center">
             <div class="col-md-8">
                 <div class="card secondaryTextColor">
-                    <h1 class="card-header text-center">{{ __('Change Password') }}
+                    <h1 class="text-center">{{ __('Change Password') }}
                     </h1>
+                    <hr>
                     <div class="card-body">
-                        <h3>Change Password</h3>
-                        <div class="form-group mt-4">
+                        <div class="form-group">
                             <label for="newPassword">
                                 New Password
                             </label>

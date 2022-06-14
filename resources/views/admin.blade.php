@@ -10,13 +10,14 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
 @endsection
 @section('content')
-     <div class="height-100 bg-light">
+     <div class="height-100 ">
         <div class="">
-            <div class="row justify-content-center ms-auto me-auto">
+            <div class="row justify-content-center overflow-auto ms-auto me-auto">
                 <div class="col-md-11">
-                    <div class="card secondaryTextColor">
-                        <h1 class="card-header text-center">{{ __('Admin Settings') }}
+                    <div class=" secondaryTextColor">
+                        <h1 class=" text-center">{{ __('Admin Settings') }}
                         </h1>
+                        <hr>
                          <div class="card-body">
                             {{-- <h3>Manage Users</h3> --}}
                             <table id="adminSettingsTable" class="display">

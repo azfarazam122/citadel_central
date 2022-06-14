@@ -173,7 +173,7 @@
       });
       checkWhichTabIsOpen();
       function checkWhichTabIsOpen() {
-        if (window.location.href.includes("/admin_dashboard/super")) {
+        if(window.location.href.includes("/admin_dashboard/super")) {
             $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
             $("#superSettingsTab").addClass("changeColorOfSidebarSelectedTab");
         }

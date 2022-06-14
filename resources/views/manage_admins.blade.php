@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
 @endsection
 @section('content')
-    <div class="height-100 bg-light">
+    <div class="height-100">
         <div class="">
-            <div class="row ms-auto me-auto justify-content-center">
+            <div class="row overflow-auto ms-auto me-auto justify-content-center">
                 <div class="col-md-11">
-                    <div class="card secondaryTextColor">
-                        <h1 class="card-header text-center">{{ __('Admins') }}
+                    <div class="secondaryTextColor">
+                        <h1 class="text-center">{{ __('Admins') }}
                         </h1>
+                        <hr>
                         <div class="card-body">
                             <h3>Manage Admins</h3>
                             <div>

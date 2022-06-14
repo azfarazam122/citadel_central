@@ -12,13 +12,14 @@
 
 
 @section('content')
-    <div class="height-100 bg-light">
+    <div class="height-100">
         <div class="">
-            <div class="row justify-content-center ms-auto me-auto">
+            <div class="row overflow-auto justify-content-center ms-auto me-auto">
                 <div class="col-md-11">
-                    <div class="card secondaryTextColor">
-                        <h1 class="card-header text-center">{{ __('Super Settings') }}
+                    <div class=" secondaryTextColor">
+                        <h1 class=" text-center">{{ __('Super Settings') }}
                         </h1>
+                        <hr>
                          <div class="card-body">
                             {{-- <h3>Manage Users</h3> --}}
                             <table id="superSettingsTable" class="display">

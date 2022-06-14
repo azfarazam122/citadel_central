@@ -11,13 +11,14 @@
 @endsection
 
 @section('content')
-    <div class="height-100 bg-light">
-        <div class="card secondaryTextColor">
-            <div class="row justify-content-center me-auto ms-auto col-12">
+    <div class="height-100 ">
+        <div class=" secondaryTextColor">
+            <div class="row overflow-auto justify-content-center me-auto ms-auto col-12">
                 <div class="col-md-11">
                     <div class="">
-                        <h1 class="card-header text-center">{{ __('Agents') }}
+                        <h1 class="text-center">{{ __('Agents') }}
                         </h1>
+                        <hr>
                         <div class="card-body">
                             <h3>Manage Agents</h3>
                             <div>
