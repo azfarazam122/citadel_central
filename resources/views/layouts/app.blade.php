@@ -27,40 +27,44 @@
         $colorFromMasterAdmin;
         if ($masterAdminData[0]->is_super_brandnig_on == 'false') {
             $colorFromMasterAdmin = $masterAdminData;
-        }else{
+        } else {
             $colorFromMasterAdmin = $superAdminData;
         }
     @endphp
     <style>
         :root {
             --primary-color: <?php echo $colorFromMasterAdmin[0]->primary_color; ?>;
-            --secondary-color:  <?php echo $colorFromMasterAdmin[0]->secondary_color; ?>;
-            --tertiary-color:  <?php echo $colorFromMasterAdmin[0]->tertiary_color; ?>;
+            --secondary-color: <?php echo $colorFromMasterAdmin[0]->secondary_color; ?>;
+            --tertiary-color: <?php echo $colorFromMasterAdmin[0]->tertiary_color; ?>;
             --primary-text-color: <?php echo $colorFromMasterAdmin[0]->primary_text_color; ?>;
-            --secondary-text-color:  <?php echo $colorFromMasterAdmin[0]->secondary_text_color; ?>;
-            --tertiary-text-color:  <?php echo $colorFromMasterAdmin[0]->tertiary_text_color; ?>;
-            --fourth-text-color:  <?php echo $colorFromMasterAdmin[0]->fourth_text_color; ?>;
+            --secondary-text-color: <?php echo $colorFromMasterAdmin[0]->secondary_text_color; ?>;
+            --tertiary-text-color: <?php echo $colorFromMasterAdmin[0]->tertiary_text_color; ?>;
+            --fourth-text-color: <?php echo $colorFromMasterAdmin[0]->fourth_text_color; ?>;
             --lightTextColor: #707b89;
             --white-color: #fff;
 
         }
-        .primaryTextColor{
+
+        .primaryTextColor {
             color: var(--primary-text-color) !important;
         }
-        .secondaryTextColor{
+
+        .secondaryTextColor {
             color: var(--secondary-text-color) !important;
         }
-        .tertiaryTextColor{
+
+        .tertiaryTextColor {
             color: var(--tertiary-text-color) !important;
         }
-        .fourthTextColor{
+
+        .fourthTextColor {
             color: var(--fourth-text-color) !important;
         }
 
 
 
         .homeButtons {
-            color: var(--secondary-text-color) ;
+            color: var(--secondary-text-color);
             font-size: 18px;
             padding: 17px;
             background: var(--primary-color);
@@ -78,7 +82,6 @@
             color: white;
             border: 1px solid white !important; */
         }
-
     </style>
 
     @yield('libraries')
@@ -116,24 +119,23 @@
                                     $emailFound = 'false';
                                     if (strpos($url, '@')) {
                                         $emailFound = 'true';
-                                        $userEmail = explode("/",$url);
-                                        $userEmail = $userEmail[count($userEmail)-1];
+                                        $userEmail = explode('/', $url);
+                                        $userEmail = $userEmail[count($userEmail) - 1];
                                     }
                                 @endphp
 
-                                @if ($emailFound == "true")
-
+                                @if ($emailFound == 'true')
                                     <li class="nav-item">
                                         <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
-                                            href="/agent/home/{{$userEmail}}">{{ __('Home') }}</a>
+                                            href="/agent/home/{{ $userEmail }}">{{ __('Home') }}</a>
                                     </li>
                                     <li class="nav-item">
                                         <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
-                                            href="/agent/about/{{$userEmail}}">{{ __('About') }}</a>
+                                            href="/agent/about/{{ $userEmail }}">{{ __('About') }}</a>
                                     </li>
                                     <li class="nav-item">
                                         <a style="color: var(--primary-text-color);" target="blank" class="nav-link"
-                                            href="/agent/rates/{{$userEmail}}">{{ __('Rates') }}</a>
+                                            href="/agent/rates/{{ $userEmail }}">{{ __('Rates') }}</a>
                                     </li>
                                 @else
                                     <li class="nav-item">
@@ -182,9 +184,9 @@
                                     @endif
                                 @else
                                     <li class="nav-item dropdown">
-                                        <a style="color: var(--primary-text-color);" id="navbarDropdown" class="nav-link dropdown-toggle"
-                                            href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false" v-pre>
+                                        <a style="color: var(--primary-text-color);" id="navbarDropdown"
+                                            class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->email }}
                                         </a>
 

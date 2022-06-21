@@ -23,6 +23,9 @@ Route::get('/', function () {
     return view('default_page');
 });
 
+Route::view('/terms_conditions', 'terms');
+Route::view('/privacy_policy', 'privacy');
+
 Route::view('/register/{agent_email}', 'auth.register');
 
 Route::view('/agent/home/{agent_email}', 'welcome');

@@ -15,7 +15,6 @@
                 display: none;
             }
         }
-
     </style>
 @endsection
 
@@ -110,11 +109,12 @@
             <form id="loginForm" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="row mb-3">
-                    <label for="email" class="mr-2 col-md-4 col-form-label text-md-end">{{ __('Email Address  ') }}</label>
+                    <label for="email"
+                        class="mr-2 col-md-4 col-form-label text-md-end">{{ __('Email Address  ') }}</label>
 
                     <div class="col-md-6">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                            value="Tristan.kirk@citadelmortgages.ca" required autocomplete="email" autofocus>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                            name="email" value="Tristan.kirk@citadelmortgages.ca" required autocomplete="email" autofocus>
 
                         @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -173,12 +173,10 @@
                     <div class="col-md-6">
                         <small>
                             By clicking the "Sign up" button, you are creating a
-                            RELNKS account, and you agree to RELNKS's
-                            <a href="https://www.relnks.com/terms-and-conditions/" target="_blank"
-                                class="link signup-link">Terms of Use
+                            Your Broker Journey account, and you agree to Your Broker Journey's
+                            <a href="/terms_conditions" target="_blank" class="link signup-link">Terms of Use
                             </a> and
-                            <a href="https://www.relnks.com/privacy-policy/" target="_blank"
-                                class="link signup-link">Privacy
+                            <a href="/privacy_policy" target="_blank" class="link signup-link">Privacy
                                 Policy
                             </a>.
                         </small>

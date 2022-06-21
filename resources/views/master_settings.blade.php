@@ -8,6 +8,7 @@
 @section('libraries')
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
+    <link href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="height-100 ">
@@ -18,7 +19,7 @@
                         <h1 class=" text-center">{{ __('Master Settings') }}
                         </h1>
                         <hr>
-                          <div class="card-body">
+                        <div class="card-body">
                             {{-- <h3>Manage Users</h3> --}}
                             <table id="masterSettingsTable" class="display">
                                 <thead>
@@ -40,22 +41,22 @@
                                 </thead>
                                 <tbody id="masterSettingsTableBody">
                                     <tr>
-                                        <td>{{$masterSettingData[0]->id}}</td>
+                                        <td>{{ $masterSettingData[0]->id }}</td>
                                         <td style="background: white !important;">
-                                            <img  width="100px"
-                                            src="../images/masterSettingPic/{{$masterSettingData[0]->logo}}"
-                                            alt="Profile Pic " srcset="">
+                                            <img width="100px"
+                                                src="../images/masterSettingPic/{{ $masterSettingData[0]->logo }}"
+                                                alt="Profile Pic " srcset="">
                                         </td>
-                                        <td>{{$masterSettingData[0]->default_admin_id}}</td>
-                                        <td>{{$masterSettingData[0]->default_agent_id}}</td>
-                                        <td>{{$masterSettingData[0]->primary_color}}</td>
-                                        <td>{{$masterSettingData[0]->secondary_color}}</td>
-                                        <td>{{$masterSettingData[0]->tertiary_color}}</td>
-                                        <td>{{$masterSettingData[0]->primary_text_color}}</td>
-                                        <td>{{$masterSettingData[0]->secondary_text_color}}</td>
-                                        <td>{{$masterSettingData[0]->tertiary_text_color}}</td>
-                                        <td>{{$masterSettingData[0]->fourth_text_color}}</td>
-                                        <td>{{$masterSettingData[0]->is_super_brandnig_on}}</td>
+                                        <td>{{ $masterSettingData[0]->default_admin_id }}</td>
+                                        <td>{{ $masterSettingData[0]->default_agent_id }}</td>
+                                        <td>{{ $masterSettingData[0]->primary_color }}</td>
+                                        <td>{{ $masterSettingData[0]->secondary_color }}</td>
+                                        <td>{{ $masterSettingData[0]->tertiary_color }}</td>
+                                        <td>{{ $masterSettingData[0]->primary_text_color }}</td>
+                                        <td>{{ $masterSettingData[0]->secondary_text_color }}</td>
+                                        <td>{{ $masterSettingData[0]->tertiary_text_color }}</td>
+                                        <td>{{ $masterSettingData[0]->fourth_text_color }}</td>
+                                        <td>{{ $masterSettingData[0]->is_super_brandnig_on }}</td>
                                         <td>
                                             <a class="btn btn-dark btn-toolbar"
                                                 href="/admin_dashboard/master/edit/{{ $masterSettingData[0]->id }}">Edit</a>
@@ -63,7 +64,13 @@
                                     </tr>
                                 </tbody>
                             </table>
+
                         </div>
+                    </div>
+
+
+                    <div class="mt-5">
+                        <textarea class="col-md-12 mt-5" id="sample">Hi</textarea>
                     </div>
                 </div>
             </div>
@@ -74,11 +81,12 @@
     <!-- Scripts -->
     <script src="{{ asset('js/masterSettings.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
     <script>
         $(document).ready(function() {
-         $('#masterSettingsTable').DataTable();
-
+            $('#masterSettingsTable').DataTable();
+            var editor = SUNEDITOR.create((document.getElementById('sample')), {});
         });
     </script>
 
