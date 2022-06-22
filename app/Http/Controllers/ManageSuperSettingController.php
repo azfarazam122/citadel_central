@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SuperSetting;
+use App\Models\MasterSetting;
 use App\Models\User;
 use App\Models\SuperAdmin;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +56,34 @@ class ManageSuperSettingController extends Controller
         $post->save();
 
          return $this->showAllDataOfSuperSettings();
+    }
+
+       // ____________________________________________
+    public function saveTermsPageData(Request $req){
+        $post = SuperSetting::find(1);
+        $post->terms_data = $req['newData'];;
+        $post->save();
+
+        $superBrandingOn = MasterSetting::all('is_super_brandnig_on');
+        if ($superBrandingOn[0]->is_super_brandnig_on == 'false') {
+            echo "Saved";
+        }else{
+            echo "Saved And Applied";
+        }
+    }
+
+    public function savePrivacyPageData(Request $req){
+        $post = SuperSetting::find(1);
+        $post->privacy_data = $req['newData'];;
+        $post->save();
+
+        $superBrandingOn = MasterSetting::all('is_super_brandnig_on');
+        if ($superBrandingOn[0]->is_super_brandnig_on == 'false') {
+            echo "Saved";
+        }else{
+            echo "Saved And Applied";
+        }
+
     }
 
 }

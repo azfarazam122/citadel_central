@@ -9,15 +9,16 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
     <link href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
 @endsection
 @section('content')
     <div class="height-100 ">
         <div class="">
-            <div class="row  overflow-auto ms-auto me-auto justify-content-center">
+            <div class="row  ms-auto me-auto justify-content-center">
                 <div class="col-md-11">
-                    <div class=" secondaryTextColor">
-                        <h1 class=" text-center">{{ __('Master Settings') }}
-                        </h1>
+                    <div class="overflow-auto secondaryTextColor border">
+                        <p class="display-3 text-center">{{ __('Master Settings') }}
+                        </p>
                         <hr>
                         <div class="card-body">
                             {{-- <h3>Manage Users</h3> --}}
@@ -69,8 +70,27 @@
                     </div>
 
 
-                    <div class="mt-5">
-                        <textarea class="col-md-12 mt-5" id="sample">Hi</textarea>
+                    <div class="container mt-5 mb-5">
+                        <p class="text-center display-5">Terms & Conditions Page</p>
+                        <textarea style="height: 500px;width: 100%;" class="col-md-12 mt-5" id="termsPageTemplate">
+                            {{ $masterSettingData[0]->terms_data }}
+                        </textarea>
+                        <div class="mt-4 text-center">
+                            <a class="btn col-md-4 homeButtons" style="background: var(--primary-color)"
+                                onclick="saveTermsPageData()">Save Terms Page</a>
+                        </div>
+                    </div>
+
+                    <div class="container mt-5 mb-5">
+                        <p class="text-center display-5">Privacy Policy Page</p>
+                        <h1></h1>
+                        <textarea style="height: 500px;width: 100%;" class="col-md-12 mt-5" id="privacyPageTemplate">
+                            {{ $masterSettingData[0]->privacy_data }}
+                        </textarea>
+                        <div class="mt-4 text-center">
+                            <a class="btn col-md-4 homeButtons" style="background: var(--primary-color)"
+                                onclick="savePrivacyPageData()">Save Privacy Page</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -79,16 +99,53 @@
 @endsection
 @section('scripts')
     <!-- Scripts -->
-    <script src="{{ asset('js/masterSettings.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script>
+        var termsPageeditor;
+        var privacyPageeditor;
         $(document).ready(function() {
             $('#masterSettingsTable').DataTable();
-            var editor = SUNEDITOR.create((document.getElementById('sample')), {});
+            termsPageeditor = SUNEDITOR.create((document.getElementById('termsPageTemplate')), {});
+            privacyPageeditor = SUNEDITOR.create((document.getElementById('privacyPageTemplate')), {});
         });
-    </script>
 
+
+        function saveTermsPageData() {
+            axios.post("{{ route('saveTermsPageDataByMaster') }}", {
+                    newData: termsPageeditor.getContents(),
+                })
+                .then(function(response) {
+                    console.log(response);
+                    Swal.fire(
+                        'Saved!',
+                        "Content For Terms And Conditions Page Saved Successfully",
+                        'success'
+                    )
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
+        }
+
+        function savePrivacyPageData() {
+            axios.post("{{ route('savePrivacyPageDataByMaster') }}", {
+                    newData: privacyPageeditor.getContents(),
+                })
+                .then(function(response) {
+                    console.log(response);
+                    Swal.fire(
+                        'Saved!',
+                        "Content For Privacy Policy Page Saved Successfully",
+                        'success'
+                    )
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
+        }
+    </script>
     <!-- Scripts -->
 @endsection

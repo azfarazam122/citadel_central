@@ -24,22 +24,22 @@
     @php
         $masterAdminData = App\Models\MasterSetting::all();
         $superAdminData = App\Models\SuperSetting::all();
-        $colorFromMasterAdmin;
+        $colorApplyOnAllPages;
         if ($masterAdminData[0]->is_super_brandnig_on == 'false') {
-            $colorFromMasterAdmin = $masterAdminData;
+            $colorApplyOnAllPages = $masterAdminData;
         } else {
-            $colorFromMasterAdmin = $superAdminData;
+            $colorApplyOnAllPages = $superAdminData;
         }
     @endphp
     <style>
         :root {
-            --primary-color: <?php echo $colorFromMasterAdmin[0]->primary_color; ?>;
-            --secondary-color: <?php echo $colorFromMasterAdmin[0]->secondary_color; ?>;
-            --tertiary-color: <?php echo $colorFromMasterAdmin[0]->tertiary_color; ?>;
-            --primary-text-color: <?php echo $colorFromMasterAdmin[0]->primary_text_color; ?>;
-            --secondary-text-color: <?php echo $colorFromMasterAdmin[0]->secondary_text_color; ?>;
-            --tertiary-text-color: <?php echo $colorFromMasterAdmin[0]->tertiary_text_color; ?>;
-            --fourth-text-color: <?php echo $colorFromMasterAdmin[0]->fourth_text_color; ?>;
+            --primary-color: <?php echo $colorApplyOnAllPages[0]->primary_color; ?>;
+            --secondary-color: <?php echo $colorApplyOnAllPages[0]->secondary_color; ?>;
+            --tertiary-color: <?php echo $colorApplyOnAllPages[0]->tertiary_color; ?>;
+            --primary-text-color: <?php echo $colorApplyOnAllPages[0]->primary_text_color; ?>;
+            --secondary-text-color: <?php echo $colorApplyOnAllPages[0]->secondary_text_color; ?>;
+            --tertiary-text-color: <?php echo $colorApplyOnAllPages[0]->tertiary_text_color; ?>;
+            --fourth-text-color: <?php echo $colorApplyOnAllPages[0]->fourth_text_color; ?>;
             --lightTextColor: #707b89;
             --white-color: #fff;
 
@@ -76,11 +76,24 @@
         }
 
         .customButtonWithLinks:hover {
-            transition: transform .3s;
+            transition: transform 0.3s;
             transform: scale(1.1);
-            /* background: black;
-            color: white;
-            border: 1px solid white !important; */
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(200, 200, 200, 1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: var(--tertiary-color);
+            -webkit-box-shadow: inset 0 0 6px rgba(90, 90, 90, 0.7);
         }
     </style>
 

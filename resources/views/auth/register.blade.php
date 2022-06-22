@@ -17,7 +17,6 @@
                 display: none;
             }
         }
-
     </style>
 @endsection
 
@@ -38,14 +37,15 @@
             <div class="col-md-9 row">
                 <div class="col-md-3">
                     <button type="button" onclick="displayFieldsOfButton('homeBuyerBtn_RegForm')" name=""
-                        id="homeBuyerBtn_RegForm" style="border-right:1px solid; border-bottom:2px solid #dbac28;" class="btn btn-light w-100">
+                        id="homeBuyerBtn_RegForm" style="border-right:1px solid; border-bottom:2px solid #dbac28;"
+                        class="btn btn-light w-100">
                         Homebuyer
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button type="button" onclick="displayFieldsOfButton('realStateAgentBtn_RegForm')" name=""
                         id="realStateAgentBtn_RegForm" style="border-right:1px solid;" class="btn btn-light w-100">
-                        Real State Agent
+                        Real Estate Agent
                     </button>
                 </div>
                 <div class="col-md-3">
@@ -151,7 +151,19 @@
                     <select id="province" name="province" class="form-control @error('province') is-invalid @enderror"
                         value="{{ old('province') }}" required>
                         <option selected>Choose...</option>
+                        <option>Alberta</option>
+                        <option>British Columbia</option>
+                        <option>Manitoba</option>
+                        <option>New Brunswick</option>
+                        <option>Newfoundland and Labrador</option>
+                        <option>Northwest Territories</option>
+                        <option>Nova Scotia</option>
+                        <option>Nunavut</option>
                         <option>Ontario</option>
+                        <option>Prince Edward Island</option>
+                        <option>Quebec</option>
+                        <option>Saskatchewan</option>
+                        <option>Yukon</option>
                     </select>
                     @error('province')
                         <span class="invalid-feedback" role="alert">
@@ -171,8 +183,8 @@
                 </div>
                 <div class="text-left" style="margin-top: -10px">
                     <small class="text-left">We do not share email address’ with any third-party
-                        vendors. To learn more, please read our <a href="https://www.relnks.com/privacy-policy/"
-                            target="_blank" class="link signup-link">Privacy
+                        vendors. To learn more, please read our <a href="/privacy_policy" target="_blank"
+                            class="link signup-link">Privacy
                             Policy.</a>
                     </small>
                 </div>
@@ -216,11 +228,10 @@
                 <div class="text-left" style="margin-top: -10px">
                     <small>
                         By clicking the "Sign up" button, you are creating a
-                        RELNKS account, and you agree to RELNKS's
-                        <a href="https://www.relnks.com/terms-and-conditions/" target="_blank"
-                            class="link signup-link">Terms of Use
+                        RELNKS account, and you agree to Your Broker Journey
+                        <a href="/terms_conditions" target="_blank" class="link signup-link">Terms of Use
                         </a> and
-                        <a href="https://www.relnks.com/privacy-policy/" target="_blank" class="link signup-link">Privacy
+                        <a href="/privacy_policy" target="_blank" class="link signup-link">Privacy
                             Policy
                         </a>.
                     </small>
@@ -230,7 +241,7 @@
             <form style="display: none" id="realStateAgentForm" method="POST" action="{{ route('register') }}">
                 @csrf
                 <input type="hidden" name="formNumber" value="2">
-                <input type="hidden" name="registerPage_url" value="{{$_SERVER['REQUEST_URI']}}" />
+                <input type="hidden" name="registerPage_url" value="{{ $_SERVER['REQUEST_URI'] }}" />
                 <div class="text-left form-group">
                     <label for="firstName">{{ __('First Name') }}</label>
                     <input type="text" class="form-control @error('firstName') is-invalid @enderror"
@@ -258,7 +269,19 @@
                     <select id="province" name="province" class="form-control @error('province') is-invalid @enderror"
                         value="{{ old('province') }}" required>
                         <option selected>Choose...</option>
+                        <option>Alberta</option>
+                        <option>British Columbia</option>
+                        <option>Manitoba</option>
+                        <option>New Brunswick</option>
+                        <option>Newfoundland and Labrador</option>
+                        <option>Northwest Territories</option>
+                        <option>Nova Scotia</option>
+                        <option>Nunavut</option>
                         <option>Ontario</option>
+                        <option>Prince Edward Island</option>
+                        <option>Quebec</option>
+                        <option>Saskatchewan</option>
+                        <option>Yukon</option>
                     </select>
                     @error('province')
                         <span class="invalid-feedback" role="alert">
@@ -290,8 +313,8 @@
                 </div>
                 <div class="text-left" style="margin-top: -10px">
                     <small class="text-left">We do not share email address’ with any third-party
-                        vendors. To learn more, please read our <a href="https://www.relnks.com/privacy-policy/"
-                            target="_blank" class="link signup-link">Privacy
+                        vendors. To learn more, please read our <a href="/privacy_policy" target="_blank"
+                            class="link signup-link">Privacy
                             Policy.</a>
                     </small>
                 </div>
@@ -335,21 +358,21 @@
                 <div class="text-left" style="margin-top: -10px">
                     <small>
                         By clicking the "Sign up" button, you are creating a
-                        RELNKS account, and you agree to RELNKS's
-                        <a href="https://www.relnks.com/terms-and-conditions/" target="_blank"
-                            class="link signup-link">Terms of Use
+                        RELNKS account, and you agree to Your Broker Journey
+                        <a href="/terms_conditions" target="_blank" class="link signup-link">Terms of Use
                         </a> and
-                        <a href="https://www.relnks.com/privacy-policy/" target="_blank" class="link signup-link">Privacy
+                        <a href="/privacy_policy" target="_blank" class="link signup-link">Privacy
                             Policy
                         </a>.
                     </small>
                 </div>
             </form>
 
-            <form style="display: none" id="mortgageProfessionalForm" method="POST" action="{{ route('register') }}">
+            <form style="display: none" id="mortgageProfessionalForm" method="POST"
+                action="{{ route('register') }}">
                 @csrf
-                <input type="hidden"  name="formNumber" value="3">
-                <input type="hidden" name="registerPage_url" value="{{$_SERVER['REQUEST_URI']}}" />
+                <input type="hidden" name="formNumber" value="3">
+                <input type="hidden" name="registerPage_url" value="{{ $_SERVER['REQUEST_URI'] }}" />
                 <div class="text-left form-group">
                     <label for="firstName">{{ __('First Name') }}</label>
                     <input type="text" class="form-control @error('firstName') is-invalid @enderror"
@@ -377,7 +400,19 @@
                     <select id="province" name="province" class="form-control @error('province') is-invalid @enderror"
                         value="{{ old('province') }}" required>
                         <option selected>Choose...</option>
+                        <option>Alberta</option>
+                        <option>British Columbia</option>
+                        <option>Manitoba</option>
+                        <option>New Brunswick</option>
+                        <option>Newfoundland and Labrador</option>
+                        <option>Northwest Territories</option>
+                        <option>Nova Scotia</option>
+                        <option>Nunavut</option>
                         <option>Ontario</option>
+                        <option>Prince Edward Island</option>
+                        <option>Quebec</option>
+                        <option>Saskatchewan</option>
+                        <option>Yukon</option>
                     </select>
                     @error('province')
                         <span class="invalid-feedback" role="alert">
@@ -401,9 +436,9 @@
 
                     <div class="text-left col-md-6 form-group">
                         <label for="broker_house">{{ __('Broker House') }}</label>
-                        <input type="text" class="form-control @error('broker_house') is-invalid @enderror" value="Verico"
-                            readonly required autocomplete="broker_house" name="broker_house" id="broker_house"
-                            placeholder="">
+                        <input type="text" class="form-control @error('broker_house') is-invalid @enderror"
+                            value="Verico" readonly required autocomplete="broker_house" name="broker_house"
+                            id="broker_house" placeholder="">
                         @error('broker_house')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -424,8 +459,8 @@
                 </div>
                 <div class="text-left" style="margin-top: -10px">
                     <small class="text-left">We do not share email address’ with any third-party
-                        vendors. To learn more, please read our <a href="https://www.relnks.com/privacy-policy/"
-                            target="_blank" class="link signup-link">Privacy
+                        vendors. To learn more, please read our <a href="/privacy_policy" target="_blank"
+                            class="link signup-link">Privacy
                             Policy.</a>
                     </small>
                 </div>
@@ -469,11 +504,10 @@
                 <div class="text-left" style="margin-top: -10px">
                     <small>
                         By clicking the "Sign up" button, you are creating a
-                        RELNKS account, and you agree to RELNKS's
-                        <a href="https://www.relnks.com/terms-and-conditions/" target="_blank"
-                            class="link signup-link">Terms of Use
+                        RELNKS account, and you agree to Your Broker Journey
+                        <a href="/terms_conditions" target="_blank" class="link signup-link">Terms of Use
                         </a> and
-                        <a href="https://www.relnks.com/privacy-policy/" target="_blank" class="link signup-link">Privacy
+                        <a href="/privacy_policy" target="_blank" class="link signup-link">Privacy
                             Policy
                         </a>.
                     </small>

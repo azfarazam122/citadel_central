@@ -37,7 +37,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="adminsListTableBody">
-                                     {{-- {{ $adminData[0]->email }} --}}
+                                    {{-- {{ $adminData[0]->email }} --}}
 
                                     @for ($i = 0; $i < count($adminData); $i++)
                                         <tr>
@@ -53,19 +53,24 @@
                                                 @if ($masterAdminData[0]['default_admin_id'] == $adminData[$i]->id)
                                                     {{-- <a class="btn btn-success"
                                                         href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}">Defaulted</a> --}}
-                                                    <button type="button" disabled class="btn btn-success">Default Admin</button>
+                                                    <button type="button" disabled class="btn btn-success">Default
+                                                        Admin</button>
                                                 @else
-                                                    <a class="btn btn-primary" onclick="setAdminAsDefaultFunc({{$adminData[$i]->id}})"
-                                                        {{-- href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}" --}}
-                                                        >Set As Default</a>
+                                                    <a class="btn btn-primary"
+                                                        onclick="setAdminAsDefaultFunc({{ $adminData[$i]->id }})"
+                                                        {{-- href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}" --}}>Set As Default</a>
                                                 @endif
 
 
                                                 <a class="btn btn-dark"
-                                                    href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}">Edit Admin & Agents</a>
+                                                    href="/admin_dashboard/admins/edit/{{ $adminData[$i]->user_id }}">Edit
+                                                    Admin & Agents</a>
                                                 <span class="">
-                                                    <a class="btn btn-danger" onclick="deleteAdmin({{ $adminData[$i]->id }})">Delete</a>
-                                                    <a class="btn btn-danger" onclick="deleteOnlyAdminRole({{ $adminData[$i]->id }})">Remove From Admin</a>
+                                                    <a class="btn btn-danger"
+                                                        onclick="deleteAdmin({{ $adminData[$i]->id }})">Delete</a>
+                                                    <a class="btn btn-danger"
+                                                        onclick="deleteOnlyAdminRole({{ $adminData[$i]->id }})">Remove
+                                                        From Admin</a>
                                                 </span>
 
                                             </td>
@@ -86,12 +91,10 @@
     <script src="{{ asset('js/masterSettings.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script>
         $(document).ready(function() {
-
             $('#adminsListTable').DataTable();
-
         });
 
         function deleteAdmin(userId) {
@@ -101,8 +104,8 @@
                     cancelButton: 'btn btn-danger'
                 },
                 buttonsStyling: false
-                })
-                swalWithBootstrapButtons.fire({
+            })
+            swalWithBootstrapButtons.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
@@ -110,33 +113,33 @@
                 confirmButtonText: 'Yes, delete it!',
                 cancelButtonText: 'No, cancel!',
                 reverseButtons: true
-                }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
 
-                axios.post("{{ route('deleteAllRoles') }}", {
-                    id: userId,
-                })
-                .then(function(response) {
-                    debugger;
-                    console.log(response);
-                    swalWithBootstrapButtons.fire(
-                        'Deleted!',
-                        "Admin Including All It's role has been deleted.",
-                        'success'
-                    )
-                })
-                .catch(function(error) {
-                    console.log(error.response);
-                });
+                    axios.post("{{ route('deleteAllRoles') }}", {
+                            id: userId,
+                        })
+                        .then(function(response) {
+                            debugger;
+                            console.log(response);
+                            swalWithBootstrapButtons.fire(
+                                'Deleted!',
+                                "Admin Including All It's role has been deleted.",
+                                'success'
+                            )
+                        })
+                        .catch(function(error) {
+                            console.log(error.response);
+                        });
 
                 } else if (
                     /* Read more about handling dismissals below */
                     result.dismiss === Swal.DismissReason.cancel
                 ) {
                     swalWithBootstrapButtons.fire(
-                    'Cancelled',
-                    'Admin is safe :)',
-                    'error'
+                        'Cancelled',
+                        'Admin is safe :)',
+                        'error'
                     )
                 }
             })
@@ -154,31 +157,32 @@
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
-            if (result.isConfirmed) {
+                if (result.isConfirmed) {
 
-                axios.post("{{ route('deleteAdminRoleOnly') }}", {
-                    id: userId,
-                })
-                .then(function(response) {
-                    if (response.data == 'Successfully Deleted') {
-                         Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
-                    }else{
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Admin Contains Agents!'                        })
-                    }
-                })
-                .catch(function(error) {
-                    console.log(error.response);
-                });
+                    axios.post("{{ route('deleteAdminRoleOnly') }}", {
+                            id: userId,
+                        })
+                        .then(function(response) {
+                            if (response.data == 'Successfully Deleted') {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Admin Contains Agents!'
+                                })
+                            }
+                        })
+                        .catch(function(error) {
+                            console.log(error.response);
+                        });
 
 
-            }
+                }
             })
 
 

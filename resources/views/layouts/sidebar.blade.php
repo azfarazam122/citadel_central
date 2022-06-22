@@ -1,40 +1,40 @@
   <link href="{{ asset('css/masterSettings.css') }}" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <div id="body-pd" class="body-pd">
-        {{-- ________________________________________________________ --}}
-        {{-- BLADE TEMPLATE PHP --}}
-        @php
-            $user = Auth::user();
-            $userId = App\Models\User::where('email', $user->email)->get(['id']);
-            $checkIfUserIdFoundInAgentTable = App\Models\Agent::where('user_id', $userId[0]->id)->get(['id']);
-            $checkIfUserIdFoundInAdminTable = App\Models\Admin::where('user_id', $userId[0]->id)->get(['id']);
-            $checkIfUserIdFoundInMasterAdmin = App\Models\MasterAdmin::where('user_id', $userId[0]->id)->get(['id']);
-            $checkIfUserIdFoundInSuperAdmin = App\Models\SuperAdmin::where('user_id', $userId[0]->id)->get(['id']);
-            $userMatchWith = '';
-            $userIsAgent = false;
-            $userIsAdmin = false;
-            $userIsMasterAdmin = false;
-            $userIsSuperAdmin = false;
+      {{-- ________________________________________________________ --}}
+      {{-- BLADE TEMPLATE PHP --}}
+      @php
+          $user = Auth::user();
+          $userId = App\Models\User::where('email', $user->email)->get(['id']);
+          $checkIfUserIdFoundInAgentTable = App\Models\Agent::where('user_id', $userId[0]->id)->get(['id']);
+          $checkIfUserIdFoundInAdminTable = App\Models\Admin::where('user_id', $userId[0]->id)->get(['id']);
+          $checkIfUserIdFoundInMasterAdmin = App\Models\MasterAdmin::where('user_id', $userId[0]->id)->get(['id']);
+          $checkIfUserIdFoundInSuperAdmin = App\Models\SuperAdmin::where('user_id', $userId[0]->id)->get(['id']);
+          $userMatchWith = '';
+          $userIsAgent = false;
+          $userIsAdmin = false;
+          $userIsMasterAdmin = false;
+          $userIsSuperAdmin = false;
 
-            if (count($checkIfUserIdFoundInAgentTable) > 0) {
-                $userMatchWith = 'Agent';
-                $userIsAgent = true;
-            }
-            if (count($checkIfUserIdFoundInAdminTable) > 0) {
-                $userMatchWith = 'Admin';
-                $userIsAdmin = true;
-            }
-            if (count($checkIfUserIdFoundInMasterAdmin) > 0) {
-                $userMatchWith = 'Master';
-                $userIsMasterAdmin = true;
-            }
-            if (count($checkIfUserIdFoundInSuperAdmin) > 0) {
-                $userMatchWith = 'Super';
-                $userIsSuperAdmin = true;
-            }
-        @endphp
-        {{-- ________________________________________________________ --}}
+          if (count($checkIfUserIdFoundInAgentTable) > 0) {
+              $userMatchWith = 'Agent';
+              $userIsAgent = true;
+          }
+          if (count($checkIfUserIdFoundInAdminTable) > 0) {
+              $userMatchWith = 'Admin';
+              $userIsAdmin = true;
+          }
+          if (count($checkIfUserIdFoundInMasterAdmin) > 0) {
+              $userMatchWith = 'Master';
+              $userIsMasterAdmin = true;
+          }
+          if (count($checkIfUserIdFoundInSuperAdmin) > 0) {
+              $userMatchWith = 'Super';
+              $userIsSuperAdmin = true;
+          }
+      @endphp
+      {{-- ________________________________________________________ --}}
       <div class="header body-pd" id="header">
           <div class="header_toggle">
               <i class='bx bx-menu bx-x' id="header-toggle"></i>
@@ -48,7 +48,7 @@
                       <span class="nav_logo-name">Citadel Central</span>
                   </a>
                   <div class="nav_list">
-                      <a href="/admin_dashboard" id="adminDashboardTab"  class="nav_link">
+                      <a href="/admin_dashboard" id="adminDashboardTab" class="nav_link">
                           <i id="adminDashboardIcon" class='bx bx-grid-alt nav_icon'></i>
                           <span class="nav_name">Admin Dashboard</span>
                       </a>
@@ -82,7 +82,7 @@
                               <i id="manageAgentsIcon" class='bx bx-bar-chart-alt-2 nav_icon'></i>
                               <span class="nav_name">Manage Agents</span>
                           </a>
-                          <a href="/admin_dashboard/admin"  id="adminTab" class="nav_link">
+                          <a href="/admin_dashboard/admin" id="adminTab" class="nav_link">
                               <i id="adminIcon" class='bx bx-bar-chart-alt-2 nav_icon'></i>
                               <span class="nav_name">Admin</span>
                           </a>
@@ -99,10 +99,7 @@
                           <i id="calculatorsIcon" class='bx bx-grid-alt nav_icon'></i>
                           <span class="nav_name">Calculators</span>
                       </a>
-                      @if ($userIsAgent == true ||
-                      $userIsAdmin == true ||
-                      $userIsMasterAdmin == true ||
-                      $userIsSuperAdmin == true)
+                      @if ($userIsAgent == true || $userIsAdmin == true || $userIsMasterAdmin == true || $userIsSuperAdmin == true)
                           <a href="https://yourmortgagecalculators.ca/calculators/adminlogin.php" target="blank"
                               class="nav_link">
                               <i id="adminLoginIcon" class='bx bx-grid-alt nav_icon'></i>
@@ -128,6 +125,7 @@
   </div>
 
   <!-- Production -->
+  <script src="{{ asset('js/masterSettings.js') }}" defer></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <script src="https://unpkg.com/tippy.js@6"></script>
@@ -172,39 +170,33 @@
           content: 'Super Admin Login',
       });
       checkWhichTabIsOpen();
+
       function checkWhichTabIsOpen() {
-        if(window.location.href.includes("/admin_dashboard/super")) {
-            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
-            $("#superSettingsTab").addClass("changeColorOfSidebarSelectedTab");
-        }
-        else if (window.location.href.includes("/admin_dashboard/master")) {
-            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
-            $("#masterSettingsTab").addClass("changeColorOfSidebarSelectedTab");
-        }
-        else if (window.location.href.includes("/admin_dashboard/users")) {
-            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
-            $("#manageUsersTab").addClass("changeColorOfSidebarSelectedTab");
-        }
-        else if (window.location.href.includes("/admin_dashboard/admins")) {
-            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
-            $("#manageAdminsTab").addClass("changeColorOfSidebarSelectedTab");
-        }
-        else if (window.location.href.includes("/admin_dashboard/agents")) {
-            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
-            $("#manageAgentsTab").addClass("changeColorOfSidebarSelectedTab");
-        }
-        else if (window.location.href.includes("/admin_dashboard/admin")) {
-            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
-            $("#adminTab").addClass("changeColorOfSidebarSelectedTab");
-        }
-        else if (window.location.href.includes("/admin_dashboard/agent")) {
-            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
-            $("#yourProfileTab").addClass("changeColorOfSidebarSelectedTab");
-        }
-        else if (window.location.href.includes("/admin_dashboard")) {
-            $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
-            $("#adminDashboardTab").addClass("changeColorOfSidebarSelectedTab");
-        }
+          if (window.location.href.includes("/admin_dashboard/super")) {
+              $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+              $("#superSettingsTab").addClass("changeColorOfSidebarSelectedTab");
+          } else if (window.location.href.includes("/admin_dashboard/master")) {
+              $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+              $("#masterSettingsTab").addClass("changeColorOfSidebarSelectedTab");
+          } else if (window.location.href.includes("/admin_dashboard/users")) {
+              $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+              $("#manageUsersTab").addClass("changeColorOfSidebarSelectedTab");
+          } else if (window.location.href.includes("/admin_dashboard/admins")) {
+              $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+              $("#manageAdminsTab").addClass("changeColorOfSidebarSelectedTab");
+          } else if (window.location.href.includes("/admin_dashboard/agents")) {
+              $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+              $("#manageAgentsTab").addClass("changeColorOfSidebarSelectedTab");
+          } else if (window.location.href.includes("/admin_dashboard/admin")) {
+              $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+              $("#adminTab").addClass("changeColorOfSidebarSelectedTab");
+          } else if (window.location.href.includes("/admin_dashboard/agent")) {
+              $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+              $("#yourProfileTab").addClass("changeColorOfSidebarSelectedTab");
+          } else if (window.location.href.includes("/admin_dashboard")) {
+              $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+              $("#adminDashboardTab").addClass("changeColorOfSidebarSelectedTab");
+          }
 
       }
   </script>

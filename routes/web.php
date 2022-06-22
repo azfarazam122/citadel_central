@@ -54,6 +54,8 @@ Route::post('/admin_dashboard/agent', [ManageAgentController::class,'updateDataF
 Route::group(['middleware'=> ['forSuperAdmin']], function () {
     // Route::view('/admin_dashboard/super', 'super_settings');
     Route::get('/admin_dashboard/super', [ManageSuperSettingController::class , 'showAllDataOfSuperSettings']);
+     Route::post('/admin_dashboard/super/saveTermsPageData', [ManageSuperSettingController::class , 'saveTermsPageData'])->name('saveTermsPageDataBySuper');
+    Route::post('/admin_dashboard/super/savePrivacyPageData', [ManageSuperSettingController::class , 'savePrivacyPageData'])->name('savePrivacyPageDataBySuper');
     Route::get('/admin_dashboard/super/edit/{id}', [ManageSuperSettingController::class,'showEditDataOfSuperSettings']);
     Route::post('/admin_dashboard/super', [ManageSuperSettingController::class,'updateDataOfSuperSettings'])->name('updateDataOfSuperSettings');
 });
@@ -62,6 +64,8 @@ Route::group(['middleware'=> ['forSuperAdmin']], function () {
 Route::group(['middleware'=> ['forMasterAdmin']], function(){
     // Route::view('/admin_dashboard/master', 'master_settings');
     Route::get('/admin_dashboard/master', [ManageMasterSettingController::class , 'showAllDataOfMasterSetting']);
+    Route::post('/admin_dashboard/master/saveTermsPageData', [ManageMasterSettingController::class , 'saveTermsPageData'])->name('saveTermsPageDataByMaster');
+    Route::post('/admin_dashboard/master/savePrivacyPageData', [ManageMasterSettingController::class , 'savePrivacyPageData'])->name('savePrivacyPageDataByMaster');
     Route::get('/admin_dashboard/master/edit/{id}', [ManageMasterSettingController::class,'showEditDataOfMasterSetting']);
     Route::post('/admin_dashboard/master', [ManageMasterSettingController::class,'updateDataOfMasterSetting'])->name('updateDataOfMasterSetting');
 

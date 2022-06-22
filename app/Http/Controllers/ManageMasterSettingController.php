@@ -56,4 +56,22 @@ class ManageMasterSettingController extends Controller
 
          return $this->showAllDataOfMasterSetting();
     }
+
+
+    // ____________________________________________
+    public function saveTermsPageData(Request $req){
+        $post = MasterSetting::find(1);
+        $post->terms_data = $req['newData'];;
+        $post->save();
+
+        echo "Saved";
+    }
+
+    public function savePrivacyPageData(Request $req){
+        $post = MasterSetting::find(1);
+        $post->privacy_data = $req['newData'];;
+        $post->save();
+
+        echo "Saved";
+    }
 }
