@@ -52,7 +52,10 @@ class Kernel extends HttpKernel
          ],
          'forSuperAdmin' => [
             \App\Http\Middleware\forSuperAdminOnly::class,
-        ]
+         ],
+         'forAgentOnly' => [
+            \App\Http\Middleware\forAgentOnly::class,
+         ]
     ];
 
     /**

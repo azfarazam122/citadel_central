@@ -20,7 +20,8 @@
                         <hr>
                         <div class="card-body">
                             <div class="container">
-                                <form method="post" action="{{ route('updateAgentData') }}" enctype="multipart/form-data">
+                                <form method="post" action="{{ route('updateAgentData') }}"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="hiddenId" value="123" />
                                     <h3 class="mb-3">Edit <span class="text-capitalize text-decoration-underline">
@@ -40,12 +41,12 @@
                                     <div class="form-group mt-2">
                                         <label for="">Agent Type</label>
                                         <select class="form-control mt-1" name="editTypeOfAgent" id="editTypeOfAgent">
-                                        <option value="real_state_agent" >Real State Agent</option>
-                                        <option value="mortgage_professional">Mortgage Professional</option>
+                                            <option value="real_state_agent">Real State Agent</option>
+                                            <option value="mortgage_professional">Mortgage Professional</option>
                                         </select>
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label for="">License No</label>
+                                        <label for="">Add your License here</label>
                                         <input type="text" class="form-control" name="editLicenseNoOfAgent"
                                             id="editLicenseNoOfAgent" aria-describedby="helpId">
                                     </div>
@@ -60,7 +61,7 @@
                                             id="editFacebookLinkOfAgent" aria-describedby="helpId" placeholder="">
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label for="">Linked Link</label>
+                                        <label for="">LinkedIn Link</label>
                                         <input type="text" class="form-control" name="editLinkedinLinkOfAgent"
                                             id="editLinkedinLinkOfAgent" aria-describedby="helpId" placeholder="">
                                     </div>
@@ -79,12 +80,14 @@
                                         {{-- ___________________________ --}}
                                         <p><input type="file" accept="image/*" name="image" id="file"
                                                 onchange="loadFile(event)" style="display: none;"></p>
-                                        <p><label class="btn btn-primary" for="file" style="cursor: pointer;">Upload Image
+                                        <p><label class="btn btn-primary" for="file" style="cursor: pointer;">Upload
+                                                Image
                                             </label>
                                             <input style="border: 0px solid;" readonly type="text" name="pathOfImage"
                                                 id="pathOfImage">
                                         </p>
-                                        <p><img id="showSelectedImage" name="showSelectedImage" src="" width="200" />
+                                        <p><img id="showSelectedImage" name="showSelectedImage" src=""
+                                                width="200" />
                                         </p>
 
                                         {{-- ___________________________ --}}
@@ -105,7 +108,8 @@
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Your Financial Journey Link</label>
-                                        <input type="text" class="form-control" name="editYourFinancialJourneyLinkOfAgent"
+                                        <input type="text" class="form-control"
+                                            name="editYourFinancialJourneyLinkOfAgent"
                                             id="editYourFinancialJourneyLinkOfAgent" aria-describedby="helpId"
                                             placeholder="">
                                     </div>
@@ -137,8 +141,10 @@
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Get Prequalified Now Link</label>
-                                        <input type="text" class="form-control" name="editGetPrequalifiedNowLinkOfAgent"
-                                            id="editGetPrequalifiedNowLinkOfAgent" aria-describedby="helpId" placeholder="">
+                                        <input type="text" class="form-control"
+                                            name="editGetPrequalifiedNowLinkOfAgent"
+                                            id="editGetPrequalifiedNowLinkOfAgent" aria-describedby="helpId"
+                                            placeholder="">
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">About Page Bio Link</label>
@@ -155,7 +161,8 @@
 
                                     <div class="form-group">
                                         <input type="submit" disabled class="btn btn-dark mt-3" value="Create"
-                                            name="updateAgent" id="updateAgent" aria-describedby="helpId" placeholder="">
+                                            name="updateAgent" id="updateAgent" aria-describedby="helpId"
+                                            placeholder="">
                                         <a class="mt-3 btn btn-primary" href="/admin_dashboard/agents">Back</a>
                                     </div>
                                 </form>

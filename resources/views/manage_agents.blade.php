@@ -57,7 +57,7 @@
                                             <td>{{ $agentData[$i]->twitter_link }} </td> --}}
                                             <td>
                                                 <img style="border-radius: 50px;border: 4px solid black;" width="100px"
-                                                    src="../images/profile_pic/{{$agentData[$i]->email}}/{{ $agentData[$i]->profile_pic }}"
+                                                    src="../images/profile_pic/{{ $agentData[$i]->email }}/{{ $agentData[$i]->profile_pic }}"
                                                     alt="Profile Pic " srcset="">
 
                                             </td>
@@ -67,19 +67,21 @@
                                                 @endphp
 
                                                 @if ($masterAdminData[0]->default_agent_id == $agentData[$i]->id)
-                                                    <button type="button" disabled class="btn btn-success">Default Agent</button>
+                                                    <button type="button" disabled class="btn btn-success">Default
+                                                        Agent</button>
                                                 @else
                                                     <a class="btn btn-primary"
-                                                        onclick="setAgentAsDefaultFunc({{$agentData[$i]->id}})">Set As Default</a>
+                                                        onclick="setAgentAsDefaultFunc({{ $agentData[$i]->id }})">Set As
+                                                        Default</a>
                                                 @endif
 
                                                 @if ($agentData[$i]->is_approved == 'true')
                                                     {{-- <button type="button"  class="btn btn-success">Approved</button> --}}
                                                     <a class="btn btn-success"
-                                                        onclick="setAgentAsUnApprovedFunc({{$agentData[$i]->id}})">Approved</a>
+                                                        onclick="setAgentAsUnApprovedFunc({{ $agentData[$i]->id }})">Approved</a>
                                                 @else
                                                     <a class="btn btn-primary"
-                                                        onclick="setAgentAsApprovedFunc({{$agentData[$i]->id}})">Unapproved</a>
+                                                        onclick="setAgentAsApprovedFunc({{ $agentData[$i]->id }})">Unapproved</a>
                                                 @endif
                                                 <a disable class="btn btn-secondary"
                                                     href="/admin_dashboard/agents/details/{{ $agentData[$i]->id }}">All

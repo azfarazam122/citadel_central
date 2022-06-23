@@ -46,11 +46,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::view('/admin_dashboard', 'admin_dashboard');
 
 
-// Route::view('/admin_dashboard/agent', 'agent');
-Route::get('/admin_dashboard/agent', [ManageAgentController::class , 'showAllDataForAgentLogin']);
-Route::post('/admin_dashboard/agent', [ManageAgentController::class,'updateDataForAgentLogin'])->name('updateDataForAgentLogin');
-//
-
+Route::group(['middleware'=> ['forAgentOnly']], function () {
+    // Route::view('/admin_dashboard/agent', 'agent');
+    Route::get('/admin_dashboard/agent', [ManageAgentController::class , 'showAllDataForAgentLogin']);
+    Route::post('/admin_dashboard/agent', [ManageAgentController::class,'updateDataForAgentLogin'])->name('updateDataForAgentLogin');
+});
 Route::group(['middleware'=> ['forSuperAdmin']], function () {
     // Route::view('/admin_dashboard/super', 'super_settings');
     Route::get('/admin_dashboard/super', [ManageSuperSettingController::class , 'showAllDataOfSuperSettings']);
@@ -97,9 +97,6 @@ Route::group(['middleware'=> ['forMasterAdmin']], function(){
 });
 
 Route::group(['middleware'=> ['forAdmin']], function(){
-    // Route::view('/admin_dashboard/agents', 'manage_agents');
-    // Route::view('/admin_dashboard/agents/{agent_id}', 'agent_detail');
-    // Route::view('/admin_dashboard/admin', 'admin');
     Route::get('/admin_dashboard/admin', [ManageAdminController::class , 'showAllDataOfAdminSetting']);
     Route::get('/admin_dashboard/admin/edit/{id}', [ManageAdminController::class,'showEditDataOfAdminSetting']);
     Route::get('/admin_dashboard/admin/detail/{id}', [ManageAdminController::class,'showDetailedDataOfAdminSetting']);

@@ -3,12 +3,12 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Models\User;
-use App\Models\Admin;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Agent;
 use Illuminate\Support\Facades\Auth;
 
-class forAdminOnly
+class forAgentOnly
 {
     /**
      * Handle an incoming request.
@@ -27,16 +27,15 @@ class forAdminOnly
                 User::where('email',$user->email)->get(['id']);
                 // dd($userId[0]->id);
             $checkIfUserIdFoundInAdmin =
-                Admin::where('user_id', $userId[0]->id)->get(['id']);
+                Agent::where('user_id', $userId[0]->id)->get(['id']);
 
             // dd(count($checkIfUserIdFoundInAdmin));
             if (count($checkIfUserIdFoundInAdmin) > 0) {
                 return $next($request);
             }else{
                 //dd('You Cannot Access That Page');
-                return  redirect('admin_dashboard');
+                return  redirect('login');
             }
         }
-
     }
 }

@@ -25,15 +25,14 @@
                                     @csrf
                                     <input type="hidden" name="hiddenId" value="123" />
                                     {{-- <h3>{{ $agentData[0]->license_no }}</h3> --}}
-                                    <h3 class="mb-3">All Details <span
-                                            class="text-capitalize text-decoration-underline">
+                                    <h3 class="mb-3">All Details <span class="text-capitalize text-decoration-underline">
 
                                         </span>
                                     </h3>
                                     <div class="form-group">
                                         <label for="">Id</label>
-                                        <input type="text" readonly class="form-control" name="id_OfAgent" id="id_OfAgent"
-                                            value="{{ $agentData[0]->id }}" aria-describedby="helpId">
+                                        <input type="text" readonly class="form-control" name="id_OfAgent"
+                                            id="id_OfAgent" value="{{ $agentData[0]->id }}" aria-describedby="helpId">
                                     </div>
                                     <div class="form-group">
                                         <label for="">User Id</label>
@@ -54,7 +53,7 @@
                                             aria-describedby="helpId">
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label for="">License No</label>
+                                        <label for="">Add your License here</label>
                                         <input type="text" readonly class="form-control" name="editLicenseNoOfAgent"
                                             id="editLicenseNoOfAgent" value="{{ $agentData[0]->license_no }}"
                                             aria-describedby="helpId">
@@ -72,7 +71,7 @@
                                             aria-describedby="helpId" placeholder="">
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label for="">Linked Link</label>
+                                        <label for="">LinkedIn Link</label>
                                         <input type="text" readonly class="form-control" name="editLinkedinLinkOfAgent"
                                             id="editLinkedinLinkOfAgent" value="{{ $agentData[0]->linkedin_link }}"
                                             aria-describedby="helpId" placeholder="">
@@ -111,9 +110,10 @@
 
                                     <div class="form-group mt-3">
                                         <label for="">Apply Now Link</label>
-                                        <input type="text" readonly class="form-control" name="editApplyNowLinkOfAgent"
-                                            id="editApplyNowLinkOfAgent" value="{{ $agentData[0]->apply_now_link }}"
-                                            aria-describedby="helpId" placeholder="">
+                                        <input type="text" readonly class="form-control"
+                                            name="editApplyNowLinkOfAgent" id="editApplyNowLinkOfAgent"
+                                            value="{{ $agentData[0]->apply_now_link }}" aria-describedby="helpId"
+                                            placeholder="">
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">How to Collect Your Miles Today Link</label>
@@ -143,8 +143,8 @@
                                         <label for="">Your Home Journey Link</label>
                                         <input type="text" readonly class="form-control"
                                             name="editYourHomeJourneyLinkOfAgent" id="editYourHomeJourneyLinkOfAgent"
-                                            value="{{ $agentData[0]->your_home_journey_link }}" aria-describedby="helpId"
-                                            placeholder="">
+                                            value="{{ $agentData[0]->your_home_journey_link }}"
+                                            aria-describedby="helpId" placeholder="">
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Your Mortgage Calculators Link</label>
@@ -165,7 +165,8 @@
                                     <div class="form-group mt-3">
                                         <label for="">Get Prequalified Now Link</label>
                                         <input type="text" readonly class="form-control"
-                                            name="editGetPrequalifiedNowLinkOfAgent" id="editGetPrequalifiedNowLinkOfAgent"
+                                            name="editGetPrequalifiedNowLinkOfAgent"
+                                            id="editGetPrequalifiedNowLinkOfAgent"
                                             value="{{ $agentData[0]->get_prequalified_now_link }}"
                                             aria-describedby="helpId" placeholder="">
                                     </div>
@@ -206,8 +207,6 @@
         $(document).ready(function() {
 
         });
-
-
     </script>
     <!-- Scripts -->
 @endsection

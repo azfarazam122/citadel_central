@@ -11,16 +11,21 @@ use App\Models\MasterAdmin;
 use App\Models\SuperAdmin;
 use Illuminate\Support\Facades\Auth;
 
-class ManageAgentController extends Controller
-{
+class ManageAgentController extends Controller{
+
     public function showAllData(){
         $user = Auth::user();
         $userId =
             User::where('email',$user->email)->get(['id']);
+        $masterAdminFound = MasterAdmin::where('user_id',$user->id)->get();
+        if (count($masterAdminFound) > 0) {
+            $agentsList = Agent::all();
+        }else{
+            $adminId = Admin::where('user_id',$userId[0]->id)->get(['id']);
+            $agentsList = Agent::where('admin_id',$adminId[0]->id)->get();
+        }
 
-        // return $userId[0]->id;
-        $adminId = Admin::where('user_id',$userId[0]->id)->get(['id']);
-        $agentsList = Agent::where('admin_id',$adminId[0]->id)->get();
+
         // return $agentsList[0]->user_id;
         for ($i=0; $i < count($agentsList); $i++) {
             $userEmail = User::where('id',$agentsList[$i]->user_id)->get(['email']);

@@ -20,7 +20,8 @@
                         <hr>
                         <div class="card-body">
                             <div class="container">
-                                <form method="post" action="{{ route('updateAgentData') }}" enctype="multipart/form-data">
+                                <form method="post" action="{{ route('updateAgentData') }}"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="hiddenId" value="123" />
                                     {{-- <h3>{{ $agentData[0]->license_no }}</h3> --}}
@@ -30,8 +31,8 @@
                                     </h3>
                                     <div class="form-group">
                                         <label for="">Id</label>
-                                        <input type="text" readonly class="form-control" name="id_OfAgent" id="id_OfAgent"
-                                            value="{{ $agentData[0]->id }}" aria-describedby="helpId">
+                                        <input type="text" readonly class="form-control" name="id_OfAgent"
+                                            id="id_OfAgent" value="{{ $agentData[0]->id }}" aria-describedby="helpId">
                                     </div>
                                     <div class="form-group">
                                         <label for="">User Id</label>
@@ -57,7 +58,7 @@
                                             aria-describedby="helpId">
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label for="">License No</label>
+                                        <label for="">Add your License here</label>
                                         <input type="text" class="form-control" name="editLicenseNoOfAgent"
                                             id="editLicenseNoOfAgent" value="{{ $agentData[0]->license_no }}"
                                             aria-describedby="helpId">
@@ -75,7 +76,7 @@
                                             aria-describedby="helpId" placeholder="">
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label for="">Linked Link</label>
+                                        <label for="">LinkedIn Link</label>
                                         <input type="text" class="form-control" name="editLinkedinLinkOfAgent"
                                             id="editLinkedinLinkOfAgent" value="{{ $agentData[0]->linkedin_link }}"
                                             aria-describedby="helpId" placeholder="">
@@ -97,7 +98,8 @@
                                         {{-- ___________________________ --}}
                                         <p><input type="file" accept="image/*" name="image" id="file"
                                                 onchange="loadFile(event)" style="display: none;"></p>
-                                        <p><label class="btn btn-primary" for="file" style="cursor: pointer;">Upload Image
+                                        <p><label class="btn btn-primary" for="file" style="cursor: pointer;">Upload
+                                                Image
                                             </label>
                                             <input style="border: 0px solid;" readonly type="text" name="pathOfImage"
                                                 value="{{ $agentData[0]->profile_pic }}" id="pathOfImage">
@@ -127,7 +129,8 @@
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Your Financial Journey Link</label>
-                                        <input type="text" class="form-control" name="editYourFinancialJourneyLinkOfAgent"
+                                        <input type="text" class="form-control"
+                                            name="editYourFinancialJourneyLinkOfAgent"
                                             id="editYourFinancialJourneyLinkOfAgent"
                                             value="{{ $agentData[0]->your_financial_journey_link }}"
                                             aria-describedby="helpId" placeholder="">
@@ -144,8 +147,8 @@
                                         <label for="">Your Home Journey Link</label>
                                         <input type="text" class="form-control" name="editYourHomeJourneyLinkOfAgent"
                                             id="editYourHomeJourneyLinkOfAgent"
-                                            value="{{ $agentData[0]->your_home_journey_link }}" aria-describedby="helpId"
-                                            placeholder="">
+                                            value="{{ $agentData[0]->your_home_journey_link }}"
+                                            aria-describedby="helpId" placeholder="">
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Your Mortgage Calculators Link</label>
@@ -165,7 +168,8 @@
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="">Get Prequalified Now Link</label>
-                                        <input type="text" class="form-control" name="editGetPrequalifiedNowLinkOfAgent"
+                                        <input type="text" class="form-control"
+                                            name="editGetPrequalifiedNowLinkOfAgent"
                                             id="editGetPrequalifiedNowLinkOfAgent"
                                             value="{{ $agentData[0]->get_prequalified_now_link }}"
                                             aria-describedby="helpId" placeholder="">
@@ -187,8 +191,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="submit" class="btn btn-dark mt-3" value="Update" name="updateAgent"
-                                            id="updateAgent" aria-describedby="helpId" placeholder="">
+                                        <input type="submit" class="btn btn-dark mt-3" value="Update"
+                                            name="updateAgent" id="updateAgent" aria-describedby="helpId"
+                                            placeholder="">
                                         <a class="mt-3 btn btn-primary" href="/admin_dashboard/agents">Back</a>
                                     </div>
                                 </form>

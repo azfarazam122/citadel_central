@@ -81,7 +81,7 @@
         }
 
         ::-webkit-scrollbar {
-            width: 12px;
+            width: 15px;
         }
 
 
