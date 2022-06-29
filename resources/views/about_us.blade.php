@@ -7,7 +7,7 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-         @php
+    @php
     $url = $_SERVER['REQUEST_URI'];
     if ($url == '/agent/about' || $url == '/agent/about/') {
         $masterSettingData = App\Models\MasterSetting::all();
@@ -15,7 +15,7 @@
         $adminData = App\Models\Admin::where('id', $masterSettingData[0]->default_admin_id)->get();
         $user = App\Models\User::where('id', $agentData[0]->user_id)->get();
     } else {
-         $email = explode('/', $url);
+        $email = explode('/', $url);
         $email = $email[count($email) - 1];
 
         $user = App\Models\User::where('email', $email)->get();
@@ -23,13 +23,13 @@
             $agentData = App\Models\Agent::where('user_id', $user[0]->id)->get();
             if (count($agentData) > 0) {
                 $adminData = App\Models\Admin::where('id', $agentData[0]->admin_id)->get();
-            }else{
+            } else {
                 $masterSettingData = App\Models\MasterSetting::all();
                 $agentData = App\Models\Agent::where('id', $masterSettingData[0]->default_agent_id)->get();
                 $adminData = App\Models\Admin::where('id', $masterSettingData[0]->default_admin_id)->get();
                 $user = App\Models\User::where('id', $agentData[0]->user_id)->get();
             }
-        }else{
+        } else {
             $masterSettingData = App\Models\MasterSetting::all();
             $agentData = App\Models\Agent::where('id', $masterSettingData[0]->default_agent_id)->get();
             $adminData = App\Models\Admin::where('id', $masterSettingData[0]->default_admin_id)->get();
@@ -41,15 +41,16 @@
     <style>
         :root {
             --primary-color: <?php echo $adminData[0]->primary_color; ?>;
-            --secondary-color:  <?php echo $adminData[0]->secondary_color; ?>;
-            --tertiary-color:  <?php echo $adminData[0]->tertiary_color; ?>;
+            --secondary-color: <?php echo $adminData[0]->secondary_color; ?>;
+            --tertiary-color: <?php echo $adminData[0]->tertiary_color; ?>;
             --primary-text-color: <?php echo $adminData[0]->primary_text_color; ?>;
-            --secondary-text-color:  <?php echo $adminData[0]->secondary_text_color; ?>;
-            --tertiary-text-color:  <?php echo $adminData[0]->tertiary_text_color; ?>;
-            --fourth-text-color:  <?php echo $adminData[0]->fourth_text_color; ?>;
+            --secondary-text-color: <?php echo $adminData[0]->secondary_text_color; ?>;
+            --tertiary-text-color: <?php echo $adminData[0]->tertiary_text_color; ?>;
+            --fourth-text-color: <?php echo $adminData[0]->fourth_text_color; ?>;
             --lightTextColor: #707b89;
             --white-color: #fff;
         }
+
         .row>* {
             width: auto !important;
             padding-right: 0px !important;
@@ -63,7 +64,7 @@
         }
 
         .homeButtons {
-            color: var(--secondary-text-color) ;
+            color: var(--secondary-text-color);
             font-size: 18px;
             padding: 17px;
             background: var(--primary-color);
@@ -73,9 +74,6 @@
             background: var(--secondary-color) !important;
             color: var(--fourth-text-color) !important;
         }
-
-
-
     </style>
 @endsection
 
@@ -92,17 +90,24 @@
         @if (count($agentData) > 0)
             <div class="ms-5">
                 <div class=" ms-5 row secondaryTextColor">
-                    <div class="col-md-3 text-center">
+                    <div class="col-md-2 text-center">
                         <p>{{ $agentData[0]->full_name }}</p>
                         <p>Mortgage Agent {{ $agentData[0]->license_no }}</p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <p> <span><i class="fa-solid fa-envelope"></i></span> {{ $user[0]->email }}</p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 text-center">
+                        <p> <img id="showSelectedImage" name="showSelectedImage"
+                                src="../../images/profile_pic/{{ $user[0]->email }}/{{ $agentData[0]->profile_pic }}"
+                                width="200">
+                        </p>
+                    </div>
+                    <div class="col-md-2 text-end">
                         <p> <span><i class="fa-solid fa-phone"></i></span> {{ $agentData[0]->phone }}</p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
                         <a target="blank" class="mr-3" href={{ $agentData[0]->facebook_link }}><i
                                 style="font-size: 30px; color: #3B579D;" class="fa-brands fa-facebook"></i></a>
                         <a target="blank" class="mr-3" href={{ $agentData[0]->linkedin_link }}><i
@@ -114,8 +119,8 @@
                                 style="font-size: 30px;color: #5DA9DD;" class="fa-brands fa-twitter"></i></a>
 
                         <div>
-                            <a href={{ $agentData[0]->apply_now_link }} target="blank" type="button" name="" id=""
-                                style="border: 1px solid var(--primary-color); border-radius:18px"
+                            <a href={{ $agentData[0]->apply_now_link }} target="blank" type="button" name=""
+                                id="" style="border: 1px solid var(--primary-color); border-radius:18px"
                                 class="customButtonWithLinks btn mt-3 btn-lg ">
                                 Apply Now
                             </a>
@@ -196,8 +201,7 @@
                 <p class="text-left display-4 primaryTextColor">
                     Bio </p>
                 <p></p>
-                <hr class="mt-5 primaryTextColor"
-                    style="width: 15%; height: 4px; opacity: 1; border-radius: 10px; ">
+                <hr class="mt-5 primaryTextColor" style="width: 15%; height: 4px; opacity: 1; border-radius: 10px; ">
                 <div class="secondaryTextColor">
                     <p class="mt-5" style="">Whether purchasing your first home,
                         renewing your mortgage or using the equity in your home to consolidate higher-interest debt.If you
@@ -227,7 +231,9 @@
                             Apply Now
                         </button></a></div>
             </div>
-            <div class="col-md-6"><img width="100%" src="../../images/homeImages/img9.png" alt="" srcset=""></div>
+            <div class="col-md-6"><img width="100%" src="../../images/homeImages/img9.png" alt=""
+                    srcset="">
+            </div>
 
         </div>
     </section>
@@ -246,8 +252,7 @@
                                 <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
                                     style="height: 2px; border-radius: 10px;opacity: 1;">
 
-                                <p style="line-height: 30px;font-size: 17px;"
-                                class="text-center mt-5 tertiaryTextColor">
+                                <p style="line-height: 30px;font-size: 17px;" class="text-center mt-5 tertiaryTextColor">
                                     Citadel
                                     Mortgages is
                                     one
@@ -332,27 +337,27 @@
             </div>
             <div class="row " style="margin-bottom: 15%;margin-top: 5%">
                 <div class="col-md-3 my-5 text-center">
-                    <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_1.png" alt=""
-                        srcset="">
+                    <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_1.png"
+                        alt="" srcset="">
                     <p class="display-6 text-center fourthTextColor" style="font-weight: 500; ">1000+</p>
                     <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">Satisfied Customers</span>
                 </div>
                 <div class="col-md-3 my-5 text-center">
-                    <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_2.png" alt=""
-                        srcset="">
+                    <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_2.png"
+                        alt="" srcset="">
                     <p class="display-6 text-center fourthTextColor" style="font-weight: 500; "><i
                             class="fa-solid fa-star"></i></p>
                     <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">5 Star Google Reviews</span>
                 </div>
                 <div class="col-md-3 my-5 text-center">
-                    <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_3.png" alt=""
-                        srcset="">
+                    <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_3.png"
+                        alt="" srcset="">
                     <p class="display-6 text-center fourthTextColor" style="font-weight: 500; ">97%</p>
                     <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">Customer Rating</span>
                 </div>
                 <div class="col-md-3 my-5 text-center">
-                    <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_4.png" alt=""
-                        srcset="">
+                    <img style="filter: grayscale(100%)" width="50%" src="../../images/aboutImages/img7_4.png"
+                        alt="" srcset="">
                     <p class="display-6 text-center fourthTextColor" style="font-weight: 500; ">100%</p>
                     <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">We Get Results</span>
                 </div>
@@ -374,7 +379,7 @@
         </div>
     </section>
 
-     @include('layouts.footer')
+    @include('layouts.footer')
     {{-- ____________________________ --}}
 
 @endsection

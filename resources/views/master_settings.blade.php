@@ -8,11 +8,11 @@
 @section('libraries')
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
-    <link href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
 @endsection
 @section('content')
-    <div class="height-100 ">
+    <div class="height-100">
         <div class="">
             <div class="row  ms-auto me-auto justify-content-center">
                 <div class="col-md-11">
@@ -72,7 +72,7 @@
 
                     <div class="container mt-5 mb-5">
                         <p class="text-center display-5">Terms & Conditions Page</p>
-                        <textarea style="height: 500px;width: 100%;" class="col-md-12 mt-5" id="termsPageTemplate">
+                        <textarea style="width: 100%;" class="col-md-12 mt-5" id="termsPageTemplate">
                             {{ $masterSettingData[0]->terms_data }}
                         </textarea>
                         <div class="mt-4 text-center">
@@ -84,7 +84,7 @@
                     <div class="container mt-5 mb-5">
                         <p class="text-center display-5">Privacy Policy Page</p>
                         <h1></h1>
-                        <textarea style="height: 500px;width: 100%;" class="col-md-12 mt-5" id="privacyPageTemplate">
+                        <textarea style="width: 100%;" class="col-md-12 mt-5" id="privacyPageTemplate">
                             {{ $masterSettingData[0]->privacy_data }}
                         </textarea>
                         <div class="mt-4 text-center">
@@ -101,15 +101,19 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script>
         var termsPageeditor;
         var privacyPageeditor;
         $(document).ready(function() {
             $('#masterSettingsTable').DataTable();
-            termsPageeditor = SUNEDITOR.create((document.getElementById('termsPageTemplate')), {});
-            privacyPageeditor = SUNEDITOR.create((document.getElementById('privacyPageTemplate')), {});
+            termsPageeditor = $('#termsPageTemplate').summernote({
+                height: 500,
+            });
+            privacyPageeditor = $('#privacyPageTemplate').summernote({
+                height: 500,
+            });
         });
 
 

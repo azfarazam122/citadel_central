@@ -102,7 +102,7 @@
     <div class="container text-center pl-5 pb-5 pr-5 bg-white"
         style="width: 100%;border-radius: 7px;    background: #ebe9e9 !important;">
         <div class="p-3" style="background: black;color: white; margin-left: -50px;margin-right: -50px">
-            <h2>REGISTER NOW ON CITADEL CONNECT</h2>
+            <p class="display-5 text-capitalize">Back Office Login</p>
         </div>
         {{-- <div class="card-header">{{ __('Login') }}</div> --}}
         <div class="col-md-11 mt-5 ml-auto mr-auto ">

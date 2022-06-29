@@ -41,7 +41,7 @@
                                     <div class="form-group mt-2">
                                         <label for="">Agent Type</label>
                                         <select class="form-control mt-1" name="editTypeOfAgent" id="editTypeOfAgent">
-                                            <option value="real_state_agent">Real State Agent</option>
+                                            <option value="real_state_agent">Real Estate Agent</option>
                                             <option value="mortgage_professional">Mortgage Professional</option>
                                         </select>
                                     </div>

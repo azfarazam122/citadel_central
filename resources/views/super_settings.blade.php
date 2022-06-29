@@ -8,7 +8,7 @@
 @section('libraries')
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
-    <link href="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
 @endsection
 
@@ -96,15 +96,19 @@
     <script src="{{ asset('js/masterSettings.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/dist/suneditor.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script>
         var termsPageeditor;
         var privacyPageeditor;
         $(document).ready(function() {
             $('#superSettingsTable').DataTable();
-            termsPageeditor = SUNEDITOR.create((document.getElementById('termsPageTemplate')), {});
-            privacyPageeditor = SUNEDITOR.create((document.getElementById('privacyPageTemplate')), {});
+            termsPageeditor = $('#termsPageTemplate').summernote({
+                height: 500,
+            });
+            privacyPageeditor = $('#privacyPageTemplate').summernote({
+                height: 500,
+            });
         });
 
         function saveTermsPageData() {

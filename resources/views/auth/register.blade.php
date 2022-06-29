@@ -28,7 +28,7 @@
     <div class="container text-center pl-5 pb-5 pr-5 bg-white"
         style="width: 100%;border-radius: 7px;    background: #ebe9e9 !important;">
         <div class="p-3" style="background: black;color: white; margin-left: -50px;margin-right: -50px">
-            <h2>REGISTER NOW ON CITADEL CONNECT</h2>
+            <p class="display-5 text-capitalize">Register now on the back office</p>
         </div>
         <div class="row mt-5" style="justify-content: center;">
             <div class="col-md-3 text-right">
@@ -115,7 +115,7 @@
                 <div class="row mb-0">
                     <div class="col-md-12 offset-md-12">
                         <button type="submit" class="btn btn-success" style="width: 100%; background-color: #16bfa6">
-                            {{ __('Sign in') }}
+                            {{ __('Sign Up Now') }}
                         </button>
                     </div>
                 </div>
@@ -222,13 +222,13 @@
 
                 <div class="form-group mt-5">
                     <button style="border: 1px solid #d5d1d1" type="submit" class="btn btn-dark btn-block">
-                        {{ __('Sign in') }}
+                        {{ __('Sign Up Now') }}
                     </button>
                 </div>
                 <div class="text-left" style="margin-top: -10px">
                     <small>
                         By clicking the "Sign up" button, you are creating a
-                        RELNKS account, and you agree to Your Broker Journey
+                        Your Broker Journey account, and you agree to Your Broker Journey
                         <a href="/terms_conditions" target="_blank" class="link signup-link">Terms of Use
                         </a> and
                         <a href="/privacy_policy" target="_blank" class="link signup-link">Privacy
@@ -352,13 +352,13 @@
 
                 <div class="form-group mt-5">
                     <button style="border: 1px solid #d5d1d1" type="submit" class="btn btn-dark btn-block">
-                        {{ __('Sign in') }}
+                        {{ __('Sign Up Now') }}
                     </button>
                 </div>
                 <div class="text-left" style="margin-top: -10px">
                     <small>
                         By clicking the "Sign up" button, you are creating a
-                        RELNKS account, and you agree to Your Broker Journey
+                        Your Broker Journey account, and you agree to Your Broker Journey
                         <a href="/terms_conditions" target="_blank" class="link signup-link">Terms of Use
                         </a> and
                         <a href="/privacy_policy" target="_blank" class="link signup-link">Privacy
@@ -425,7 +425,7 @@
                     <div class="text-left col-md-6  form-group">
                         <label for="company_name">{{ __('Company Name') }}</label>
                         <input type="text" class="form-control @error('company_name') is-invalid @enderror"
-                            value="Citadel Mortgage" readonly required autocomplete="company_name" name="company_name"
+                            value="Citadel Mortgage" required autocomplete="company_name" name="company_name"
                             id="company_name" placeholder="">
                         @error('company_name')
                             <span class="invalid-feedback" role="alert">
@@ -437,8 +437,8 @@
                     <div class="text-left col-md-6 form-group">
                         <label for="broker_house">{{ __('Broker House') }}</label>
                         <input type="text" class="form-control @error('broker_house') is-invalid @enderror"
-                            value="Verico" readonly required autocomplete="broker_house" name="broker_house"
-                            id="broker_house" placeholder="">
+                            value="Verico" required autocomplete="broker_house" name="broker_house" id="broker_house"
+                            placeholder="">
                         @error('broker_house')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -498,13 +498,13 @@
 
                 <div class="form-group mt-5">
                     <button style="border: 1px solid #d5d1d1" type="submit" class="btn btn-dark btn-block">
-                        {{ __('Sign in') }}
+                        {{ __('Sign Up Now') }}
                     </button>
                 </div>
                 <div class="text-left" style="margin-top: -10px">
                     <small>
                         By clicking the "Sign up" button, you are creating a
-                        RELNKS account, and you agree to Your Broker Journey
+                        Your Broker Journey account, and you agree to Your Broker Journey
                         <a href="/terms_conditions" target="_blank" class="link signup-link">Terms of Use
                         </a> and
                         <a href="/privacy_policy" target="_blank" class="link signup-link">Privacy
