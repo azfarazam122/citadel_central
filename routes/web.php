@@ -26,7 +26,10 @@ Route::get('/', function () {
 Route::view('/terms_conditions', 'terms');
 Route::view('/privacy_policy', 'privacy');
 
+
+// REGISTER AGENT
 Route::view('/register/{agent_email}', 'auth.register');
+Route::post('/register_agent', [App\Http\Controllers\Auth\RegisterController::class, 'registerAgent'])->name('registerAgent');
 
 Route::view('/agent/home/{agent_email}', 'welcome');
 Route::view('/agent/home/', 'welcome');

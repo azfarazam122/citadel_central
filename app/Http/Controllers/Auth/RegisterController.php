@@ -12,6 +12,7 @@ use App\Models\MasterSetting;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -53,20 +54,13 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        if ($data['formNumber'] == 1) {
+        if ($data['formNumber'] == 2){
             return Validator::make($data, [
                 'firstName' => ['required', 'string', 'max:255'],
                 'lastName' => ['required', 'string', 'max:255'],
                 'province' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:4', 'confirmed'],
-            ]);
-        }else if ($data['formNumber'] == 2){
-            return Validator::make($data, [
-                'firstName' => ['required', 'string', 'max:255'],
-                'lastName' => ['required', 'string', 'max:255'],
-                'province' => ['required', 'string', 'max:255'],
-                'name_of_brokerage' => ['required', 'string', 'max:255'],
+                'company_name_custom_RS' => ['required', 'string', 'max:255'],
+                'broker_house' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:4', 'confirmed'],
             ]);
@@ -75,6 +69,8 @@ class RegisterController extends Controller
                 'firstName' => ['required', 'string', 'max:255'],
                 'lastName' => ['required', 'string', 'max:255'],
                 'province' => ['required', 'string', 'max:255'],
+                'company_name' => ['required', 'string', 'max:255'],
+                'broker_house' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:4', 'confirmed'],
             ]);
@@ -82,6 +78,19 @@ class RegisterController extends Controller
 
     }
 
+
+    public function registerAgent(Request $req){
+        $validatedData = $req->validate([
+            'firstName' => ['required', 'string', 'max:255'],
+            'lastName' => ['required', 'string', 'max:255'],
+            'broker_house' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:4'],
+            'confirmPassword' => ['required', 'string', 'min:4', 'same:password'],
+        ]);
+
+        print_r($validatedData);
+    }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -126,10 +135,14 @@ class RegisterController extends Controller
                 echo 'Default Admin';
             }
 
+            return $data['firstName'];
+
             $agent_RS = new Agent;
             $agent_RS->user_id = $currentUserId[0]->id;
             $agent_RS->admin_id = $adminIdToBeAssigned;
             $agent_RS->full_name = $data['firstName'] . " " .  $data['lastName'];
+            $agent_RS->company_name = $data['company_name'];
+            $agent_RS->broker_house = $data['broker_house'];
             $agent_RS->agent_type = 'real_state_agent';
             $agent_RS->save();
 
@@ -159,6 +172,8 @@ class RegisterController extends Controller
             $agent_MP->user_id = $currentUserId[0]->id;
             $agent_MP->admin_id = $adminIdToBeAssigned;
             $agent_MP->full_name = $data['firstName'] . " " .  $data['lastName'];
+             $agent_RS->company_name = $data['company_name'];
+            $agent_RS->broker_house = $data['broker_house'];
             $agent_MP->agent_type = 'mortgage_professional';
             $agent_MP->save();
         }
@@ -172,3 +187,11 @@ class RegisterController extends Controller
 
     }
 }
+
+
+
+// echo $req->validate([
+//     'first_name_RS' => 'required|max:191',
+// ]);
+
+// echo $validatedData;

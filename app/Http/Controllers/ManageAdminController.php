@@ -229,6 +229,7 @@ class ManageAdminController extends Controller
 
         $post = Admin::find($request->id_OfAdminSetting);
         $post->name = $request->name_OfAdminSetting;
+        $post->company_name = $request->companyName_OfAdminSetting;
         $post->logo = $request->pathOfImage;
         $post->primary_color = $request->primaryColorOfAdminSetting;
         $post->secondary_color = $request->secondaryColorOfAdminSetting;
