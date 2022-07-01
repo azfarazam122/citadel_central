@@ -20,8 +20,9 @@
                         <div class="card-body">
                             <div class="container">
                                 @if ($agentData[0]->is_approved == 'false')
-                                    <div id="agentPendingForApprovalMessage" class="text-center card primaryTextColor p-3">
-                                        <h4>Your Profile Is Pending For Approval</h4>
+                                    <div id="agentPendingForApprovalMessage" style="background: var(--primary-color)"
+                                        class="text-center card p-3">
+                                        <h4 class="fourthTextColor">Your Profile Is Pending For Approval</h4>
                                     </div>
                                 @endif
                                 <form method="post" action="{{ route('updateDataForAgentLogin') }}"
@@ -51,6 +52,18 @@
                                         <label for="">Add your License here</label>
                                         <input type="text" class="form-control" name="editLicenseNoOfAgent"
                                             id="editLicenseNoOfAgent" value="{{ $agentData[0]->license_no }}"
+                                            aria-describedby="helpId">
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="">Company Name</label>
+                                        <input type="text" class="form-control" name="editCompanyNameOfAgent"
+                                            id="editCompanyNameOfAgent" value="{{ $agentData[0]->company_name }}"
+                                            aria-describedby="helpId">
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="">Broker House</label>
+                                        <input type="text" class="form-control" name="editBrokerHouseOfAgent"
+                                            id="editBrokerHouseOfAgent" value="{{ $agentData[0]->broker_house }}"
                                             aria-describedby="helpId">
                                     </div>
                                     <div class="form-group mt-3">
@@ -214,6 +227,10 @@
             document.getElementById('pathOfImage').value = event.target.files[0].name;
             image.src = URL.createObjectURL(event.target.files[0]);
         };
+
+        setTimeout(() => {
+            $("#agentPendingForApprovalMessage").fadeOut("slow");
+        }, "2500")
     </script>
     <!-- Scripts -->
 @endsection
