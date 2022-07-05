@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMasterAdminsTable extends Migration
+class CreatePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateMasterAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_admins', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
             $table->string('name');
+            $table->text('default_data');
         });
 
-        DB::unprepared("INSERT INTO `master_admins` (`id`, `user_id`, `name`) VALUES
-            (1, 10, 'Tristan.kirk');
+        DB::unprepared(
+            "INSERT INTO `pages` (`id`, `name`, `default_data`) VALUES
+            (1, 'Home Page', 'rizwan');
         ");
+
     }
 
     /**
@@ -31,6 +33,6 @@ class CreateMasterAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_admins');
+        Schema::dropIfExists('pages');
     }
 }

@@ -18,6 +18,8 @@ class CreateAgentsTable extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('admin_id');
             $table->string('full_name');
+            $table->string('company_name');
+            $table->string('broker_house');
             $table->string('license_no');
             $table->string('phone');
             $table->string('facebook_link');
@@ -25,7 +27,6 @@ class CreateAgentsTable extends Migration
             $table->string('instagram_link');
             $table->string('twitter_link');
             $table->string('profile_pic');
-            $table->string('apply_now_link');
             $table->string('how_to_collect_your_miles_today_link');
             $table->string('your_financial_journey_link');
             $table->string('mortgage_prequalification_link');
@@ -36,106 +37,18 @@ class CreateAgentsTable extends Migration
             $table->string('bio_apply_now_link');
             $table->string('apply_now_link');
             $table->string('about_us_apply_now_link');
+            $table->string('agent_type');
+            $table->string('is_approved');
         });
 
-        DB::table('agents')->insert(
-            array(
-               'user_id' => 1,
-                'admin_id' => 4,
-                'full_name' => 'Hamza Developer',
-                'license_no' => '#11233434',
-                'phone' => '+922342344',
-                'facebook_link' => 'https://www.facebook.com/Ahmed/',
-                'linkedin_link' => 'https://www.linkedin.com/Ahmed/',
-                'instagram_link' => 'https://www.instagram.com/Ahmed/',
-                'twitter_link' => 'https://www.twitter.com/Ahmed/',
-                'profile_pic' => '/images/profile_pic/ahmed.png',
-                'apply_now_link' => 'www.google.com',
-                'how_to_collect_your_miles_today_link' => 'https://citadelmortgages.ca/air-miles/',
-                'your_financial_journey_link' => 'https://yfj.wealthdesk.com.au/my/home',
-                'mortgage_prequalification_link' => 'https://mortgage-prequalification.ca/',
-                'your_home_journey_link' => 'https://yourhomejourney.ca/',
-                'your_mortgage_calculators_link' => 'https://yourmortgagecalculators.ca/calculators/',
-                'calculate_how_you_can_be_mortgagefreesooner_link' => 'https://yourmortgagecalculators.ca/calculators/mortgagefreesooner.php',
-                'get_prequalified_now_link' => 'https://mortgage-prequalification.ca/',
-                'bio_apply_now_link' => 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276',
-                'about_us_apply_now_link' => 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276',
-            )
-        );
 
-        DB::table('agents')->insert(
-            array(
-                'user_id' => 2,
-                'admin_id' => 4,
-                'full_name' => 'Usman Ghani',
-                'license_no' => '#11233434',
-                'phone' => '+922342344',
-                'facebook_link' => 'https://www.facebook.com/Arif/',
-                'linkedin_link' => 'https://www.linkedin.com/Arif/',
-                'instagram_link' => 'https://www.instagram.com/Arif/',
-                'twitter_link' => 'https://www.twitter.com/Arif/',
-                'profile_pic' => '/images/profile_pic/Arif.png',
-                'apply_now_link' => 'www.google.com',
-                'how_to_collect_your_miles_today_link' => 'https://citadelmortgages.ca/air-miles/',
-                'your_financial_journey_link' => 'https://yfj.wealthdesk.com.au/my/home',
-                'mortgage_prequalification_link' => 'https://mortgage-prequalification.ca/',
-                'your_home_journey_link' => 'https://yourhomejourney.ca/',
-                'your_mortgage_calculators_link' => 'https://yourmortgagecalculators.ca/calculators/',
-                'calculate_how_you_can_be_mortgagefreesooner_link' => 'https://yourmortgagecalculators.ca/calculators/mortgagefreesooner.php',
-                'get_prequalified_now_link' => 'https://mortgage-prequalification.ca/',
-                'bio_apply_now_link' => 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276',
-                'about_us_apply_now_link' => 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276',
-            )
-        );
-           DB::table('agents')->insert(
-            array(
-                'user_id' => 4,
-                'admin_id' => 1,
-                'full_name' => 'Ali Developer',
-                'license_no' => '#11442434',
-                'phone' => '+922342344',
-                'facebook_link' => 'https://www.facebook.com/Basit/',
-                'linkedin_link' => 'https://www.linkedin.com/Basit/',
-                'instagram_link' => 'https://www.instagram.com/Basit/',
-                'twitter_link' => 'https://www.twitter.com/Basit/',
-                'profile_pic' => '/images/profile_pic/Basit.png',
-                'apply_now_link' => 'www.google.com',
-                'how_to_collect_your_miles_today_link' => 'https://citadelmortgages.ca/air-miles/',
-                'your_financial_journey_link' => 'https://yfj.wealthdesk.com.au/my/home',
-                'mortgage_prequalification_link' => 'https://mortgage-prequalification.ca/',
-                'your_home_journey_link' => 'https://yourhomejourney.ca/',
-                'your_mortgage_calculators_link' => 'https://yourmortgagecalculators.ca/calculators/',
-                'calculate_how_you_can_be_mortgagefreesooner_link' => 'https://yourmortgagecalculators.ca/calculators/mortgagefreesooner.php',
-                'get_prequalified_now_link' => 'https://mortgage-prequalification.ca/',
-                'bio_apply_now_link' => 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276',
-                'about_us_apply_now_link' => 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276',
-            )
-        );
-           DB::table('agents')->insert(
-            array(
-               'user_id' => 10,
-                'admin_id' => 1,
-                'full_name' => 'Tristan.krik',
-                'license_no' => '#11233434',
-                'phone' => '+922342344',
-                'facebook_link' => 'https://www.facebook.com/Tristan/',
-                'linkedin_link' => 'https://www.linkedin.com/Tristan/',
-                'instagram_link' => 'https://www.instagram.com/Tristan/',
-                'twitter_link' => 'https://www.twitter.com/Tristan/',
-                'profile_pic' => '/images/profile_pic/Tristan.png',
-                'apply_now_link' => 'www.google.com',
-                'how_to_collect_your_miles_today_link' => 'https://citadelmortgages.ca/air-miles/',
-                'your_financial_journey_link' => 'https://yfj.wealthdesk.com.au/my/home',
-                'mortgage_prequalification_link' => 'https://mortgage-prequalification.ca/',
-                'your_home_journey_link' => 'https://yourhomejourney.ca/',
-                'your_mortgage_calculators_link' => 'https://yourmortgagecalculators.ca/calculators/',
-                'calculate_how_you_can_be_mortgagefreesooner_link' => 'https://yourmortgagecalculators.ca/calculators/mortgagefreesooner.php',
-                'get_prequalified_now_link' => 'https://mortgage-prequalification.ca/',
-                'bio_apply_now_link' => 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276',
-                'about_us_apply_now_link' => 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276',
-            )
-        );
-
+        DB::unprepared("INSERT INTO `agents` (`id`, `user_id`, `admin_id`, `full_name`, `company_name`, `broker_house`, `license_no`, `phone`, `facebook_link`, `linkedin_link`, `instagram_link`, `twitter_link`, `profile_pic`, `apply_now_link`, `how_to_collect_your_miles_today_link`, `your_financial_journey_link`, `mortgage_prequalification_link`, `your_home_journey_link`, `your_mortgage_calculators_link`, `calculate_how_you_can_be_mortgagefreesooner_link`, `get_prequalified_now_link`, `bio_apply_now_link`, `about_us_apply_now_link`, `agent_type`, `is_approved`) VALUES
+            (1, 1, 4, 'Hamza Developer', '', '12341123', '#11233434111', '+922342344', 'https://www.facebook.com/Hamza/', 'https://www.linkedin.com/Hamza/', 'https://www.instagram.com/Hamza/', 'https://www.twitter.com/Hamza/', 'hamza.jpg', 'https://www.google.com/', 'https://citadelmortgages.ca/air-miles/', 'https://yfj.wealthdesk.com.au/my/home', 'https://mortgage-prequalification.ca/', 'https://yourhomejourney.ca/', 'https://yourmortgagecalculators.ca/calculators/', 'https://yourmortgagecalculators.ca/calculators/mortgagefreesooner.php', 'https://mortgage-prequalification.ca/', 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276', 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276', 'mortgage_professional', 'true'),
+            (2, 2, 4, 'Usman Designer', '', '12312313', '#11235454', '+9221232344', 'https://www.facebook.com/Usman/', 'https://www.linkedin.com/Usman/', 'https://www.instagram.com/Usman/', 'https://www.twitter.com/Usman/', 'usman.jpg', 'https://www.google.com/', 'https://citadelmortgages.ca/air-miles/', 'https://yfj.wealthdesk.com.au/my/home', 'https://mortgage-prequalification.ca/', 'https://yourhomejourney.ca/', 'https://yourmortgagecalculators.ca/calculators/', 'https://yourmortgagecalculators.ca/calculators/mortgagefreesooner.php', 'https://mortgage-prequalification.ca/', 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276', 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276', 'mortgage_professional', 'true'),
+            (3, 4, 1, 'Ali', '', '23424', '#11442434', '+922567844', 'https://www.facebook.com/Ali/', 'https://www.linkedin.com/Ali/', 'https://www.instagram.com/Ali/', 'https://www.twitter.com/Ali/', 'Ali.png', 'https://www.google.com/', 'https://citadelmortgages.ca/air-miles/', 'https://yfj.wealthdesk.com.au/my/home', 'https://mortgage-prequalification.ca/', 'https://yourhomejourney.ca/', 'https://yourmortgagecalculators.ca/calculators/', 'https://yourmortgagecalculators.ca/calculators/mortgagefreesooner.php', 'https://mortgage-prequalification.ca/', 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276', 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276', 'mortgage_professional', 'false'),
+            (6, 10, 8, 'Tristan.krik', '', '1231233', '#2131243', '+92256784421', 'https://www.facebook.com/Tristan/', 'https://www.linkedin.com/Tristan/', 'https://www.instagram.com/Tristan/', 'https://www.twitter.com/Tristan/', 'Tristan.png', 'https://www.google.com/', 'https://citadelmortgages.ca/air-miles/', 'https://yfj.wealthdesk.com.au/my/home', 'https://mortgage-prequalification.ca/', 'https://yourhomejourney.ca/', 'https://yourmortgagecalculators.ca/calculators/', 'https://yourmortgagecalculators.ca/calculators/mortgagefreesooner.php', 'https://mortgage-prequalification.ca/', 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276', 'https://citadel-mortgages.mtg-app.com/signup?brokerName=kristin.kiviranta&brokerId=2cb674c2-2d2d-4640-a9ff-578c5b58e276', 'mortgage_professional', 'true'),
+            (26, 74, 4, 'farhan jameel', 'Citadel Mortgages Tristan', '1231423', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'real_state_agent', 'false');
+        ");
     }
 
     /**

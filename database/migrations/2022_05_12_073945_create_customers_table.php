@@ -20,36 +20,12 @@ class CreateCustomersTable extends Migration
             $table->string('last_name');
             $table->string('province');
             $table->string('relevance');
-             $table->timestamps();
+            $table->timestamps();
         });
 
-         DB::table('customers')->insert(
-            array(
-                'user_id' => 101,
-                'first_name' => 'usman',
-                'last_name' => 'ghani',
-                'province' => 'Sindh',
-                'relevance' => 'Karachi',
-            )
-        );
-         DB::table('customers')->insert(
-            array(
-                'user_id' => 102,
-                'first_name' => 'Muhammad',
-                'last_name' => 'Hamza',
-                'province' => 'Sindh',
-                'relevance' => 'Karachi',
-            )
-        );
-         DB::table('customers')->insert(
-            array(
-                'user_id' => 103,
-                'first_name' => 'Ali',
-                'last_name' => 'Fawad',
-                'province' => 'Sindh',
-                'relevance' => 'Karachi',
-            )
-        );
+        DB::unprepared("INSERT INTO `customers` (`id`, `user_id`, `first_name`, `last_name`, `province`, `relevance`, `created_at`, `updated_at`) VALUES
+            (7, 5, 'rizwan', 'ahmed', 'Ontario', '1', '2022-05-18 01:14:17', '2022-05-18 01:14:17');
+        ");
 
     }
 

@@ -152,8 +152,6 @@ class ManageAgentController extends Controller{
 
 
     // _______________________________________________________________________
-    // _______________________________________________________________________
-    // _______________________________________________________________________
     // WHEN AGENT LOGIN
     public function showAllDataForAgentLogin(){
         $user = Auth::user();
@@ -216,6 +214,17 @@ class ManageAgentController extends Controller{
 
     // WHEN AGENT LOGIN
     // _______________________________________________________________________
+
     // _______________________________________________________________________
+    // SAvING DATA OF PAGES EDITOR BY AGENT
+      public function saveHomePageData(Request $req){
+        $post = MasterSetting::find(1);
+        $post->terms_data = $req['newData'];;
+        $post->save();
+
+        echo "Saved";
+    }
     // _______________________________________________________________________
+
+
 }

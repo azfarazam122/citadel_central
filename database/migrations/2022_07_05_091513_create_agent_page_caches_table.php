@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMasterAdminsTable extends Migration
+class CreateAgentPageCachesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateMasterAdminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_admins', function (Blueprint $table) {
+        Schema::create('agent_page_caches', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
             $table->string('name');
+            $table->text('image');
+            $table->string('type');
+            $table->boolean('submitted_for_approval')->default(false);
         });
-
-        DB::unprepared("INSERT INTO `master_admins` (`id`, `user_id`, `name`) VALUES
-            (1, 10, 'Tristan.kirk');
-        ");
     }
 
     /**
@@ -31,6 +29,6 @@ class CreateMasterAdminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_admins');
+        Schema::dropIfExists('agent_page_caches');
     }
 }

@@ -19,12 +19,10 @@ class CreateSuperAdminsTable extends Migration
             $table->string('name');
         });
 
-        DB::table('super_admins')->insert(
-            array(
-                'user_id' => 1001,
-                'name' => 'kristinkiviranta',
-            )
-        );
+
+        DB::unprepared("INSERT INTO `super_admins` (`id`, `user_id`, `name`) VALUES
+            (1, 10, 'Tristan.kirk');
+        ");
 
     }
 

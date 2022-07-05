@@ -48,7 +48,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['forAgentOnly']], function () {
     // Route::view('/admin_dashboard/agent', 'agent');
     Route::view('/admin_dashboard', 'admin_dashboard');
-    Route::view('/admin_dashboard/home_page_editor', 'home_page_editor');
+    Route::view('/admin_dashboard/pages_editor', 'pages_editor');
+    Route::post('/admin_dashboard/master/saveHomePageData', [ManageAgentController::class, 'saveHomePageData'])->name('saveHomePageDataByAgent');
     Route::get('/admin_dashboard/agent', [ManageAgentController::class, 'showAllDataForAgentLogin']);
     Route::post('/admin_dashboard/agent', [ManageAgentController::class, 'updateDataForAgentLogin'])->name('updateDataForAgentLogin');
 });
