@@ -20,7 +20,7 @@ class CreateAgentPagesTable extends Migration
             $table->text('data');
             $table->boolean('is_approved')->default(false);
             $table->text('reason_for_disapproval');
-            $table->boolean('is_submitted_for_approval');
+            $table->boolean('is_submitted_for_approval')->default(false);
             $table->timestamps();
         });
 

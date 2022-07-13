@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAgentPageCachesTable extends Migration
+class CreateWidgetCachesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateAgentPageCachesTable extends Migration
      */
     public function up()
     {
-        Schema::create('agent_page_caches', function (Blueprint $table) {
+        Schema::create('widget_caches', function (Blueprint $table) {
             $table->id();
-            $table->string('page_id');
-            $table->text('agent_id');
-            $table->string('data');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateAgentPageCachesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agent_page_caches');
+        Schema::dropIfExists('widget_caches');
     }
 }
