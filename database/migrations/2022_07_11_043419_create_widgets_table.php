@@ -15,7 +15,10 @@ class CreateWidgetsTable extends Migration
     {
         Schema::create('widgets', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->text('data');
+            $table->string('type');
+            $table->boolean('submitted_for_approval')->default(false);
         });
     }
 

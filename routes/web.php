@@ -48,11 +48,41 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['forAgentOnly']], function () {
     // Route::view('/admin_dashboard/agent', 'agent');
     Route::view('/admin_dashboard', 'admin_dashboard');
-    Route::view('/admin_dashboard/pages_editor', 'pages_editor');
-    Route::post('/admin_dashboard/master/saveHomePageData', [ManageAgentController::class, 'saveHomePageData'])->name('saveHomePageDataByAgent');
     Route::get('/admin_dashboard/agent', [ManageAgentController::class, 'showAllDataForAgentLogin']);
     Route::post('/admin_dashboard/agent', [ManageAgentController::class, 'updateDataForAgentLogin'])->name('updateDataForAgentLogin');
+    Route::view('/admin_dashboard/pages_editor', 'pages_editor');
+    Route::post('/admin_dashboard/agent/saveHomePageData', [ManageAgentController::class, 'saveHomePageData'])->name('saveHomePageDataByAgent');
+    Route::post('/admin_dashboard/agent/setHomeDefaultPage', [ManageAgentController::class, 'setHomeDefaultPage'])->name('setHomeDefaultPageByAgent');
+    Route::post('/admin_dashboard/agent/submitHomePageForApproval', [ManageAgentController::class, 'submitHomePageForApproval'])->name('submitHomePageForApprovalByAgent');
 });
+
+
+Route::group(['middleware' => ['forAdmin']], function () {
+    Route::get('/admin_dashboard/admin', [ManageAdminController::class, 'showAllDataOfAdminSetting']);
+    Route::get('/admin_dashboard/admin/edit/{id}', [ManageAdminController::class, 'showEditDataOfAdminSetting']);
+    Route::get('/admin_dashboard/admin/detail/{id}', [ManageAdminController::class, 'showDetailedDataOfAdminSetting']);
+    Route::post('/admin_dashboard/admin', [ManageAdminController::class, 'updateDataOfAdminSetting'])->name('updateDataOfAdminSetting');
+
+    // MANAGE AGENT ROUTES == > ManageUserController
+    Route::get('/admin_dashboard/agents', [ManageAgentController::class, 'showAllData']);
+    Route::view('/admin_dashboard/agents/create', 'create_agent');
+    Route::post('/admin_dashboard/agents/create', [ManageAgentController::class, 'createAgent'])->name('createAgent');
+    Route::get('/admin_dashboard/agents/edit/{id}', [ManageAgentController::class, 'showEditData']);
+    Route::get('/admin_dashboard/agents/details/{id}', [ManageAgentController::class, 'showDetailsOfAgent']);
+    Route::post('/admin_dashboard/agents', [ManageAgentController::class, 'updateData'])->name('updateAgentData');
+    Route::get('/admin_dashboard/agents/delete/{id}', [ManageAgentController::class, 'deleteData'])->name('deleteUserData');
+
+    Route::post('/agent_set_as_default', [ManageAdminController::class, 'setAgentAsDefaultFunc'])->name('setAgentAsDefault');
+    Route::post('/agent_set_as_approved', [ManageAdminController::class, 'setAgentAsApprovedFunc'])->name('setAgentAsApproved');
+    Route::post('/agent_set_as_unapproved', [ManageAdminController::class, 'setAgentAsUnApprovedFunc'])->name('setAgentAsUnApproved');
+
+    // Agents Pages
+    Route::view('/admin_dashboard/agents/pages', 'agent_pages');
+    Route::get('/admin_dashboard/agent/{agent_id}/pages', [ManageAdminController::class, 'agentPages'])->name('agentsPagesForAdmin');
+    // Route::view('/admin_dashboard/agent/{agent_id}/pages', 'agent_page');
+    // Route::get('/admin_dashboard/agent/agentId/pages', [ManageAdminController::class, 'setAgentAsUnApprovedFunc'])->name('setAgentAsUnApproved');
+});
+
 Route::group(['middleware' => ['forSuperAdmin']], function () {
     // Route::view('/admin_dashboard/super', 'super_settings');
     Route::get('/admin_dashboard/super', [ManageSuperSettingController::class, 'showAllDataOfSuperSettings']);
@@ -96,25 +126,6 @@ Route::group(['middleware' => ['forMasterAdmin']], function () {
     Route::post('/admin_set_as_default', [ManageAdminController::class, 'setAdminAsDefaultFunc'])->name('setAdminAsDefault');
 });
 
-Route::group(['middleware' => ['forAdmin']], function () {
-    Route::get('/admin_dashboard/admin', [ManageAdminController::class, 'showAllDataOfAdminSetting']);
-    Route::get('/admin_dashboard/admin/edit/{id}', [ManageAdminController::class, 'showEditDataOfAdminSetting']);
-    Route::get('/admin_dashboard/admin/detail/{id}', [ManageAdminController::class, 'showDetailedDataOfAdminSetting']);
-    Route::post('/admin_dashboard/admin', [ManageAdminController::class, 'updateDataOfAdminSetting'])->name('updateDataOfAdminSetting');
-
-    // MANAGE AGENT ROUTES == > ManageUserController
-    Route::get('/admin_dashboard/agents', [ManageAgentController::class, 'showAllData']);
-    Route::view('/admin_dashboard/agents/create', 'create_agent');
-    Route::post('/admin_dashboard/agents/create', [ManageAgentController::class, 'createAgent'])->name('createAgent');
-    Route::get('/admin_dashboard/agents/edit/{id}', [ManageAgentController::class, 'showEditData']);
-    Route::get('/admin_dashboard/agents/details/{id}', [ManageAgentController::class, 'showDetailsOfAgent']);
-    Route::post('/admin_dashboard/agents', [ManageAgentController::class, 'updateData'])->name('updateAgentData');
-    Route::get('/admin_dashboard/agents/delete/{id}', [ManageAgentController::class, 'deleteData'])->name('deleteUserData');
-
-    Route::post('/agent_set_as_default', [ManageAdminController::class, 'setAgentAsDefaultFunc'])->name('setAgentAsDefault');
-    Route::post('/agent_set_as_approved', [ManageAdminController::class, 'setAgentAsApprovedFunc'])->name('setAgentAsApproved');
-    Route::post('/agent_set_as_unapproved', [ManageAdminController::class, 'setAgentAsUnApprovedFunc'])->name('setAgentAsUnApproved');
-});
 
 // Admin Dashboard Controller
 Route::post('/admindashboard_changePassword', [App\Http\Controllers\AdminDashboardController::class, 'changePassword'])->name('changePasswordOfUser');

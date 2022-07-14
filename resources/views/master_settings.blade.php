@@ -119,7 +119,7 @@
 
         function saveTermsPageData() {
             axios.post("{{ route('saveTermsPageDataByMaster') }}", {
-                    newData: termsPageeditor[0].innerHTML,
+                    newData: termsPageeditor[0].value,
                 })
                 .then(function(response) {
                     console.log(response);
@@ -136,7 +136,7 @@
 
         function savePrivacyPageData() {
             axios.post("{{ route('savePrivacyPageDataByMaster') }}", {
-                    newData: privacyPageeditor[0].innerHTML,
+                    newData: privacyPageeditor[0].value,
                 })
                 .then(function(response) {
                     console.log(response);

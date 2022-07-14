@@ -86,6 +86,10 @@
                               <i id="adminIcon" class='bx bx-bar-chart-alt-2 nav_icon'></i>
                               <span class="nav_name">Admin</span>
                           </a>
+                          <a href="/admin_dashboard/agents/pages" id="agentPagesTab" class="nav_link">
+                              <i id="agentPagesIcon" class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                              <span class="nav_name">Agents Pages</span>
+                          </a>
                       @endif
                       @if ($userIsAgent == true)
                           <a href="/admin_dashboard/agent" id="yourProfileTab" class="nav_link">
@@ -188,6 +192,9 @@
           } else if (window.location.href.includes("/admin_dashboard/admins")) {
               $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
               $("#manageAdminsTab").addClass("changeColorOfSidebarSelectedTab");
+          } else if (window.location.href.includes("/admin_dashboard/agents/pages")) {
+              $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
+              $("#agentPagesTab").addClass("changeColorOfSidebarSelectedTab");
           } else if (window.location.href.includes("/admin_dashboard/agents")) {
               $(".nav_link").removeClass("changeColorOfSidebarSelectedTab");
               $("#manageAgentsTab").addClass("changeColorOfSidebarSelectedTab");

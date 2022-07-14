@@ -204,6 +204,19 @@ class ManageAdminController extends Controller
         return view('admin_detail')->with('adminSettingData',$adminSettingData);
     }
 
+    public function agentPages($id){
+        $user = Auth::user();
+        $adminData = Admin::where('user_id',$user->id)->get('id');
+        $agentsList = Agent::where('admin_id',$adminData[0]->id)->get();
+
+        dd($agentsList);
+        // return $user;
+        // $adminSettingData = Admin::where('user_id',$id)->get();
+        // $adminSettingData[0]->email = $user->email;
+        // // return $masterSettingData;
+        return view('agent_page')->with('agentList',$agentsList);
+    }
+
 
     //
     public function updateDataOfAdminSetting(Request $request){
