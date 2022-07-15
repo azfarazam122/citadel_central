@@ -8,6 +8,7 @@
 @section('libraries')
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
+
 @endsection
 
 @php
@@ -25,26 +26,33 @@ for ($i = 0; $i < count($listOfAgentsOfThatAdmin); $i++) {
             <div class="row overflow-auto justify-content-center me-auto ms-auto col-12">
                 <div class="col-md-11">
                     <div class="">
-                        <h1 class="text-center">{{ __('Agents') }}
-                        </h1>
+                        <p class="display-5 text-center">{{ __('Agents Pages ') }}
+                        </p>
                         <hr>
                         <div class="card-body">
-                            <h3>Manage Agents</h3>
-                            <div>
-                                <a href="/admin_dashboard/agents/create" class="btn btn-dark mt-3 mb-3">Create New
-                                    Agent</a>
-                            </div>
+                            <h3>Manage Agent Pages</h3>
                             <table id="agentsListTable" class="display mr-5">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
                                         <th>Full Name</th>
                                         <th>Profile Pic </th>
-                                        <th>Edit </th>
+                                        <th>Status</th>
+                                        <th>Action </th>
                                     </tr>
                                 </thead>
+                                @php
+
+                                    $agentPagesList = App\Models\AgentPageStaging::all();
+                                    // $agentData = App\Models\Agent::where('id', $masterSettingData[0]->default_agent_id)->get();
+                                @endphp
+                                {{-- <h1>{{ $agentPagesList[1] }}</h1> --}}
+
                                 <tbody id="agentsListTableBody">
                                     @for ($i = 0; $i < count($listOfAgentsOfThatAdmin); $i++)
+                                        @php
+                                            $ifAnyPageOfAgentIsSubmittedForApproval = false;
+                                        @endphp
                                         <tr>
                                             <td>{{ $listOfAgentsOfThatAdmin[$i]->id }} </td>
                                             <td>{{ $listOfAgentsOfThatAdmin[$i]->full_name }} </td>
@@ -52,11 +60,24 @@ for ($i = 0; $i < count($listOfAgentsOfThatAdmin); $i++) {
                                                 <img style="border-radius: 50px;border: 4px solid black;" width="100px"
                                                     src="../../images/profile_pic/{{ $listOfAgentsOfThatAdmin[$i]->email }}/{{ $listOfAgentsOfThatAdmin[$i]->profile_pic }}"
                                                     alt="Profile Pic " srcset="">
-
                                             </td>
+
+                                            @for ($x = 0; $x < 3; $x++)
+                                                @if ($agentPagesList[$i]->is_submitted_for_approval == 1)
+                                                    @php
+                                                        $ifAnyPageOfAgentIsSubmittedForApproval = true;
+                                                    @endphp
+                                                @endif
+                                            @endfor
+                                            @if ($ifAnyPageOfAgentIsSubmittedForApproval == true)
+                                                <td class="lead"> Is Waiting For Approval </td>
+                                            @else
+                                                <td class="lead"> ___________________________ </td>
+                                            @endif
                                             <td class="me-5">
-                                                <a class=" btn btn-primary col-md-4"
-                                                    href="/admin_dashboard/agent/{{ $listOfAgentsOfThatAdmin[$i]->id }}/pages">Pages</a>
+                                                <a class=" btn btn-primary"
+                                                    href="/admin_dashboard/agent/{{ $listOfAgentsOfThatAdmin[$i]->id }}/pages">All
+                                                    Pages</a>
                                             </td>
                                         </tr>
                                     @endfor
@@ -75,6 +96,7 @@ for ($i = 0; $i < count($listOfAgentsOfThatAdmin); $i++) {
     <script src="{{ asset('js/masterSettings.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
+
     <script>
         $(document).ready(function() {
 

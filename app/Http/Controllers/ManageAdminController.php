@@ -12,6 +12,7 @@ use App\Models\Agent;
 use App\Models\MasterAdmin;
 use App\Models\SuperAdmin;
 use App\Models\MasterSetting;
+use App\Models\AgentPageStaging;
 
 class ManageAdminController extends Controller
 {
@@ -204,18 +205,37 @@ class ManageAdminController extends Controller
         return view('admin_detail')->with('adminSettingData',$adminSettingData);
     }
 
-    public function agentPages($id){
-        $user = Auth::user();
-        $adminData = Admin::where('user_id',$user->id)->get('id');
-        $agentsList = Agent::where('admin_id',$adminData[0]->id)->get();
-
-        dd($agentsList);
-        // return $user;
-        // $adminSettingData = Admin::where('user_id',$id)->get();
-        // $adminSettingData[0]->email = $user->email;
-        // // return $masterSettingData;
-        return view('agent_page')->with('agentList',$agentsList);
+    public function agentEachPageData($id){
+        $agentEachPageData = AgentPageStaging::where('agent_id',$id)->get();
+        $agentData = Agent::where('id',$id)->get();
+        $agentEmail = User::where('id', $agentData[0]->user_id)->get('email');
+        $agentData[0]['email'] = $agentEmail[0]->email;
+        $agentData = $agentData[0];
+        return view('agent_page')->with('agentPagesList',$agentEachPageData)->with('agentData', $agentData);
     }
+
+    public function setAgentPageAsApprovedOrDisapprovedFunc(Request $req){
+        // echo '123123';
+
+        // echo $req['adminRequest'];
+        // echo $req['pageId'];
+        // echo $req['agentId'];
+
+        $post = AgentPageStaging::where("agent_id", $req['agentId'])->where('page_id',$req['pageId'])->first();
+        $post->is_submitted_for_approval = 0;
+        if ($req['adminRequest'] == "Approve") {
+            $post->is_approved = 1;
+        }else{
+            $post->is_approved = 0;
+            $post->reason_for_disapproval = $req['reasonForDisapproval'];
+        }
+        $post->save();
+
+        echo "successfull";
+
+    }
+
+
 
 
     //

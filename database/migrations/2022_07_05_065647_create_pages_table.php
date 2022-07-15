@@ -19,10 +19,6 @@ class CreatePagesTable extends Migration
             $table->text('default_data');
         });
 
-        DB::unprepared(
-            "INSERT INTO `pages` (`id`, `name`, `default_data`) VALUES
-            (1, 'Home Page', 'rizwan');
-        ");
 
     }
 

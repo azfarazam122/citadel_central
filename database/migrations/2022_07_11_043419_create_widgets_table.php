@@ -20,6 +20,10 @@ class CreateWidgetsTable extends Migration
             $table->string('type');
             $table->boolean('submitted_for_approval')->default(false);
         });
+
+         DB::unprepared("INSERT INTO `widgets` (`id`, `name`, `data`, `type`, `submitted_for_approval`) VALUES
+            (1, 'LearnHowToCollectYourMilesToday_Btn', 'asdasdadasdadsdad asdasdasd','Button', 0);
+         ");
     }
 
     /**

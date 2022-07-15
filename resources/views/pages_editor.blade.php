@@ -41,13 +41,13 @@
                             @php
                                 $agentLoggedIn = Auth::user();
                                 $agentData = App\Models\Agent::where('user_id', $agentLoggedIn->id)->get();
-                                $agentHomePageData = App\Models\AgentPage::where('agent_id', $agentData[0]->id)
+                                $agentHomePageData = App\Models\AgentPageStaging::where('agent_id', $agentData[0]->id)
                                     ->where('page_id', 1)
                                     ->first();
-                                $agentAboutPageData = App\Models\AgentPage::where('agent_id', $agentData[0]->id)
+                                $agentAboutPageData = App\Models\AgentPageStaging::where('agent_id', $agentData[0]->id)
                                     ->where('page_id', 2)
                                     ->first();
-                                $agentRatePageData = App\Models\AgentPage::where('agent_id', $agentData[0]->id)
+                                $agentRatePageData = App\Models\AgentPageStaging::where('agent_id', $agentData[0]->id)
                                     ->where('page_id', 3)
                                     ->first();
                             @endphp
@@ -69,8 +69,8 @@
                                         <span class="bg-danger lead p-2"
                                             style="color: white;border-radius:7px;">Disapproved</span>
                                         <p class="lead mb-0 mt-3">Reason For Disapproval</p>
-                                        <textarea class="mt-0" name="reasonForDisapprovalHomePage" id="reasonForDisapprovalHomePage" rows="8"
-                                            style="width: 100%;">Don't like the Styling of Page
+                                        <textarea class="mt-0" name="reasonForDisapprovalHomePage" id="reasonForDisapprovalHomePage" readonly rows="6"
+                                            style="width: 100%; border-radius: 7px;">{{ $agentHomePageData->reason_for_disapproval }}
                                         </textarea>
                                     @elseif ($agentHomePageData->is_approved == 0 && $agentHomePageData->is_submitted_for_approval == 1)
                                         <span class="bg-secondary lead p-2"

@@ -78,7 +78,8 @@ Route::group(['middleware' => ['forAdmin']], function () {
 
     // Agents Pages
     Route::view('/admin_dashboard/agents/pages', 'agent_pages');
-    Route::get('/admin_dashboard/agent/{agent_id}/pages', [ManageAdminController::class, 'agentPages'])->name('agentsPagesForAdmin');
+    Route::get('/admin_dashboard/agent/{agent_id}/pages', [ManageAdminController::class, 'agentEachPageData'])->name('agentEachPageDataForAdmin');
+    Route::post('/agent_page_set_as_approved_or_disapproved', [ManageAdminController::class, 'setAgentPageAsApprovedOrDisapprovedFunc'])->name('setAgentPageAsApprovedOrDisapproved');
     // Route::view('/admin_dashboard/agent/{agent_id}/pages', 'agent_page');
     // Route::get('/admin_dashboard/agent/agentId/pages', [ManageAdminController::class, 'setAgentAsUnApprovedFunc'])->name('setAgentAsUnApproved');
 });

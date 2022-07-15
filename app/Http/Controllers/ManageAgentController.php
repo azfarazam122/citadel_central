@@ -10,7 +10,7 @@ use App\Models\Admin;
 use App\Models\MasterAdmin;
 use App\Models\SuperAdmin;
 use App\Models\Page;
-use App\Models\AgentPage;
+use App\Models\AgentPageStaging;
 use Illuminate\Support\Facades\Auth;
 
 class ManageAgentController extends Controller{
@@ -222,7 +222,7 @@ class ManageAgentController extends Controller{
     public function saveHomePageData(Request $req){
         $agentLoggedIn = Auth::user();
         $agentData = Agent::where('user_id',$agentLoggedIn->id)->get();
-        $post = AgentPage::where("agent_id", $agentData[0]->id)->where('page_id',1)->first();
+        $post = AgentPageStaging::where("agent_id", $agentData[0]->id)->where('page_id',1)->first();
         // echo $post;
         // $post->data = '123123123';
         $post->data = $req['newData'];
@@ -233,10 +233,11 @@ class ManageAgentController extends Controller{
     public function submitHomePageForApproval(Request $req){
         $agentLoggedIn = Auth::user();
         $agentData = Agent::where('user_id',$agentLoggedIn->id)->get();
-        $post = AgentPage::where("agent_id", $agentData[0]->id)->where('page_id',1)->first();
+        $post = AgentPageStaging::where("agent_id", $agentData[0]->id)->where('page_id',1)->first();
         // echo $post;
         // $post->data = '123123123';
         $post->is_submitted_for_approval = 1;
+        $post->is_approved = 0;
         $post->save();
 
         echo "Submitted For Approval";

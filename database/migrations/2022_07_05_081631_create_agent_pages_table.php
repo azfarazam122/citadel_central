@@ -15,15 +15,17 @@ class CreateAgentPagesTable extends Migration
     {
         Schema::create('agent_pages', function (Blueprint $table) {
             $table->id();
-            $table->integer('page_id');
-            $table->integer('agent_id');
-            $table->text('data');
-            $table->boolean('is_approved')->default(false);
-            $table->text('reason_for_disapproval');
-            $table->boolean('is_submitted_for_approval')->default(false);
+            $table->string('page_id');
+            $table->text('agent_id');
+            $table->string('data');
             $table->timestamps();
         });
 
+         DB::unprepared("INSERT INTO `agent_pages` (`id`, `page_id`, `agent_id`, `data`, `created_at`, `updated_at`) VALUES
+            (1, '1', '1', 'qweqwee',NULL,NULL),
+            (2, '2', '1', '13123131',NULL,NULL),
+            (3, '3', '1', 'qwe12312312312',NULL,NULL);
+        ");
     }
 
     /**
