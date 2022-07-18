@@ -98,7 +98,11 @@
                                                 <td>{{ $agentPagesList[$i]->reason_for_disapproval }} </td>
                                             @endif
                                             <td>{{ $agentPagesList[$i]->updated_at }} </td>
-                                            <td>{{ $agentPagesList[$i]->id }} </td>
+                                            <td>
+                                                <a class="mt-1 btn btn-dark" target="blank"
+                                                    href='/admin_dashboard/agent/{{ $agentPagesList[$i]->page_id }}/preview/{{ $agentData->email }}'>View
+                                                    Page</a>
+                                            </td>
                                         </tr>
                                     @endfor
 

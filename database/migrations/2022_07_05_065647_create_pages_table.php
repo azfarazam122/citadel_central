@@ -19,7 +19,6 @@ class CreatePagesTable extends Migration
             $table->text('default_data');
         });
 
-
     }
 
     /**

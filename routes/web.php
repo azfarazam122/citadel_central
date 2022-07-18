@@ -6,6 +6,7 @@ use App\Http\Controllers\ManageAgentController;
 use App\Http\Controllers\ManageMasterSettingController;
 use App\Http\Controllers\ManageSuperSettingController;
 use App\Http\Controllers\ManageUserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,6 @@ Route::get('/', function () {
 
 Route::view('/terms_conditions', 'terms');
 Route::view('/privacy_policy', 'privacy');
-
 
 // REGISTER AGENT
 Route::view('/register/{agent_email}', 'auth.register');
@@ -56,7 +56,6 @@ Route::group(['middleware' => ['forAgentOnly']], function () {
     Route::post('/admin_dashboard/agent/submitHomePageForApproval', [ManageAgentController::class, 'submitHomePageForApproval'])->name('submitHomePageForApprovalByAgent');
 });
 
-
 Route::group(['middleware' => ['forAdmin']], function () {
     Route::get('/admin_dashboard/admin', [ManageAdminController::class, 'showAllDataOfAdminSetting']);
     Route::get('/admin_dashboard/admin/edit/{id}', [ManageAdminController::class, 'showEditDataOfAdminSetting']);
@@ -80,8 +79,10 @@ Route::group(['middleware' => ['forAdmin']], function () {
     Route::view('/admin_dashboard/agents/pages', 'agent_pages');
     Route::get('/admin_dashboard/agent/{agent_id}/pages', [ManageAdminController::class, 'agentEachPageData'])->name('agentEachPageDataForAdmin');
     Route::post('/agent_page_set_as_approved_or_disapproved', [ManageAdminController::class, 'setAgentPageAsApprovedOrDisapprovedFunc'])->name('setAgentPageAsApprovedOrDisapproved');
-    // Route::view('/admin_dashboard/agent/{agent_id}/pages', 'agent_page');
-    // Route::get('/admin_dashboard/agent/agentId/pages', [ManageAdminController::class, 'setAgentAsUnApprovedFunc'])->name('setAgentAsUnApproved');
+
+    // View Agent Pages
+    Route::get('/admin_dashboard/agent/{page_id}/preview/{agent_email}', [ManageAdminController::class, 'viewAgentPage'])->name('viewAgentPageForAdmin');
+
 });
 
 Route::group(['middleware' => ['forSuperAdmin']], function () {
@@ -126,7 +127,6 @@ Route::group(['middleware' => ['forMasterAdmin']], function () {
 
     Route::post('/admin_set_as_default', [ManageAdminController::class, 'setAdminAsDefaultFunc'])->name('setAdminAsDefault');
 });
-
 
 // Admin Dashboard Controller
 Route::post('/admindashboard_changePassword', [App\Http\Controllers\AdminDashboardController::class, 'changePassword'])->name('changePasswordOfUser');
