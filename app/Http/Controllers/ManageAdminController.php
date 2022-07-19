@@ -7,6 +7,7 @@ use App\Models\Agent;
 use App\Models\AgentPageStaging;
 use App\Models\MasterSetting;
 use App\Models\User;
+use App\Models\Widget;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -253,11 +254,11 @@ class ManageAdminController extends Controller
         $agentEachPageData = AgentPageStaging::where('agent_id', $agent_id[0]->id)->where('page_id', $page_id)->first();
         // dd($agentEachPageData->data);
 
-        return view('agent_page_preview.home_page_view')->with('agentHomePageData', $agentEachPageData->data);
-        // $agentData = Agent::where('id', $id)->get();
-        // $agentEmail = User::where('id', $agentData[0]->user_id)->get('email');
-        // $agentData[0]['email'] = $agentEmail[0]->email;
-        // $agentData = $agentData[0];
+        $widgetData = Widget::all();
+
+        // dd($widgetData[0]->data);
+        $agentEachPageData->data = str_replace("[[How_to_Collect_Your_Miles_Today]]", $widgetData[0]->data ,$agentEachPageData->data);
+        return view('agent_page_preview.home_page_view')->with('agentHomePageData', $agentEachPageData->data)->render();
     }
 
     //

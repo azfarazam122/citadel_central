@@ -17,7 +17,7 @@ class CreateAgentPageStagingsTable extends Migration
             $table->id();
             $table->integer('page_id');
             $table->integer('agent_id');
-            $table->text('data');
+            $table->longText('data');
             $table->boolean('is_approved')->default(false);
             $table->text('reason_for_disapproval');
             $table->boolean('is_submitted_for_approval')->default(false);

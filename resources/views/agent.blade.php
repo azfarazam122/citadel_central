@@ -163,14 +163,6 @@
                                             aria-describedby="helpId" placeholder="">
                                     </div>
                                     <div class="form-group mt-3">
-                                        <label for="">Calculate How You Can Be MortgageFreeSooner Link</label>
-                                        <input type="text" class="form-control"
-                                            name="editCalculateHowYouCanBeMortgageFreeSoonerLinkOfAgent"
-                                            id="editCalculateHowYouCanBeMortgageFreeSoonerLinkOfAgent"
-                                            value="{{ $agentData[0]->calculate_how_you_can_be_mortgagefreesooner_link }}"
-                                            aria-describedby="helpId" placeholder="">
-                                    </div>
-                                    <div class="form-group mt-3">
                                         <label for="">Get Prequalified Now Link</label>
                                         <input type="text" class="form-control"
                                             name="editGetPrequalifiedNowLinkOfAgent"
@@ -178,6 +170,15 @@
                                             value="{{ $agentData[0]->get_prequalified_now_link }}"
                                             aria-describedby="helpId" placeholder="">
                                     </div>
+                                    <div class="form-group mt-3">
+                                        <label for="">Calculate How You Can Be MortgageFreeSooner Link</label>
+                                        <input type="text" class="form-control"
+                                            name="editCalculateHowYouCanBeMortgageFreeSoonerLinkOfAgent"
+                                            id="editCalculateHowYouCanBeMortgageFreeSoonerLinkOfAgent"
+                                            value="{{ $agentData[0]->calculate_how_you_can_be_mortgagefreesooner_link }}"
+                                            aria-describedby="helpId" placeholder="">
+                                    </div>
+
                                     <div class="form-group mt-3">
                                         <label for="">About Page Bio Link</label>
                                         <input type="text" class="form-control" name="editAboutPageBioLinkOfAgent"

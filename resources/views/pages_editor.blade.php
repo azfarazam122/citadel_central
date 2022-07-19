@@ -8,6 +8,7 @@
 
 @section('libraries')
     <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.css" />
 @endsection
@@ -27,9 +28,32 @@
                                     These are the Dynamic data . You Can use this data like this [[ name ]] in the Below
                                     Editable Portion
                                 </p>
-                                <ol class="">
-                                    <li>[[LearnHowToCollectYourMilesToday_Btn]]</li>
-                                </ol>
+                                <div>
+                                    @php
+                                        $widgetsData = App\Models\Widget::all();
+                                    @endphp
+                                    <table id="widgetsDataTable" class="display">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Widget Name</th>
+                                                <th>Widget Type</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="widgetsDataTableBody">
+                                            @for ($i = 0; $i < count($widgetsData); $i++)
+                                                <tr>
+                                                    <td>{{ $widgetsData[$i]->id }}</td>
+                                                    <td>{{ $widgetsData[$i]->name }}</td>
+                                                    <td class="lead">{{ $widgetsData[$i]->type }}</td>
+                                                </tr>
+                                            @endfor
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {{-- <ol class="">
+                                    <li>[[How_to_Collect_Your_Miles_Today_Button]]</li>
+                                </ol> --}}
                             </div>
                             <div class="mt-4 text-center">
 
@@ -92,6 +116,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/masterSettings.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
     <script>
@@ -99,6 +124,7 @@
         var aboutPageEditor;
         var ratesPageEditor;
         $(document).ready(function() {
+            $('#widgetsDataTable').DataTable();
             homePageEditor = $('#homePageTemplate').summernote({
                 height: 500,
             });
@@ -117,11 +143,13 @@
                 })
                 .then(function(response) {
                     console.log(response);
-                    Swal.fire(
-                        'Saved!',
-                        "Content For Home Page Saved Successfully",
-                        'success'
-                    )
+                    if (response.data == "Saved") {
+                        Swal.fire(
+                            'Saved!',
+                            "Content For Home Page Saved Successfully",
+                            'success'
+                        )
+                    }
                 })
                 .catch(function(error) {
                     console.log(error.response);

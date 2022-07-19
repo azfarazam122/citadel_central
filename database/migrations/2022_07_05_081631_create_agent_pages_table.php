@@ -17,7 +17,7 @@ class CreateAgentPagesTable extends Migration
             $table->id();
             $table->string('page_id');
             $table->text('agent_id');
-            $table->string('data');
+            $table->longText('data');
             $table->timestamps();
         });
 
