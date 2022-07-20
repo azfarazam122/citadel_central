@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Agent;
 use App\Models\AgentPageStaging;
+use App\Models\AgentPage;
 use App\Models\MasterSetting;
 use App\Models\User;
 use App\Models\Widget;
@@ -231,15 +232,18 @@ class ManageAdminController extends Controller
         // echo $req['pageId'];
         // echo $req['agentId'];
 
-        $post = AgentPageStaging::where("agent_id", $req['agentId'])->where('page_id', $req['pageId'])->first();
-        $post->is_submitted_for_approval = 0;
+        $agentPageStagging_Post = AgentPageStaging::where("agent_id", $req['agentId'])->where('page_id', $req['pageId'])->first();
+        $agentPageStagging_Post->is_submitted_for_approval = 0;
         if ($req['adminRequest'] == "Approve") {
-            $post->is_approved = 1;
+            $agentPageStagging_Post->is_approved = 1;
+            $agentPage_Post = AgentPage::where("agent_id", $req['agentId'])->where('page_id', $req['pageId'])->first();
+            $agentPage_Post->data = $agentPageStagging_Post->data;
+            $agentPage_Post->save();
         } else {
-            $post->is_approved = 0;
-            $post->reason_for_disapproval = $req['reasonForDisapproval'];
+            $agentPageStagging_Post->is_approved = 0;
+            $agentPageStagging_Post->reason_for_disapproval = $req['reasonForDisapproval'];
         }
-        $post->save();
+        $agentPageStagging_Post->save();
 
         echo "successfull";
 
@@ -249,16 +253,41 @@ class ManageAdminController extends Controller
     public function viewAgentPage($page_id, $email)
     {
         $user_id = User::where('email', $email)->get('id');
-        $agent_id = Agent::where('user_id', $user_id[0]->id)->get('id');
+        $agent = Agent::where('user_id', $user_id[0]->id)->get();
+        // dd($agent[0]->how_to_collect_your_miles_today_link);
 
-        $agentEachPageData = AgentPageStaging::where('agent_id', $agent_id[0]->id)->where('page_id', $page_id)->first();
+        $agentEachPageData = AgentPageStaging::where('agent_id', $agent[0]->id)->where('page_id', $page_id)->first();
         // dd($agentEachPageData->data);
 
         $widgetData = Widget::all();
 
-        // dd($widgetData[0]->data);
-        $agentEachPageData->data = str_replace("[[How_to_Collect_Your_Miles_Today]]", $widgetData[0]->data ,$agentEachPageData->data);
-        return view('agent_page_preview.home_page_view')->with('agentHomePageData', $agentEachPageData->data)->render();
+        if ($page_id == "1") {
+            # code...
+            // Replacing Variables With Sub Templated
+            if (str_contains($agentEachPageData->data, "[[How_to_Collect_Your_Miles_Today]]")){
+                $agentEachPageData->data = str_replace("[[How_to_Collect_Your_Miles_Today]]", view('widgets.How_to_Collect_Your_Miles_Today')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Your_Financial_Journey_Link]]")){
+                $agentEachPageData->data = str_replace("[[Your_Financial_Journey_Link]]", view('widgets.Your_Financial_Journey_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Mortgage_Prequalification_Link]]")){
+                $agentEachPageData->data = str_replace("[[Mortgage_Prequalification_Link]]", view('widgets.Mortgage_Prequalification_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Your_Home_Journey_Link]]")){
+                $agentEachPageData->data = str_replace("[[Your_Home_Journey_Link]]", view('widgets.Your_Home_Journey_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Your_Mortgage_Calculators_Link]]")){
+                $agentEachPageData->data = str_replace("[[Your_Mortgage_Calculators_Link]]", view('widgets.Your_Mortgage_Calculators_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Get_Prequalified_Now_Link]]")){
+                $agentEachPageData->data = str_replace("[[Get_Prequalified_Now_Link]]", view('widgets.Get_Prequalified_Now_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Calculate_How_You_Can_Be_MortgageFreeSooner_Link]]")){
+                $agentEachPageData->data = str_replace("[[Calculate_How_You_Can_Be_MortgageFreeSooner_Link]]", view('widgets.Calculate_How_You_Can_Be_MortgageFreeSooner_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            return view('agent_page_preview.home_page_view')->with('agentHomePageData', $agentEachPageData->data);
+        }
+
     }
 
     //

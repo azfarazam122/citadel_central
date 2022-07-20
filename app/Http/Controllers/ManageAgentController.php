@@ -11,6 +11,7 @@ use App\Models\MasterAdmin;
 use App\Models\SuperAdmin;
 use App\Models\Page;
 use App\Models\AgentPageStaging;
+use App\Models\Widget;
 use Illuminate\Support\Facades\Auth;
 
 class ManageAgentController extends Controller{
@@ -219,10 +220,10 @@ class ManageAgentController extends Controller{
 
     // _______________________________________________________________________
     // PAGES EDITOR BY AGENT
-    public function saveHomePageData(Request $req){
+    public function saveEditorSubPageData(Request $req){
         $agentLoggedIn = Auth::user();
         $agentData = Agent::where('user_id',$agentLoggedIn->id)->get();
-        $post = AgentPageStaging::where("agent_id", $agentData[0]->id)->where('page_id',1)->first();
+        $post = AgentPageStaging::where("agent_id", $agentData[0]->id)->where('page_id',$req->current_page_id)->first();
         // echo $post;
         // $post->data = '123123123';
         $post->data = $req['newData'];
@@ -230,10 +231,10 @@ class ManageAgentController extends Controller{
 
         echo "Saved";
     }
-    public function submitHomePageForApproval(Request $req){
+    public function submitPagesEditorSubPageForApproval(Request $req){
         $agentLoggedIn = Auth::user();
         $agentData = Agent::where('user_id',$agentLoggedIn->id)->get();
-        $post = AgentPageStaging::where("agent_id", $agentData[0]->id)->where('page_id',1)->first();
+        $post = AgentPageStaging::where("agent_id", $agentData[0]->id)->where('page_id',$req->current_page_id)->first();
         // echo $post;
         // $post->data = '123123123';
         $post->is_submitted_for_approval = 1;
@@ -243,11 +244,61 @@ class ManageAgentController extends Controller{
         echo "Submitted For Approval";
     }
 
-    public function setHomeDefaultPage(Request $req){
-        $homePageDefaultData = Page::find(1);
-        $data =  $homePageDefaultData->default_data;
+    public function setAsDefaultPageInPagesEditorView(Request $req){
+        if ($req->current_page_id == '1') {
+            $homePageDefaultData = Page::find(1);
+            $data =  $homePageDefaultData->default_data;
+            echo $data;
+        }else if($req->current_page_id == '2') {
+            $homePageDefaultData = Page::find(2);
+            $data =  $homePageDefaultData->default_data;
+            echo $data;
+        }else if($req->current_page_id == '3') {
+            $homePageDefaultData = Page::find(3);
+            $data =  $homePageDefaultData->default_data;
+            echo $data;
+        }
+    }
 
-        echo $data;
+    // VIEW YOUR PAGE FOR AGENT
+     public function viewYourPage($page_id, $email)
+    {
+        $user_id = User::where('email', $email)->get('id');
+        $agent = Agent::where('user_id', $user_id[0]->id)->get();
+        // dd($agent[0]->how_to_collect_your_miles_today_link);
+
+        $agentEachPageData = AgentPageStaging::where('agent_id', $agent[0]->id)->where('page_id', $page_id)->first();
+        // dd($agentEachPageData->data);
+
+        $widgetData = Widget::all();
+
+        if ($page_id == "1") {
+            # code...
+            // Replacing Variables With Sub Templated
+            if (str_contains($agentEachPageData->data, "[[How_to_Collect_Your_Miles_Today]]")){
+                $agentEachPageData->data = str_replace("[[How_to_Collect_Your_Miles_Today]]", view('widgets.How_to_Collect_Your_Miles_Today')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Your_Financial_Journey_Link]]")){
+                $agentEachPageData->data = str_replace("[[Your_Financial_Journey_Link]]", view('widgets.Your_Financial_Journey_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Mortgage_Prequalification_Link]]")){
+                $agentEachPageData->data = str_replace("[[Mortgage_Prequalification_Link]]", view('widgets.Mortgage_Prequalification_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Your_Home_Journey_Link]]")){
+                $agentEachPageData->data = str_replace("[[Your_Home_Journey_Link]]", view('widgets.Your_Home_Journey_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Your_Mortgage_Calculators_Link]]")){
+                $agentEachPageData->data = str_replace("[[Your_Mortgage_Calculators_Link]]", view('widgets.Your_Mortgage_Calculators_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Get_Prequalified_Now_Link]]")){
+                $agentEachPageData->data = str_replace("[[Get_Prequalified_Now_Link]]", view('widgets.Get_Prequalified_Now_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[Calculate_How_You_Can_Be_MortgageFreeSooner_Link]]")){
+                $agentEachPageData->data = str_replace("[[Calculate_How_You_Can_Be_MortgageFreeSooner_Link]]", view('widgets.Calculate_How_You_Can_Be_MortgageFreeSooner_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            return view('agent_page_preview.home_page_view')->with('agentHomePageData', $agentEachPageData->data);
+        }
+
     }
     // _______________________________________________________________________
 

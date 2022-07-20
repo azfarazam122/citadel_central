@@ -96,10 +96,36 @@
                               <i id="yourProfileIcon" class='bx bx-bar-chart-alt-2 nav_icon'></i>
                               <span class="nav_name">Your Profile</span>
                           </a>
-                          <a href="/admin_dashboard/pages_editor" id="pagesEditorTab" class="nav_link">
-                              <i id="pagesEditorIcon" class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                              <span class="nav_name">Pages Editor</span>
-                          </a>
+                          {{-- ________ --}}
+                          <p>
+                              <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                                  aria-controls="collapseExample" id="pagesEditorTab" class="nav_link">
+                                  <i id="pagesEditorIcon" class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                                  <span class="nav_name">Pages Editor
+                                      <i class='bx bxs-down-arrow'></i>
+                                  </span>
+                              </a>
+                          </p>
+                          <div class="collapse" id="collapseExample">
+                              <a href="/admin_dashboard/pages_editor/home_page" target="_blank" id="pagesEditorTab"
+                                  class="ms-4 nav_link">
+                                  <i style="font-size: 1.25rem;" class='bx bx-home-alt-2'></i>
+                                  <span class="nav_name">Home Page
+                                  </span>
+                              </a>
+                              <a href="/admin_dashboard/pages_editor/about_page" target="_blank" id="pagesEditorTab"
+                                  class="ms-4 nav_link">
+                                  <i style="font-size: 1.25rem;" class='bx bx-male'></i>
+                                  <span class="nav_name">About Page
+                                  </span>
+                              </a>
+                              <a href="/admin_dashboard/pages_editor/rates_page" target="_blank" id="pagesEditorTab"
+                                  class="ms-4 nav_link">
+                                  <i style="font-size: 1.25rem;" class='bx bxs-bank'></i>
+                                  <span class="nav_name">Rates Page
+                                  </span>
+                              </a>
+                          </div>
                       @endif
 
                       <hr style="color: white">

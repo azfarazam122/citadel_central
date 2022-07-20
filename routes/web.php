@@ -50,12 +50,17 @@ Route::group(['middleware' => ['forAgentOnly']], function () {
     Route::view('/admin_dashboard', 'admin_dashboard');
     Route::get('/admin_dashboard/agent', [ManageAgentController::class, 'showAllDataForAgentLogin']);
     Route::post('/admin_dashboard/agent', [ManageAgentController::class, 'updateDataForAgentLogin'])->name('updateDataForAgentLogin');
-    Route::view('/admin_dashboard/pages_editor', 'pages_editor');
-    Route::post('/admin_dashboard/agent/saveHomePageData', [ManageAgentController::class, 'saveHomePageData'])->name('saveHomePageDataByAgent');
-    Route::post('/admin_dashboard/agent/setHomeDefaultPage', [ManageAgentController::class, 'setHomeDefaultPage'])->name('setHomeDefaultPageByAgent');
-    Route::post('/admin_dashboard/agent/submitHomePageForApproval', [ManageAgentController::class, 'submitHomePageForApproval'])->name('submitHomePageForApprovalByAgent');
-});
+    Route::post('/admin_dashboard/agent/saveEditorSubPageData', [ManageAgentController::class, 'saveEditorSubPageData'])->name('saveEditorSubPageDataByAgent');
+    Route::post('/admin_dashboard/agent/setAsDefaultPageInPagesEditorView', [ManageAgentController::class, 'setAsDefaultPageInPagesEditorView'])->name('setAsDefaultPageInPagesEditorViewByAgent');
+    Route::post('/admin_dashboard/agent/submitPagesEditorSubPageForApproval', [ManageAgentController::class, 'submitPagesEditorSubPageForApproval'])->name('submitPagesEditorSubPageForApprovalByAgent');
 
+    // Pages Editor
+    Route::view('/admin_dashboard/pages_editor/home_page', 'pages_editor.home_page');
+    Route::view('/admin_dashboard/pages_editor/about_page', 'pages_editor.about_page');
+    Route::view('/admin_dashboard/pages_editor/rates_page', 'pages_editor.rates_page');
+    // View Your(agent) Pages
+    Route::get('/admin_dashboard/agent/{page_id}/view/{agent_email}', [ManageAgentController::class, 'viewYourPage']);
+});
 Route::group(['middleware' => ['forAdmin']], function () {
     Route::get('/admin_dashboard/admin', [ManageAdminController::class, 'showAllDataOfAdminSetting']);
     Route::get('/admin_dashboard/admin/edit/{id}', [ManageAdminController::class, 'showEditDataOfAdminSetting']);
@@ -81,7 +86,7 @@ Route::group(['middleware' => ['forAdmin']], function () {
     Route::post('/agent_page_set_as_approved_or_disapproved', [ManageAdminController::class, 'setAgentPageAsApprovedOrDisapprovedFunc'])->name('setAgentPageAsApprovedOrDisapproved');
 
     // View Agent Pages
-    Route::get('/admin_dashboard/agent/{page_id}/preview/{agent_email}', [ManageAdminController::class, 'viewAgentPage'])->name('viewAgentPageForAdmin');
+    Route::get('/admin_dashboard/agent/{page_id}/preview/{agent_email}', [ManageAdminController::class, 'viewAgentPage']);
 
 });
 

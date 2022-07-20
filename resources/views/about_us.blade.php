@@ -132,42 +132,36 @@
             </div>
         @endif
     @endisset
-
-    <div class="allContent">
-        {{-- ____________________________ --}}
-        <section class="m-5 ">
-            <div class="row">
-                <div class="col-md-4">
-                    <img width="100%" src="../../images/aboutImages/img1_1.png">
-                </div>
-                <div class="col-md-4 mt-1">
-                    <h3 class="display-4 mt-5 text-center secondaryTextColor">
-                        About {{ $agentData[0]->full_name }}
-                    </h3>
-                    <hr class="mt-3 ms-auto me-auto primaryTextColor"
-                        style="width: 80%; height: 4px; opacity: 1; border-radius: 10px;">
+    <section class="m-5 ">
+        <div class="row">
+            <div class="col-md-4">
+                <img width="100%" src="../../images/aboutImages/img1_1.png">
+            </div>
+            <div class="col-md-4 mt-1">
+                <h3 class="display-4 mt-5 text-center secondaryTextColor">
+                    About {{ $agentData[0]->full_name }}
+                </h3>
+                <hr class="mt-3 ms-auto me-auto primaryTextColor"
+                    style="width: 80%; height: 4px; opacity: 1; border-radius: 10px;">
+                <div>
                     <div>
                         <div>
-                            <div>
-                                <p class="mt-5 text-center secondaryTextColor" style="font-size: 20px">
-                                    <a href='/agent/home'>Home</a>
-                                    <strong>&gt;</strong> About
-                                    Me
-                                </p>
-                            </div>
+                            <p class="mt-5 text-center secondaryTextColor" style="font-size: 20px">
+                                <a href='/agent/home'>Home</a>
+                                <strong>&gt;</strong> About
+                                Me
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <img width="80%" src="../../images/aboutImages/img1_2.png">
-                </div>
             </div>
+            <div class="col-md-4">
+                <img width="80%" src="../../images/aboutImages/img1_2.png">
+            </div>
+        </div>
 
-        </section>
-
-
-
-        {{-- ____________________________ --}}
+    </section>
+    <div class="allContent">
         <section class="mt-5 container">
             <hr>
             <div class="row">
@@ -194,7 +188,6 @@
                 </div>
         </section>
 
-        {{-- ____________________________ --}}
         <section class="mt-5 container">
             <hr>
             <div class="row">
@@ -241,8 +234,6 @@
             </div>
         </section>
 
-
-        {{-- ____________________________ --}}
         <section class="mt-5 mb-5 container">
             <hr>
             <div class="mt-5">
@@ -323,7 +314,6 @@
             </div>
         </section>
 
-        {{-- ____________________________ --}}
         <section class="mt-5 container">
             <hr>
             <div>
@@ -338,7 +328,6 @@
             </div>
         </section>
 
-        {{-- ____________________________ --}}
         <section style="background-image: url('../../images/aboutImages/img7.png');width: 100%" class="mt-5">
             <div class="container mx-auto my-5 ">
                 <div class="text-center display-4 secondaryTextColor" style="font-weight: 700;padding-top: 17%;">
@@ -378,7 +367,6 @@
             </div>
         </section>
 
-        {{-- ____________________________ --}}
         <section class="mt-5 ">
             <hr>
             <div class="row container ml-auto mr-auto">

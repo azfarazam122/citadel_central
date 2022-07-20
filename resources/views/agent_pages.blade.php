@@ -8,7 +8,6 @@
 @section('libraries')
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
-
 @endsection
 
 @php
@@ -46,7 +45,7 @@ for ($i = 0; $i < count($listOfAgentsOfThatAdmin); $i++) {
                                     $agentPagesList = App\Models\AgentPageStaging::all();
                                     // $agentData = App\Models\Agent::where('id', $masterSettingData[0]->default_agent_id)->get();
                                 @endphp
-                                {{-- <h1>{{ $agentPagesList[1] }}</h1> --}}
+                                <h1>{{ $agentPagesList[2] }}</h1>
 
                                 <tbody id="agentsListTableBody">
                                     @for ($i = 0; $i < count($listOfAgentsOfThatAdmin); $i++)
