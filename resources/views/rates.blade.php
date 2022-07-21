@@ -140,7 +140,7 @@
         <section class="container ml-auto mr-auto mt-5 mb-5 ">
             <img width="100%" src="../../images/ratesImages/img1.png" alt="" srcset="">
         </section>
-        {{-- ____________________________ --}}
+
         <section class=" text-center">
             <div>
                 <img width="90%" src="../../images/ratesImages/img2.png" alt="" srcset="">
@@ -185,7 +185,6 @@
             </div>
         </section>
 
-        {{-- ____________________________ --}}
         <section>
             <div class="container ms-auto me-auto">
                 <div class="col w-75 ms-auto me-auto secondaryTextColor">
@@ -218,7 +217,6 @@
             </div>
         </section>
 
-        {{-- ____________________________ --}}
         <section class="container my-5  text-center">
             <div>
                 <h1 class="my-5 fw-bold secondaryTextColor">OUR TRUSTED LENDER PARTNERS</h1>
@@ -279,7 +277,6 @@
         </section>
 
 
-        {{-- ____________________________ --}}
         <section class="container my-5  text-center">
             <div>
                 <h1 class="w-75 mt-5 fw-bold ms-auto me-auto secondaryTextColor">CITADEL MORTGAGES CHANGING THE WAY
@@ -484,7 +481,6 @@
             </div>
         </section>
 
-        {{-- ____________________________ --}}
         <section class="container my-5  text-center">
             <div>
                 <h1 class="mt-5 text-center fw-bold secondaryTextColor">WHICH MORTGAGE IS RIGHT FOR YOU?</h1>
@@ -656,7 +652,6 @@
             </div>
         </section>
 
-        {{-- ____________________________ --}}
         <section class="container text-center" style="margin-top: 10%">
             <div class="mt-5 secondaryTextColor">
                 <h1 class="fw-bold mt-5">BEST MORTGAGE RATES</h1>
@@ -749,7 +744,6 @@
         </section>
 
 
-        {{-- ____________________________ --}}
         <section class="container text-center" style="margin-top: 10%">
             <div class="secondaryTextColor">
                 <h1 class="fw-bold text-center">NEW MORTGAGE RULES FAQ</h1>
@@ -873,7 +867,6 @@
 
         </section>
 
-        {{-- ____________________________ --}}
         <section class="text-center mt-5" style="background: var(--tertiary-color)">
             <div class="container secondaryTextColor">
                 <div class="pt-3">
@@ -921,7 +914,6 @@
             </div>
         </section>
 
-        {{-- ____________________________ --}}
         <section class="container mt-5">
             <div class="row">
                 <div class="col">
@@ -938,7 +930,6 @@
             </div>
         </section>
 
-        {{-- ____________________________ --}}
         <section class="text-center mt-5" style="background: var(--tertiary-color)">
             <div class="container secondaryTextColor">
                 <div class="pt-3">
@@ -1008,7 +999,6 @@
 
 
 
-        {{-- ____________________________ --}}
         <section class="text-center mt-5" style="background: var(--tertiary-color)">
             <div class="container py-5">
                 <div>
@@ -1084,7 +1074,6 @@
 
         </section>
 
-        {{-- ____________________________ --}}
         <section class="text-center mt-5" style="background: var(--tertiary-color)">
             <div class="container py-5">
                 <div>

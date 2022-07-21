@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\Agent;
+use App\Models\AgentPage;
+use App\Models\AgentPageStaging;
 use App\Models\Admin;
 use App\Models\MasterSetting;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -131,6 +133,24 @@ class RegisterController extends Controller
             $agent_RS->agent_type = 'real_state_agent';
             $agent_RS->save();
 
+            for ($i=0; $i < 3; $i++) {
+                $agent_page_staging = new AgentPageStaging;
+                $agent_page_staging->page_id = ($i +1) ;
+                $agent_page_staging->agent_id = $agent_RS->id;
+                $agent_page_staging->data =  "";
+                $agent_page_staging->reason_for_disapproval = "";
+                $agent_page_staging->save();
+            }
+
+
+            for ($i=0; $i < 3; $i++) {
+                $agent_page = new AgentPage;
+                $agent_page->page_id = ($i +1) ;
+                $agent_page->agent_id = $agent_RS->id;
+                $agent_page->data =  "";
+                $agent_page->save();
+            }
+
             Auth::login($User);
             echo "/admin_dashboard";
         }else if ($req->formNumber == '3') {
@@ -161,6 +181,24 @@ class RegisterController extends Controller
             $agent_MP->broker_house = $req['brokerHouse'];
             $agent_MP->agent_type = 'mortgage_professional';
             $agent_MP->save();
+
+              for ($i=0; $i < 3; $i++) {
+                $agent_page_staging = new AgentPageStaging;
+                $agent_page_staging->page_id = ($i +1) ;
+                $agent_page_staging->agent_id = $agent_MP->id;
+                $agent_page_staging->data =  "";
+                $agent_page_staging->reason_for_disapproval = "";
+                $agent_page_staging->save();
+            }
+
+
+            for ($i=0; $i < 3; $i++) {
+                $agent_page = new AgentPage;
+                $agent_page->page_id = ($i +1) ;
+                $agent_page->agent_id = $agent_MP->id;
+                $agent_page->data =  "";
+                $agent_page->save();
+            }
 
             Auth::login($User);
             echo "/admin_dashboard";

@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->boolean('email_verified')->nullable();
             $table->boolean('is_archived')->nullable();
-            $table->string('remember_token');
+            $table->string('remember_token')->default('');;
         });
 
 

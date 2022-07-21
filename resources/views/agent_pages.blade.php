@@ -40,12 +40,7 @@ for ($i = 0; $i < count($listOfAgentsOfThatAdmin); $i++) {
                                         <th>Action </th>
                                     </tr>
                                 </thead>
-                                @php
 
-                                    $agentPagesList = App\Models\AgentPageStaging::all();
-                                    // $agentData = App\Models\Agent::where('id', $masterSettingData[0]->default_agent_id)->get();
-                                @endphp
-                                <h1>{{ $agentPagesList[2] }}</h1>
 
                                 <tbody id="agentsListTableBody">
                                     @for ($i = 0; $i < count($listOfAgentsOfThatAdmin); $i++)
@@ -60,14 +55,21 @@ for ($i = 0; $i < count($listOfAgentsOfThatAdmin); $i++) {
                                                     src="../../images/profile_pic/{{ $listOfAgentsOfThatAdmin[$i]->email }}/{{ $listOfAgentsOfThatAdmin[$i]->profile_pic }}"
                                                     alt="Profile Pic " srcset="">
                                             </td>
+                                            @php
+                                                $agentPagesList = App\Models\AgentPageStaging::where('agent_id', $listOfAgentsOfThatAdmin[$i]->id)->get();
+                                            @endphp
 
-                                            @for ($x = 0; $x < 3; $x++)
-                                                @if ($agentPagesList[$i]->is_submitted_for_approval == 1)
-                                                    @php
-                                                        $ifAnyPageOfAgentIsSubmittedForApproval = true;
-                                                    @endphp
-                                                @endif
-                                            @endfor
+                                            @if (count($agentPagesList) > 0)
+                                                @for ($x = 0; $x < count($agentPagesList); $x++)
+                                                    @if ($agentPagesList[$x]->is_submitted_for_approval == '1')
+                                                        @php
+                                                            echo '<h1>Hello</h1>';
+                                                            $ifAnyPageOfAgentIsSubmittedForApproval = true;
+                                                        @endphp
+                                                    @endif
+                                                @endfor
+                                            @endif
+
                                             @if ($ifAnyPageOfAgentIsSubmittedForApproval == true)
                                                 <td class="lead"> Is Waiting For Approval </td>
                                             @else
