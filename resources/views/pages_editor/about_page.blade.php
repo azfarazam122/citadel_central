@@ -23,6 +23,29 @@
             top: 50%;
             left: 50%;
         }
+
+        .dynamicImagesFlexContainer {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .dynamicImagesFlexContainer>div {
+            background-color: #f1f1f1;
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+
+        }
+
+        .dynamicImagesFlexContainer>div:hover {
+            border: 1px solid;
+        }
+
+        .swal2-popup {
+            width: 750px !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -37,7 +60,8 @@
                     <hr>
                     <div class="card-body">
                         <div class="container mt-2 mb-5">
-                            <p class="text-center display-5">About Page Info <i class="fa-solid fa-circle-info"></i> </p>
+                            <p class="text-center display-5">About Page Widgets Info <i class="fa-solid fa-circle-info"></i>
+                            </p>
                             <div class="border ">
                                 <p class="lead text-center my-3">
                                     These are the Dynamic data . You Can use this data like this [[ name ]] in the Below
@@ -69,6 +93,54 @@
                                 {{-- <ol class="">
                                     <li>[[How_to_Collect_Your_Miles_Today_Button]]</li>
                                 </ol> --}}
+                            </div>
+                            <div class="mt-4 text-center">
+
+                            </div>
+                        </div>
+
+                        <div class="container mt-2 mb-5">
+                            <p class="text-center display-5">About Page Images Info <i class="fa-solid fa-circle-info"></i>
+                            </p>
+                            <div class="border ">
+                                <p class="lead  my-3">
+                                    These are the Dynamic Images . You Can use these Images like this
+                                <div class="lead">
+                                    <ol>
+                                        <li>Click on this Icon
+                                            <span>
+                                                <i style="font-size: 25px;transform: scaleX(-1);" class='bx bx-image'></i>
+                                            </span>
+                                            in the Editor Below
+                                        </li>
+                                        <li>Enter the Url from this Table in the Url Portion</li>
+                                    </ol>
+                                </div>
+                                {{-- Dynamic Images --}}
+                                @php
+                                    $dynamicImagesData = App\Models\DynamicImage::all();
+                                    $url = 'http://127.0.0.1:8000/images/common_images';
+
+                                @endphp
+                                {{-- <div class="text-start">
+                                    <p class="lead">Image :</p>
+                                    <div class="border border-1">
+                                        <img width="100%" src="http://127.0.0.1:8000/images/common_images/img1.png"
+                                            alt="">
+                                    </div>
+                                    <p class="lead">File Url :</p>
+                                    <p class="lead"> :</p>
+                                </div> --}}
+                                <div class="dynamicImagesFlexContainer">
+                                    @for ($i = 0; $i < count($dynamicImagesData); $i++)
+                                        <div>
+                                            <img width="200px"
+                                                onclick="showDynamicImageInPopUp({{ $dynamicImagesData[$i] }},'{{ $url }}')"
+                                                src="{{ $url }}/{{ $dynamicImagesData[$i]->file_name }}"
+                                                alt="">
+                                        </div>
+                                    @endfor
+                                </div>
                             </div>
                             <div class="mt-4 text-center">
 
@@ -122,6 +194,7 @@
 
                                 </div>
                             </div>
+
                         </div>
 
                     </div>
@@ -199,6 +272,41 @@
                 .catch(function(error) {
                     console.log(error.response);
                 });
+        }
+
+        function showDynamicImageInPopUp(dynamicImageData, imageUrl) {
+            Swal.fire({
+                title: '<strong>Image Info </strong>',
+                html: `<div class="text-start">
+                        <p class="lead">Image :</p>
+                        <div class="border border-1">
+                            <img width="100%" src="` + imageUrl + "/" + dynamicImageData.file_name + `"
+                                alt="">
+                        </div>
+                        <p class="lead">File Url :</p>
+                        <input type="text" class="form-control" value="` + imageUrl + "/" + dynamicImageData
+                    .file_name + `" readonly name="" id="dynamicImageUrl">
+                        <button class="swal2-confirm swal2-styled" onclick="copyUrlToClipBoard()">Copy Url</button>
+                    </div>`,
+                showCloseButton: true,
+                focusConfirm: false,
+            })
+
+        }
+
+        function copyUrlToClipBoard() {
+            /* Get the text field */
+            var copyText = document.getElementById("dynamicImageUrl");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(copyText.value);
+
+            /* Alert the copied text */
+            alert("Copied the text: " + copyText.value);
         }
     </script>
     <!-- Scripts -->

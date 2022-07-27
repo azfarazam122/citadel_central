@@ -22,7 +22,7 @@ class CreateAgentsTable extends Migration
             $table->string('broker_house');
             $table->string('license_no')->default('');
             $table->string('phone')->default('');
-            $table->string('facebook_link'->default(''));
+            $table->string('facebook_link')->default('');
             $table->string('linkedin_link')->default('');
             $table->string('instagram_link')->default('');
             $table->string('twitter_link')->default('');
