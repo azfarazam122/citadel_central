@@ -23,6 +23,45 @@
             top: 50%;
             left: 50%;
         }
+
+        .dynamicImagesFlexContainer {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .dynamicImagesFlexContainer>div {
+            background-color: #f1f1f1;
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            border-radius: 7px;
+            font-size: 30px;
+            border: 1px solid #e4e4e5;
+        }
+
+        .dynamicImagesFlexContainer>div:hover {
+            border: 1px solid;
+        }
+
+        .swal2-popup {
+            width: 750px !important;
+        }
+
+        .note-group-select-from-files {
+            display: none;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
     </style>
 @endsection
 @section('content')
@@ -37,7 +76,7 @@
                     <hr>
                     <div class="card-body">
                         <div class="container mt-2 mb-5">
-                            <p class="text-center display-5">Home Page Info <i class="fa-solid fa-circle-info"></i> </p>
+                            <p class="text-center display-5">Widgets Info <i class="fa-solid fa-circle-info"></i> </p>
                             <div class="border ">
                                 <p class="lead text-center my-3">
                                     These are the Dynamic data . You Can use this data like this [[ name ]] in the Below
@@ -70,13 +109,66 @@
                                     <li>[[How_to_Collect_Your_Miles_Today_Button]]</li>
                                 </ol> --}}
                             </div>
-                            <div class="mt-4 text-center">
 
-                            </div>
                         </div>
 
                         <div class="container mt-2 mb-5">
-                            <p class="text-center display-5">Home Page Content</p>
+                            <p class="text-center display-5">Common Images <i class="fa-solid fa-circle-info"></i>
+                            </p>
+                            <div class="border ">
+                                <p class="lead  my-3">
+                                    These are the Dynamic Images . You Can use these Images like this
+                                </p>
+                                <div class="lead">
+                                    <ol>
+                                        <li>Click on this Icon
+                                            <span>
+                                                <i style="font-size: 25px;transform: scaleX(-1);" class='bx bx-image'></i>
+                                            </span>
+                                            in the Editor Below
+                                        </li>
+                                        <li>Enter the Url from this Image in the Url Portion</li>
+                                    </ol>
+                                </div>
+
+                                {{-- Dynamic Images --}}
+                                <div id="paginationMainDivForCommonImages">
+                                    @include('pagination.common_images')
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="container mt-2 mb-5">
+                            <p class="text-center display-5">Agent Custom Images <i class="fa-solid fa-circle-info"></i>
+                            </p>
+                            <div class="border ">
+                                <p class="lead  my-3">
+                                    These are the Dynamic Images . You Can use these Images like this
+                                </p>
+                                <div class="lead">
+                                    <ol>
+                                        <li>Click on this Icon
+                                            <span>
+                                                <i style="font-size: 25px;transform: scaleX(-1);" class='bx bx-image'></i>
+                                            </span>
+                                            in the Editor Below
+                                        </li>
+                                        <li>Enter the Url from this Image in the Url Portion</li>
+                                    </ol>
+                                </div>
+
+                                {{-- Dynamic Images --}}
+                                <div id="paginationMainDivForCommonImages">
+                                    @include('pagination.agent_custom_images')
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="container mt-2 mb-5">
+                            <p class="text-center display-5"> Content</p>
                             @php
                                 $agentLoggedIn = Auth::user();
                                 $agentData = App\Models\Agent::where('user_id', $agentLoggedIn->id)->get();
@@ -148,6 +240,22 @@
                 height: 500,
             });
 
+            // Toggle Images Gallery
+            // $("#toggleButtonForImagesGallery").click(function() {
+            //     if (document.getElementById('toggleButtonForImagesGallery').classList.contains(
+            //             'btn-dark') == true) {
+            //         document.getElementById('toggleButtonForImagesGallery').classList.add('btn-success')
+            //         document.getElementById('toggleButtonForImagesGallery').classList.remove('btn-dark')
+            //         document.getElementById('toggleButtonForImagesGallery').classList.remove('btn-dark')
+            //         document.getElementById('toggleButtonForImagesGallery').innerHTML = 'Hide Images';
+            //     } else if (document.getElementById('toggleButtonForImagesGallery').classList.contains(
+            //             'btn-dark') == false) {
+            //         document.getElementById('toggleButtonForImagesGallery').classList.remove('btn-success')
+            //         document.getElementById('toggleButtonForImagesGallery').classList.add('btn-dark')
+            //         document.getElementById('toggleButtonForImagesGallery').innerHTML = 'Show Images';
+            //     }
+            //     $(".dynamicImagesFlexContainer").toggle();
+            // });
         });
 
 
@@ -200,6 +308,65 @@
                 .catch(function(error) {
                     console.log(error.response);
                 });
+        }
+
+        function showDynamicImageInPopUp(dynamicImageData, imageUrl) {
+            Swal.fire({
+                title: '<strong>Image Info </strong>',
+                html: `<div class="text-start">
+                        <p class="lead">Image :</p>
+                        <div class="border border-1">
+                            <img width="100%" src="` + imageUrl + "/" + dynamicImageData.file_name + `"
+                                alt="">
+                        </div>
+                        <p class="lead">File Url :</p>
+                        <input type="text" class="form-control" value="` + imageUrl + "/" + dynamicImageData
+                    .file_name + `" readonly name="" id="dynamicImageUrl">
+                        <button class="swal2-confirm swal2-styled" onclick="copyUrlToClipBoard()">Copy Url</button>
+                    </div>`,
+                showCloseButton: true,
+                focusConfirm: false,
+            })
+
+        }
+
+        function copyUrlToClipBoard() {
+            /* Get the text field */
+            var copyText = document.getElementById("dynamicImageUrl");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(copyText.value);
+
+        }
+
+        $(document).on('click', '#paginationMainDivForCommonImages a', function(e) {
+            e.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+
+            fetch_data(page);
+
+        });
+
+        function fetch_data(page) {
+
+            axios.post("{{ route('paginatingCommonImages') }}", {
+                    page: page
+                })
+                .then(function(response) {
+                    $('#paginationMainDivForCommonImages').html(response.data);
+                    // update_search_list(response);
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
+        }
+
+        function displayTheFileName() {
+
         }
     </script>
     <!-- Scripts -->

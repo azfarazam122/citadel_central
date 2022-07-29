@@ -60,6 +60,10 @@ Route::group(['middleware' => ['forAgentOnly']], function () {
     Route::view('/admin_dashboard/pages_editor/rates_page', 'pages_editor.rates_page');
     // View Your(agent) Pages
     Route::get('/admin_dashboard/agent/{page_id}/view/{agent_email}', [ManageAgentController::class, 'viewYourPage']);
+    // Common Gallery Images View
+    Route::post('/admin_dashboard/pages_editor/paginating_common_images', [ManageAgentController::class, 'paginatingCommonImages'])->name('paginatingCommonImages');
+    // Agent Custom Gallery Images View
+    Route::post('/admin_dashboard/pages_editor/agent_custom_images', [ManageAgentController::class, 'agentCustomImages'])->name('agentCustomImages');
 });
 Route::group(['middleware' => ['forAdmin']], function () {
     Route::get('/admin_dashboard/admin', [ManageAdminController::class, 'showAllDataOfAdminSetting']);

@@ -36,7 +36,8 @@
             text-align: center;
             line-height: 75px;
             font-size: 30px;
-
+            border-radius: 7px;
+            border: 1px solid #e4e4e5;
         }
 
         .dynamicImagesFlexContainer>div:hover {
@@ -90,9 +91,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                {{-- <ol class="">
-                                    <li>[[How_to_Collect_Your_Miles_Today_Button]]</li>
-                                </ol> --}}
                             </div>
                             <div class="mt-4 text-center">
 
@@ -119,18 +117,8 @@
                                 {{-- Dynamic Images --}}
                                 @php
                                     $dynamicImagesData = App\Models\DynamicImage::all();
-                                    $url = 'http://127.0.0.1:8000/images/common_images';
-
+                                    $url = 'https://app.yourbrokerjourney.ca/images/common_images';
                                 @endphp
-                                {{-- <div class="text-start">
-                                    <p class="lead">Image :</p>
-                                    <div class="border border-1">
-                                        <img width="100%" src="http://127.0.0.1:8000/images/common_images/img1.png"
-                                            alt="">
-                                    </div>
-                                    <p class="lead">File Url :</p>
-                                    <p class="lead"> :</p>
-                                </div> --}}
                                 <div class="dynamicImagesFlexContainer">
                                     @for ($i = 0; $i < count($dynamicImagesData); $i++)
                                         <div>
@@ -143,7 +131,6 @@
                                 </div>
                             </div>
                             <div class="mt-4 text-center">
-
                             </div>
                         </div>
 
@@ -305,8 +292,6 @@
             /* Copy the text inside the text field */
             navigator.clipboard.writeText(copyText.value);
 
-            /* Alert the copied text */
-            alert("Copied the text: " + copyText.value);
         }
     </script>
     <!-- Scripts -->

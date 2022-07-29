@@ -12,6 +12,7 @@ use App\Models\SuperAdmin;
 use App\Models\Page;
 use App\Models\AgentPageStaging;
 use App\Models\Widget;
+use App\Models\DynamicImage;
 use Illuminate\Support\Facades\Auth;
 
 class ManageAgentController extends Controller{
@@ -100,8 +101,6 @@ class ManageAgentController extends Controller{
          return $this->showAllData();
     }
 
-
-
     public function deleteData($id){
         // User::where('id',$id)->delete();
          return redirect('/admin_dashboard/users');
@@ -155,7 +154,7 @@ class ManageAgentController extends Controller{
 
 
     // _______________________________________________________________________
-    // WHEN AGENT LOGIN
+    // ===============WHEN AGENT LOGIN===============
     public function showAllDataForAgentLogin(){
         $user = Auth::user();
         $userId =
@@ -215,11 +214,13 @@ class ManageAgentController extends Controller{
          return $this->showAllDataForAgentLogin();
     }
 
-    // WHEN AGENT LOGIN
+    // ===============WHEN AGENT LOGIN===============
     // _______________________________________________________________________
 
     // _______________________________________________________________________
-    // PAGES EDITOR BY AGENT
+    // =============PAGES EDITOR FOR AGENT===================
+
+    // Save Editor Sub Page
     public function saveEditorSubPageData(Request $req){
         $agentLoggedIn = Auth::user();
         $agentData = Agent::where('user_id',$agentLoggedIn->id)->get();
@@ -231,6 +232,8 @@ class ManageAgentController extends Controller{
 
         echo "Saved";
     }
+
+    // Submit Editor Sub Page For Approval
     public function submitPagesEditorSubPageForApproval(Request $req){
         $agentLoggedIn = Auth::user();
         $agentData = Agent::where('user_id',$agentLoggedIn->id)->get();
@@ -244,6 +247,7 @@ class ManageAgentController extends Controller{
         echo "Submitted For Approval";
     }
 
+    // Set By-default Page In Editor
     public function setAsDefaultPageInPagesEditorView(Request $req){
         if ($req->current_page_id == '1') {
             $homePageDefaultData = Page::find(1);
@@ -260,7 +264,7 @@ class ManageAgentController extends Controller{
         }
     }
 
-    // VIEW YOUR PAGE FOR AGENT
+    // View Your Page For Agent
      public function viewYourPage($page_id, $email)
     {
         $user_id = User::where('email', $email)->get('id');
@@ -300,6 +304,41 @@ class ManageAgentController extends Controller{
         }
 
     }
+
+
+    // Agent Custom Images Uploading And Creating Seprate Directory
+    public function agentCustomImages(Request $request){
+        $file_path = "images/agent_custom_images/" . $request->emailOfAgent;
+        if (!file_exists($file_path)) {
+            mkdir($file_path, 0777, true);
+        }
+
+        $target_dir = "images/agent_custom_images/" . $request->emailOfAgent . "/" . $request->pathOfImage;
+        if (isset($_FILES["image"]["tmp_name"]) && $_FILES["image"]["tmp_name"] != '' ) {
+            $check = getimagesize($_FILES["image"]["tmp_name"]);
+            if($check !== false) {
+                $files = glob("images/agent_custom_images/" . $request->emailOfAgent ."/*" ); // get all file names
+                foreach($files as $file){ // iterate files
+                    if(is_file($file)) {
+                        unlink($file); // delete file
+                    }
+                }
+                move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir);
+            } else {
+
+            }
+        }
+    }
+
+    //  ---------------PAGINATION---------------
+    //  Paginating Common Images
+        public function paginatingCommonImages(Request $req){
+            //
+            $commonImages = DynamicImage::paginate(10);
+            return view('pagination.common_images', compact('commonImages'))->render();
+        }
+    //  ---------------PAGINATION---------------
+    // =============PAGES EDITOR FOR AGENT===================
     // _______________________________________________________________________
 
 
