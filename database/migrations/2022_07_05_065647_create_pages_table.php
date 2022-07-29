@@ -18,7 +18,7 @@ class CreatePagesTable extends Migration
             $table->string('name');
             $table->longText('default_data');
         });
-
+        $homePageData = "";
         DB::unprepared("INSERT INTO `pages` (`id`, `name`, `default_data`) VALUES
             (1, 'Home Page', 'This is Home Page'),
             (2, 'About Page', 'This is About Page'),

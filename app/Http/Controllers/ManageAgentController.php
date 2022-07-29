@@ -305,36 +305,48 @@ class ManageAgentController extends Controller{
 
     }
 
-
     // Agent Custom Images Uploading And Creating Seprate Directory
-    public function agentCustomImages(Request $request){
-        $file_path = "images/agent_custom_images/" . $request->emailOfAgent;
+    public function agentCustomImages(Request $req){
+
+
+        $imageName =  $req->file('imagefile')->getClientOriginalName();
+        $file_path = "images/agent_custom_images/" . $req->agentEmail;
         if (!file_exists($file_path)) {
             mkdir($file_path, 0777, true);
         }
-
-        $target_dir = "images/agent_custom_images/" . $request->emailOfAgent . "/" . $request->pathOfImage;
-        if (isset($_FILES["image"]["tmp_name"]) && $_FILES["image"]["tmp_name"] != '' ) {
-            $check = getimagesize($_FILES["image"]["tmp_name"]);
+        $target_dir = "images/agent_custom_images/" . $req->agentEmail . "/" .  $imageName;
+        if ( $req->file('imagefile') != '' ) {
+            $check = getimagesize($req->file('imagefile'));
             if($check !== false) {
-                $files = glob("images/agent_custom_images/" . $request->emailOfAgent ."/*" ); // get all file names
-                foreach($files as $file){ // iterate files
-                    if(is_file($file)) {
-                        unlink($file); // delete file
-                    }
-                }
-                move_uploaded_file($_FILES["image"]["tmp_name"], $target_dir);
+                move_uploaded_file($req->file('imagefile'), $target_dir);
+
+                $agentCustomImage = new DynamicImage;
+                $agentCustomImage->agent_id = $req->agentId;
+                $agentCustomImage->file_name = $req->file('imagefile')->getClientOriginalName();
+                $agentCustomImage->is_common = 0;
+                $agentCustomImage->save();
             } else {
 
             }
         }
+
+
+
+
+
+
     }
 
     //  ---------------PAGINATION---------------
     //  Paginating Common Images
         public function paginatingCommonImages(Request $req){
             //
-            $commonImages = DynamicImage::paginate(10);
+            $commonImages = DynamicImage::where('is_common', 1)->simplePaginate(10);
+            return view('pagination.common_images', compact('commonImages'))->render();
+        }
+        public function paginatingAgentImages(Request $req){
+            //
+            $commonImages = DynamicImage::where('is_common', 0)->simplePaginate(10);
             return view('pagination.common_images', compact('commonImages'))->render();
         }
     //  ---------------PAGINATION---------------

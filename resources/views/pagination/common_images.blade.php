@@ -1,5 +1,5 @@
 @php
-$dynamicImagesData = App\Models\DynamicImage::simplePaginate(10);
+$dynamicImagesData = App\Models\DynamicImage::where('is_common', 1)->simplePaginate(10);
 $url = 'https://app.yourbrokerjourney.ca/images/common_images';
 
 @endphp

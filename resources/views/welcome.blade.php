@@ -171,8 +171,7 @@
                         your finances</p>
                 </div>
                 <div class="col-md-4 text-center" style="width: 100% !important;">
-                    <a href={{ $agentData[0]->mortgage_prequalification_link }} target="_blank"
-                        rel="noopener noreferrer">
+                    <a href={{ $agentData[0]->mortgage_prequalification_link }} target="_blank" rel="noopener noreferrer">
                         <img width="300px" src="../../images/homeImages/img4.jpeg" alt="">
                     </a>
                     <p class="text-center tertiaryTextColor">
@@ -209,8 +208,7 @@
                 </h1>
                 <p style="font-size: 18px">
                     In just 60 seconds, our Mortgage Pre-Qualification tool will let you know how much you can expect to
-                    borrow
-                    and give you a realistic value of home to qualify for
+                    borrow and give you a realistic value of home to qualify for
                 </p>
             </div>
             <div class="mt-3 text-center ">
@@ -254,9 +252,8 @@
                         </p>
                     </div>
                     <div class="tertiaryTextColor">
-                        <p class="mt-5">What if your deposits and your borrowing
-                            were combined into a
-                            single account so that every dollar you earned automatically went towards paying l your debt?
+                        <p class="mt-5">What if your deposits and your borrowing were combined into a single account so
+                            that every dollar you earned automatically went towards paying l your debt?
                         </p>
                         <p class="mt-3">That’s exactly what the All in One
                             Mortgage Solution provides!

@@ -131,7 +131,7 @@
                                     </ol>
                                 </div>
 
-                                {{-- Dynamic Images --}}
+                                {{-- Common Images --}}
                                 <div id="paginationMainDivForCommonImages">
                                     @include('pagination.common_images')
                                 </div>
@@ -158,8 +158,8 @@
                                     </ol>
                                 </div>
 
-                                {{-- Dynamic Images --}}
-                                <div id="paginationMainDivForCommonImages">
+                                {{-- Agent Custom Images --}}
+                                <div id="paginationMainDivForAgentImages">
                                     @include('pagination.agent_custom_images')
                                 </div>
                             </div>
@@ -240,22 +240,6 @@
                 height: 500,
             });
 
-            // Toggle Images Gallery
-            // $("#toggleButtonForImagesGallery").click(function() {
-            //     if (document.getElementById('toggleButtonForImagesGallery').classList.contains(
-            //             'btn-dark') == true) {
-            //         document.getElementById('toggleButtonForImagesGallery').classList.add('btn-success')
-            //         document.getElementById('toggleButtonForImagesGallery').classList.remove('btn-dark')
-            //         document.getElementById('toggleButtonForImagesGallery').classList.remove('btn-dark')
-            //         document.getElementById('toggleButtonForImagesGallery').innerHTML = 'Hide Images';
-            //     } else if (document.getElementById('toggleButtonForImagesGallery').classList.contains(
-            //             'btn-dark') == false) {
-            //         document.getElementById('toggleButtonForImagesGallery').classList.remove('btn-success')
-            //         document.getElementById('toggleButtonForImagesGallery').classList.add('btn-dark')
-            //         document.getElementById('toggleButtonForImagesGallery').innerHTML = 'Show Images';
-            //     }
-            //     $(".dynamicImagesFlexContainer").toggle();
-            // });
         });
 
 
@@ -350,9 +334,17 @@
             fetch_data(page);
 
         });
+        $(document).on('click', '#paginationMainDivForAgentImages a', function(e) {
+            e.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+
+            fetch_data(page);
+
+        });
+
+
 
         function fetch_data(page) {
-
             axios.post("{{ route('paginatingCommonImages') }}", {
                     page: page
                 })
@@ -365,9 +357,34 @@
                 });
         }
 
-        function displayTheFileName() {
+        function saveImageToAgentDirectory(agentEmail, agentId, elementId) {
+            let myFile = document.getElementById(elementId);
+            var files = myFile.files;
 
+            var formData = new FormData();
+            var file = files[0];
+            formData.append('agentEmail', agentEmail);
+            formData.append('agentId', agentId);
+            formData.append('imagefile', file);
+            axios.post("{{ route('agentCustomImages') }}", formData)
+                .then(function(response) {
+                    console.log(response);
+                    $("#paginationMainDivForAgentImages").load(window.location.href +
+                        " #paginationMainDivForAgentImages");
+                    Swal.fire(
+                        'Successful!',
+                        "Image Saved Successfully",
+                        'success'
+                    )
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
         }
+
+        document.getElementById("crossIconOnAgentCustomImage").addEventListener("click", function(event) {
+            event.preventDefault()
+        });
     </script>
     <!-- Scripts -->
 @endsection
