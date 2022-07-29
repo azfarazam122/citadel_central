@@ -1,4 +1,5 @@
 @php
+$abc;
 $user = Auth::user();
 $agentCustomImagesData = App\Models\DynamicImage::where('is_common', 0)->simplePaginate(10);
 $url = 'https://app.yourbrokerjourney.ca/images/common_images';
