@@ -31,8 +31,8 @@
 
         .dynamicImagesFlexContainer>div {
             background-color: #f1f1f1;
-            width: 200px;
-            margin: 10px;
+            width: 190px;
+            margin: 0px 0px 10px 10px;
             text-align: center;
             line-height: 75px;
             border-radius: 7px;
@@ -61,6 +61,10 @@
             display: inline-block;
             padding: 6px 12px;
             cursor: pointer;
+        }
+
+        #mainDivOfEachCommonImage {
+            margin: 10px;
         }
     </style>
 @endsection
@@ -360,31 +364,67 @@
         function saveImageToAgentDirectory(agentEmail, agentId, elementId) {
             let myFile = document.getElementById(elementId);
             var files = myFile.files;
+            if ((files[0].size / 1000000) > 4) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Image Size Exceeds.',
+                    text: 'Please Select An Image Of Size Less Than 4-MB!'
+                })
+            } else {
+                var formData = new FormData();
+                var file = files[0];
+                formData.append('agentEmail', agentEmail);
+                formData.append('agentId', agentId);
+                formData.append('imagefile', file);
+                axios.post("{{ route('agentCustomImages') }}", formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
+                    .then(function(response) {
+                        if (response.data == "Not Image") {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Please Select An Image!'
+                            })
+                        } else {
+                            console.log(response);
+                            $("#paginationMainDivForAgentImages").load(window.location.href +
+                                " #paginationMainDivForAgentImages");
+                            Swal.fire(
+                                'Successful',
+                                "Image Added Successfully",
+                                'success'
+                            )
+                        }
+                    })
+                    .catch(function(error) {
+                        console.log(error.response);
+                    });
+            }
+        }
 
-            var formData = new FormData();
-            var file = files[0];
-            formData.append('agentEmail', agentEmail);
-            formData.append('agentId', agentId);
-            formData.append('imagefile', file);
-            axios.post("{{ route('agentCustomImages') }}", formData)
+        function deleteAgentImage(imageId, imageName, agentEmail) {
+            axios.post("{{ route('deleteAgentCustomImage') }}", {
+                    image_id: imageId,
+                    image_name: imageName,
+                    agent_email: agentEmail,
+                })
                 .then(function(response) {
-                    console.log(response);
+                    Swal.fire(
+                        'Successfull',
+                        'Image Deleted Successfully'
+                    )
+
                     $("#paginationMainDivForAgentImages").load(window.location.href +
                         " #paginationMainDivForAgentImages");
-                    Swal.fire(
-                        'Successful!',
-                        "Image Saved Successfully",
-                        'success'
-                    )
+
                 })
                 .catch(function(error) {
                     console.log(error.response);
                 });
         }
-
-        document.getElementById("crossIconOnAgentCustomImage").addEventListener("click", function(event) {
-            event.preventDefault()
-        });
     </script>
     <!-- Scripts -->
 @endsection

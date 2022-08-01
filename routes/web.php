@@ -65,6 +65,7 @@ Route::group(['middleware' => ['forAgentOnly']], function () {
     // Agent Custom Gallery Images View
     Route::post('/admin_dashboard/pages_editor/agent_custom_images', [ManageAgentController::class, 'agentCustomImages'])->name('agentCustomImages');
     Route::post('/admin_dashboard/pages_editor/paginating_agent_images', [ManageAgentController::class, 'paginatingAgentImages'])->name('paginatingAgentImages');
+    Route::post('/admin_dashboard/pages_editor/asd', [ManageAgentController::class, 'deleteAgentCustomImage'])->name('deleteAgentCustomImage');
 });
 Route::group(['middleware' => ['forAdmin']], function () {
     Route::get('/admin_dashboard/admin', [ManageAdminController::class, 'showAllDataOfAdminSetting']);
@@ -79,7 +80,7 @@ Route::group(['middleware' => ['forAdmin']], function () {
     Route::get('/admin_dashboard/agents/edit/{id}', [ManageAgentController::class, 'showEditData']);
     Route::get('/admin_dashboard/agents/details/{id}', [ManageAgentController::class, 'showDetailsOfAgent']);
     Route::post('/admin_dashboard/agents', [ManageAgentController::class, 'updateData'])->name('updateAgentData');
-    Route::get('/admin_dashboard/agents/delete/{id}', [ManageAgentController::class, 'deleteData'])->name('deleteUserData');
+    Route::get('/admin_dashboard/agents/delete/{id}', [ManageAgentController::class, 'deleteData'])->name('deleteAgentData');
 
     Route::post('/agent_set_as_default', [ManageAdminController::class, 'setAgentAsDefaultFunc'])->name('setAgentAsDefault');
     Route::post('/agent_set_as_approved', [ManageAdminController::class, 'setAgentAsApprovedFunc'])->name('setAgentAsApproved');

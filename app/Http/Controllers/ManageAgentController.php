@@ -308,8 +308,8 @@ class ManageAgentController extends Controller{
     // Agent Custom Images Uploading And Creating Seprate Directory
     public function agentCustomImages(Request $req){
 
-
         $imageName =  $req->file('imagefile')->getClientOriginalName();
+        $allFiles =  $req->file('imagefile');
         $file_path = "images/agent_custom_images/" . $req->agentEmail;
         if (!file_exists($file_path)) {
             mkdir($file_path, 0777, true);
@@ -317,7 +317,8 @@ class ManageAgentController extends Controller{
         $target_dir = "images/agent_custom_images/" . $req->agentEmail . "/" .  $imageName;
         if ( $req->file('imagefile') != '' ) {
             $check = getimagesize($req->file('imagefile'));
-            if($check !== false) {
+            // echo $check;
+            if($check != false) {
                 move_uploaded_file($req->file('imagefile'), $target_dir);
 
                 $agentCustomImage = new DynamicImage;
@@ -326,15 +327,16 @@ class ManageAgentController extends Controller{
                 $agentCustomImage->is_common = 0;
                 $agentCustomImage->save();
             } else {
-
+                echo "Not Image";
             }
         }
-
-
-
-
-
-
+    }
+    // Deleting Agent Custom Image
+    public function deleteAgentCustomImage(Request $req){
+        DynamicImage::where('id',$req->image_id)->delete();
+        $file = "images/agent_custom_images/" . $req->agent_email ."/" .  $req->image_name; // get all file names
+        echo $file;
+        unlink($file); // delete file
     }
 
     //  ---------------PAGINATION---------------
