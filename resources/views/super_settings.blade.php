@@ -18,8 +18,9 @@
         <div class="container">
             <div class="row justify-content-center ms-auto me-auto">
                 <div class="col-md-11">
+                    {{-- Super Settings Table --}}
                     <div class="overflow-auto secondaryTextColor border">
-                        <p class="display-3 text-center">{{ __('Super Settings') }}
+                        <p class="display-3 text-center">{{ __('Super Settings Table') }}
                         </p>
                         <hr>
                         <div class="card-body">
@@ -65,25 +66,70 @@
                         </div>
                     </div>
 
-                    <div class="mt-5 mb-5">
-                        <p class="text-center display-5">Terms & Conditions Page</p>
-                        <textarea style="height: 500px;width: 100%;" class="col-md-12 mt-5" id="termsPageTemplate">
-                            {{ $superSettingData[0]->terms_data }}
-                        </textarea>
-                        <div class="mt-4 text-center">
-                            <a class="btn col-md-4 homeButtons" style="background: var(--primary-color)"
-                                onclick="saveTermsPageData()">Save Terms Page</a>
+                    {{-- Widgets Table --}}
+                    <div class="overflow-auto secondaryTextColor mt-5 border">
+                        <p class="display-5 text-center">{{ __('Widgets Table') }}
+                        </p>
+                        <hr>
+                        <div class="card-body">
+                            <div>
+                                @php
+                                    $widgetsData = App\Models\Widget::all();
+                                @endphp
+                                <table id="widgetsDataTable" class="display">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Widget Name</th>
+                                            <th>Widget Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="widgetsDataTableBody">
+                                        @for ($i = 0; $i < count($widgetsData); $i++)
+                                            <tr>
+                                                <td>{{ $widgetsData[$i]->id }}</td>
+                                                <td>{{ $widgetsData[$i]->name }}</td>
+                                                <td class="lead">{{ $widgetsData[$i]->type }}</td>
+                                            </tr>
+                                        @endfor
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
+                    {{-- Rates Table --}}
+
+                    {{-- Terms And Condition Page --}}
                     <div class="mt-5 mb-5">
-                        <p class="text-center display-5">Privacy Policy Page</p>
-                        <textarea style="height: 500px;width: 100%;" class="col-md-12 mt-5" id="privacyPageTemplate">
-                            {{ $superSettingData[0]->privacy_data }}
+                        <button class="text-center btn btn-dark col-md-12 fs-1" onclick="showAndHideTermsPage(this)">Terms &
+                            Conditions Page <i class='bx bxs-down-arrow'></i></button>
+                        {{-- <p class="text-center display-5">Terms & Conditions Page</p> --}}
+                        <div id="termsPage_ForSuperAdmin" style="display: none">
+                            <textarea style="height: 500px;width: 100%;" class="col-md-12 mt-5" id="termsPageTemplate">
+                            {{ $superSettingData[0]->terms_data }}
                         </textarea>
-                        <div class="mt-4 text-center">
-                            <a class="btn col-md-4 homeButtons" style="background: var(--primary-color)"
-                                onclick="savePrivacyPageData()">Save Privacy Page</a>
+                            <div class="mt-4 text-center">
+                                <a class="btn col-md-4 homeButtons" style="background: var(--primary-color)"
+                                    onclick="saveTermsPageData()">Save Terms Page</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Privacy Page --}}
+                    <div class="mt-5 mb-5">
+                        <button class="text-center btn btn-dark col-md-12 fs-1"
+                            onclick="showAndHidePrivacyPage(this)">Privacy Policy Page <i
+                                class='bx bxs-down-arrow'></i></button>
+                        {{-- <p class="text-center display-5">Privacy Policy Page</p> --}}
+                        <div id="privacyPage_ForSuperAdmin" style="display: none;">
+                            <textarea style="height: 500px;width: 100%;" class="col-md-12 mt-5" id="privacyPageTemplate">
+                                {{ $superSettingData[0]->privacy_data }}
+                            </textarea>
+                            <div class="mt-4 text-center">
+                                <a class="btn col-md-4 homeButtons" style="background: var(--primary-color)"
+                                    onclick="savePrivacyPageData()">Save Privacy Page</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -103,6 +149,7 @@
         var privacyPageeditor;
         $(document).ready(function() {
             $('#superSettingsTable').DataTable();
+            $('#widgetsDataTable').DataTable();
             termsPageeditor = $('#termsPageTemplate').summernote({
                 height: 500,
             });
@@ -159,6 +206,32 @@
                 .catch(function(error) {
                     console.log(error.response);
                 });
+        }
+
+        function showAndHideTermsPage(button) {
+            if (button.classList.contains('btn-dark') == true) {
+                button.classList.remove('btn-dark');
+                button.classList.add('btn-secondary');
+                button.children[0].style.display = "none";
+            } else {
+                button.classList.add('btn-dark');
+                button.classList.remove('btn-secondary');
+                button.children[0].style.display = "";
+            }
+            $("#termsPage_ForSuperAdmin").toggle('slow', 'swing');
+        }
+
+        function showAndHidePrivacyPage(button) {
+            if (button.classList.contains('btn-dark') == true) {
+                button.classList.remove('btn-dark');
+                button.classList.add('btn-secondary');
+                button.children[0].style.display = "none";
+            } else {
+                button.classList.add('btn-dark');
+                button.classList.remove('btn-secondary');
+                button.children[0].style.display = "";
+            }
+            $("#privacyPage_ForSuperAdmin").toggle('slow', 'swing');
         }
     </script>
     <!-- Scripts -->

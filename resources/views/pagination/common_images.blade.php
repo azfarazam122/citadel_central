@@ -1,7 +1,6 @@
 @php
 $dynamicImagesData = App\Models\DynamicImage::where('is_common', 1)->simplePaginate(10);
 $url = 'https://app.yourbrokerjourney.ca/images/common_images';
-
 @endphp
 <div class="dynamicImagesFlexContainer ms-5">
     @for ($i = 0; $i < count($dynamicImagesData); $i++)

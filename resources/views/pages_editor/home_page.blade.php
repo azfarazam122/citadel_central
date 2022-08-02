@@ -32,6 +32,7 @@
         .dynamicImagesFlexContainer>div {
             background-color: #f1f1f1;
             width: 190px;
+            height: 250px;
             margin: 0px 0px 10px 10px;
             text-align: center;
             line-height: 75px;
@@ -335,20 +336,11 @@
             e.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
 
-            fetch_data(page);
-
-        });
-        $(document).on('click', '#paginationMainDivForAgentImages a', function(e) {
-            e.preventDefault();
-            var page = $(this).attr('href').split('page=')[1];
-
-            fetch_data(page);
+            fetch_data_for_common_images(page);
 
         });
 
-
-
-        function fetch_data(page) {
+        function fetch_data_for_common_images(page) {
             axios.post("{{ route('paginatingCommonImages') }}", {
                     page: page
                 })
@@ -360,6 +352,30 @@
                     console.log(error.response);
                 });
         }
+        $(document).on('click', '#paginationMainDivForAgentImages a', function(e) {
+            e.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+
+            fetch_data_for_agent_images(page);
+
+        });
+
+        function fetch_data_for_agent_images(page) {
+            axios.post("{{ route('paginatingAgentImages') }}", {
+                    page: page
+                })
+                .then(function(response) {
+                    $('#paginationMainDivForAgentImages').html(response.data);
+                    // update_search_list(response);
+                })
+                .catch(function(error) {
+                    console.log(error.response);
+                });
+        }
+
+
+
+
 
         function saveImageToAgentDirectory(agentEmail, agentId, elementId) {
             let myFile = document.getElementById(elementId);
@@ -406,24 +422,37 @@
         }
 
         function deleteAgentImage(imageId, imageName, agentEmail) {
-            axios.post("{{ route('deleteAgentCustomImage') }}", {
-                    image_id: imageId,
-                    image_name: imageName,
-                    agent_email: agentEmail,
-                })
-                .then(function(response) {
-                    Swal.fire(
-                        'Successfull',
-                        'Image Deleted Successfully'
-                    )
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.post("{{ route('deleteAgentCustomImage') }}", {
+                            image_id: imageId,
+                            image_name: imageName,
+                            agent_email: agentEmail,
+                        })
+                        .then(function(response) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            $("#paginationMainDivForAgentImages").load(window.location.href +
+                                " #paginationMainDivForAgentImages");
 
-                    $("#paginationMainDivForAgentImages").load(window.location.href +
-                        " #paginationMainDivForAgentImages");
+                        })
+                        .catch(function(error) {
+                            console.log(error.response);
+                        });
+                }
+            })
 
-                })
-                .catch(function(error) {
-                    console.log(error.response);
-                });
         }
     </script>
     <!-- Scripts -->

@@ -127,10 +127,6 @@
             </div>
         @endif
     @endisset
-    @php
-
-
-    @endphp
     {!! $agentHomePageData !!}
     {{-- {{ $agentHomePageData }} --}}
     @include('layouts.footer')

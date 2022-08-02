@@ -14,7 +14,7 @@ $url = 'http://127.0.0.1:8000/images/agent_custom_images/' . $agent->email;
 <div class="dynamicImagesFlexContainer ms-5">
     @for ($i = 0; $i < count($agentCustomImagesData); $i++)
         <div onclick="showDynamicImageInPopUp({{ $agentCustomImagesData[$i] }},'{{ $url }}')">
-            <img width="190px" src="{{ $url }}/{{ $agentCustomImagesData[$i]->file_name }}" alt="">
+            <img width="70%" src="{{ $url }}/{{ $agentCustomImagesData[$i]->file_name }}" alt="">
         </div>
         <article id="crossIconOnAgentCustomImage" class="text-end lh-1">
             <i onclick="deleteAgentImage('{{ $agentCustomImagesData[$i]->id }}' , '{{ $agentCustomImagesData[$i]->file_name }}' , '{{ $agent->email }}')"

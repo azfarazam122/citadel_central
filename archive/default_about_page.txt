@@ -1,0 +1,207 @@
+  <div class="allContent">
+        <section class="mt-5 container">
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mt-5 display-4 secondaryTextColor">I'm Here To Help You
+                    <p class="text-left display-4 primaryTextColor">
+                        Achieve Mortgage Freedom </p>
+                    </p>
+                    <hr class="mt-1"
+                        style="width: 15%;height: 4px;opacity: 1;border-radius: 10px; color: var(--primary-color);">
+                    <div>
+                        <p class="mt-3 tertiaryTextColor">Kristin will take the time to understand
+                            your specific needs and work with you to determine the best solution for YOU</p>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <img width="80%" src="https://app.yourbrokerjourney.ca/images/common_images/img36.png" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col mt-5">
+                        <img width="100%" src="https://app.yourbrokerjourney.ca/images/common_images/img37.png" alt="" srcset="">
+                        <img width="100%" src="https://app.yourbrokerjourney.ca/images/common_images/img38.png" alt="" srcset="">
+                    </div>
+                </div>
+        </section>
+
+        <section class="mt-5 container">
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-left display-4 primaryTextColor">
+                        Bio </p>
+                    <p></p>
+                    <hr class="mt-5 primaryTextColor" style="width: 15%; height: 4px; opacity: 1; border-radius: 10px; ">
+                    <div class="secondaryTextColor">
+                        <p class="mt-5" style="">Whether purchasing your first home,
+                            renewing your mortgage or using the equity in your home to consolidate higher-interest debt.If
+                            you
+                            are looking for a mortgage agent that is passionate about helping their clients, is committed
+                            to going the extra mile to provide you with the best possible service and experience and is not
+                            afraid to think ‘outside the box’ to get things done, look no further
+                        <p class="mt-3" style=""> [[About_Page_Agent_Name_Link]] will
+                            treat you with
+                            professionalism and respect and will make sure your needs come first. She is also full of life
+                            and
+                            has a great sense of humor, which makes working with her fun, as well as productive</p>
+                    </div>
+                    <div class="col-md-8 mt-5 secondaryTextColor">
+                        <p style="font-size: 20px;">
+                            <span>-</span> Residential Mortgages
+                            <br> <span>-</span> Home Equity Line of Credit's
+                            <br> <span>-</span> First-Time Home Buyers
+                            <br> <span>-</span> Refinancing
+                            <br> <span>-</span> Debt Consolidation
+                            <br> <span>-</span> Private Mortgages
+                            <br> <span>-</span> Rental Property Financing
+                            <br> <span>-</span> Reverse Mortgages
+                            <br> <span>-</span> Commercial Mortgages
+                        </p>
+                    </div>
+                    [[About_Page_Bio_Link]]
+                </div>
+                <div class="col-md-6"><img width="100%" src="https://app.yourbrokerjourney.ca/images/common_images/img9.png" alt=""
+                        srcset="">
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mt-5 mb-5 container">
+            <hr>
+            <div class="mt-5">
+                <div class="container mx-auto mt-4">
+                    <div class="row">
+
+                        <div class="col-md-4 ">
+                            <div class="card h-100 " style=" width: 22rem; border-radius: 10px;">
+                                <div class="card-body text-center">
+                                    <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                        style="height: 2px; border-radius: 10px;opacity: 1;">
+
+                                    <p style="line-height: 30px;font-size: 17px;"
+                                        class="text-center mt-5 tertiaryTextColor">
+                                        Citadel
+                                        Mortgages is
+                                        one
+                                        of
+                                        the
+                                        largest
+                                        full-service Mortgage Brokerages with professional Mortgage Agents & Mortgage
+                                        Brokers
+                                        servicing all of GTA, Toronto, Ontario, Alberta, Saskatchewan, PEI, Newfoundland,
+                                        New
+                                        Brunswick, Nova Scotia, and British Columbia, Canada.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 ">
+                            <div class="card h-100 " style=" width: 22rem; border-radius: 10px;">
+                                <div class="card-body text-center">
+                                    <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                        style="height: 2px; border-radius: 10px;opacity: 1;">
+                                    <p style="line-height: 30px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        font-size: 17px;"
+                                        class="text-center  mt-5 tertiaryTextColor">
+                                        HELPING
+                                        BORROWERS
+                                        GET
+                                        BACK
+                                        ON
+                                        TRACK
+                                        Sometimes job loss can happen without warning. The Citadel Mortgages Career
+                                        Transition
+                                        Program is here to support you through this difficult time
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 ">
+                            <div class="card h-100 " style="width: 22rem; border-radius: 10px;">
+                                <div class="card-body text-center">
+                                    <hr width="80px" class="ml-auto mr-auto secondaryTextColor"
+                                        style="height: 2px; border-radius: 10px;opacity: 1;">
+
+                                    <p style="line-height: 30px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                font-size: 17px;"
+                                        class="text-center mb-5  mt-5 tertiaryTextColor">
+                                        Citadel
+                                        Mortgages
+                                        believes
+                                        in
+                                        supporting
+                                        our
+                                        community and the people that need our support. That is why once your mortgage
+                                        closes we
+                                        will make a donation to a charity or foundation on your behalf of your choice and
+                                        plant
+                                        a tree that you name!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5 container">
+            <hr>
+            <div>
+                <img src="https://app.yourbrokerjourney.ca/images/common_images/img40.png" width="100%" alt="" srcset="">
+            </div>
+           [[About_Page_Last_Apply_Now_Link]]
+        </section>
+
+        <section style="background-image: url('https://app.yourbrokerjourney.ca/images/common_images/img41.png');width: 100%" class="mt-5">
+            <div class="container mx-auto my-5 ">
+                <div class="text-center display-4 secondaryTextColor" style="font-weight: 700;padding-top: 17%;">
+                    Why People Choose Us
+                </div>
+                <div class="row " style="margin-bottom: 15%;margin-top: 5%">
+                    <div class="col-md-3 my-5 text-center">
+                        <img style="filter: grayscale(100%)" width="50%" src="https://app.yourbrokerjourney.ca/images/common_images/img42.png"
+                            alt="" srcset="">
+                        <p class="display-6 text-center fourthTextColor" style="font-weight: 500; ">1000+</p>
+                        <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">Satisfied Customers</span>
+                    </div>
+                    <div class="col-md-3 my-5 text-center">
+                        <img style="filter: grayscale(100%)" width="50%" src="https://app.yourbrokerjourney.ca/images/common_images/img43.png"
+                            alt="" srcset="">
+                        <p class="display-6 text-center fourthTextColor" style="font-weight: 500; "><i
+                                class="fa-solid fa-star"></i></p>
+                        <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">5 Star Google
+                            Reviews</span>
+                    </div>
+                    <div class="col-md-3 my-5 text-center">
+                        <img style="filter: grayscale(100%)" width="50%" src="https://app.yourbrokerjourney.ca/images/common_images/img44.png"
+                            alt="" srcset="">
+                        <p class="display-6 text-center fourthTextColor" style="font-weight: 500; ">97%</p>
+                        <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">Customer Rating</span>
+                    </div>
+                    <div class="col-md-3 my-5 text-center">
+                        <img style="filter: grayscale(100%)" width="50%" src="https://app.yourbrokerjourney.ca/images/common_images/img45.png"
+                            alt="" srcset="">
+                        <p class="display-6 text-center fourthTextColor" style="font-weight: 500; ">100%</p>
+                        <span class="fourthTextColor" style="font-size: 20px;font-weight: 600;">We Get Results</span>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mt-5 ">
+            <hr>
+            <div class="row container ml-auto mr-auto">
+                <div class="col-md-6 ml-auto mr-auto">
+                    <img src="https://app.yourbrokerjourney.ca/images/common_images/img46.png" width="100%" alt="" srcset="">
+                </div>
+
+            </div>
+        </section>
+    </div>

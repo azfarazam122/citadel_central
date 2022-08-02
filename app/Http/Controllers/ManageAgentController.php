@@ -301,6 +301,17 @@ class ManageAgentController extends Controller{
                 $agentEachPageData->data = str_replace("[[Calculate_How_You_Can_Be_MortgageFreeSooner_Link]]", view('widgets.Calculate_How_You_Can_Be_MortgageFreeSooner_Link')->with('agentData',$agent) ,$agentEachPageData->data);
             }
             return view('agent_page_preview.home_page_view')->with('agentHomePageData', $agentEachPageData->data);
+        }else if ($page_id == "2") {
+            if (str_contains($agentEachPageData->data, "[[About_Page_Bio_Link]]")){
+                $agentEachPageData->data = str_replace("[[About_Page_Bio_Link]]", view('widgets.About_Page_Bio_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[About_Page_Last_Apply_Now_Link]]")){
+                $agentEachPageData->data = str_replace("[[About_Page_Last_Apply_Now_Link]]", view('widgets.About_Page_Last_Apply_Now_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            if (str_contains($agentEachPageData->data, "[[About_Page_Agent_Name_Link]]")){
+                $agentEachPageData->data = str_replace("[[About_Page_Agent_Name_Link]]", view('widgets.About_Page_Agent_Name_Link')->with('agentData',$agent) ,$agentEachPageData->data);
+            }
+            return view('agent_page_preview.about_page_view')->with('agentAboutPageData', $agentEachPageData->data);
         }
 
     }
@@ -348,8 +359,8 @@ class ManageAgentController extends Controller{
         }
         public function paginatingAgentImages(Request $req){
             //
-            $commonImages = DynamicImage::where('is_common', 0)->simplePaginate(10);
-            return view('pagination.common_images', compact('commonImages'))->render();
+            $agentImages = DynamicImage::where('is_common', 0)->simplePaginate(10);
+            return view('pagination.agent_custom_images', compact('agentImages'))->render();
         }
     //  ---------------PAGINATION---------------
     // =============PAGES EDITOR FOR AGENT===================

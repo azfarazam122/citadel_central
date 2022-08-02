@@ -31,7 +31,8 @@ class CreateWidgetsTable extends Migration
             (6, 1,'[[Get_Prequalified_Now_Link]]', 'asdasdadsd', 'Button', 0),
             (7, 1,'[[Calculate_How_You_Can_Be_MortgageFreeSooner_Link]]', 'asdasdadsd', 'Button', 0),
             (8, 2,'[[About_Page_Bio_Link]]', 'asdasdadasdadsdad asdasdasd', 'Button', 0),
-            (9, 2,'[[About_Page_Last_Apply_Now_Link]]', 'asdasdadasdadsdad asdasdasd', 'Button', 0);
+            (9, 2,'[[About_Page_Last_Apply_Now_Link]]', 'asdasdadasdadsdad asdasdasd', 'Button', 0),
+            (10, 2,'[[About_Page_Agent_Name_Link]]', 'asdasdadasdadsdad asdasdasd', 'Text', 0);
 
             ");
     }

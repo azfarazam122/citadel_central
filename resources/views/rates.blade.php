@@ -1091,6 +1091,7 @@
         </section>
     </div>
 
+
     <footer class="mt-5 p-5" style="background: var(--secondary-color)">
         <img width="100%" src="../../images/homeImages/footerImages/img1.jpeg" alt="">
         <div class="container mx-auto mt-4">
